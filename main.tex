@@ -1,0 +1,89 @@
+\documentclass[a4paper,12pt]{book}
+
+% Margins
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{polynom}
+\usepackage[italian]{babel}
+\graphicspath{ {./images/} }
+
+% commands
+\newcommand{\red}[1]{{\color{red}#1}}
+\newcommand{\blue}[1]{{\color{blue}#1}}
+\newcommand{\green}[1]{{\color{teal}#1}}
+\newcommand{\cita}[1]{{\hfill \footnotesize #1 }}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\un}[1]{\underline{#1}}
+\newcommand{\gn}[1]{\lceil #1 \rceil}
+\newcommand{\sq}{\square}
+\newcommand{\nin}{\notin}
+\newcommand{\MCD}{\text{MCD}}
+\newcommand{\mcm}{\text{mcm}}
+\newcommand{\V}{1}
+\newcommand{\F}{0}
+
+\newcommand{\hlinee}{\begin{tabular}{p{\textwidth}}\hline\ \\\end{tabular}}
+
+\def\C{\mathbb{C}}
+\def\N{\mathbb{N}}
+\def\Q{\mathbb{Q}}
+\def\R{\mathbb{R}}
+\def\Z{\mathbb{Z}}
+
+
+% matrix commands
+\newcommand{\vvec}[2]{
+	\begin{bmatrix}
+		#1 \\ #2
+	\end{bmatrix}
+}
+\newcommand{\vvvec}[3]{
+	\begin{bmatrix}
+		#1 \\ #2 \\ #3
+	\end{bmatrix}
+}
+
+\newcommand{\vvvvec}[4]{
+	\begin{bmatrix}
+		#1 \\ #2 \\ #3 \\ #4
+	\end{bmatrix}
+}
+
+\def\enddim{
+	\begin{flushright}
+		$ \square $
+	\end{flushright}
+}
+
+
+\begin{document}
+
+\author{Alessandro Cheli - Prof. Ghimenti - Prof.ssa Chiodaroli}
+\title{Appunti di Calcolo Probabilità e statistica}
+\date{A.A 2019-2020}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+\mainmatter
+\include{./TeX_files/chapter01}
+\include{./TeX_files/chapter02}
+
+\backmatter
+% bibliography, glossary and index would go here.
+
+\end{document}

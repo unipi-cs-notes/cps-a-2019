@@ -1,0 +1,171 @@
+\chapter{Probabilità Discreta e Condizionata}
+
+\section{Definizione di Probabilità}
+
+La definizione di Probabilità è
+
+\begin{quote}
+	Attendibilità confortata da motivi ragionevoli
+\end{quote}
+
+\paragraph{Definizione di Probabilità Discreta}
+
+La probabilità di un evento è definita come \[ P(\text{evento}) = \dfrac{\text{\# casi favorevoli}}{\text{\# casi possibili}}  \]. Prendiamo ad esempio il lancio di un dado, voglio ottenere un numero $ \geq 5 $, la probabilità dell'evento è
+\[ P = 2/6 = 1/3  \]
+
+Un altro esempio può essere la probabilità di ottenere un numero $ \geq 4 $ lanciando 2 dadi.
+
+\[ P = \dfrac{27}{6^2} = \dfrac{3}{4} \]
+
+I casi favorevoli sono 27 perché lanciando se lanciando il primo dado ottenendo un numero $ \leq 3 $ significa che ho 3 possibili casi per ognuno dei lanci del primo dado per ottenere un numero $ \geq 4 $ dal lancio del secondo dado ($ 3 \cdot 3 $), a cui si aggiungono $ (3 \cdot 6) $ casi se ottengo un numero $ \geq 4 $ dal primo lancio (tutti i casi del secondo lancio sono validi.)
+
+\paragraph{Esercizio, mazzo di carte}
+
+Qual'è la probabilità di ottenere almeno un asso pescando 2 carte da un mazzo di 54?
+\[ P = \dfrac{(50 \cdot 4) + (53 \cdot 4)}{54 \cdot 53} = \dfrac{206}{1431}\]
+
+Per i casi possibili, ho 54 casi per la prima pescata e 53 per la seconda, per i casi favorevoli ho
+
+\begin{align}
+	\begin{cases}
+		\text{Se pesco un Asso} \implies 4 \cdot 53 \\
+		\text{Se non pesco un Asso} \implies 4 \cdot 50
+	\end{cases}
+\end{align}
+
+\section{Formule Combinatorie}
+
+\subsection{Permutazioni di n elementi}
+
+Da Wikipedia: 
+
+\begin{quote}
+	Una permutazione è uno scambio dell'ordine di una sequenza di elementi che possono essere di qualunque tipo. L'obiettivo è trovare il numero di tutte le permutazioni (cioè tutte le sequenze con ordine) possibili dato un certo numero n di elementi.
+\end{quote}
+
+Le permutazioni di un insieme di $ n $ elementi sono definite come
+\[ \text{Perm}(n) = n! \]
+
+Dimostrando per induzione, i casi base sono $ \text{Perm}(0) = 1 $ e $ \text{Perm}(1) = 1 $
+
+Il passo induttivo sarà 
+\[ \text{Perm}(n) = n! \implies \text{Perm}(n+1) = (n+1)! \]
+\[ \text{Perm}(n+1) = (n+1) \cdot \text{Perm}(n) \]
+\[ = (n+1) \cdot n! = (n+1)! \]
+\enddim
+
+\subsection{Coefficiente Binomiale}
+Il coefficiente binomiale è un numero intero non negativo definito dalla seguente formula, è analogo alla proposizione "Come scegliere k oggetti da un insieme di n elementi"
+
+\[ S_{n,k} = \binom{n}{k} = \dfrac{n!}{(n-k)!k!} \]
+
+\paragraph{Dimostrazione}
+
+Fissato $ k \geq 2 $ dimostriamo per induzione su $ n \geq k $
+
+Il primo passo iniziale è, per $ n = k $
+
+\[ S_{n,k} = 1 = \dfrac{k!}{k!(k-k)!} = 1\]
+
+Il secondo passo iniziale è
+\[ S_{k,k-1} = \dfrac{k!}{(k-1)!(k-k+1)!} = k\]
+
+Procedendo, il passo induttivo è
+
+\[ S_{n+1,k} = S_{n,k} + S_{n,k-1} \]
+
+\[ = \dfrac{n!}{k!(n-k)!} + \dfrac{n!}{(k-1)!(n-k+1)!} = \binom{n}{k} + \binom{n}{k-1} \]
+\[ = \dfrac{n!((n-n+1) + k)}{k!(n-k+1)} = \dfrac{n!(n+1)}{k!(n+1-k)} = \dfrac{(n+1)!}{k!(n+1-k)!} = \dfrac{n+1}{k} \]
+\enddim
+
+\subsection{Disposizioni}
+Una disposizione $ D_{n,k} $ significa il numero di modi per "prendere" $ k $ oggetti ordinati da un insieme di $ n $ elementi.
+
+\[ D_{n,k} = S_{n,k} \cdot \text{Perm}(k) = \dfrac{n!}{(n-k)!k!} \cdot k! = \dfrac{n!}{(n-k)!} \]
+
+\section{Esercizi}
+
+\subsection{Terno al lotto}
+Giocando 5 numeri al lotto (estrazione da 1 a 90) calcolare la probabilità di ottenere un terno esatto e più di un terno.
+
+Se vogliamo ottenere un terno esatto i casi possibili sono $ \binom{90}{5} $ (I modi di estrarre 5 palline dall'urna). I casi favorevoli saranno $ S_{5,3} \cdot S_{85,2} = \binom{5}{3} \cdot \binom{85}{2}$
+
+La probabilità di ottenere un terno esatto sarà quindi
+\[ P(\text{terno esatto}) = \dfrac{\binom{5}{3} \cdot \binom{85}{2}}{\binom{90}{5}} = \dfrac{85 * 84 * 5}{\binom{90}{5}} \]
+
+Per ottenere almeno un terno i casi favorevoli sono
+\begin{itemize}
+	\item terno: $ \binom{5}{3} \binom{85}{2} $
+	\item quaterna: $ \binom{5}{4} \binom{85}{1} $
+	\item cinquina: 1
+\end{itemize}
+
+La probabilità di ottenere almeno un terno sarà data dalla somma delle probabilità corrispondenti a terno, quaterna e cinquina:
+
+\[ P(\text{almeno un terno}) = \dfrac{\binom{85}{2} \binom{5}{3}}{\binom{90}{5}} + \dfrac{\binom{85}{1} \binom{5}{4}}{\binom{90}{5}} + 1 \]
+
+\subsection{Probabilità del gioco di Monty Hall}
+Nel gioco televisivo di Monty Hall il partecipante deve scegliere una fra tre porte, una di esse contiene un premio mentre le altre due contengono rispettivamente due capre. Dopo la scelta del giocatore iniziale il presentatore apre una delle due porte contenenti una capra. Al giocatore conviene cambiare porta o mantenere quella scelta in origine?
+
+\paragraph{Ipotesi} Se scelgo una porta e la mantengo vinco solo se il premio era nella porta che ho scelto $ \implies P = 1/3 $
+
+\paragraph{Ipotesi} Se scelgo una porta e la cambio avrò $ P = 2/3 $
+
+\clearpage
+
+
+\begin{table}[]
+	\caption{Gioco di Monty Hall}
+	\begin{tabular}{lll}
+		1  & 2  & 3  \\
+		x  & x  & \$ \\
+		x  & \$ & x  \\
+		\$ & x  & x 
+	\end{tabular}
+\end{table}
+
+
+\subsection{Probabilità Condizionata}
+Lancio due dadi sommando il risultato, qual'è $ P(\geq 10) $ sapendo che il primo ha fatto almeno 3?
+
+Sappiamo che $ P(\text{Somma} \geq 10) = 6/36 = 1/6 $
+
+Poniamo il vincolo che il lancio del primo dado risulti almeno $ \geq 3 $
+
+\[ P(\text{Somma} \geq 10 | \text{Primo dado} \geq 3) = 6/24 = 1/4\]
+
+\paragraph{Definizione}
+Ponendo $ \Omega = $ gli eventi possibili;
+La \textbf{probabilità condizionata} che succeda $ A $ sapendo $ B $ si indica con:
+
+\[ P(A|B) = \dfrac{\text{\# casi favorevoli}}{\text{\# casi possibili}} = \dfrac{\# A \cap B}{\# B} = \dfrac{\# A \cup B}{\# \Omega} \cdot \dfrac{\# \Omega}{\# B}\]
+
+\[ P(A|B) = \dfrac{P(A \cap B)}{P(B)} \]
+
+\paragraph{Esempio}
+La probabilità di ottenere $ \leq 4 $ sapendo che è uscito un numero pari è
+
+\[ P(\geq 4|\text{pari}) = \dfrac{P(\leq 4 | \text{pari})}{P(\text{pari})} \]
+\[ P(\text{pari}) = 3/6 = 1/2 \]
+\[ P(\leq 4 \cap \text{pari}) = 2/6 \]
+\[ \implies P(\leq 4|\text{pari}) = \dfrac{2/6}{1/2} = 2/3 \]  
+\subsection{Dado rosso e dado nero}
+
+Tiriamo due dadi, uno rosso ed uno nero.
+
+Calcolare la probabilità che il dado rosso risulti 3 ed il dado nero risulti 2:
+
+\begin{align*}
+	& P(R=3 | N=2) = \dfrac{P(R=3 \cap N=2)}{P(N=2)} = \dfrac{1/36}{6/36} = \dfrac{1}{6} \\
+	& P(R=3) = 1/6
+\end{align*}
+
+Ne otteniamo che $ P(A|B) = P(A) \implies A, B $ sono indipendenti.
+
+In generale, dati due eventi $ A, B $ con $ A \cap B \neq 0 $ la probabilità dell'unione è $ P(A \cup B) = P(A) + P(B) $, allora $ P(\Omega) = 1 $ dove $ \Omega = $ tutti gli eventi.
+
+\paragraph{Definizione} Definiamo il \textbf{complementare} di un evento, ovvero $ A^C=\Omega \backslash A $. La probabilità di un complementare è $ P(A^C) = 1 - P(A) = P(\Omega) - P(A) $
+
+La probabilità di un intersezione di eventi è $ P(A \cap B) = P(A) \cdot P(B) $
+
+\clearpage
