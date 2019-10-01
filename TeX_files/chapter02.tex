@@ -1,18 +1,19 @@
 \chapter{Spazio Probabilizzato}
 
-Uno spazio probabilizzato è definito come
+\section{Lo Spazio Probabilizzato}
+Uno spazio probabilizzato è un costrutto matematico che modella un processo del mondo reale o "esperimento", consistente in degli stati che occorrono casualmente. Viene costruito su una situazione o esperimento particolare, Uno spazio probabilizzato è definito come una terna:
 
 \[ (\Omega, F, \mathcal{P}) \]
 
-$ \Omega $ è l'insieme degli eventi elementari, ad esempio in un lancio di un dado $ \Omega = \{1,2,3,4,5,6\} $
+$ \Omega $ è l'insieme degli eventi elementari, ovvero tutti i risultati possibili, ad esempio in un lancio di un dado $ \Omega = \{1,2,3,4,5,6\} $
 
-$ \mathcal{P}(A)$, ovvero le parti di A, sono tutti gli insiemi che posso costruire a partire dagli elementi di A. Ad esempio:
+$ \parts{A}$, ovvero le parti di A, sono tutti gli insiemi che posso costruire a partire dagli elementi di A. Ad esempio:
 \begin{align*}
 & A = \{0, 1\} \\
-& \mathcal{P}(A) = \{0, \{0, 1\}, \{0\}, \{1\}\}
+& \parts{A} = \{0, \{0, 1\}, \{0\}, \{1\}\}
 \end{align*}
 
-$ F \subseteq \mathcal{P}(\Omega) $ è un sottoinsieme delle parti di omega, chiuso rispetto a intersezione, unione e complementare.
+$ F \subseteq \parts{\Omega} $ è un sottoinsieme delle parti di omega, chiuso rispetto a intersezione, unione e complementare.
 \[ A,B \in F \implies \begin{cases}
 A \cup B \\
 A \cap B \\
@@ -28,10 +29,10 @@ La probabilità $ P $ è una funzione definita come
 \begin{align*}
 &P : F \to [0,1] \\
 & P(\Omega) = 1 \\
-& \forall i \neq j . A_i \cap A_j \neq 0 \implies P \left( \bigcup\limits_{n} A_n \right) = \sum_{n} P(A_n)
+& \forall i \neq j . A_i \cap A_j \neq \emptyset \implies P \left( \bigcup\limits_{n} A_n \right) = \sum_{n} P(A_n)
 \end{align*}
 
-Dato $ \Omega $ insieme finito, allora $ F = \mathcal{P}(\Omega) $ allora la probabilità sarà
+Dato $ \Omega $ insieme finito, allora $ F = \parts{\Omega} $ allora la probabilità sarà
 \[  P (A \subset F) = \dfrac{\#A}{\#\Omega} \]
 
 \paragraph{Esempio: Lotteria di De' Finetti}
@@ -63,7 +64,7 @@ Ciò significa che nella lotteria di De' Filetti è impossibile che ogni numero 
 La terna $ (\Omega, F, \mathcal{P}) $ si può dimostrare.
 
 \[ P(A^C) = 1 - P(A) \impliedby \begin{cases}
-A \cap A^C \neq 0 \\
+A \cap A^C \neq \emptyset \\
 A \cup A^C = \Omega \\
 P(\Omega) = 1
 \end{cases} \]
@@ -72,11 +73,11 @@ P(\Omega) = 1
 
 \[ A \subseteq B \implies P(A) \leq P(B) \]
 
-\paragraph{Densità di Probabilità}
+\paragraph{Densità di Probabilità }
 
-Definiamo $ \{p_n\}_{n \in \N} $ con $ p_n \in \R $, detta densità di probabilità come $ p_n \geq 0 $ e $ \sum_{n \in \N} p_n = 1 $ 
+Definiamo $ \{p_n\}_{n \in \N} $ con $ p_n \in \R $ come funzione, detta densità di probabilità come $ p_n \geq 0 $ e $ \sum_{n \in \N} p_n = 1 $ 
 
-Se $ \{p_n\} $ è una densità di probabilità discreta $ \implies \left( \N, \mathcal{P}(\N), P\right) $ è uno spazio probabilizzato. Vale anche per eventi non equiprobabili.
+Se $ \{p_n\} $ è una densità di probabilità discreta $ \implies \left( \N, \parts{\N}, P\right) $ è uno spazio probabilizzato. Vale anche per eventi non equiprobabili.
 
 \paragraph{Definizione, indipendenza degli eventi} 
 
@@ -109,3 +110,134 @@ A^C, B
 \[ P(A \cap B^C) = P(A) - P(A) \cdot P(B) = P(A)\left[1 - P(B)\right] = P(A) \cdot P(B^C) \]
 
 $ A $ e $ B^C $ sono indipendenti \enddim
+
+\paragraph{Esercizio: Lancio di due dadi}
+Lancio due dadi, uno rosso ed uno nero.
+$ \Omega = (r, n) $ dove $ r = 1,2,3,4,5,6 $ e $ n = 1,2,3,4,5,6 $ 
+Definiamo lo spazio probabilizzato con $ F = \parts{\Omega}, \omega \in \Omega $. Ad esempio $ \prob{n} = \dfrac{1}{36} $
+
+Probabilità che il rosso sia 3 sapendo che rosso + nero fa 6
+\[ \prob{r=3 | r+n = 6} = \dfrac{\prob{r=3 \cap r + n = 6}}{\prob{r+n=6}} = \dfrac{\dfrac{1}{36}}{\dfrac{5}{36}} = \dfrac{1}{5}\] 
+
+Probabilità che il rosso sia pari sapendo che rosso + nero fa 6
+
+\[ \prob{r = \text{ pari} | r+n = 6} = \dfrac{\prob{r \text{ pari} \cap r+n = 6}}{\prob{r+n = 6}} = \dfrac{\dfrac{2}{36}}{\dfrac{5}{36}} \]
+
+\paragraph{Esercizio: Gioco di Monty Hall}
+Riprendendo il gioco delle tre porte definiamo lo spazio probabilizzato: Formalizzo di aver scelto la porta 3. $ \Omega = (x,y) $ dove $ x = 1,2,3 $ è la porta vincente e $ y = 1,2 $ è la porta perdente che è stata aperta dal presentatore.
+
+Gli eventi impossibili saranno $ \prob{1,1} = 0, \prob{2,2} = 0 $
+
+% TODO tabella
+
+Dalla tabella otteniamo che
+\[ \prob{x=1} = \prob{x=2} = \prob{x=3} = \dfrac{1}{3} \]
+\[ \prob{x=1,y=2} = \dfrac{1}{3} \]
+\[ \prob{x=2,y=1} = \dfrac{1}{3} \]
+\[ \prob{x=3,y=1} = \prob{x=3,y=2} = \dfrac{1}{6} \]
+
+Quindi $ \prob{y=1} = \prob{y=2} = \dfrac{1}{2} $
+
+Se scelgo la porta 3, suppongo venga aperta la 2. Se non cambio e vinco $ (x = 3) $ allora
+
+\[ \prob{x=3 | y=2} = \dfrac{\prob{(3,2)}}{\prob{y=2}} = \dfrac{\dfrac{1}{6}}{\dfrac{1}{2}} = \dfrac{1}{3} \]
+
+Se scelgo la porta 3, suppongo venga aperta la 1 e cambio allora:
+
+\[ \prob{x=1 | y=2} = \dfrac{\prob{(1,2)}}{\prob{y=2}} = \dfrac{\dfrac{1}{3}}{\dfrac{1}{2}} = \dfrac{2}{3} \]
+
+\subsection{Formula di fattorizzazione}
+Supponiamo di avere una famiglia di insiemi $ B_1, \dots, B_n $ con $ n \in \N $ che è detta una partizione finita di $ \Omega $ (insieme fondamentale). Voglio che $ \forall i . B_i \in F $ e che $ \forall i \forall j\neq i . B_i \cap B_j = \emptyset $ e anche che $ \bigcup_{i=1}^{n} B_i = \Omega $
+
+\paragraph{Teorema}
+
+Sia $ \{B_i\}_{i=1, \dots, n} $ parte finita di $ \Omega $ e sia $ \prob{B_i} > 0 $
+
+\[ \implies  \prob{A} = \sum_{i=1}^{n} \prob{A|B_i} \cdot \prob{B_i} \]
+
+\paragraph{Dimostrazione} 
+
+\[ \prob{A} =  \sum_{i=1}^{n} \prob{A \cap B_i} = \sum_{i=1}^{n} \prob{A|B_i} \cdot \prob{B_i} \]
+
+\paragraph{Condizionamento ripetuto}
+Dati $ A_1, \dots, A_n $ eventi, allora 
+\[ \prob{A_1 \cap \dots \cap A_n} = \prob{A_1} \cdot \prob{A_2|A_1} \cdot \prob{A_3| A_1 \cap A_2} \cdot \prob{A_n | A_1 \cap \dots \cap A_{n-1}}\]
+
+\subsection{Teorema di Bayes}
+
+% TODO approfondisci da wiki
+
+Dati due eventi $ A,B $ con probabilità non nulla $ \prob{A} > 0 $ e $ \prob{B} > 0 $ allora 
+
+\[ \prob{B|A} = \dfrac{\p{A|B} \cdot \p{B} }{\p{A}}\]
+
+% TODO dimostrazione
+
+\section{Esercizi}
+
+\paragraph{Esercizio: Vino}
+
+Un produttore di vino produce due vini (bianco $ B $ e rosso $ R $) e vende in Francia ($ F $) e Germania ($ G $). 
+Le vendite sono $ 1/3 $ per la Francia e $ 1/3 $ per la Germania. $ 3/4 $ delle richieste dalla Francia sono vino bianco. $ 1/4 $ delle richieste dalla Francia sono vino rosso. $ 1/2 $ delle richieste dalla Germania sono vino bianco. $ 1/2 $ delle richieste dalla Germania sono vino rosso.
+
+Utilizzando la formula di partizione troviamo la probabilità che una richiesta dalla Germania sia vino bianco. $ \p{\text{richiesta dalla germania} = B} $
+
+\[ \p{B} = \p{B|G} \cdot \p{G} + \p{B|F} \cdot \p{F} = \dfrac{1}{3} + \dfrac{1}{4} = \dfrac{7}{12} \]
+
+\paragraph{Esercizio, esami e studenti}
+
+Abbiamo 3 livelli di preparazione: Ottimo, Buono e Scarso.
+Un esito dell'esame è Promosso o Respinto.
+
+\[ \p{\text{Promosso} | \text{Ottimo}} = 0,995\]
+\[ \p{\text{Promosso} | \text{Scarso}} = 0,3\]
+\[ \p{\text{Promosso} | \text{Buono}} = 0,8\]
+
+Uno studente prova l'esame e viene respinto. Qual'è la probabilità che aveva di avere una preparazione scarsa? $ \p{\text{Scarso}|\text{Respinto}} $
+
+Prima calcoliamo la probabilità di essere respinti.
+
+\[ \p{R} = \p{R|O} \cdot \p{O} + \p{R | B} \cdot \p{B} + \p{R|S} \cdot \p{S} = 0,302 \]
+
+Senza informazioni aggiuntive $ \p{O} = \p{B} = \p{S} = \dfrac{1}{3} $
+
+La probabilità di essere respinto è $ \p{R} = 0,302 $ quindi 
+
+\[ \p{S | R} = \dfrac{\p{R|S}\cdot \p{S}}{\p{R}} = \dfrac{0,7 \cdot 1/3}{0,302} = 0,773 \]
+
+\paragraph{Esercizio alternativo}
+
+% TODO per casa
+
+Qual'è la probabilità che lo studente aveva di avere una preparazione scarsa, sapendo che è stato respinto e sapendo che le probabilità dei voti sono: $ \p{O} = \dfrac{1}{6}, \p{B} = \dfrac{2}{3}, \p{S} = \dfrac{1}{6} $
+
+\paragraph{Esercizio: Malattia con fattore di rischio}
+La probabilità di ammalarsi di un soggetto a rischio $ (R) $ è $ 0,2 $, mentre la probabilità di ammalarsi di un soggetto non a rischio $ (N) $ è $ 0,006 $. Il $ 15\% $ della popolazione sono soggetti a rischio. Un malato si denota con $ M $ mentre uno sano con $ S $.
+
+Vogliamo sapere 
+
+\begin{enumerate}
+	\item $ \p{\text{Soggetto casuale sia malato}} = $
+	
+	$ \p{M} = \p{M|R} \cdot \p{R} + \p{R|N} \cdot \p{N} = 0,35 $ 
+	
+	$ \p{M} = 0,2 \cdot 0,15 + 0,006 \cdot 0,85 = 0,35 $
+	
+	\item $ \p{\text{Soggetto malato fosse a rischio}} = $
+	
+	$ \p{R|M} = \dfrac{\p{M|R} \cdot \p{R}}{\p{M}} = \dfrac{0,2 \cdot 0,15}{0,35} = 0,855 $
+	
+	\item $ \p{\text{Soggetto soggetto sano sia a rischio}} = $
+	
+	$ \p{R|S} = \dfrac{\p{S|R} \cdot \p{R}}{\p{S}} = \dfrac{(1-0,2) \cdot 0,15}{(1-0,35)} = 0,124$
+\end{enumerate}
+
+\paragraph{Osservazione}
+
+La probabilità che l'evento $ A^c $ ($ A $ complementare) si verifichi sapendo B è $ \p{A^c|B} = 1 - \p{A|B} $ 
+\textbf{mentre invece} la probabilità di $ A $ sapendo $ B^c $ è $ \p{A|B^c} \neq 1 - \p{A|B} $
+
+\paragraph{Esercizio: Test}
+Prendendo $ S = $ soggetti sani, $ M = $ soggetti malati, $ T^- = $ test positivo, $ T^+ = $ test positivo.
+
+La specificità di un test è $ \p{T^-|S} $. Una specificità alta implica pochi falsi positivi. La sensibilità è $ \p{T^+|M} $. Una sensibilità alta implica pochi falsi negativi.

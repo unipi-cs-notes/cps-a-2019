@@ -1,13 +1,5 @@
 \documentclass[a4paper,12pt]{book}
-
-% Margins
-\addtolength{\oddsidemargin}{-.875in}
-\addtolength{\evensidemargin}{-.875in}
-\addtolength{\textwidth}{1.75in}
-
-\addtolength{\topmargin}{-.875in}
-\addtolength{\textheight}{1.75in}
-
+\usepackage[margin=0.7in,nomarginpar]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{mathtools}
@@ -17,8 +9,14 @@
 \usepackage{array}
 \usepackage{xcolor}
 \usepackage{polynom}
+\usepackage{wrapfig}
 \usepackage[italian]{babel}
+\usepackage{float}
+\restylefloat{table}
 \graphicspath{ {./images/} }
+
+\addtolength{\topmargin}{.2in}
+\addtolength{\textheight}{-.3in}
 
 % commands
 \newcommand{\red}[1]{{\color{red}#1}}
@@ -35,6 +33,10 @@
 \newcommand{\V}{1}
 \newcommand{\F}{0}
 
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+
 \newcommand{\hlinee}{\begin{tabular}{p{\textwidth}}\hline\ \\\end{tabular}}
 
 \def\C{\mathbb{C}}
@@ -43,6 +45,15 @@
 \def\R{\mathbb{R}}
 \def\Z{\mathbb{Z}}
 
+\def\p{\prob}
+
+\newcommand{\prob}[1]{
+	P\left(#1\right)
+}
+
+\newcommand{\parts}[1]{
+	\mathcal{P}\left(#1\right)
+}
 
 % matrix commands
 \newcommand{\vvec}[2]{
@@ -82,6 +93,7 @@
 \mainmatter
 \include{./TeX_files/chapter01}
 \include{./TeX_files/chapter02}
+\include{./TeX_files/chapter03}
 
 \backmatter
 % bibliography, glossary and index would go here.

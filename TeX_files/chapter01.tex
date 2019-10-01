@@ -10,7 +10,7 @@ La definizione di Probabilità è
 
 \paragraph{Definizione di Probabilità Discreta}
 
-La probabilità di un evento è definita come \[ P(\text{evento}) = \dfrac{\text{\# casi favorevoli}}{\text{\# casi possibili}}  \]. Prendiamo ad esempio il lancio di un dado, voglio ottenere un numero $ \geq 5 $, la probabilità dell'evento è
+La probabilità di un evento è definita come \[ \prob{\text{evento}} = \dfrac{\text{\# casi favorevoli}}{\text{\# casi possibili}}  \]. Prendiamo ad esempio il lancio di un dado, voglio ottenere un numero $ \geq 5 $, la probabilità dell'evento è
 \[ P = 2/6 = 1/3  \]
 
 Un altro esempio può essere la probabilità di ottenere un numero $ \geq 4 $ lanciando 2 dadi.
@@ -91,7 +91,7 @@ Giocando 5 numeri al lotto (estrazione da 1 a 90) calcolare la probabilità di o
 Se vogliamo ottenere un terno esatto i casi possibili sono $ \binom{90}{5} $ (I modi di estrarre 5 palline dall'urna). I casi favorevoli saranno $ S_{5,3} \cdot S_{85,2} = \binom{5}{3} \cdot \binom{85}{2}$
 
 La probabilità di ottenere un terno esatto sarà quindi
-\[ P(\text{terno esatto}) = \dfrac{\binom{5}{3} \cdot \binom{85}{2}}{\binom{90}{5}} = \dfrac{85 * 84 * 5}{\binom{90}{5}} \]
+\[ \prob{\text{terno esatto}} = \dfrac{\binom{5}{3} \cdot \binom{85}{2}}{\binom{90}{5}} = \dfrac{85 * 84 * 5}{\binom{90}{5}} \]
 
 Per ottenere almeno un terno i casi favorevoli sono
 \begin{itemize}
@@ -102,7 +102,7 @@ Per ottenere almeno un terno i casi favorevoli sono
 
 La probabilità di ottenere almeno un terno sarà data dalla somma delle probabilità corrispondenti a terno, quaterna e cinquina:
 
-\[ P(\text{almeno un terno}) = \dfrac{\binom{85}{2} \binom{5}{3}}{\binom{90}{5}} + \dfrac{\binom{85}{1} \binom{5}{4}}{\binom{90}{5}} + 1 \]
+\[ \prob{\text{almeno un terno}} = \dfrac{\binom{85}{2} \binom{5}{3}}{\binom{90}{5}} + \dfrac{\binom{85}{1} \binom{5}{4}}{\binom{90}{5}} + 1 \]
 
 \subsection{Probabilità del gioco di Monty Hall}
 Nel gioco televisivo di Monty Hall il partecipante deve scegliere una fra tre porte, una di esse contiene un premio mentre le altre due contengono rispettivamente due capre. Dopo la scelta del giocatore iniziale il presentatore apre una delle due porte contenenti una capra. Al giocatore conviene cambiare porta o mantenere quella scelta in origine?
@@ -126,29 +126,29 @@ Nel gioco televisivo di Monty Hall il partecipante deve scegliere una fra tre po
 
 
 \subsection{Probabilità Condizionata}
-Lancio due dadi sommando il risultato, qual'è $ P(\geq 10) $ sapendo che il primo ha fatto almeno 3?
+Lancio due dadi sommando il risultato, qual'è $ \prob{\geq 10} $ sapendo che il primo ha fatto almeno 3?
 
-Sappiamo che $ P(\text{Somma} \geq 10) = 6/36 = 1/6 $
+Sappiamo che $ \prob{\text{Somma} \geq 10} = 6/36 = 1/6 $
 
 Poniamo il vincolo che il lancio del primo dado risulti almeno $ \geq 3 $
 
-\[ P(\text{Somma} \geq 10 | \text{Primo dado} \geq 3) = 6/24 = 1/4\]
+\[ \prob{\text{Somma} \geq 10 | \text{Primo dado} \geq 3} = 6/24 = 1/4\]
 
 \paragraph{Definizione}
 Ponendo $ \Omega = $ gli eventi possibili;
 La \textbf{probabilità condizionata} che succeda $ A $ sapendo $ B $ si indica con:
 
-\[ P(A|B) = \dfrac{\text{\# casi favorevoli}}{\text{\# casi possibili}} = \dfrac{\# A \cap B}{\# B} = \dfrac{\# A \cup B}{\# \Omega} \cdot \dfrac{\# \Omega}{\# B}\]
+\[ \prob{A|B} = \dfrac{\text{\# casi favorevoli}}{\text{\# casi possibili}} = \dfrac{\# A \cap B}{\# B} = \dfrac{\# A \cup B}{\# \Omega} \cdot \dfrac{\# \Omega}{\# B}\]
 
-\[ P(A|B) = \dfrac{P(A \cap B)}{P(B)} \]
+\[ \prob{A|B} = \dfrac{\prob{A \cap B}}{\prob{B}} \]
 
 \paragraph{Esempio}
 La probabilità di ottenere $ \leq 4 $ sapendo che è uscito un numero pari è
 
-\[ P(\geq 4|\text{pari}) = \dfrac{P(\leq 4 | \text{pari})}{P(\text{pari})} \]
-\[ P(\text{pari}) = 3/6 = 1/2 \]
-\[ P(\leq 4 \cap \text{pari}) = 2/6 \]
-\[ \implies P(\leq 4|\text{pari}) = \dfrac{2/6}{1/2} = 2/3 \]  
+\[ \prob{\geq 4|\text{pari}} = \dfrac{\prob{\leq 4 | \text{pari}}}{\prob{\text{pari}}} \]
+\[ \prob{\text{pari}} = 3/6 = 1/2 \]
+\[ \prob{\leq 4 \cap \text{pari}} = 2/6 \]
+\[ \implies \prob{\leq 4|\text{pari}} = \dfrac{2/6}{1/2} = 2/3 \]  
 \subsection{Dado rosso e dado nero}
 
 Tiriamo due dadi, uno rosso ed uno nero.
@@ -156,16 +156,16 @@ Tiriamo due dadi, uno rosso ed uno nero.
 Calcolare la probabilità che il dado rosso risulti 3 ed il dado nero risulti 2:
 
 \begin{align*}
-	& P(R=3 | N=2) = \dfrac{P(R=3 \cap N=2)}{P(N=2)} = \dfrac{1/36}{6/36} = \dfrac{1}{6} \\
-	& P(R=3) = 1/6
+	& \prob{R=3 | N=2} = \dfrac{\prob{R=3 \cap N=2}}{\prob{N=2}} = \dfrac{1/36}{6/36} = \dfrac{1}{6} \\
+	& \prob{R=3} = 1/6
 \end{align*}
 
-Ne otteniamo che $ P(A|B) = P(A) \implies A, B $ sono indipendenti.
+Ne otteniamo che $ \prob{A|B} = \prob{A} \implies A, B $ sono indipendenti.
 
-In generale, dati due eventi $ A, B $ con $ A \cap B \neq 0 $ la probabilità dell'unione è $ P(A \cup B) = P(A) + P(B) $, allora $ P(\Omega) = 1 $ dove $ \Omega = $ tutti gli eventi.
+In generale, dati due eventi $ A, B $ con $ A \cap B \neq 0 $ la probabilità dell'unione è $ \prob{A \cup B} = \prob{A} + \prob{B} $, allora $ \prob{\Omega} = 1 $ dove $ \Omega = $ tutti gli eventi.
 
-\paragraph{Definizione} Definiamo il \textbf{complementare} di un evento, ovvero $ A^C=\Omega \backslash A $. La probabilità di un complementare è $ P(A^C) = 1 - P(A) = P(\Omega) - P(A) $
+\paragraph{Definizione} Definiamo il \textbf{complementare} di un evento, ovvero $ A^C=\Omega \backslash A $. La probabilità di un complementare è $ \prob{A^C} = 1 - \prob{A} = \prob{\Omega} - \prob{A} $
 
-La probabilità di un intersezione di eventi è $ P(A \cap B) = P(A) \cdot P(B) $
+La probabilità di un intersezione di eventi è $ \prob{A \cap B} = \prob{A} \cdot \prob{B} $
 
 \clearpage
