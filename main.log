@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.20)  1 OCT 2019 15:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.20)  3 OCT 2019 17:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -377,20 +377,20 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 (./TeX_files/chapter03.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 83.
-LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -457,7 +457,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box34
-Package hyperref Info: Link coloring OFF on input line 83.
+Package hyperref Info: Link coloring OFF on input line 84.
 
 (/app/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -467,16 +467,16 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count134
 )
-LaTeX Info: Redefining \ref on input line 83.
-LaTeX Info: Redefining \pageref on input line 83.
-LaTeX Info: Redefining \nameref on input line 83.
+LaTeX Info: Redefining \ref on input line 84.
+LaTeX Info: Redefining \pageref on input line 84.
+LaTeX Info: Redefining \nameref on input line 84.
  (./main.out)
 (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-LaTeX Info: Redefining \it@ocap on input line 83.
-LaTeX Info: Redefining \it@ccap on input line 83.
+LaTeX Info: Redefining \it@ocap on input line 84.
+LaTeX Info: Redefining \it@ccap on input line 84.
 
 
 File italian.ldf warning: 
@@ -484,13 +484,13 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 83.
+italian.ldf    on input line 84.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 91.
+LaTeX Font Info:    Try loading font information for U+msa on input line 92.
 (/app/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 91.
+LaTeX Font Info:    Try loading font information for U+msb on input line 92.
 
 (/app/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -555,7 +555,7 @@ Overfull \hbox (17.86873pt too wide) in paragraph at lines 237--239
 
 ]
 Capitolo 3.
-<./images/varrandom.png, id=211, 512.91624pt x 276.03125pt>
+<./images/varrandom.png, id=221, 512.91624pt x 276.03125pt>
 File: ./images/varrandom.png Graphic file (type png)
 <use ./images/varrandom.png>
 Package pdftex.def Info: ./images/varrandom.png  used on input line 6.
@@ -571,29 +571,46 @@ Overfull \hbox (16.58467pt too wide) in paragraph at lines 6--7
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.22 \end{enumerate}
-                     <./images/varrandom.png (PNG copy)>] [12]) [13] [14
+                     <./images/varrandom.png (PNG copy)>] [12]
+<./images/binomdadi.png, id=235, 451.6875pt x 365.11406pt>
+File: ./images/binomdadi.png Graphic file (type png)
+<use ./images/binomdadi.png>
+Package pdftex.def Info: ./images/binomdadi.png  used on input line 93.
+(pdftex.def)             Requested size: 451.68639pt x 365.11316pt.
+ [13pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
+2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.105 
+       <./images/binomdadi.png>] [14]
+Overfull \hbox (24.86432pt too wide) in paragraph at lines 157--158
+[]\OT1/cmr/m/n/12 Si pu^^Ro di-mo-stra-re sa-pen-do che $\OMS/cmsy/m/n/12 8\OML
+/cmm/m/it/12 m:P [] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 P []$ 
+ []
+
+) [15] [16
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 101.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 101.
-
-(./main.aux (./TeX_files/chapter01.aux) (./TeX_files/chapter02.aux)
-(./TeX_files/chapter03.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 102.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 102.
+ (./main.aux (./TeX_files/chapter01.aux) (./TeX_files/chapter02.aux) (./TeX_fil
+es/chapter03.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 102.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 102.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 3D2D0EC54229EF0EFE35AE66E5132A8F;1508.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 101.
+(rerunfilecheck)             Checksum: D126C5471AFBBAEE7457073A9F0673F8;1654.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 102.
  ) 
 Here is how much of TeX's memory you used:
- 8768 strings out of 492649
- 123799 string characters out of 6131026
- 255764 words of memory out of 5000000
- 12431 multiletter control sequences out of 15000+600000
+ 8789 strings out of 492649
+ 124098 string characters out of 6131026
+ 255807 words of memory out of 5000000
+ 12439 multiletter control sequences out of 15000+600000
  13361 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 33i,16n,35p,903b,420s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 33i,16n,35p,903b,426s stack positions out of 5000i,500n,10000p,200000b,80000s
 </app/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></app/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmex10.pfb></app/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmmi12.pfb></app/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
@@ -604,10 +621,10 @@ ts/cm/cmr8.pfb></app/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></app
 pe1/public/amsfonts/cm/cmsy8.pfb></app/texmf-dist/fonts/type1/public/amsfonts/s
 ymbols/msam10.pfb></app/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.p
 fb>
-Output written on main.pdf (18 pages, 222595 bytes).
+Output written on main.pdf (20 pages, 302723 bytes).
 PDF statistics:
- 294 PDF objects out of 1000 (max. 8388607)
- 258 compressed objects within 3 object streams
- 77 named destinations out of 1000 (max. 500000)
- 174 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 324 PDF objects out of 1000 (max. 8388607)
+ 285 compressed objects within 3 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 195 words of extra memory for PDF output out of 10000 (max. 10000000)
 
