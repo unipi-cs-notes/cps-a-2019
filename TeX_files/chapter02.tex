@@ -3,7 +3,7 @@
 \section{Lo Spazio Probabilizzato}
 Uno spazio probabilizzato è un costrutto matematico che modella un processo del mondo reale o "esperimento", consistente in degli stati che occorrono casualmente. Viene costruito su una situazione o esperimento particolare, Uno spazio probabilizzato è definito come una terna:
 
-\[ (\Omega, F, \mathcal{P}) \]
+\[ (\Omega, F, P) \]
 
 $ \Omega $ è l'insieme degli eventi elementari, ovvero tutti i risultati possibili, ad esempio in un lancio di un dado $ \Omega = \{1,2,3,4,5,6\} $
 
@@ -41,27 +41,16 @@ Si assiste all'estrazione di un numero $ n \in \N $ casuale. Supponiamo che ogni
 Dato un altro naturale $ m \in \N $
 
 \begin{align*}
-P_n = P(n) = \text{ La probabilità di estrarre il numero n}
+p_n = P(n) = \text{ La probabilità di estrarre il numero n}
 \end{align*}
 
-Vogliamo che 
+Vogliamo che  $ 0 \leq p_n \leq 1 $ e anche $ p_m = p_n \forall n = m $. Quindi $ 1 = P(\Omega) = P \left( \bigcup\limits_{n \in \N} n \right) = \sum_{n \in \N} p_n $. Assumendo $ p_n = 0, \forall n $ allora $ \sum_{n} p_n = 0 $. Se $ p_n = c > 0, \forall n $ allora $ \sum_{n} p_n = \sum_{n} c = + \infty $
 
-\begin{align*}
-& 0 \leq P_n \leq 1 \\
-& P_m = P_n \forall n = m
-\end{align*}
-
-Quindi $ 1 = P(\Omega) = P \left( \bigcup\limits_{n \in \N} n \right) = \sum_{n \in \N} P_n $
-
-Assumendo $ P_n = 0, \forall n $ allora $ \sum_{n} p_n = 0 $
-
-Se $ P_n = c > 0, \forall n $ allora $ \sum_{n} p_n = \sum_{n} c = + \infty $
-
-Ciò significa che nella lotteria di De' Filetti è impossibile che ogni numero sia equiprobabile.
+Ciò significa che nella lotteria di De' Filetti è impossibile che ogni numero sia equiprobabile perché $ P $ non è definibile. Abbiamo dimostrache che non è possibile che $ \p{\Omega} = \sum_{n \in \N} p_n = 1$, essendo $ \N $ insieme infinito.
 
 \paragraph{Dimostrazione}
 
-La terna $ (\Omega, F, \mathcal{P}) $ si può dimostrare.
+La terna $ (\Omega, F, P) $ si può dimostrare.
 
 \[ P(A^C) = 1 - P(A) \impliedby \begin{cases}
 A \cap A^C \neq \emptyset \\
@@ -81,20 +70,16 @@ Se $ \{p_n\} $ è una densità di probabilità discreta $ \implies \left( \N, \p
 
 \paragraph{Definizione, indipendenza degli eventi} 
 
-$ P(A|B) \equiv \dfrac{P(A \cap B)}{P(B)} $ 
-
-Allora $ A,B $ indipendenti se $ P(A|B) = P(A) $
+Sia dato $ P(A|B) \equiv \dfrac{P(A \cap B)}{P(B)} $. Di conseguenza, se $ P(A|B) = P(A) $ due eventi $ A,B $ sono indipendenti. Un esempio è il lancio di due dadi, il primo dado non influenzerà in alcun modo il risultato del secondo, per questo gli eventi del lancio di due dadi $ A,B $ sono indipendenti.
 
 È vero quindi che $ P(A|B) = P(A) \implies P(B|A) = P(B) $? Sì se $ A,B $ sono indipendenti.
 
 \[ P(A|B) = \dfrac{P(A \cap B)}{P(B)} = P(A) \]
-\[ P(B|A) = \dfrac{P(B \cap A)}{P(A)} = P(B) \]
-\[ P(A) = \dfrac{P(A \cap B)}{P(B)} \]
 \[ P(B|A) = \dfrac{P(B \cap A)}{P(A)} = \dfrac{P(B) \cdot P(A)}{P(A)} = P(B)\]
 \[ P(A \cap B)  = P(A) \cdot P(B) = P(B \cap A) \]
 
 Se $ A_1, \dots, A_n $ sono indipendenti:
-\[ \forall i_1, \dots, i_k \land k \leq n \] (Con indici tutti diversi) allora vale \[ P(A)\cap \left(A_i1,\dots,A_ik\right) = P(A_i1) \cdot \dots \cdot P(A_ik) \] 
+\[ \forall i_1, \dots, i_k . k \leq n  \implies P(A)\cap \left(A_{i_1},\dots,A_{i_k}\right) = P(A_{i_1}) \cdot \dots \cdot P(A_{i_k}) \] 
 
 \paragraph{Esercizio teorico}
 

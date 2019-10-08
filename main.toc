@@ -54,4 +54,8 @@
 \contentsline {paragraph}{Dimostrazione per Induzione}{14}{section*.32}
 \contentsline {section}{\numberline {3.2}Variabile Geometrica}{15}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Variabili Ipergeometriche}{15}{subsection.3.2.1}
-\contentsline {paragraph}{Esercizio}{15}{section*.33}
+\contentsline {subsection}{\numberline {3.2.2}Esercizi}{15}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Binomiale Negativa (o di Pascal)}{16}{subsection.3.2.3}
+\contentsline {paragraph}{Esempio}{16}{section*.33}
+\contentsline {section}{\numberline {3.3}Media Pesata}{16}{section.3.3}
+\contentsline {paragraph}{Esercizi sulla speranza}{17}{section*.34}

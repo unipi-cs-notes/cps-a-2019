@@ -163,6 +163,66 @@ Siano dati $ r $ sfere rosse, $ b $ sfere bianche, $ n $ estrazioni senza reimbu
 Definiamo la densità di probabilità
 \[ \p{H(b+r, r, n) = k} = \dfrac{\binom{r}{k} \binom{b}{n-k}}{\binom{b+r}{n}} \] 
 
-\paragraph{Esercizio} Dati $ r = 10, 15 = b, 7 = n $ abbiamo che $ H(25,15,7) $
+\subsection{Esercizi}
 
-Esercizio per casa: $ \p{H(25, 15, 7) = 3} $
+\begin{enumerate}
+	\item Dati $ r = 10, 15 = b, 7 = n $ abbiamo che $ \p{H(25,15,7) = 3} $ è $ \dfrac{\binom{15}{3}\binom{10}{7-3}}{\binom{25}{7}} $
+	
+	\item Ho una scatola con 12 lampadine, 4 di esse sono fulminate. Ne prendo 2. La probabilità che siano entrambe funzionanti è $ \p{H(12, 4, 2) = 0} = \dfrac{\binom{4}{0}\binom{8}{2}}{\binom{12}{2}} $
+	
+	\item Ho una moneta truccata. La probabilità che esca testa è $ P_t = 0.55 $ e la probabilità che esca croce è $ P_c = 0.45 $. Lancio la moneta dieci volte, qual'è la probabilità che avvenga la sequenza testa-croce per la prima volta al lancio 9-10? Perché ciò sia possibile deve uscire una sequenza composta da $ 0 \leq h \leq 8 $ lanci "croce" consecutivi e $ 9-h $ lanci "testa" consecutivi, in modo da ottenere una sequenza formata da $ C^hT^{9-h}C $. La probabilità è $ \p{C^hT^{9-h}C} = (0.45)^h \cdot (0.55)^{9-h} \cdot (0.45) = (0.45)^{h+1} \cdot (0.55)^{9-h}$. La probabilità dell'unione $ \bigcup_{h} $ delle stringhe sarà $ P = \sum_{h}(0.45)^{h+1}(0.55)^{9-h}$. Svolgere l'esercizio con una variabile geometrica.
+	
+%	TODO variabile geometrica
+	
+	\item Un ubriaco cammina in salita con probabilità $ \p{\text{salita}} = 1/4 $ oppure in discesa con probabilità $ \p{\text{discesa}} = 3/4 $. Ogni 10 secondi decide casualmente una direzione. Si muove lungo un asse $ x $ partendo dall'origine a velocità $ \dfrac{1m}{10s} $. Qual'è la posizione più probabile dopo $ 1 $ minuto? Introduciamo una variabile $ x = $ la posizione dopo 1 minuto. L'ubriaco si sposterà al massimo di 6 metri in salita o 6 metri in discesa, quindi $ x \in [-6, +6] $. Introduciamo anche la variabile $ y = $ il numero di volte che l'ubriaco cambia direzione verso la discesa. $ y $ è una variabile binomiale Bernoulliana (conta il numero di "successi" in 6 esperimenti ripetuti) $ \implies y = B(6, 3/4) $. Abbiamo quindi che $ x = -1 \cdot y + 1(6-y) = 6 - 2y $.
+	\[ \implies P_k = \p{B(6, 3/4) = k} = \binom{6}{k} \left(\dfrac{3}{4}\right)^k \left(\dfrac{1}{4}\right)^{6-k} \]
+	
+	\begin{table}[H]
+		\centering
+		\caption{Distribuzione della variabile $ x $}
+		\label{tab:ubriaco}
+		\begin{tabular}{|l|l|l|l|l|l|l|l|}
+			\hline \xrowht[()]{10pt}
+			k     & 0                 & 1                        & 2                            & 3                            & 4                            & 5                           & 6                   \\ \hline \xrowht[()]{30pt}
+			$P_k$ & $ \dfrac{1}{4^6}$  & $ \dfrac{6\cdot 3}{4^6}$ & $ \dfrac{15 \cdot 3^2}{4^6}$ & $ \dfrac{20 \cdot 3^3}{4^6}$ & $ \dfrac{15 \cdot 3^4}{4^6}$ & $ \dfrac{6 \cdot 3^5}{4^6}$ & $ \dfrac{3^6}{4^6}$ \\ \hline
+		\end{tabular}
+	\end{table}
+	
+\end{enumerate}
+
+\subsection{Binomiale Negativa (o di Pascal)}
+Sia data una Bernoulliana di parametro $ p $. Ripetiamo l'esperimento fino a che non ho $ n $ successi. Quanti sono i fallimenti ottenuti? Sappiamo che una variabile Binomiale conta i successi, una variabile Geometrica conta i fallimenti prima del primo successo e la Binomiale Negativa (NB) conta i fallimenti prima del successo $ n $-esimo. In una Binomiale Negativa non conta l'ordine degli esperimenti (tranne l'ultimo risultato). Le prove totali prima di avere $ n $ successi sono $ n+\text{NB} $. Sapendo che per avere $ n $ successi e $ k $ fallimenti, la probabilità di una Binomiale Negativa è definita come 
+
+\[ \p{\nb{n, p} = k} = p^n(1-p)^k \] 
+
+\paragraph{Esempio} 
+Lancio una moneta fino ad ottenere 3 croci (non consecutive). Qual'è la probabilità di aver fatto esattamente 2 risultati testa? $ \p{\nb{3, \frac{1}{2}} = 2} = \binom{3+2-1}{2} \left(\frac{1}{2}\right)^3 \left(\frac{1}{2}\right)^2 = \frac{3}{16} $. 
+
+La probabilità di ottenere almeno un risultato testa è $ \p{\nb{3, \frac{1}{2}} = 0} = 1 - \frac{1}{8} = \frac{7}{8} $
+
+\section{Media Pesata}
+Consideriamo di voler calcolare la media pesata dei voti degli esami universitari. La media sarà per ogni esame $ i $:
+\[ \sum_{i} \dfrac{(\text{voto})_i \cdot (\text{crediti})_i }{\sum_{i} \text{crediti}} = \sum_{i} (\text{voto})_i \cdot (\text{peso})_i \]
+
+Definiamo $ x $ variabile aleatoria discreta $ x \subseteq \R $. La media di $ x $ è detta speranza o valore atteso e si denota con
+
+\[ E[x] = \sum_{k} k \cdot \p{x = k} = \sum_{k} k \cdot p_k \].
+
+Per calcolare la media di una funzione $ f : \R \to \R $:
+
+\[ E[f(x)] = \sum_{k} f(k) \cdot p_k \]
+
+\textbf{Osservazione} $\sum_{k} p_k = 1 $ \textbf{non implica che} $ \sum_{k} k p_k $ sia convergente. Se non converge ad un numero allora la variabile non ha media. Se la variabile assume solo valori positivi allora
+
+\[  E[x] = \sum_{k>0} \p{x > k} = \sum_{k>0} (\p{x = k+1} + \p{x = k+2} + \dots) \]
+
+\paragraph{Esercizi sulla speranza}
+
+\begin{enumerate}
+	\item Binomiale $ B(n,p) $. La distribuzione $ p_k = \binom{n}{k}p^k(1-p)^{n-k}  \forall k \in [0,n] $. Abbiamo che $ kp_k = k \binom{n}{k}p^k (1-p)^{n-k} = n \binom{n-1}{k-1} p^k(1-p)^{n-k} $. Otteniamo che 
+		\[ E[B(n,p)] = \sum_{k} kp_k = \sum_{k} n \binom{n-1}{k-1} p^k(1-p)^{n-k} \]
+		\[ = np \sum_{k} \binom{n-1}{k-1}p^{k-1}(1-p)^{n-k} \]
+		Definiamo $ h = k-1 $
+		\[=  np \sum_{h=0}^{n-1} \binom{n-1}{h} p^h(1-p)^{(n-1) - h } \]
+		\[ = np(p+(1-p))^{n-1} = np \]
+\end{enumerate}

@@ -138,14 +138,14 @@ Poniamo il vincolo che il lancio del primo dado risulti almeno $ \geq 3 $
 Ponendo $ \Omega = $ gli eventi possibili;
 La \textbf{probabilità condizionata} che succeda $ A $ sapendo $ B $ si indica con:
 
-\[ \prob{A|B} = \dfrac{\text{\# casi favorevoli}}{\text{\# casi possibili}} = \dfrac{\# A \cap B}{\# B} = \dfrac{\# A \cup B}{\# \Omega} \cdot \dfrac{\# \Omega}{\# B}\]
+\[ \prob{A|B} = \dfrac{\text{casi favorevoli}}{\text{casi possibili}} = \dfrac{\abs{A \cap B}}{\abs{B}} = \dfrac{\abs{A \cup B}}{\abs{\Omega}} \cdot \dfrac{\abs{\Omega}}{\abs{B}}\]
 
 \[ \prob{A|B} = \dfrac{\prob{A \cap B}}{\prob{B}} \]
 
 \paragraph{Esempio}
 La probabilità di ottenere $ \leq 4 $ sapendo che è uscito un numero pari è
 
-\[ \prob{\geq 4|\text{pari}} = \dfrac{\prob{\leq 4 | \text{pari}}}{\prob{\text{pari}}} \]
+\[ \prob{\leq 4|\text{pari}} = \dfrac{\prob{\leq 4 | \text{pari}}}{\prob{\text{pari}}} \]
 \[ \prob{\text{pari}} = 3/6 = 1/2 \]
 \[ \prob{\leq 4 \cap \text{pari}} = 2/6 \]
 \[ \implies \prob{\leq 4|\text{pari}} = \dfrac{2/6}{1/2} = 2/3 \]  

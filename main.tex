@@ -10,6 +10,7 @@
 \usepackage{xcolor}
 \usepackage{polynom}
 \usepackage{wrapfig}
+\usepackage{stackengine}
 \usepackage[italian]{babel}
 \usepackage{float}
 \restylefloat{table}
@@ -33,6 +34,10 @@
 \newcommand{\V}{1}
 \newcommand{\F}{0}
 
+\newcommand\xrowht[2][0]{\addstackgap[.5\dimexpr#2\relax]{\vphantom{#1}}}
+
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
@@ -49,7 +54,11 @@
 \def\geom{\text{Geom}}
 
 \newcommand{\prob}[1]{
-	P\left(#1\right)
+	\text{P}\left(#1\right)
+}
+
+\newcommand{\nb}[1]{
+	\text{NB}\left(#1\right)
 }
 
 \newcommand{\parts}[1]{
