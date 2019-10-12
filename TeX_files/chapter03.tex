@@ -11,34 +11,32 @@
 Una variabile aleatoria (casuale o stocastica) discreta è una variabile che può assumere diversi valori in dipendenza da qualche fenomeno casuale.
 Il risultato del lancio di un dado, ad esempio, è una variabile aleatoria discreta.
 
-Prendiamo uno \textbf{spazio probabilizzabile} $ (\Omega, F) $ e una variabile aleatoria discreta $ x : \Omega \to \R $, che è una funzione continua non surgettiva. I valori di $ x $ devono essere un sottoinsieme finito di $ \R $ ovvero $ \{a_1, \dots, a_k\} $.
-Vogliamo anche che $ \forall j \in [1, k] $ sia vero $ x^{-1}(a_j) = \{ \omega \in \Omega, x(\omega) = a_j\} \in F $. Utilizziamo la funzione inversa per ottenere gli elementi di $ \Omega $ su cui possiamo definire la probabilità.
+Prendiamo uno \textbf{spazio probabilizzabile} $ (\Omega, F) $ e una variabile aleatoria discreta $ X : \Omega \to \R $, che è una funzione continua non surgettiva. I valori di $ X $ devono essere un sottoinsieme finito di $ \R $ ovvero $ \{a_1, \dots, a_k\} $.
+Vogliamo anche che $ \forall j \in [1, k] $ sia vero $ X^{-1}(a_j) = \{ \omega \in \Omega, X(\omega) = a_j\} \in F $. Utilizziamo la funzione inversa per ottenere gli elementi di $ \Omega $ su cui possiamo definire la probabilità.
 
-Con la probabilità di tutti gli eventi definisco la densità di probabilità. Nello spazio probabilizzato $ (\Omega, F, \mathcal{P}) $ la probabilità che la variabile aleatoria assuma il valore $ a_j $ sarà $ p_j = \p{x = a_j} = \p{x^{-1}(a_j)} $, che viene detta densità di probabilità. Varranno quindi le seguenti proprietà
+Con la probabilità di tutti gli eventi definisco la densità di probabilità. Nello spazio probabilizzato $ (\Omega, F, \mathcal{P}) $ la probabilità che la variabile aleatoria assuma il valore $ a_j $ sarà $ p_j = \p{X = a_j} = \p{X^{-1}(a_j)} $, che viene detta densità di probabilità. Varranno quindi le seguenti proprietà
 
 \begin{enumerate}
-	\item $ \forall j \ldotp x^{-1} (a_j) $ sono tutti insiemi disgiunti.
+	\item $ \forall j \ldotp X^{-1} (a_j) $ sono tutti insiemi disgiunti.
 	\item Essi coprono tutto $ \Omega $
 \end{enumerate}
 
 Vale che $ \sum_{j=1}^{k} p_j = 1 $. Poiché:
-\[ 1 = \p{\Omega} = \p{\bigcup_{j} x^{-1}(a_j)} = \sum_{j} \p{x^{-1}(a_j)}\] 
+\[ 1 = \p{\Omega} = \p{\bigcup_{j} X^{-1}(a_j)} = \sum_{j} \p{X^{-1}(a_j)}\] 
 
-Sia $ x : \Omega \to \{ a_1, \dots, a_k \} $ una variabile aleatoria, e sia la densità di probabilità $ p_j \geq 0 $ e anche  $ \sum_{j=1}^{k} p_j = 1 $, allora $ \p{x = a_j} = p_j $.
+Sia $ X : \Omega \to \{ a_1, \dots, a_k \} $ una variabile aleatoria, e sia la densità di probabilità $ p_j \geq 0 $ e anche  $ \sum_{j=1}^{k} p_j = 1 $, allora $ \p{X = a_j} = p_j $.
 
-Preso uno spazio probabilizzabile $ (\Omega, F) $ e una variabile aleatoria $ x : \Omega \to \{ a_1, \dots, a_k \} $, supponendo che i numeri $ a_j $ siano ordinati, sia $ p_j $ la densità di probabilità, come posso ricostruire, ad esempio $ \p{x \leq a_3} $?
+Preso uno spazio probabilizzabile $ (\Omega, F) $ e una variabile aleatoria $ X : \Omega \to \{ a_1, \dots, a_k \} $, supponendo che i numeri $ a_j $ siano ordinati, sia $ p_j $ la densità di probabilità, come posso ricostruire, ad esempio $ \p{x \leq a_3} $?
 
-\[ \p{x \leq a_3} = \p{(x=a_1) \cup (x=a_2) \cup (x=a_3)} = \p{x = a_1} + \p{x = a_2} + \p{x = a_3}  \]
+\[ \p{X \leq a_3} = \p{(X=a_1) \cup (X=a_2) \cup (X=a_3)} = \p{X = a_1} + \p{X = a_2} + \p{X = a_3}  \]
 
 \paragraph{Esempio}
 
 Voglio contare quanti 6 escono in 10 lanci di dadi.
 
-Sia $ \Omega = \{ (1, 2, 3, 4, 5, 6)\}^{10} $, ovvero tutte le possibili parole di 10 elementi composte dai numeri da 1 a 6. Ad ogni lancio, ho $ \frac{1}{6} $ di probabilità di ottenere 6 e $ \frac{5}{6} $ di ottenere gli altri numeri. Definiamo la variabile aleatoria $ x : \Omega \to \{ 0, 1, 2, \dots, 9, 10 \} $ come il conteggio dei risultati dei lanci dove ottengo 6. Qual'è la probabilità di ottenere 3 lanci dove ho fatto 6?
+Sia $ \Omega = \{ (1, 2, 3, 4, 5, 6)\}^{10} $, ovvero tutte le possibili parole di 10 elementi composte dai numeri da 1 a 6. Ad ogni lancio, ho $ \frac{1}{6} $ di probabilità di ottenere 6 e $ \frac{5}{6} $ di ottenere gli altri numeri. Definiamo la variabile aleatoria $ X : \Omega \to \{ 0, 1, 2, \dots, 9, 10 \} $ come il conteggio dei risultati dei lanci dove ottengo 6. Qual'è la probabilità di ottenere 3 lanci dove ho fatto 6?
 
-\[ \p{x = 3} = \binom{10}{3} \left(\dfrac{1}{6}\right)^3 \left(\dfrac{5}{6}\right)^7 \]
-
-% TODO spiega
+\[ \p{X = 3} = \binom{10}{3} \left(\dfrac{1}{6}\right)^3 \left(\dfrac{5}{6}\right)^7 \]
 
 \subsection{Legge di Bernoulli}
 Faccio un esperimento, il risultato positivo ha probabilità $ p $, mentre il risultato negativo ha probabilità $ 1 - p $
@@ -48,28 +46,28 @@ Sia lo spazio $ \Omega = \begin{cases}
 \text{insuccesso} \to 0
 \end{cases} $
 
-Una variabile aleatoria Bernoulliana è definita come $ x : \Omega \to \begin{cases}
+Una variabile aleatoria Bernoulliana è definita come $ X : \Omega \to \begin{cases}
 p_1 = p \\ p_0 = 1 - p
 \end{cases} $
 
-\paragraph{Legge Binomiale} 
-Sia $ k $ il conteggio dei successi di $ n $ esperimenti, abbiamo quindi che $ B(n,p) = x_i\{(0,1)\}^n \to \{0, \dots, n\} $. Abbiamo che la densità di probabilità Binomiale $ p_k = \p{x=k} = \binom{n}{k} p^k(1-p)^{n-k} $.
+\subsection{Legge Binomiale} 
+Sia $ k $ il conteggio dei successi di $ n $ esperimenti, abbiamo quindi che $ B(n,p) = X_i\{(0,1)\}^n \to \{0, \dots, n\} $. Abbiamo che la densità di probabilità Binomiale $ p_k = \p{X=k} = \binom{n}{k} p^k(1-p)^{n-k} $.
 
 $ p_k $ è una densità? Sappiamo che $ p_k \geq 0 $ e sappiamo che $ 1 = \sum_{k} p_k $, con il binomio di Newton possiamo dimostrare che $ (a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^k b^{n-k} $. Proseguendo, abbiamo che 
 
 \[ \sum_{k} p_k = \sum_{k=0}^{n} \binom{n}{k} p^k (1-p)^{n-k} = (p+(1-p)^n) = 1^n = 1 \]
 
 \subsection{Somma di Variabili Aleatorie}
-Lancio due dadi, uno rosso e uno nero, avremo quindi $ \Omega = \{R, N\} = \{(1,6)\}^2 $. Definisco due variabili aleatorie, $ x $ per il dado rosso dove $ x : (R, N) \to R $ e la variabile $ y : (R, N) \to N $. La densità per $ x $ sarà $ p_j = \frac{1}{6} \forall j $ mentre la densità per $ y $ sarà $ q_j = \frac{1}{6} \forall j $
-Avremo che $ z = x + y $ conta la somma dei dadi.
+Lancio due dadi, uno rosso e uno nero, avremo quindi $ \Omega = \{R, N\} = \{(1,6)\}^2 $. Definisco due variabili aleatorie, $ X $ per il dado rosso dove $ X : (R, N) \to R $ e la variabile $ Y : (R, N) \to N $. La densità per $ X $ sarà $ p_j = \frac{1}{6} \forall j $ mentre la densità per $ Y $ sarà $ q_j = \frac{1}{6} \forall j $
+Avremo che $ Z = X + Y $ conta la somma dei dadi.
 
 \paragraph{Esercizi}
 \begin{enumerate}
-	\item Calcolare la densità di $ z $
+	\item Calcolare la densità di $ Z $
 		
-		In questo caso $ x, y $ sono indipendenti, quindi avremo la densità di $ z $ detta $ t_z $.
+		In questo caso $ X, Y $ sono indipendenti, quindi avremo la densità di $ Z $ detta $ t_Z $.
 		
-		\[ \forall n \in [2, 12] .  \left( \p{z = n} = \sum_{i=1}^{n-1} \p{x = i} \cdot \p{y = n - i} \right) \]
+		\[ \forall n \in [2, 12] .  \left( \p{Z = n} = \sum_{i=1}^{n-1} \p{X = i} \cdot \p{Y = n - i} \right) \]
 		
 		\begin{table}[H]
 			\centering
@@ -77,55 +75,53 @@ Avremo che $ z = x + y $ conta la somma dei dadi.
 			\label{tab:distribdice1}
 			\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
 				\hline
-				$ x + y $     & 2        & 3        & 4        & 5        & 6        & 7        & 8        & 9        & 10       & 11       & 12       \\ \hline
+				$ X + Y $     & 2        & 3        & 4        & 5        & 6        & 7        & 8        & 9        & 10       & 11       & 12       \\ \hline
 				$ p_j + q_j $ & $ 1/36 $ & $ 2/36 $ & $ 3/36 $ & $ 4/36 $ & $ 5/36 $ & $ 6/36 $ & $ 5/36 $ & $ 4/36 $ & $ 3/36 $ & $ 2/36 $ & $ 1/36 $ \\ \hline
 			\end{tabular}
 		\end{table}
-		
-	\item Calcolare $ \p{4 \leq z \leq 6} $
 	
-	$ \p{4 \leq z \leq 6} = \p{4} + \p{5} + \p{6} = \frac{3}{36} + \frac{4}{36} + \frac{5}{36} = \frac{12}{36} = \frac{1}{3} $
+	\begin{figure}[H]
+		\centering
+		\caption{Distribuzione della somma del lancio di due dadi}
+		\includegraphics[]{binomdadi}
+	\end{figure}
+		
+	\item Calcolare $ \p{4 \leq Z \leq 6} $
+	
+	$ \p{4 \leq Z \leq 6} = \p{Z = 4} + \p{Z = 5} + \p{Z = 6} = \dfrac{3}{36} + \dfrac{4}{36} + \dfrac{5}{36} = \dfrac{12}{36} = \dfrac{1}{3} $
 \end{enumerate}
-
-\begin{figure}[H]
-	\centering
-	\caption{Distribuzione della somma del lancio di due dadi}
-	\includegraphics[]{binomdadi}
-\end{figure}
-
-% TODO Svolgi
 
 \subsection{Indipendenza di Variabili Aleatorie}
 
-Due variabili aleatorie $ x_1, x_2 $ sono indipendenti se $ \forall I_1, I_2, \subseteq \R $ intervalli o semirette si ha che 
+Due variabili aleatorie $ X_1, X_2 $ sono indipendenti se $ \forall I_1, I_2, \subseteq \R $ intervalli o semirette si ha che 
 
-\[ \left( \p{x_1 \in I_1} \cap \p{x_2 \in I_2} \right) = \p{x_1 \in I_1} - \p{x_2 \in I_2} \]
+\[ \left( \p{X_1 \in I_1} \cap \p{X_2 \in I_2} \right) = \p{X_1 \in I_1} - \p{X_2 \in I_2} \]
 
-Nell'esempio di prima $ x, z $ e $ y,z $ sono dipendenti perché dati $ I_1 = [1,2], I_2 = [3,4] $ allora si ha che $ \p{x\in I_1} = \p{x=1,2} = \frac{1}{3} $ e si ha anche $ \p{z \in I_2} = \p{2 = 3,4} = \frac{5}{36} $. Ne otteniamo che:
+Nell'esempio di prima $ X, Z $ e $ Y,Z $ sono dipendenti perché dati $ I_1 = [1,2], I_2 = [3,4] $ allora si ha che $ \p{X\in I_1} = \p{X=1,2} = \dfrac{1}{3} $ e si ha anche $ \p{Z \in I_2} = \p{2 = 3,4} = \dfrac{5}{36} $. Ne otteniamo che:
 
 % TODO fix erratum
 
-\[ \p{(x \in I_1) \cap (z = 3,4)} = \p{(x = 1,2, z = 3,4)} = \dfrac{4}{12} \]
+\[ \p{(X \in I_1) \cap (Z = 3,4)} = \p{X = 1,2, Z = 3,4} = \dfrac{4}{12} \]
 
 \paragraph{Variabili Aleatorie Congiunte}
-Due variabili aleatorie $ x,y : \Omega \to \R $ discrete sono congiunte quando si può calcolare $ \p{x = m \cap y = n} = p_{n,m} $, ovvero una densità di probabilità $ \{ p_{n,m} \}_{n,m} $ con $ (p_{n,m} \geq 0 ) \land (\sum_{n,m} p_{n,m} = 1) $.
+Due variabili aleatorie $ X,Y : \Omega \to \R $ discrete sono congiunte quando si può calcolare $ \p{X = m \cap Y = n} = p_{n,m} $, ovvero una densità di probabilità $ \{ p_{n,m} \}_{n,m} $ con $ (p_{n,m} \geq 0 ) \land (\sum_{n,m} p_{n,m} = 1) $.
 
-Sapendo $ p_{n,m} $ ricavo tutti i $ \p{x=m} = p_m $ e $ \p{y = n} = q_n $ con
+Sapendo $ p_{n,m} $ ricavo tutti i $ \p{X=m} = p_m $ e $ \p{Y = n} = q_n $ con
 
-\[ \p{x=m} = \p{x = m \cap \left\{ \bigcup_{n} y=n \right\}} = \sum_{n} \p{x=m,y=n} = \sum_n p_{n,m} = p_m \]
-\[ \p{y=n} = \sum_{m} p_{n,m} = q_n \]
+\[ \p{X=m} = \p{X = m \cap \left\{ \bigcup_{n} Y=n \right\}} = \sum_{n} \p{X=m,Y=n} = \sum_n p_{n,m} = p_m \]
+\[ \p{Y=n} = \sum_{m} p_{n,m} = q_n \]
 
-Non si può ricostruire dalle due probabilità la variabile aleatoria congiunta. Ad esempio, conoscendo $ p_n,q_n $ cerco $ p_n,m  = \p{x = m \cap y = n} = \p{x = m | y = n} \cdot \p{y=n} $. Se $ x,y $ sono indipendenti allora $ P(x=m|y=n) = \p{x=m} $ e vale il prodotto $ p_{m,n} = p_n \cdot p_m $.
+Non si può ricostruire dalle due probabilità la variabile aleatoria congiunta. Ad esempio, conoscendo $ p_n,q_n $ cerco $ p_n,m  = \p{X = m \cap Y = n} = \p{X = m | Y = n} \cdot \p{Y=n} $. Se $ X,Y $ sono indipendenti allora $ P(X=m \mid Y=n) = \p{X=m} $ e vale il prodotto $ p_{m,n} = p_n \cdot p_m $.
 
 \[ \sum_{m}\sum_{n} p_{n,m} = \sum_{m}\sum_{n} p_n \cdot q_n = \left( \sum_{m} p_m \right) \left( \sum_{n} q_m \right) = 1 \]
 
 \paragraph{Formula di Convoluzione}
 
-Tornando alla somma di due variabili aleatorie discrete, dati $ x,y $ indipendenti e $ z = x + y $, con $ x,y : \Omega \to \N $, dobbiamo calcolare $ \p{z = n} $ e la densità di probabilità discreta $ \left\{z = n\right\} $
+Tornando alla somma di due variabili aleatorie discrete, dati $ X,Y $ indipendenti e $ Z = X + Y $, con $ X,Y : \Omega \to \N $, dobbiamo calcolare $ \p{Z = n} $ e la densità di probabilità discreta $ \left\{Z = n\right\} $
 
-\[ \left\{z = n\right\} = \bigcup_{i=0}^{n} \left\{x = 1 \cap y = n - i \right\} \]
+\[ \left\{Z = n\right\} = \bigcup_{i=0}^{n} \left\{X = 1 \cap Y = n - i \right\} \]
 
-\[ \p{z=n} = \sum_{i} \p{x = i \cap y = n-1} = \sum_{i = n}^{n} \p{x=i} \cdot \p{y=n-i} \]
+\[ \p{z=n} = \sum_{i} \p{X = i \cap Y = n-1} = \sum_{i = n}^{n} \p{X=i} \cdot \p{Y=n-i} \]
 
 \paragraph{Teorema: Rapporto fra Bernoulli e Binomiale}
 
@@ -174,12 +170,12 @@ Definiamo la densità di probabilità
 	
 %	TODO variabile geometrica
 	
-	\item Un ubriaco cammina in salita con probabilità $ \p{\text{salita}} = 1/4 $ oppure in discesa con probabilità $ \p{\text{discesa}} = 3/4 $. Ogni 10 secondi decide casualmente una direzione. Si muove lungo un asse $ x $ partendo dall'origine a velocità $ \dfrac{1m}{10s} $. Qual'è la posizione più probabile dopo $ 1 $ minuto? Introduciamo una variabile $ x = $ la posizione dopo 1 minuto. L'ubriaco si sposterà al massimo di 6 metri in salita o 6 metri in discesa, quindi $ x \in [-6, +6] $. Introduciamo anche la variabile $ y = $ il numero di volte che l'ubriaco cambia direzione verso la discesa. $ y $ è una variabile binomiale Bernoulliana (conta il numero di "successi" in 6 esperimenti ripetuti) $ \implies y = B(6, 3/4) $. Abbiamo quindi che $ x = -1 \cdot y + 1(6-y) = 6 - 2y $.
+	\item Un ubriaco cammina in salita con probabilità $ \p{\text{salita}} = 1/4 $ oppure in discesa con probabilità $ \p{\text{discesa}} = 3/4 $. Ogni 10 secondi decide casualmente una direzione. Si muove lungo un asse $ X $ partendo dall'origine a velocità $ \dfrac{1m}{10s} $. Qual'è la posizione più probabile dopo $ 1 $ minuto? Introduciamo una variabile $ X = $ la posizione dopo 1 minuto. L'ubriaco si sposterà al massimo di 6 metri in salita o 6 metri in discesa, quindi $ X \in [-6, +6] $. Introduciamo anche la variabile $ Y = $ il numero di volte che l'ubriaco cambia direzione verso la discesa. $ Y $ è una variabile binomiale Bernoulliana (conta il numero di "successi" in 6 esperimenti ripetuti) $ \implies Y = B(6, 3/4) $. Abbiamo quindi che $ X = -1 \cdot Y + 1(6-Y) = 6 - 2Y $.
 	\[ \implies P_k = \p{B(6, 3/4) = k} = \binom{6}{k} \left(\dfrac{3}{4}\right)^k \left(\dfrac{1}{4}\right)^{6-k} \]
 	
 	\begin{table}[H]
 		\centering
-		\caption{Distribuzione della variabile $ x $}
+		\caption{Distribuzione della variabile $ X $}
 		\label{tab:ubriaco}
 		\begin{tabular}{|l|l|l|l|l|l|l|l|}
 			\hline \xrowht[()]{10pt}
@@ -200,29 +196,73 @@ Lancio una moneta fino ad ottenere 3 croci (non consecutive). Qual'è la probabi
 
 La probabilità di ottenere almeno un risultato testa è $ \p{\nb{3, \frac{1}{2}} = 0} = 1 - \frac{1}{8} = \frac{7}{8} $
 
-\section{Media Pesata}
+\section{Media Pesata, Speranza o Valore Atteso}
 Consideriamo di voler calcolare la media pesata dei voti degli esami universitari. La media sarà per ogni esame $ i $:
 \[ \sum_{i} \dfrac{(\text{voto})_i \cdot (\text{crediti})_i }{\sum_{i} \text{crediti}} = \sum_{i} (\text{voto})_i \cdot (\text{peso})_i \]
 
-Definiamo $ x $ variabile aleatoria discreta $ x \subseteq \R $. La media di $ x $ è detta speranza o valore atteso e si denota con
+Definiamo $ X $ variabile aleatoria discreta $ X \subseteq \R $. La media di $ X $ è detta \textbf{speranza} o \textbf{valore atteso} e si denota con
 
-\[ E[x] = \sum_{k} k \cdot \p{x = k} = \sum_{k} k \cdot p_k \].
+\[ E[X] = \sum_{k} k \cdot \p{X = k} = \sum_{k} k \cdot p_k \].
 
 Per calcolare la media di una funzione $ f : \R \to \R $:
 
-\[ E[f(x)] = \sum_{k} f(k) \cdot p_k \]
+\[ E[f(X)] = \sum_{k} f(k) \cdot p_k \]
 
 \textbf{Osservazione} $\sum_{k} p_k = 1 $ \textbf{non implica che} $ \sum_{k} k p_k $ sia convergente. Se non converge ad un numero allora la variabile non ha media. Se la variabile assume solo valori positivi allora
 
-\[  E[x] = \sum_{k>0} \p{x > k} = \sum_{k>0} (\p{x = k+1} + \p{x = k+2} + \dots) \]
+\[  E[X] = \sum_{k>0} \p{X > k} = \sum_{k>0} (\p{X = k+1} + \p{X = k+2} + \dots) \]
 
 \paragraph{Esercizi sulla speranza}
 
 \begin{enumerate}
 	\item Binomiale $ B(n,p) $. La distribuzione $ p_k = \binom{n}{k}p^k(1-p)^{n-k}  \forall k \in [0,n] $. Abbiamo che $ kp_k = k \binom{n}{k}p^k (1-p)^{n-k} = n \binom{n-1}{k-1} p^k(1-p)^{n-k} $. Otteniamo che 
-		\[ E[B(n,p)] = \sum_{k} kp_k = \sum_{k} n \binom{n-1}{k-1} p^k(1-p)^{n-k} \]
+		\[ E[B(n,p)] = \sum_{k=1}^{n} kp_k = \sum_{k=1}^{n} n \binom{n-1}{k-1} p^k(1-p)^{n-k} \]
 		\[ = np \sum_{k} \binom{n-1}{k-1}p^{k-1}(1-p)^{n-k} \]
 		Definiamo $ h = k-1 $
 		\[=  np \sum_{h=0}^{n-1} \binom{n-1}{h} p^h(1-p)^{(n-1) - h } \]
 		\[ = np(p+(1-p))^{n-1} = np \]
+	\item Variabile geometrica $ \geom(p) $, conta il numero di successi prima di un successo:
+		\[ E[\geom(p)] = \sum_{k=0}^{\infty} k(1-p)^k p = \sum_{k}\p{\geom(p) > k} \]
+		Prendiamo in caso \[ \sum_{k}\p{\geom(p) > k} = \sum_{h=k+1}^{\infty} (1-p)^(h-1)p = \sum_{k}(1-p)^k = \dfrac{1}{1-(1-p)} = \dfrac{1}{p}\]
+		
+	\item Scommetto. Pago 1 euro. Lancio 3 dadi e guadagno 1 euro ogni 6 che esce.
+	Rappresento il guadagno con una variabile binomiale $ X = B(3,1/6) - 1$. Abbiamo che $ E[X] = E[B(3,1/6)] - 1 = 3 \cdot 1/6 - 1 = -1/2$
+	
+	\item Prendo un seme di carte francesi $ \{ A, 2, \dots, 10, J, Q, K \} $
+	L'asso ha valore 11. I numeri da 2 a 10 hanno lo stesso valore del numero, le figure hanno valore 10. Estraggo una carta. Definiamo una variabile aleatoria $ X = $ punteggio. $ X \in \{2,3,4,5,6,7,8,9,10,11\} $. Abbiamo che $ p_k = 0 \iff k< 2 \land k > 11 $. Abbiamo anche che $ p_k = 1/13 \iff k=2,\dots,11$ e $ p_k = 4/13 \iff k=10$
+	  
 \end{enumerate}
+
+\subsection{Distribuzione di Poisson}
+Nel caso di una variabile binomiale conosco $ p $ e $ n $ (numero esperimenti).
+In una distribuzione di Poisson si conosce una media $ \mu $ di successi in un intervallo di osservazione.
+Definiamo un intervallo $ \tau $, suddiviso in $ n $ sottointervalli. Abbiamo $ \mu $ successi. Se $ n $ è grande abbastanza tale che in ogni intervallo avviene 1 evento, generati da $ n $ esperimenti indipendenti allora $ \mu = E[B(n,p)] = np$. Ne segue che:
+\[ p = \dfrac{\mu}{n} \]
+\[ \p{B(n,p) = k} = \binom{n}{k}p^k(1-p)^{n-k} = \binom{n}{k} \left(\dfrac{\mu}{n}\right)^k \left(1- \dfrac{\mu}{n}\right)^{n-k} \]
+\[ = \dfrac{n!}{k!(n-k)!} \dfrac{1}{n^k} \dfrac{\mu^k}{\left(1-\dfrac{\mu}{n}\right)^k} \cdot \left(1-\dfrac{\mu}{n}\right)^n \] 
+\[ = \dfrac{n^k \cdot \left(1-\dfrac{1}{n} \right) \cdot \left(1-\dfrac{2}{n}\right) \cdot \dots \cdot \left(1- \dfrac{k-1}{n}\right)}{k!} \cdot \dfrac{\mu^k}{\left(1-\dfrac{\mu}{n}\right)^k} \cdot \left(1-\dfrac{\mu}{n}\right)^n \]
+
+Ne otteniamo che 
+\[ \p{\text{Poisson}(\mu) = k} = \dfrac{\mu^k}{k!} e^{-\mu} \]
+
+% TODO dimostrazione strana
+
+\paragraph{Esempio}
+Siamo nel secolo 1800, prendiamo l'esercito di Napoleone nel reparto della cavalleria. Ogni anno 12 cavalieri muoiono per incidente a cavallo. Voglio sapere la probabilità che nel 1861 siano morti 7 cavalieri.
+\[ \p{\text{anno } 1861 | \text{sono morti 7 cavalieri}} \]
+Utilizziamo la distribuzione di Poisson.
+
+\[ \p{\text{Poisson}(12) = 7} = \dfrac{12^7}{7}e^{-12} \approx 0.04  \]
+
+
+\paragraph{Linearità della media}
+
+Siano date $ X,Y $ variabili aleatorie, $ \alpha ,\beta \in \R $. Abbiamo che
+\[ E[\alpha X + \beta Y] = \alpha E[X] + \beta E[Y] \]
+
+%TODO boh
+
+\paragraph{Valore atteso del prodotto}
+Siano date $ X,Y $ variabili aleatorie \textbf{indipendenti}.
+\[ E[X \cdot Y] = E[X] \cdot E[Y] = \sum_{i,j} i \cdot j \cdot \p{X = i \cap Y =j}\]
+\[ = \sum_{i,j} i \cdot j p_{ij} = \sum_{i,j} ij p_i^X p_j^Y =  \sum_{i} i p_i^X \cdot \sum p_j^Y\]

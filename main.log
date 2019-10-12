@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.20)  8 OCT 2019 15:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.2.20)  12 OCT 2019 18:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -561,22 +561,18 @@ Capitolo 2.
 
 
 ] [6] [7] [8]
-Overfull \hbox (16.65761pt too wide) in paragraph at lines 222--224
+Overfull \hbox (23.32417pt too wide) in paragraph at lines 232--234
  []\OT1/cmr/bx/n/12 Osservazione[] \OT1/cmr/m/n/12 La pro-ba-bi-lit^^Ra che l'e
 -ven-to $\OML/cmm/m/it/12 A[]$ \OT1/cmr/m/n/12 ($\OML/cmm/m/it/12 A$ \OT1/cmr/m
 /n/12 com-ple-men-ta-re) si ve-ri-fi-chi sa-pen-do B ^^Re $[] [] =
  []
 
-) [9]
+[9]) [10]
 \openout2 = `./TeX_files/chapter03.aux'.
 
- (./TeX_files/chapter03.tex [10
-
-
-
-]
+ (./TeX_files/chapter03.tex
 Capitolo 3.
-<./images/varrandom.png, id=238, 512.91624pt x 276.03125pt>
+<./images/varrandom.png, id=249, 512.91624pt x 276.03125pt>
 File: ./images/varrandom.png Graphic file (type png)
 <use ./images/varrandom.png>
 Package pdftex.def Info: ./images/varrandom.png  used on input line 6.
@@ -586,52 +582,57 @@ Overfull \hbox (16.58467pt too wide) in paragraph at lines 6--7
  [][] 
  []
 
-[11pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1
-}) has been already used, duplicate ignored
+[11
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3.1}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.22 \end{enumerate}
                      <./images/varrandom.png (PNG copy)>] [12]
-<./images/binomdadi.png, id=252, 451.6875pt x 365.11406pt>
+<./images/binomdadi.png, id=262, 451.6875pt x 365.11406pt>
 File: ./images/binomdadi.png Graphic file (type png)
 <use ./images/binomdadi.png>
-Package pdftex.def Info: ./images/binomdadi.png  used on input line 93.
+Package pdftex.def Info: ./images/binomdadi.png  used on input line 86.
 (pdftex.def)             Requested size: 451.68639pt x 365.11316pt.
  [13pdfTeX warning (ext4): destination with the same identifier (name{figure.3.
 2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.105 
+l.101 
        <./images/binomdadi.png>] [14]
-Overfull \hbox (21.23096pt too wide) in paragraph at lines 157--158
+Overfull \hbox (21.23096pt too wide) in paragraph at lines 153--154
 []\OT1/cmr/m/n/12 Si pu^^Ro di-mo-stra-re sa-pen-do che $\OMS/cmsy/m/n/12 8\OML
 /cmm/m/it/12 m:[] [] \OT1/cmr/m/n/12 = [] []$ 
  []
 
-[15] [16]) [17] [18
+[15]
+Underfull \vbox (badness 1189) has occurred while \output is active []
 
-
-]
+ [16]
+[17]) [18]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 111.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 111.
- (./main.aux (./TeX_files/chapter01.aux)
-(./TeX_files/chapter02.aux) (./TeX_files/chapter03.aux))
+ (./main.aux (./TeX_files/chapter01.aux) (./TeX_files/chapter02.aux)
+(./TeX_files/chapter03.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 111.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 111.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C6AE301DC4DB18BFA2A3407C0F0A8B2F;1863.
+(rerunfilecheck)             Checksum: 235684E5EE0D3CA275E5F71446CA2DB4;2036.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 111.
  ) 
 Here is how much of TeX's memory you used:
- 9062 strings out of 492649
- 127932 string characters out of 6131026
+ 9072 strings out of 492649
+ 128054 string characters out of 6131026
  262265 words of memory out of 5000000
- 12690 multiletter control sequences out of 15000+600000
+ 12692 multiletter control sequences out of 15000+600000
  13361 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 33i,16n,35p,987b,426s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 33i,16n,35p,987b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
 </app/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></app/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmex10.pfb></app/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmmi12.pfb></app/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb>
@@ -643,10 +644,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></app/texmf-dist/fonts/type1
 cmsy10.pfb></app/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></app/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></app/texmf-dist/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (22 pages, 328064 bytes).
+Output written on main.pdf (22 pages, 337896 bytes).
 PDF statistics:
- 365 PDF objects out of 1000 (max. 8388607)
- 321 compressed objects within 4 object streams
- 101 named destinations out of 1000 (max. 500000)
- 219 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 384 PDF objects out of 1000 (max. 8388607)
+ 340 compressed objects within 4 object streams
+ 109 named destinations out of 1000 (max. 500000)
+ 235 words of extra memory for PDF output out of 10000 (max. 10000000)
 

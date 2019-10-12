@@ -70,12 +70,12 @@ Se $ \{p_n\} $ è una densità di probabilità discreta $ \implies \left( \N, \p
 
 \paragraph{Definizione, indipendenza degli eventi} 
 
-Sia dato $ P(A|B) \equiv \dfrac{P(A \cap B)}{P(B)} $. Di conseguenza, se $ P(A|B) = P(A) $ due eventi $ A,B $ sono indipendenti. Un esempio è il lancio di due dadi, il primo dado non influenzerà in alcun modo il risultato del secondo, per questo gli eventi del lancio di due dadi $ A,B $ sono indipendenti.
+Sia dato $ P(A \mid B) \equiv \dfrac{P(A \cap B)}{P(B)} $. Di conseguenza, se $ P(A \mid B) = P(A) $ due eventi $ A,B $ sono indipendenti. Un esempio è il lancio di due dadi, il primo dado non influenzerà in alcun modo il risultato del secondo, per questo gli eventi del lancio di due dadi $ A,B $ sono indipendenti.
 
-È vero quindi che $ P(A|B) = P(A) \implies P(B|A) = P(B) $? Sì se $ A,B $ sono indipendenti.
+È vero quindi che $ P(A \mid B) = P(A) \implies P(B \mid A) = P(B) $? Sì se $ A,B $ sono indipendenti.
 
-\[ P(A|B) = \dfrac{P(A \cap B)}{P(B)} = P(A) \]
-\[ P(B|A) = \dfrac{P(B \cap A)}{P(A)} = \dfrac{P(B) \cdot P(A)}{P(A)} = P(B)\]
+\[ P(A \mid B) = \dfrac{P(A \cap B)}{P(B)} = P(A), \text{ se } P(B) \neq 0 \]
+\[ P(B \mid A) = \dfrac{P(B \cap A)}{P(A)} = P(B), \text{ se } P(A) \neq 0 \]
 \[ P(A \cap B)  = P(A) \cdot P(B) = P(B \cap A) \]
 
 Se $ A_1, \dots, A_n $ sono indipendenti:
@@ -102,11 +102,11 @@ $ \Omega = (r, n) $ dove $ r = 1,2,3,4,5,6 $ e $ n = 1,2,3,4,5,6 $
 Definiamo lo spazio probabilizzato con $ F = \parts{\Omega}, \omega \in \Omega $. Ad esempio $ \prob{n} = \dfrac{1}{36} $
 
 Probabilità che il rosso sia 3 sapendo che rosso + nero fa 6
-\[ \prob{r=3 | r+n = 6} = \dfrac{\prob{r=3 \cap r + n = 6}}{\prob{r+n=6}} = \dfrac{\dfrac{1}{36}}{\dfrac{5}{36}} = \dfrac{1}{5}\] 
+\[ \prob{r=3  \mid  r+n = 6} = \dfrac{\prob{r=3 \cap r + n = 6}}{\prob{r+n=6}} = \dfrac{\dfrac{1}{36}}{\dfrac{5}{36}} = \dfrac{1}{5}\] 
 
 Probabilità che il rosso sia pari sapendo che rosso + nero fa 6
 
-\[ \prob{r = \text{ pari} | r+n = 6} = \dfrac{\prob{r \text{ pari} \cap r+n = 6}}{\prob{r+n = 6}} = \dfrac{\dfrac{2}{36}}{\dfrac{5}{36}} \]
+\[ \prob{r = \text{ pari}  \mid  r+n = 6} = \dfrac{\prob{r \text{ pari} \cap r+n = 6}}{\prob{r+n = 6}} = \dfrac{\dfrac{2}{36}}{\dfrac{5}{36}} \]
 
 \paragraph{Esercizio: Gioco di Monty Hall}
 Riprendendo il gioco delle tre porte definiamo lo spazio probabilizzato: Formalizzo di aver scelto la porta 3. $ \Omega = (x,y) $ dove $ x = 1,2,3 $ è la porta vincente e $ y = 1,2 $ è la porta perdente che è stata aperta dal presentatore.
@@ -125,38 +125,44 @@ Quindi $ \prob{y=1} = \prob{y=2} = \dfrac{1}{2} $
 
 Se scelgo la porta 3, suppongo venga aperta la 2. Se non cambio e vinco $ (x = 3) $ allora
 
-\[ \prob{x=3 | y=2} = \dfrac{\prob{(3,2)}}{\prob{y=2}} = \dfrac{\dfrac{1}{6}}{\dfrac{1}{2}} = \dfrac{1}{3} \]
+\[ \prob{x=3  \mid  y=2} = \dfrac{\prob{(3,2)}}{\prob{y=2}} = \dfrac{\dfrac{1}{6}}{\dfrac{1}{2}} = \dfrac{1}{3} \]
 
 Se scelgo la porta 3, suppongo venga aperta la 1 e cambio allora:
 
-\[ \prob{x=1 | y=2} = \dfrac{\prob{(1,2)}}{\prob{y=2}} = \dfrac{\dfrac{1}{3}}{\dfrac{1}{2}} = \dfrac{2}{3} \]
+\[ \prob{x=1  \mid  y=2} = \dfrac{\prob{(1,2)}}{\prob{y=2}} = \dfrac{\dfrac{1}{3}}{\dfrac{1}{2}} = \dfrac{2}{3} \]
 
 \subsection{Formula di fattorizzazione}
 Supponiamo di avere una famiglia di insiemi $ B_1, \dots, B_n $ con $ n \in \N $ che è detta una partizione finita di $ \Omega $ (insieme fondamentale). Voglio che $ \forall i . B_i \in F $ e che $ \forall i \forall j\neq i . B_i \cap B_j = \emptyset $ e anche che $ \bigcup_{i=1}^{n} B_i = \Omega $
 
 \paragraph{Teorema}
 
-Sia $ \{B_i\}_{i=1, \dots, n} $ parte finita di $ \Omega $ e sia $ \prob{B_i} > 0 $
+Sia $ \{B_i\}_{i=1, \dots, n} $ parte finita di $ \Omega $ e sia $ \forall 1 \leq i \leq n \prob{B_i} > 0 $
 
-\[ \implies  \prob{A} = \sum_{i=1}^{n} \prob{A|B_i} \cdot \prob{B_i} \]
+\[ \implies  \prob{A} = \sum_{i=1}^{n} \prob{A \mid B_i} \cdot \prob{B_i} \]
 
 \paragraph{Dimostrazione} 
 
-\[ \prob{A} =  \sum_{i=1}^{n} \prob{A \cap B_i} = \sum_{i=1}^{n} \prob{A|B_i} \cdot \prob{B_i} \]
+\[ \prob{A} =  \sum_{i=1}^{n} \prob{A \cap B_i} = \sum_{i=1}^{n} \prob{A \mid B_i} \cdot \prob{B_i} \]
 
 \paragraph{Condizionamento ripetuto}
 Dati $ A_1, \dots, A_n $ eventi, allora 
-\[ \prob{A_1 \cap \dots \cap A_n} = \prob{A_1} \cdot \prob{A_2|A_1} \cdot \prob{A_3| A_1 \cap A_2} \cdot \prob{A_n | A_1 \cap \dots \cap A_{n-1}}\]
+\[ \prob{A_1 \cap \dots \cap A_n} = \prob{A_1} \cdot \prob{A_2 \mid A_1} \cdot \prob{A_3 \mid  A_1 \cap A_2} \cdot \prob{A_n  \mid  A_1 \cap \dots \cap A_{n-1}}\]
 
-\subsection{Teorema di Bayes}
+\subsection{Formula di Bayes}
 
-% TODO approfondisci da wiki
 
 Dati due eventi $ A,B $ con probabilità non nulla $ \prob{A} > 0 $ e $ \prob{B} > 0 $ allora 
 
-\[ \prob{B|A} = \dfrac{\p{A|B} \cdot \p{B} }{\p{A}}\]
+\[ \prob{A \mid B} = \dfrac{\p{B \mid A} \cdot \p{A} }{\p{B}}\]
 
-% TODO dimostrazione
+\paragraph{Dimostrazione}
+
+\[\begin{aligned}
+	\p{A \mid B} = \frac{\p{A\cap B}}{\p{B}}, \text{ se } \p{B} \neq 0, \\
+	\p{B \mid A} = \frac{\p{B\cap A}}{\p{A}}, \text{ se } \p{A} \neq 0, \\
+	\Rightarrow \p{A\cap B} =  \p{A\mid B}\cdot \p{B}=\p{B\mid A}\cdot \p{A}, \\
+	\Rightarrow \p{A \mid B} =  \frac{\p{B \mid A}  \cdot \p{A}} {\p{B}}, \text{ se } \p{B} \neq 0.
+\end{aligned}\]
 
 \section{Esercizi}
 
@@ -165,64 +171,68 @@ Dati due eventi $ A,B $ con probabilità non nulla $ \prob{A} > 0 $ e $ \prob{B}
 Un produttore di vino produce due vini (bianco $ B $ e rosso $ R $) e vende in Francia ($ F $) e Germania ($ G $). 
 Le vendite sono $ 1/3 $ per la Francia e $ 1/3 $ per la Germania. $ 3/4 $ delle richieste dalla Francia sono vino bianco. $ 1/4 $ delle richieste dalla Francia sono vino rosso. $ 1/2 $ delle richieste dalla Germania sono vino bianco. $ 1/2 $ delle richieste dalla Germania sono vino rosso.
 
-Utilizzando la formula di partizione troviamo la probabilità che una richiesta dalla Germania sia vino bianco. $ \p{\text{richiesta dalla germania} = B} $
+Utilizzando la formula di partizione troviamo la probabilità che una richiesta sia vino bianco.
 
-\[ \p{B} = \p{B|G} \cdot \p{G} + \p{B|F} \cdot \p{F} = \dfrac{1}{3} + \dfrac{1}{4} = \dfrac{7}{12} \]
+\[ \p{B} = \p{B \mid G} \cdot \p{G} + \p{B \mid F} \cdot \p{F} = \dfrac{1}{3} + \dfrac{1}{4} = \dfrac{7}{12} \]
 
 \paragraph{Esercizio, esami e studenti}
 
 Abbiamo 3 livelli di preparazione: Ottimo, Buono e Scarso.
 Un esito dell'esame è Promosso o Respinto.
 
-\[ \p{\text{Promosso} | \text{Ottimo}} = 0,995\]
-\[ \p{\text{Promosso} | \text{Scarso}} = 0,3\]
-\[ \p{\text{Promosso} | \text{Buono}} = 0,8\]
+\[ \p{\text{Promosso}  \mid  \text{Ottimo}} = 0.995\]
+\[ \p{\text{Promosso}  \mid  \text{Scarso}} = 0.3\]
+\[ \p{\text{Promosso}  \mid  \text{Buono}} = 0.8\]
 
-Uno studente prova l'esame e viene respinto. Qual'è la probabilità che aveva di avere una preparazione scarsa? $ \p{\text{Scarso}|\text{Respinto}} $
+Uno studente prova l'esame e viene respinto. Qual'è la probabilità che aveva di avere una preparazione scarsa? $ \p{\text{Scarso} \mid \text{Respinto}} $
 
 Prima calcoliamo la probabilità di essere respinti.
 
-\[ \p{R} = \p{R|O} \cdot \p{O} + \p{R | B} \cdot \p{B} + \p{R|S} \cdot \p{S} = 0,302 \]
+\[ \p{R} = \p{R \mid O} \cdot \p{O} + \p{R  \mid  B} \cdot \p{B} + \p{R \mid S} \cdot \p{S} = 0.302 \]
 
 Senza informazioni aggiuntive $ \p{O} = \p{B} = \p{S} = \dfrac{1}{3} $
 
-La probabilità di essere respinto è $ \p{R} = 0,302 $ quindi 
+La probabilità di essere respinto è $ \p{R} = 0.302 $ quindi 
 
-\[ \p{S | R} = \dfrac{\p{R|S}\cdot \p{S}}{\p{R}} = \dfrac{0,7 \cdot 1/3}{0,302} = 0,773 \]
+\[ \p{S  \mid  R} = \dfrac{\p{R \mid S}\cdot \p{S}}{\p{R}} = \dfrac{0.7 \cdot 1/3}{0.302} = 0.773 \]
 
 \paragraph{Esercizio alternativo}
 
-% TODO per casa
-
 Qual'è la probabilità che lo studente aveva di avere una preparazione scarsa, sapendo che è stato respinto e sapendo che le probabilità dei voti sono: $ \p{O} = \dfrac{1}{6}, \p{B} = \dfrac{2}{3}, \p{S} = \dfrac{1}{6} $
 
+Calcoliamo, come prima $ \p{R} = 0.005 \cdot \dfrac{1}{6} + 0.2 \cdot \dfrac{2}{3} + 0.7 \cdot \dfrac{1}{6} \approx 0.25 $
+
+Abbiamo quindi che 
+
+\[ \p{S \mid R} = \dfrac{0.7 \cdot 1/6}{0.25} \approx 0.466 \]
+
 \paragraph{Esercizio: Malattia con fattore di rischio}
-La probabilità di ammalarsi di un soggetto a rischio $ (R) $ è $ 0,2 $, mentre la probabilità di ammalarsi di un soggetto non a rischio $ (N) $ è $ 0,006 $. Il $ 15\% $ della popolazione sono soggetti a rischio. Un malato si denota con $ M $ mentre uno sano con $ S $.
+La probabilità di ammalarsi di un soggetto a rischio $ (R) $ è $ 0.2 $, mentre la probabilità di ammalarsi di un soggetto non a rischio $ (N) $ è $ 0.006 $. Il $ 15\% $ della popolazione sono soggetti a rischio. Un malato si denota con $ M $ mentre uno sano con $ S $.
 
 Vogliamo sapere 
 
 \begin{enumerate}
 	\item $ \p{\text{Soggetto casuale sia malato}} = $
 	
-	$ \p{M} = \p{M|R} \cdot \p{R} + \p{R|N} \cdot \p{N} = 0,35 $ 
+	$ \p{M} = \p{M \mid R} \cdot \p{R} + \p{R \mid N} \cdot \p{N} = 0.35 $ 
 	
-	$ \p{M} = 0,2 \cdot 0,15 + 0,006 \cdot 0,85 = 0,35 $
+	$ \p{M} = 0.2 \cdot 0.15 + 0.006 \cdot 0.85 = 0.35 $
 	
 	\item $ \p{\text{Soggetto malato fosse a rischio}} = $
 	
-	$ \p{R|M} = \dfrac{\p{M|R} \cdot \p{R}}{\p{M}} = \dfrac{0,2 \cdot 0,15}{0,35} = 0,855 $
+	$ \p{R \mid M} = \dfrac{\p{M \mid R} \cdot \p{R}}{\p{M}} = \dfrac{0.2 \cdot 0.15}{0.35} = 0.855 $
 	
 	\item $ \p{\text{Soggetto soggetto sano sia a rischio}} = $
 	
-	$ \p{R|S} = \dfrac{\p{S|R} \cdot \p{R}}{\p{S}} = \dfrac{(1-0,2) \cdot 0,15}{(1-0,35)} = 0,124$
+	$ \p{R \mid S} = \dfrac{\p{S \mid R} \cdot \p{R}}{\p{S}} = \dfrac{(1-0.2) \cdot 0.15}{(1-0.35)} = 0.124$
 \end{enumerate}
 
 \paragraph{Osservazione}
 
-La probabilità che l'evento $ A^c $ ($ A $ complementare) si verifichi sapendo B è $ \p{A^c|B} = 1 - \p{A|B} $ 
-\textbf{mentre invece} la probabilità di $ A $ sapendo $ B^c $ è $ \p{A|B^c} \neq 1 - \p{A|B} $
+La probabilità che l'evento $ A^c $ ($ A $ complementare) si verifichi sapendo B è $ \p{A^c \mid B} = 1 - \p{A \mid B} $ 
+\textbf{mentre invece} la probabilità di $ A $ sapendo $ B^c $ è $ \p{A \mid B^c} \neq 1 - \p{A \mid B} $
 
 \paragraph{Esercizio: Test}
 Prendendo $ S = $ soggetti sani, $ M = $ soggetti malati, $ T^- = $ test positivo, $ T^+ = $ test positivo.
 
-La specificità di un test è $ \p{T^-|S} $. Una specificità alta implica pochi falsi positivi. La sensibilità è $ \p{T^+|M} $. Una sensibilità alta implica pochi falsi negativi.
+La specificità di un test è $ \p{T^- \mid S} $. Una specificità alta implica pochi falsi positivi. La sensibilità è $ \p{T^+ \mid M} $. Una sensibilità alta implica pochi falsi negativi.
