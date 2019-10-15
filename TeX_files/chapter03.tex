@@ -237,10 +237,13 @@ Per calcolare la media di una funzione $ f : \R \to \R $:
 Nel caso di una variabile binomiale conosco $ p $ e $ n $ (numero esperimenti).
 In una distribuzione di Poisson si conosce una media $ \mu $ di successi in un intervallo di osservazione.
 Definiamo un intervallo $ \tau $, suddiviso in $ n $ sottointervalli. Abbiamo $ \mu $ successi. Se $ n $ è grande abbastanza tale che in ogni intervallo avviene 1 evento, generati da $ n $ esperimenti indipendenti allora $ \mu = E[B(n,p)] = np$. Ne segue che:
-\[ p = \dfrac{\mu}{n} \]
-\[ \p{B(n,p) = k} = \binom{n}{k}p^k(1-p)^{n-k} = \binom{n}{k} \left(\dfrac{\mu}{n}\right)^k \left(1- \dfrac{\mu}{n}\right)^{n-k} \]
-\[ = \dfrac{n!}{k!(n-k)!} \dfrac{1}{n^k} \dfrac{\mu^k}{\left(1-\dfrac{\mu}{n}\right)^k} \cdot \left(1-\dfrac{\mu}{n}\right)^n \] 
-\[ = \dfrac{n^k \cdot \left(1-\dfrac{1}{n} \right) \cdot \left(1-\dfrac{2}{n}\right) \cdot \dots \cdot \left(1- \dfrac{k-1}{n}\right)}{k!} \cdot \dfrac{\mu^k}{\left(1-\dfrac{\mu}{n}\right)^k} \cdot \left(1-\dfrac{\mu}{n}\right)^n \]
+\[
+\begin{aligned}
+ p = \dfrac{\mu}{n} 
+ \p{B(n,p) = k} = \binom{n}{k}p^k(1-p)^{n-k} = \binom{n}{k} \left(\dfrac{\mu}{n}\right)^k \left(1- \dfrac{\mu}{n}\right)^{n-k} 
+ = \\ \dfrac{n!}{k!(n-k)!} \dfrac{1}{n^k} \dfrac{\mu^k}{\left(1-\dfrac{\mu}{n}\right)^k} \cdot \left(1-\dfrac{\mu}{n}\right)^n  
+ = \\ \dfrac{n^k \cdot \left(1-\dfrac{1}{n} \right) \cdot \left(1-\dfrac{2}{n}\right) \cdot \dots \cdot \left(1- \dfrac{k-1}{n}\right)}{k!} \cdot \dfrac{\mu^k}{\left(1-\dfrac{\mu}{n}\right)^k} \cdot \left(1-\dfrac{\mu}{n}\right)^n 
+\end{aligned}\]
 
 Ne otteniamo che 
 \[ \p{\text{Poisson}(\mu) = k} = \dfrac{\mu^k}{k!} e^{-\mu} \]
@@ -260,9 +263,173 @@ Utilizziamo la distribuzione di Poisson.
 Siano date $ X,Y $ variabili aleatorie, $ \alpha ,\beta \in \R $. Abbiamo che
 \[ E[\alpha X + \beta Y] = \alpha E[X] + \beta E[Y] \]
 
+
+\paragraph{Valore atteso della somma}
+
+\[ \begin{aligned}
+	E[X+Y] = E[X] + E[Y]
+\end{aligned} \]
+
+\textbf{Dimostrazione}
+\[ 
+\begin{aligned}
+E[X+Y] = \sum_{i,j} (i+j)p_{ij} = \sum_{i,j} ip_{ij} + \sum_{i,j} jp_{ij} \\
+= \sum_i i \sum_j p_{ij} + \sum_j j \sum_i p_{ij} \\
+= \sum_i i p_i^X + \sum_j p_j^Y = E[X] + E[Y]
+\end{aligned}
+ \]
+
 %TODO boh
 
 \paragraph{Valore atteso del prodotto}
 Siano date $ X,Y $ variabili aleatorie \textbf{indipendenti}.
 \[ E[X \cdot Y] = E[X] \cdot E[Y] = \sum_{i,j} i \cdot j \cdot \p{X = i \cap Y =j}\]
 \[ = \sum_{i,j} i \cdot j p_{ij} = \sum_{i,j} ij p_i^X p_j^Y =  \sum_{i} i p_i^X \cdot \sum p_j^Y\]
+
+\paragraph{Ordinamento}
+
+Sia $E[X^n]$ ordinamento di ordine n.
+Dato un $ E[f(x)] $, ad esempio $ E[X^n] = \sum_i i^n p_i$
+Oppure ad esempio $ E[x^2] = \sum_i i^2 \p{X = i}$. Ne segue che $ E[X^2] \neq \left(E[X]\right)^2$.
+
+\section{Varianza}
+
+Sia $ X $ una variabile aleatoria e $ E[X] = \mu $ la sua media.
+La varianza di $ X $ si definisce come 
+
+\[ \begin{aligned}
+\var{X} = E[(X-\mu)^2] \\ 
+= \sum_i (i-\mu)^2 \p{X = i}
+\end{aligned}  \]
+
+La varianza di $ X $ è anche $ E[X^2] - \left(E[X]\right)^2 $
+
+\paragraph{Dimostrazione}
+
+\[ \begin{aligned}
+\sum_i (i-\mu)^2 p_i = \sum_i (i^2 -2i\mu + \mu^2) p_i \\
+= \sum_i i^2 p_i - 2\mu \sum_i i p_i + \mu^2 \sum_i p_i \\
+= E[X^2] - 2\mu^2 + \mu^2 = E[X^2] - \mu^2 \\
+= E[X^2] - \left(E[X]\right)^2 
+\end{aligned} \]
+
+\subsection{Disuguaglianze utili}
+
+\paragraph{Disuguaglianza di Hölder}
+
+\[ \begin{aligned}
+E[X \cdot Y] \leq (E[X^p])^{\frac{1}{p}} (E[Y^q])^{\frac{1}{q}} \\
+\text{con } \dfrac{1}{p} + \dfrac{1}{q} = 1
+\end{aligned} \]
+
+\paragraph{Disuguaglianza di Markov}
+
+\[ \begin{aligned}
+X \geq 0 \land a > 0 \\
+\p{X > a} < \dfrac{E[X]}{a}
+\end{aligned} \]
+
+\paragraph{Disuguaglianza di Chebichev}
+
+\[ \begin{aligned}
+X \geq 0 \land a > 0 \\
+\p{\abs{X - \mu} > a} \leq \dfrac{\var{X}}{a^2}
+\end{aligned} \]
+
+Dimostriamo la disuguaglianza di Chebichev in quanto ci sarà utile nel resto del corso
+
+\[ \begin{aligned}
+\p{\abs{X - \mu} > a} = \sum_n \p{X = n} = \sum_{\abs{X - \mu} > n} p_n \\
+\text{se } \abs{X - \mu} > a \text{ allora } 1 < \dfrac{\abs{X - \mu}^2}{q^2} \\ \implies  \sum_{\abs{X - \mu} > n} p_n  \leq \sum_{\abs{X - \mu} > n} \dfrac{\abs{X - \mu}^2}{a^2} p_n \leq \dfrac{1}{a^2} \sum_n \abs{n - \mu}^2 p_n 
+\end{aligned} \]
+
+\paragraph{$\sigma$ Deviazione Standard}
+
+Sia $ X $ variabile aleatoria. Allora abbiamo che $ \sigma(X) = \sqrt{\var{X}} $. Data $ \mu $ media di $ X $, e dati $ \alpha, \beta \in \R $ si ha allora che
+
+\[ \begin{aligned}
+\var{\alpha X + \beta} = \alpha ^2 \var{X} \\
+= E[(\alpha X + \beta)^2] - (E[\alpha X + \beta])^2 \\
+= E(\alpha^2 X^2 + 2 \alpha \beta X + \beta^2) - (\alpha E[X] + \beta)^2 \\
+= \alpha^2 (E[X^2] - (E[X])^2) = \alpha^2 \var{X}
+\end{aligned} \]
+
+\paragraph{Proposizione: Somma di varianza} 
+
+Siano date $ X,Y $ variabili aleatorie indipendenti $ \implies \var{X + Y} = \var{X} + \var{Y} $ 
+
+\paragraph{Dimostrazione} 
+
+\[ \begin{aligned}
+\var(X+Y) = E[(X+Y)^2] - (E[X+Y])^2 \\
+= E[X^2] - 2E[X \cdot Y] + E[Y^2] \\ 
+= (E[X])^2 - 2E[X]E[Y] - (E[Y])^2 \\
+= \var{X} + \var{Y} + 2(E[XY] - E[X]E[Y])\\
+\text{Si ha che } 2(E[XY] - E[X]E[Y]) = 0 \text{ se X,Y sono indipendenti.}
+\end{aligned} \]
+
+\paragraph{Esempi}
+
+\begin{enumerate}
+	\item Bernoulliana: $ X = B(1,p) $
+	\[ \begin{aligned}
+	E[X] = p \\
+	E[X]^2 = p \\
+	\var{X} = p-p^2 = p(1-p)
+	\end{aligned} \]
+	
+	\item $ X = B(n,p) $
+	\[ \begin{aligned}
+	\var{X} = nB(1,p) = np(1-p)
+	\end{aligned} \]
+	
+	\item $ X = \text{Poisson}(\lambda) $
+	\[ \var{\text{Poisson}(\lambda)} = \lambda \]
+	
+\end{enumerate}
+
+\subsection{Esercizi}
+% TODO per casa
+
+\begin{enumerate}
+	\item È più probabile fare almeno un 6 lanciando 4 dadi o almeno una coppia di 6 lanciando 25 volte una coppia di dadi?
+	
+	\item Siano date due slot machine apparentemente identiche $ A,B $. La probabilità di vincere sulla $ A $ è $ \p{\text{vincere sulla }A} = \dfrac{1}{2}$. La probabilità di vincere sulla $ B $ è $ \p{\text{vincere sulla }B} = \dfrac{1}{4}$. Calcolare $ \p{\text{aver giocato su }A \mid \text{aver vinto}} $
+	
+	\item Data un urna contenente 2 palline bianche e 5 nere. Se la prima estrazione è una pallina bianca, essa viene rimossa. Se invece è una pallina nera, la rimettiamo dentro e aggiungiamo altre 2 nere. Calcolare $ \p{\text{seconda estrazione sia una pallina nera}} $
+
+	\item In Finlandia il 70\% delle ragazze sono Bionde, il 20\% sono Rosse, il 10\% sono More. Hanno gli occhi Scuri il 10\% delle Bionde, il 25\% delle Rosse e il 50\% delle More.
+	Conosco una ragazza che dice di avere gli occhi scuri. Con che probabilità è bionda?
+	
+	Utilizzando la formula di Bayes e di Fattorizzazione calcoliamo
+	\[ \begin{aligned}
+	\p{B \mid S} = \dfrac{\p{S \mid B} \cdot \p{B}}{\p{S}} \\
+	= \dfrac{P{S \mid B} \cdot \p{B}}{\p{S \mid B} \p{B} + \p{S \mid R} \p{R} + \p{S \mid M} \p{M}} \approx 0.41
+	\end{aligned} \]
+	
+	\item Ho 3 carte colorate sulla faccia e sul dorso. Una carta con la faccia rossa e il retro nero si scrive $ \dfrac{R}{N} $. Le tre carte sono $ \dfrac{R}{N}, \dfrac{R}{R}, \dfrac{N}{N} $ e sono sul tavolo coperte. Una è scoperta e la faccia visibile è Rossa. Calcolare $ \p{\text{Faccia coperta } = R} $. Indichiamo con $ V $ la carta Visibile e con $ C $ la carta coperta.
+	
+	\[ \begin{aligned}
+	\p{C = R \mid V = R} = \dfrac{\p{C = R \cap V = R}}{\p{V = R}} = \dfrac{1/3}{1/2} = \dfrac{2}{3}
+	\end{aligned} \]
+	
+	\item Siano dati $A,B \subset \Omega$. Abbiamo che $ \p{A} = \dfrac{3}{4} $ e abbiamo $ \p{B} = \dfrac{1}{3} $. Possono essere disgiunti? No. Perché la probabilità della loro unione è maggiore di uno $ \p{A \cup B} = \p{A} + \p{B} = \dfrac{3}{4} + \dfrac{1}{3} $, che è $ > 1 $. Abbiamo che $ A \cup B \subset \Omega $, ma $ 1 = \p{\Omega} > \p{A \cup B} $. 
+	
+	È vera la disuguaglianza $ \dfrac{1}{12} \leq \p{A \cap B} \leq \dfrac{1}{3} $?
+	
+	\[ \begin{aligned}
+	A \cap B \subseteq A \land A \cap B \subseteq B \\
+	(\p{A \cap B} \leq \p{A}) \land (\p{A \cap B} \leq \p{B})) \\
+	\implies \p{A \cap B} \leq \min\{\p{A}, \p{B}\} \\
+	\end{aligned} \]
+	
+	Sappiamo quindi che $ \p{A \cap B} \leq \dfrac{1}{3} $. Verifichiamo ora la prima parte della disuguaglianza
+	
+	\[ \begin{aligned}
+	A = (A \cap B) \cup (A \cap B^C) \implies \p{A} = \p{A \cap B} + \p{A \cap B^C} \\
+	\p{A \cap B} = \p{A} - \p{A \cap B^c} \geq \p{A} - \p{B^c} \\
+	\p{A} - \p{B^c} = \p{A} - (1-\p{B}) \\ 
+	= \p{A} + \p{B} - 1 = \dfrac{1}{3} + \dfrac{3}{4} - 1 = \dfrac{1}{12}
+	\end{aligned} \]
+\end{enumerate}
+
