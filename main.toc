@@ -77,3 +77,19 @@
 \contentsline {paragraph}{Dimostrazione}{20}{section*.46}
 \contentsline {paragraph}{Esempi}{20}{section*.47}
 \contentsline {subsection}{\numberline {3.4.2}Esercizi}{20}{subsection.3.4.2}
+\contentsline {chapter}{\numberline {4}Catene di Markov}{23}{chapter.4}
+\contentsline {paragraph}{Calcolo del Marginale di una Catena di Markov}{23}{section*.48}
+\contentsline {paragraph}{Esercizio}{23}{section*.49}
+\contentsline {paragraph}{Calcolo dei valori attesi}{23}{section*.50}
+\contentsline {paragraph}{Esercizio}{24}{section*.51}
+\contentsline {paragraph}{Distribuzione invariante}{24}{section*.52}
+\contentsline {paragraph}{Catena Stazionaria}{24}{section*.53}
+\contentsline {paragraph}{Matrice di Transizione regolare}{24}{section*.54}
+\contentsline {section}{\numberline {4.1}Esercizi}{25}{section.4.1}
+\contentsline {paragraph}{Esercizio}{25}{section*.55}
+\contentsline {paragraph}{Esercizio}{25}{section*.56}
+\contentsline {paragraph}{Domanda}{25}{section*.57}
+\contentsline {paragraph}{Esercizio CPU}{25}{section*.58}
+\contentsline {paragraph}{Esercizio, Automa Cellulare}{26}{section*.59}
+\contentsline {paragraph}{Esercizio, CPU con 3 stati}{27}{section*.60}
+\contentsline {paragraph}{Esercizio Generico}{28}{section*.61}
