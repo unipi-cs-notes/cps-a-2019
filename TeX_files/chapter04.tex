@@ -1,31 +1,45 @@
 \chapter{Catene di Markov}
 
-\section{Processi Stocastici}
-Spesso abbiamo bisogno di rappresentare quantità incerte che cambiano nel tempo. Possiamo rappresentarle con famiglie di variabili aleatore indicizzate mediante un parametro, spesso corrispondente al "tempo"
+\begin{defn}
+	\textbf{Processi Stocastici}
+	Spesso abbiamo bisogno di rappresentare quantità incerte che cambiano nel tempo. Possiamo rappresentarle con famiglie di variabili aleatore indicizzate mediante un parametro, spesso corrispondente al "tempo"
+	
+	Una famiglia di variabili aleatorie $ \left\{X_t\right\}_{t\in \mathcal{T}} $ dove $ \mathcal{T} \subseteq \R $ e che assumono tutte valori nello stesso insieme $ E $ è detta \textbf{processo stocastico}. L'insieme $ E $ è detto spazio degli stati del processo, mentre l'insieme $ \mathcal{T} $ è detto insieme dei tempi. Considereremo sempre gli insiemi degli stati e dei tempi \textit{discreti} (numerabili) e molto spesso finiti. L'insieme dei tempi può essere un intervallo $ \mathcal{T} = [0,T] $. Ad esempio, insiemi $ \mathcal{T} $ validi possono essere: $ \N, \Z, \{0, 1, 2, \hdots, n\}, \{t_1, t_2, \hdots, t_n\} $. Dato un processo stocastico $ \{X_t\}_{t \in \mathcal{T}} $ le variabili aleatorie $ X_t \in E $ sono dette marginali del processo. Le leggi delle marginali di due processi potrebbero coincidere, pur essendo i due processi molto diversi.
+	
+\end{defn}
 
-\paragraph{Definizione}
-Una famiglia di variabili aleatorie $ \left\{X_t\right\}_{t\in \mathcal{T}} $ dove $ \mathcal{T} \subseteq \R $ e che assumono tutte valori nello stesso insieme $ E $ è detta \textbf{processo stocastico}. L'insieme $ E $ è detto spazio degli stati del processo, mentre l'insieme $ \mathcal{T} $ è detto insieme dei tempi. Considereremo sempre gli insiemi degli stati e dei tempi \textit{discreti} (numerabili) e molto spesso finiti. L'insieme dei tempi può essere un intervallo $ \mathcal{T} = [0,T] $. Ad esempio, insiemi $ \mathcal{T} $ validi possono essere: $ \N, \Z, \{0, 1, 2, \hdots, n\}, \{t_1, t_2, \hdots, t_n\} $. Dato un processo stocastico $ \{X_t\}_{t \in \mathcal{T}} $ le variabili aleatorie $ X_t \in E $ sono dette marginali del processo. Le leggi delle marginali di due processi potrebbero coincidere, pur essendo i due processi molto diversi.
 
-\paragraph{Esempio, estrazione di palline}
-Consideriamo le estrazioni da un urna contenente palline rosse e palline blu. Prendiamo in considerazione il colore della pallina alla prima, seconda, terza, ecc. estrazione. Il fenomeno è rappresentabile con una famiglia di variabili aleatorie.
+\begin{exmp}
+	
+	Consideriamo le estrazioni da un urna contenente palline rosse e palline blu. Prendiamo in considerazione il colore della pallina alla prima, seconda, terza, ecc. estrazione. Il fenomeno è rappresentabile con una famiglia di variabili aleatorie.
+	
+	\begin{equation*}
+	X_1, X_2, X_3, \hdots, X_n \in \{\text{rossa}, \text{blu}\}
+	\end{equation*}
+	
+	I due processi cambiano radicalmente se le estrazioni sono con reimmissione della pallina o senza, ma sappiamo che le marginali hanno tutte le stesse leggi rispetto a $ \p{\cdot \mid \Omega} $
+	
+	\begin{equation*}
+	\p{X_k = \text{rossa} \mid \Omega} = \dfrac{\text{\# palline rosse}}{\text{\# palline totali}}
+	\end{equation*}
+	
+\end{exmp}
 
-\[ X_1, X_2, X_3, \hdots, X_n \in \{\text{rossa}, \text{blu}\} \]
+\begin{exmp}
+	Assumiamo che le variabili $ X_1, \hdots, X_n \in \{\text{rossa}, \text{blu}\} $ siano tutte indipendenti (rispetto a $ \Omega $). Supponiamo di conoscere il numero di palline totali ed il numero di palline rosse inizialmente. Supponiamo di aver fatto $ k < n $ estrazioni e di conoscere il loro esito esatto. Poniamo ad esempio che siano state tutte rosse. Qual'è la probabilità che all'estrazione $ k+1 $ otteniamo una pallina rossa?
+	
+	\begin{equation*}
+	\begin{aligned}
+	\p{X_{k+1} = rossa \mid \Omega \cap \{X_1 = \text{rossa}, \hdots, X_k = \text{rossa} \} } \\
+	= P(X_{k+1} = \text{rossa} \mid \Omega)	\text{  (Per indipendenza)} \\
+	= \dfrac{\text{\# palline rosse}}{\text{\# palline totali}}
+	\end{aligned}
+	\end{equation*}
+	
+	L'ipotesi di indipendenza probabilistica significa che non siamo capaci di "imparare" dal passato.
+	
+\end{exmp}
 
-I due processi cambiano radicalmente se le estrazioni sono con reimmissione della pallina o senza, ma sappiamo che le marginali hanno tutte le stesse leggi rispetto a $ \p{\cdot \mid \Omega} $
-
-\[ \p{X_k = \text{rossa} \mid \Omega} = \dfrac{\text{\# palline rosse}}{\text{\# palline totali}} \]
-
-\paragraph{Esempio, estrazione di palline con reimmissione}
-
-Assumiamo che le variabili $ X_1, \hdots, X_n \in \{\text{rossa}, \text{blu}\} $ siano tutte indipendenti (rispetto a $ \Omega $). Supponiamo di conoscere il numero di palline totali ed il numero di palline rosse inizialmente. Supponiamo di aver fatto $ k < n $ estrazioni e di conoscere il loro esito esatto. Poniamo ad esempio che siano state tutte rosse. Qual'è la probabilità che all'estrazione $ k+1 $ otteniamo una pallina rossa?
-
-\[ \begin{aligned}
-\p{X_{k+1} = rossa \mid \Omega \cap \{X_1 = \text{rossa}, \hdots, X_k = \text{rossa} \} } \\
-= P(X_{k+1} = \text{rossa} \mid \Omega)	\text{  (Per indipendenza)} \\
-= \dfrac{\text{\# palline rosse}}{\text{\# palline totali}}
-\end{aligned} \]
-
-L'ipotesi di indipendenza probabilistica significa che non siamo capaci di "imparare" dal passato.
 
 \subsection{Proprietà di Markov}
 Nei processi di Markov le informazioni ottenibili dal "passato" (la storia del processo fino al presente) sono utili a fare inferenza sullo stato futuro.
@@ -38,273 +52,289 @@ Nei processi di Markov le informazioni ottenibili dal "passato" (la storia del p
 \section{Catene di Markov}
 
 \paragraph{Calcolo del Marginale di una Catena di Markov}
-$ \p{X_0 = j} \forall j $ è un vettore che chiamiamo $ v = (\p{X_0 = j}) $, è lo stato iniziale. Definiamo $ Q(q_{ji}) $ matrice di transizione. $ q_{ji} = \p{X_1 = i \mid X_0 = j} $. Definiamo anche $ q_{j \to i} = \p{X_1 = i \mid X_0 = j} $
+$ \p{X_0 = j} \forall j $ è un vettore che chiamiamo $ v = (\p{X_0 = j}) $, è lo stato iniziale. Definiamo $ Q(q_{ji}) $ matrice di transizione. $ q_{ji} = \p{X_1 = i \mid X_0 = j} $. Definiamo anche $ q_{j \to i} = \p{X_1 = i \mid X_0 = j} $. Ne otteniamo che $ \p{X_k = i} = (v \cdot Q^k)_i = (v_i = Q \cdot Q \cdot \hdots \cdot Q)_i $. Per correttezza, $ v \cdot Q $ è la legge di $ X_1 $. Calcoliamo $ X_1 $.
 
-\[ 
-\begin{aligned}
-	\p{X_k = i} = (v \cdot Q^k)_i = (v_i = Q \cdot Q \cdot \hdots \cdot Q)_i
-\end{aligned}
- \]
-$ v \cdot Q $ è la legge di $ X_1 $. Calcolo $ X_1 $.
-
-\[ \begin{aligned}
-\p{X_1 = i} \cdot \sum_j (\p{X_1 = i \mid X_0 = j}) \\
-\p{X_1 = j} = \sum_j q_{j \to i} v_j = \sum_j v_j q_{j \to i} = (v \cdot Q_i)
-\end{aligned} \]
+\begin{equation*}
+	\begin{aligned}
+	\p{X_1 = i} \cdot \sum_j (\p{X_1 = i \mid X_0 = j}) \\
+	\p{X_1 = j} = \sum_j q_{j \to i} v_j = \sum_j v_j q_{j \to i} = (v \cdot Q_i)
+	\end{aligned}
+\end{equation*}
 
 
-A volte, si può assegnare lo stato iniziale, ad esempio $ X_0 = j \iff v = \{0, 0, 0, \hdots, 0, 1, \hdots, 0, 0,\} = e_j $ (significa che vi è un 1 in posizione $ j $) 
+A volte, si può assegnare lo stato iniziale, ad esempio $ X_0 = j \iff v = \{0, 0, 0, \hdots, 0, 1, \hdots, 0, 0,\} = e_j $ (significa che vi è un 1 in posizione $ j $). Si ha che:
 
-Si ha che:
+\begin{equation*}
+(e_i Q^k) \cdot (\p{X_k = l \mid X_0 = i} ) = (e_i Q^k)_l = (Q^k)_{il}
+\end{equation*}
 
-\[ \begin{aligned}
-(e_i Q^k) \cdot (\p{X_k = l \mid X_0 = i} ) \\ 
-= (e_i Q^k)_l = (Q^k)_{il}
-\end{aligned} \]
-
-\paragraph{Esercizio}
-
-% TODO riprendi
-TODO RIPRENDI ESERCIZIO 
-
-\[ \begin{aligned}
-Q=\begin{pmatrix}
-\frac{9}{12} & \frac{3}{12} \\
-\frac{10}{12} & \frac{2}{12}
-\end{pmatrix}
-\end{aligned} \]
-
-Distribuzione di $ X_0 $: $ v = (\frac{10}{13}, \frac{3}{13}) $.
-
-Marginale $ X_1 $: $ v \cdot Q = (\frac{10}{13}, \frac{3}{13})\begin{pmatrix}
-\frac{9}{12} & \frac{3}{12} \\
-\frac{10}{12} & \frac{2}{12}
-\end{pmatrix} $ = $\hdots (\frac{120}{13 \cdot 12}, \frac{36}{13 \cdot 12}) = \left( \frac{10}{13}, \frac{3}{13} \right)$
-
-Si ha che 
-
-\[ \begin{aligned}
-\p{X_{10} = B} = (v \cdot Q^{10})_B = ((v \cdot Q) Q^9)_B = (v)_B = {\dfrac{3}{13}} 
-\end{aligned} \]
+\begin{exmp}
+	Riprendendo l'esempio delle palline rosse e blu:
+	
+	\begin{equation*}
+	\begin{aligned}
+	Q=\begin{pmatrix}
+	\frac{9}{12} & \frac{3}{12} \\
+	\frac{10}{12} & \frac{2}{12}
+	\end{pmatrix}
+	\end{aligned}
+	\end{equation*}
+	
+	Distribuzione di $ X_0 $: $ v = (\frac{10}{13}, \frac{3}{13}) $.
+	
+	Marginale $ X_1 $: $ v \cdot Q = (\frac{10}{13}, \frac{3}{13})\begin{pmatrix}
+	\frac{9}{12} & \frac{3}{12} \\
+	\frac{10}{12} & \frac{2}{12}
+	\end{pmatrix} $ = $\hdots (\frac{120}{13 \cdot 12}, \frac{36}{13 \cdot 12}) = \left( \frac{10}{13}, \frac{3}{13} \right)$
+	
+	Si ha che $ \p{X_{10} = B} = (v \cdot Q^{10})_B = ((v \cdot Q) Q^9)_B = (v)_B = {\dfrac{3}{13}} $
+	
+\end{exmp}
 
 \paragraph{Calcolo dei valori attesi}
 
-Data $ (X)_k $una Catena di Markov. $ Q $ matrice di transizione, $ f : \R \to \R$ funzione reale, si ha che
-\[ \begin{aligned}
-E[f(X_k) \mid X_0 = i]
-\end{aligned} \]
+Data $ (X)_k $una Catena di Markov. $ Q $ matrice di transizione, $ f : \R \to \R$ funzione reale, si ha che $ \E{f(X_k) \mid X_0 = i} $. Prendiamo il caso $ k = 1 $
 
-Prendiamo il caso $ k = 1 $
+\begin{equation*}
+	\begin{aligned}
+	\E{f(X_1} \mid X_0 = i) = \sum_j f(j) \cdot \p{x_1 = j \mid X_0 = i} \\
+	= \sum_j f(j) \cdot q_{ij} = (Q \cdot f)_i \\
+	\vec{f} = (f(j))_j
+	\end{aligned}
+\end{equation*}
 
-\[ \begin{aligned}
-E(f(X_1) \mid X_0 = i) = \sum_j f(j) \cdot \p{x_1 = j \mid X_0 = i} \\
-= \sum_j f(j) \cdot q_{ij} = (Q \cdot f)_i \\
-\vec{f} = (f(j))_j
-\end{aligned} \]
-
-Con $ k $ generico si ha $E(f(X_k) \mid X_0 = i]) = (Q^k \vec{f})_i $
+Con $ k $ generico si ha $\E{f(X_k) \mid X_0 = i} = (Q^k \vec{f})_i $
 
 Se non conosco lo stato iniziale devo conoscere la distribuzione $ (P(X_0) =i)_i = v) $
 
-\[ \begin{aligned}
-E(f(X_k) \mid X_0) = \vec{f} Q^k v
-\end{aligned} \]
+\begin{equation*}
+\E{f(X_k \mid X_0} = \vec{f} Q^k v
+\end{equation*}
 
-\paragraph{Esercizio}
+\begin{exrc}
+%	TODO riprendi esempio
+\end{exrc}
+
 Riprendendo l'esempio precedente, conviene giocare?
 
-\[
-\begin{aligned}
-f(X_1 = R) = -1 \text{ Euro} \\
-f(X_1 = B) = 1 \text{ Euro} \\
-Q\vec{f} = \begin{pmatrix}
-\dfrac{9}{12} & \dfrac{3}{12} \\
-\dfrac{10}{12} & \dfrac{2}{12}
-\end{pmatrix} \begin{pmatrix}
--1 \\ 5
-\end{pmatrix} = \begin{pmatrix}
-1/2 & 0
-\end{pmatrix} \\
-E(f(X_1) \mid X_0 = R) = \dfrac{1}{2} \\
-E(f(X_1) \mid X_0 = B) = 0
-\end{aligned} \]
 
-Se non si conosce il risultato della prima estrazione la speranza di vincita è $ E(f(X_1) \mid X_0)  = \dfrac{1}{2} \cdot \p{X_0 = R} + 0 \cdot \p{X_0 = B} = \dfrac{1}{2} \cdot \dfrac{10}{13} = \dfrac{10}{26} $
+\begin{equation*}
+	\begin{aligned}
+	f(X_1 = R) = -1 \text{ Euro} \\
+	f(X_1 = B) = 1 \text{ Euro} \\
+	Q\vec{f} = \begin{pmatrix}
+	\dfrac{9}{12} & \dfrac{3}{12} \\
+	\dfrac{10}{12} & \dfrac{2}{12}
+	\end{pmatrix} \begin{pmatrix}
+	-1 \\ 5
+	\end{pmatrix} = \begin{pmatrix}
+	1/2 & 0
+	\end{pmatrix} \\
+	\E{f(X_1} \mid X_0 = R) = \dfrac{1}{2} \\
+	\E{f(X_1} \mid X_0 = B) = 0
+	\end{aligned}
+\end{equation*}
 
-\paragraph{Distribuzione invariante}
+Se non si conosce il risultato della prima estrazione la speranza di vincita è $ \E{f(X_1} \mid X_0)  = \dfrac{1}{2} \cdot \p{X_0 = R} + 0 \cdot \p{X_0 = B} = \dfrac{1}{2} \cdot \dfrac{10}{13} = \dfrac{10}{26} $
 
-Cerchiamo di capire se uno stato di una catena di Markov è uno stato limite. La \textbf{distribuzione invariante} è un vettore $ \vec{\mu} = (\mu_i)_i $ per $ Q $ matrice di transizione se 
+\begin{defn}
+	\textbf{Distribuzione invariante}
+	
+	Cerchiamo di capire se uno stato di una catena di Markov è uno stato limite. La \textbf{distribuzione invariante} è un vettore $ \vec{\mu} = (\mu_i)_i $ per $ Q $ matrice di transizione se 
+	
+	\begin{equation*}
+	\begin{cases}
+	\mu_i \geq 0 \\
+	\sum_i \mu_i = 1 \\
+	\vec{mu} \cdot Q = \vec{\mu} \\
+	\vec{mu}^T \cdot Q^T = \vec{\mu}^T \\
+	\end{cases}
+	\end{equation*}
+	
+	Ovvero $ \vec{mu}^T $ è l'autovettore dell'autovalore 1 per $ Q^T $
+	
+	Per trovare $ \mu^T $ si risolve $(Q^T-Id)\mu^T = 0$
+\end{defn}
 
-\[ \begin{cases}
-\mu_i \geq 0 \\
-\sum_i \mu_i = 1 \\
-\vec{mu} \cdot Q = \vec{\mu} \\
-\vec{mu}^T \cdot Q^T = \vec{\mu}^T \\
-\end{cases} \]
+\begin{defn}
+	\textbf{Catena Stazionaria}
+	
+	Una Catena di Markov $ (x_k)_k $ è una \textbf{catena stazionaria} se \textbf{tutte} le marginali sono uguali:
+	
+	\[ \begin{cases}
+	\exists \mu \text{ distribuzione invariante} \\
+	\mu Q^k = \mu \forall k 
+	\end{cases} \]
+	
+	Ovvero se $ \p{X_0} = \p{X_1} = \hdots = \p{X_k} $
+\end{defn}
 
-Ovvero $ \vec{mu}^T $ è l'autovettore dell'autovalore 1 per $ Q^T $
+\begin{defn}
+	\textbf{Matrice di Transizione regolare}
+	Una matrice di transizione $ Q $ si dice regolare se $ \forall k \>.\> (Q^k)_{ij} > 0 $. Se $ Q $ è regolare e $ v $ è uno stato iniziale qualsiasi allora $ vQ^k $ tende ad una qualche distribuzione limite e invariante.
+\end{defn}
 
-Per trovare $ \mu^T $ si risolve $(Q^T-Id)\mu^T = 0$
-
-\paragraph{Catena Stazionaria}
-
-Una Catena di Markov $ (x_k)_k $ è una \textbf{catena stazionaria} se \textbf{tutte} le marginali sono uguali:
-
-\[ \begin{cases}
-\exists \mu \text{ distribuzione invariante} \\
-\mu Q^k = \mu \forall k 
-\end{cases} \]
-
-Ovvero se $ \p{X_0} = \p{X_1} = \hdots = \p{X_k} $
-
-\paragraph{Matrice di Transizione regolare}
-Una matrice di transizione $ Q $ si dice regolare se $ \forall k \>.\> (Q^k)_{ij} > 0 $. Se $ Q $ è regolare e $ v $ è uno stato iniziale qualsiasi allora $ vQ^k $ tende ad una qualche distribuzione limite e invariante.
 
 \section{Esercizi}
 
-\paragraph{Esercizio}
+\begin{exrc}
+	Ho un urna con $ N = B + R$ biglie ($(2) B $ = Blu, $ (1) R $ = Rosse)
+	
+	\begin{equation*}
+	\begin{aligned}
+	q_{1,1} = \p{X_1 = R \mid X_0 = R} = \dfrac{R-1}{N-1} \\
+	q_{1,2} = \p{X_1 = B \mid X_0 = R} = \dfrac{B}{N-1} \\
+	q_{2,1} = \p{X_1 = R \mid X_0 = B} = \dfrac{R}{N-1} \\
+	q_{2,2} = \p{X_1 = B \mid X_0 = B} = \dfrac{B-1}{N-1} \\
+	Q = \begin{pmatrix}
+	\dfrac{R-1}{N-1} & \dfrac{B}{N-1} \\
+	\dfrac{R}{N-1} & \dfrac{B-1}{N-1}
+	\end{pmatrix}
+	\end{aligned}
+	\end{equation*}
+	
+	Lo stato iniziale $ \mu = \left(\dfrac{R}{N}, \dfrac{B}{N}\right) $. Vogliamo sapere se $ \mu $ è invariante.
+	
+	\begin{equation*}
+	\begin{aligned}
+	\mu Q = \left(\dfrac{R}{N}, \dfrac{B}{N}\right)\begin{pmatrix}
+	\dfrac{R-1}{N-1} & \dfrac{B}{N-1} \\
+	\dfrac{R}{N-1} & \dfrac{B-1}{N-1}
+	\end{pmatrix} \\
+	= \left(\dfrac{R(R-1)}{N(N-1)} + \dfrac{RB}{N(N-1)}, \dfrac{B(R+B-1)}{N(N-1)}\right) = \left(\dfrac{R}{N}, \dfrac{B}{N}\right)
+	\end{aligned}
+	\end{equation*}
+\end{exrc}
 
-Ho un urna con $ N = B + R$ biglie ($(2) B $ = Blu, $ (1) R $ = Rosse)
-
-\[ \begin{aligned}
-q_{1,1} = \p{X_1 = R \mid X_0 = R} = \dfrac{R-1}{N-1} \\
-q_{1,2} = \p{X_1 = B \mid X_0 = R} = \dfrac{B}{N-1} \\
-q_{2,1} = \p{X_1 = R \mid X_0 = B} = \dfrac{R}{N-1} \\
-q_{2,2} = \p{X_1 = B \mid X_0 = B} = \dfrac{B-1}{N-1} \\
-Q = \begin{pmatrix}
-\dfrac{R-1}{N-1} & \dfrac{B}{N-1} \\
-\dfrac{R}{N-1} & \dfrac{B-1}{N-1}
-\end{pmatrix}
-\end{aligned} \]
-
-Lo stato iniziale $ \mu = \left(\dfrac{R}{N}, \dfrac{B}{N}\right) $. Vogliamo sapere se $ \mu $ è invariante.
-
-\[ \begin{aligned}
-\mu Q = \left(\dfrac{R}{N}, \dfrac{B}{N}\right)\begin{pmatrix}
-\dfrac{R-1}{N-1} & \dfrac{B}{N-1} \\
-\dfrac{R}{N-1} & \dfrac{B-1}{N-1}
-\end{pmatrix} \\
-= \left(\dfrac{R(R-1)}{N(N-1)} + \dfrac{RB}{N(N-1)}, \dfrac{B(R+B-1)}{N(N-1)}\right) = \left(\dfrac{R}{N}, \dfrac{B}{N}\right)
-\end{aligned} \]
-
-\paragraph{Esercizio}
-
-Mi muovo nell'asse X casualmente partendo da 0. Al minuto $ k $ lancio una moneta. Se esce testa mi muovo a destra, se esce croce mi muovo a sinistra. Voglio ottenere la posizione al minuto k.
-
-\[ \begin{aligned}
-Y_k = \text{Bern}\left(\dfrac{1}{2}\right) \text{ (lancio della moneta)}\\
-Y_k \in \{-1, +1\} \\
-X_k = \text{posizione} \\
-\begin{cases}
+\begin{exrc}
+	Mi muovo nell'asse X casualmente partendo da 0. Al minuto $ k $ lancio una moneta. Se esce testa mi muovo a destra, se esce croce mi muovo a sinistra. Voglio ottenere la posizione al minuto k.
+	
+	\begin{equation*}
+	\begin{aligned}
+	Y_k = \text{Bern}\left(\dfrac{1}{2}\right) \text{ (lancio della moneta)}\\
+	Y_k \in \{-1, +1\} \\
+	X_k = \text{posizione} \\
+	\begin{cases}
 	x_0 = 0 \\
 	x_{k+1} = x_k + y_k
-\end{cases}
-\end{aligned} \]
+	\end{cases}
+	\end{aligned}
+	\end{equation*}
+\end{exrc}
 
 %TODO rappresentazione a grafo infinita con infiniti stati orizzontalmente e archi 1/2 bidirezionali fra nodi adiacenti
 
-\paragraph{Domanda}
-Un ubriaco è restio a cambiare direzione.
-Se al momento $ k $ è andato a sinistra, per $ k+1 $ la sinistra è più probabile della destra.
+\begin{exrc}
+	Un ubriaco è restio a cambiare direzione.
+	Se al momento $ k $ è andato a sinistra, per $ k+1 $ la sinistra è più probabile della destra. La sua posizione è una catena di Markov? No, perché dipende dalla posizione all'istante precedente e dalla direzione.
+\end{exrc}
 
-La sua posizione è una catena di Markov? No, perché dipende dalla posizione all'istante precedente e dalla direzione.
-
-\paragraph{Esercizio CPU}
-
-Abbiamo due stati, \textbf{busy} (nodo 1) e \textbf{free} (nodo 2).
-
-\[ Q = \begin{pmatrix}
-0,3 & 0,7 \\
-0,2 & 0,8
-\end{pmatrix} \]
-
-Cerco $ \mu $ distribuzione invariante. Sappiamo che $ \mu $ è autovettore di autovalore 1:
-
-\[ \begin{aligned}
-\mu Q = \mu \iff \mu^T Q^T = \mu^T \iff (Q^T -I)\mu^T = 0 \\
-Q^T - I = \begin{pmatrix}
-0.3 & 0.2 \\
-0.7 & 0.8
-\end{pmatrix} - \begin{pmatrix}
-1 & 0 \\ 0 & 1
-\end{pmatrix} = \begin{pmatrix}
--0.7 & 0.2 \\
-0.7 & -0.2
-\end{pmatrix} \\
- \begin{pmatrix}
--0.7 & 0.2 \\
-0.7 & -0.2
-\end{pmatrix} \begin{pmatrix}
-\mu_1 \\ \mu_2
-\end{pmatrix} = 0 
-\implies \begin{cases}
-\mu_1 + \mu_2 = 1
--0.7\mu_1 + 0.2 \mu_2 = 0 \\
-0.7\mu_1 - 0.2 \mu_2 = 0 \\
-\mu_1 \geq 0; \mu_2 \geq 0
-\end{cases} \\
-\text{(Risolvendo il sistema si ottiene)} \\
-\mu_1 = \dfrac{0.2}{0.9} = \dfrac{2}{9} \\
-\mu_2 = \dfrac{7}{9}
-\end{aligned} \]
-
-\paragraph{Esercizio, Automa Cellulare}
-
-Vogliamo simulare un essere vivente elementare. I suoi stati sono (1) \textbf{relax}, (2) \textbf{vigile}, (3) \textbf{fuga}, (4) \textbf{attacca}
-
-\begin{figure}[H]
-	\centering
-	\caption{Catena di Markov dell'automa cellulare}
-	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
+\begin{exrc}
+	All'interno di una CPU abbiamo due stati, \textbf{busy} (nodo 1) e \textbf{free} (nodo 2).
 	
-	\node[state] 	(A)                    {R};
-	\node[state]         	(B) [right of=A] 	   {V};
-	\node[state]         	(C) [below right of=B] 	   {F};
-	\node[state]         	(D) [above of=B] 	   {A};
+	\begin{equation*}
+	Q = \begin{pmatrix}
+	0,3 & 0,7 \\
+	0,2 & 0,8
+	\end{pmatrix}
+	\end{equation*}
 	
-	\path 	(A)		edge [bend left]  	node {1} 		(B)
-	(B)
-	edge [bend left] 	node {$\dfrac{1}{2}$} 		(A)
-	edge [bend left]  	node {$\dfrac{1}{5}$} 		(D)
-	edge [bend left]  	node {$\dfrac{3}{10}$} 		(C)
-	(C)		edge [bend left]  	node {1} 		(B)
-	(D)		edge [bend left]  	node {1} 		(B);
-	\end{tikzpicture}
-\end{figure}
+	Cerco $ \mu $ distribuzione invariante. Sappiamo che $ \mu $ è autovettore di autovalore 1:
+	
+	\begin{equation*}
+	\begin{aligned}
+	\mu Q = \mu \iff \mu^T Q^T = \mu^T \iff (Q^T -I)\mu^T = 0 \\
+	Q^T - I = \begin{pmatrix}
+	0.3 & 0.2 \\
+	0.7 & 0.8
+	\end{pmatrix} - \begin{pmatrix}
+	1 & 0 \\ 0 & 1
+	\end{pmatrix} = \begin{pmatrix}
+	-0.7 & 0.2 \\
+	0.7 & -0.2
+	\end{pmatrix} \\
+	\begin{pmatrix}
+	-0.7 & 0.2 \\
+	0.7 & -0.2
+	\end{pmatrix} \begin{pmatrix}
+	\mu_1 \\ \mu_2
+	\end{pmatrix} = 0 
+	\implies \begin{cases}
+	\mu_1 + \mu_2 = 1
+	-0.7\mu_1 + 0.2 \mu_2 = 0 \\
+	0.7\mu_1 - 0.2 \mu_2 = 0 \\
+	\mu_1 \geq 0; \mu_2 \geq 0
+	\end{cases} \\
+	\text{(Risolvendo il sistema si ottiene)} \\
+	\mu_1 = \dfrac{0.2}{0.9} = \dfrac{2}{9} \\
+	\mu_2 = \dfrac{7}{9}
+	\end{aligned}
+	\end{equation*}
+\end{exrc}
 
-\[ \begin{aligned}
-Q = \begin{pmatrix}
-0 & 1 & 0 & 0 \\
-\dfrac{1}{2} & 0 & \dfrac{3}{10} & \dfrac{1}{5} \\
-0 & 1 & 0 & 0 \\
-0 & 1 & 0 & 0 
-\end{pmatrix}
-\end{aligned} \]
-
-\begin{figure}[H]
-	\centering
-	\caption{Catena di Markov dell'automa cellulare con tempo}
-	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
+\begin{exrc}
 	
-	\node[state] 	(A)                    {R};
-	\node[state]         	(B) [right of=A] 	   {V};
-	\node[state]         	(C) [below right of=B] 	   {F};
-	\node[state]         	(D) [above of=B] 	   {A};
+	Vogliamo simulare un essere vivente elementare in un automa cellulare. I suoi stati sono (1) \textbf{relax}, (2) \textbf{vigile}, (3) \textbf{fuga}, (4) \textbf{attacca}
 	
-	\path 	(A)		edge [bend left]  	node {1-P} 		(B)
+	\begin{figure}[H]
+		\centering
+		\caption{Catena di Markov dell'automa cellulare}
+		\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
+		
+		\node[state] 	(A)                    {R};
+		\node[state]         	(B) [right of=A] 	   {V};
+		\node[state]         	(C) [below right of=B] 	   {F};
+		\node[state]         	(D) [above of=B] 	   {A};
+		
+		\path 	(A)		edge [bend left]  	node {1} 		(B)
+		(B)
+		edge [bend left] 	node {$\dfrac{1}{2}$} 		(A)
+		edge [bend left]  	node {$\dfrac{1}{5}$} 		(D)
+		edge [bend left]  	node {$\dfrac{3}{10}$} 		(C)
+		(C)		edge [bend left]  	node {1} 		(B)
+		(D)		edge [bend left]  	node {1} 		(B);
+		\end{tikzpicture}
+	\end{figure}
+	
+	\begin{equation*}
+	\begin{aligned}
+	Q = \begin{pmatrix}
+	0 & 1 & 0 & 0 \\
+	\dfrac{1}{2} & 0 & \dfrac{3}{10} & \dfrac{1}{5} \\
+	0 & 1 & 0 & 0 \\
+	0 & 1 & 0 & 0 
+	\end{pmatrix}
+	\end{aligned} 
+	\end{equation*}
+	
+	\begin{figure}[H]
+		\centering
+		\caption{Catena di Markov dell'automa cellulare con tempo}
+		\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
+		
+		\node[state] 	(A)                    {R};
+		\node[state]         	(B) [right of=A] 	   {V};
+		\node[state]         	(C) [below right of=B] 	   {F};
+		\node[state]         	(D) [above of=B] 	   {A};
+		
+		\path 	(A)		edge [bend left]  	node {1-P} 		(B)
 		edge [loop left] node {$P_1$} (A)
-	(B)
+		(B)
 		edge [loop right] node {$P_2$} (B)
-	edge [bend left] 	node {$ \dfrac{1}{2} (1-P_2) $} 		(A)
-	edge [bend left]  	node {$\dfrac{1}{5}(1-P_2)$} 		(D)
-	edge [bend left]  	node {$\dfrac{3}{10}(1-P_2)$} 		(C)
-	(C)		edge [bend left]  	node {$1-P_3$} 		(B)
+		edge [bend left] 	node {$ \dfrac{1}{2} (1-P_2) $} 		(A)
+		edge [bend left]  	node {$\dfrac{1}{5}(1-P_2)$} 		(D)
+		edge [bend left]  	node {$\dfrac{3}{10}(1-P_2)$} 		(C)
+		(C)		edge [bend left]  	node {$1-P_3$} 		(B)
 		edge [loop right] node {$P_3$} (C)
-	(D)		edge [bend left]  	node {$1-P_4$} 		(B);
-	\end{tikzpicture}
-\end{figure}
+		(D)		edge [bend left]  	node {$1-P_4$} 		(B);
+		\end{tikzpicture}
+	\end{figure}
+\end{exrc}
 
-\paragraph{Esercizio, CPU con 3 stati}
+
+\begin{exrc}
+	content
+\end{exrc}
 
 Abbiamo una CPU con 3 stati: (1) \textbf{Off}, (2) \textbf{Stand By}, (3) \textbf{Busy}
 
@@ -333,42 +363,55 @@ Abbiamo una CPU con 3 stati: (1) \textbf{Off}, (2) \textbf{Stand By}, (3) \textb
 	\item Completare gli archi del grafo. Si possono completare sapendo che la somma degli archi uscenti da un nodo dev'essere 1.
 	\item Calcolare $ \p{X_1 = O \mid X_0 = O} $ e $ \p{X_2 = O \mid X_0 = O} $. Abbiamo
 	
-	\[ \begin{aligned}
-	Q = \begin{pmatrix}
-	0.8 & 0.2 & 0 \\
-	0.2 & 0.4 & 0.4 \\
-	0 & 0.6 & 0.4
-	\end{pmatrix} \\
-	q_{00} \to \p{X_1 = O \mid X_0 = O} = 0.8 \\
-	\text{Calcoliamo ora } \p{X_2 = 0 \mid X_0 = 0} \\
-	v = (1, 0, 0) \\
-	v \cdot Q \cdot Q = (0.68, \hdots, \hdots) \text{ (Marginale della legge } X_2)
-	\end{aligned}  \]
-	\item Trovare i costi $ c \to 0 $ per $ O $, $ c \to 5 $ per $ S $, $ c \to 10 $ per B. Calcolare $ E[c(X_k) \mid X_0 = O] $ per $ k = 1,2 $.
+	\begin{equation*}
+		\begin{aligned}
+		Q = \begin{pmatrix}
+		0.8 & 0.2 & 0 \\
+		0.2 & 0.4 & 0.4 \\
+		0 & 0.6 & 0.4
+		\end{pmatrix} \\
+		q_{00} \to \p{X_1 = O \mid X_0 = O} = 0.8 \\
+		\text{Calcoliamo ora } \p{X_2 = 0 \mid X_0 = 0} \\
+		v = (1, 0, 0) \\
+		v \cdot Q \cdot Q = (0.68, \hdots, \hdots) \text{ (Marginale della legge } X_2)
+		\end{aligned} 
+	\end{equation*}
+	
+	\item Trovare i costi $ c \to 0 $ per $ O $, $ c \to 5 $ per $ S $, $ c \to 10 $ per B. Calcolare $ \E{c(X_k) \mid X_0 = O} $ per $ k = 1,2 $.
 	Per $ k = 1 $ si ha che 
-	\[ \begin{aligned}
-	E[c(X_1) \mid X_0 = O] = 0 \cdot \p{X_1 = O \mid X_0 = O } \\
-	+ 5 \cdot \p{X_1 = S \mid X_0 = O} + 10 \cdot \p{X_1 = B \mid X_0 = O} \\
-	= 5 \cdot \p{X_1 = S \mid X_0 = O} = 5 \cdot 0.2 = 1 
-	\end{aligned} \]
+	
+	\begin{equation*}
+		\begin{aligned}
+		\E{c(X_1) \mid X_0 = O} = 0 \cdot \p{X_1 = O \mid X_0 = O } \\
+		+ 5 \cdot \p{X_1 = S \mid X_0 = O} + 10 \cdot \p{X_1 = B \mid X_0 = O} \\
+		= 5 \cdot \p{X_1 = S \mid X_0 = O} = 5 \cdot 0.2 = 1 
+		\end{aligned}
+	\end{equation*}
+
 	Per $ k = 2 $ si ha che
-	\[ \begin{aligned} 
-	f = (0, 5, 10) \\
-	E[c(X_2) \mid X_0 = O] = (Q^2 \cdot f)_1 = vQ^2f = \hdots = 2
-	\end{aligned} \]
+	
+	\begin{equation*}
+		\begin{aligned} 
+		f = (0, 5, 10) \\
+		\E{c(X_2) \mid X_0 = O} = (Q^2 \cdot f)_1 = vQ^2f = \hdots = 2
+		\end{aligned}
+	\end{equation*}
 	
 	\item Calcolare la varianza 
-	\[ \begin{aligned}
-	\var{c(X_1) \mid X_0 = 0} = \\
-	E(c^2(X_1 \mid X_0 = 0)) - (E(c(X_1) \mid X_0 = 0)) \\
-	c^2=(0, 25, 100) \\
-	E(c^2(X_1 \mid X_0 = 0)) = 0 \cdot \p{X_1 = O \mid X_0 = O } \\
-	+ 25 \cdot \p{X_1 = S \mid X_0 = O } + 100 \cdot \p{X_1 = B \mid X_0 = O } \\ 
-	= 25 \cdot 0.2 = 5
-	\end{aligned} \]
+	\begin{equation*}
+		\begin{aligned}
+		\var{c(X_1) \mid X_0 = 0} = \\
+		\E{c^2(X_1 \mid X_0 = 0)} - (E{c(X_1) \mid X_0 = 0}) \\
+		c^2=(0, 25, 100) \\
+		\E{c^2(X_1 \mid X_0 = 0}) = 0 \cdot \p{X_1 = O \mid X_0 = O } \\
+		+ 25 \cdot \p{X_1 = S \mid X_0 = O } + 100 \cdot \p{X_1 = B \mid X_0 = O } \\ 
+		= 25 \cdot 0.2 = 5
+		\end{aligned}
+	\end{equation*}
 	
-	\item Calcolare $\mu$ distribuzione invariante e $E[c(X_1) \mid \mu]$
-	\[ \begin{aligned}
+	\item Calcolare $\mu$ distribuzione invariante e $\E{c(X_1) \mid \mu}$
+\begin{equation*}
+	\begin{aligned}
 	(\text{Calcoliamo } \mu )\\ \\
 	(Q^T - I) \mu^T = 0 \\
 	\mu = (\mu_1, \mu_2, \mu_3) \\
@@ -389,87 +432,102 @@ Abbiamo una CPU con 3 stati: (1) \textbf{Off}, (2) \textbf{Stand By}, (3) \textb
  	\mu_1 + \mu_2 + \mu_3 = 1
 	\end{cases} \\
 	\implies \mu = \left(\dfrac{3}{8}, \dfrac{3}{8}, \dfrac{1}{4}\right) \\ \\
-	(\text{Calcoliamo } E[c(X_1) \mid \mu]) \\ \\
-	E[c(X_1) \mid \mu] = \mu \cdot Q \cdot f \\
-	\text{(si può calcolare anche con)}
-	E[c(X_1) \mid \mu] =0 \cdot \p{X_1 = O \mid \mu} \\
+	(\text{Calcoliamo } \E{c(X_1) \mid \mu}) \\ \\
+	\E{c(X_1) \mid \mu} = \mu \cdot Q \cdot f \\
+	\text{(si può calcolare anche con) }
+	\E{c(X_1) \mid \mu} =0 \cdot \p{X_1 = O \mid \mu} \\
 	+ 5 \cdot \p{X_1 = S \mid \mu} + 10 \cdot \p{X_1 = B \mid \mu} \\
 	\text{(Si prosegue per fattorizzazione)}
 	\end{aligned} 
-	 \]
+\end{equation*}
 \end{enumerate}
 
-\paragraph{Esercizio Generico}
-
-Dato il grafo di una Catena di Markov
-
-\FloatBarrier 
-\begin{figure}[H]
-	\centering
-	\caption{Catena di Markov}
-	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
+\begin{exrc}
+	Dato il grafo di una Catena di Markov
 	
-	\node[state,initial] 			(A)                    {1};
-	\node[state]         	(B) [below left of=A] 	   {2};
-	\node[state]         	(C) [below right of=A] 	   {3};
+	\FloatBarrier 
+	\begin{figure}[H]
+		\centering
+		\caption{Catena di Markov}
+		\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
+		
+		\node[state,initial] 			(A)                    {1};
+		\node[state]         	(B) [below left of=A] 	   {2};
+		\node[state]         	(C) [below right of=A] 	   {3};
+		
+		\path 	(A)		edge []  	node {0.5} 		(B)
+		edge [loop above] node {0.5} (A)
+		(B)
+		edge []  	node {1} 		(C)
+		(C) edge [] node {1} (A);
+		\end{tikzpicture}
+	\end{figure}
+
+	\begin{enumerate}
+		\item Trovare Q matrice di transizione 
+		\begin{equation*}
+		Q = \begin{pmatrix}
+		0.5 & 0.5 & 0 \\
+		0 & 0 & 1 \\ 
+		1 & 0 & 0
+		\end{pmatrix}
+		\end{equation*}
+		
+		\item Scrivere le marginali $ X_1, X_2, X_3 $ sapendo che $ X_0 = 1 $
+		
+		\begin{equation*}
+				\begin{aligned}
+				v = (1, 0, 0) \\ 
+				\p{X_1 \mid X_0 = 1} = v \cdot Q = \left(\dfrac{1}{2}, \dfrac{1}{2}, 0\right) \\
+				\p{X_2 \mid X_0 = 1} = v \cdot Q^2 = \left(\dfrac{1}{2}, \dfrac{1}{2}, 0\right) Q = \left( \dfrac{1}{4}, \dfrac{1}{4}, \dfrac{1}{2} \right) \\
+				\p{X_3 \mid X_0 = 1} = v \cdot Q^3 = \left(\dfrac{1}{2}, \dfrac{1}{2}, 0\right) Q^2 = \left(\dfrac{5}{8}, \dfrac{1}{8}, \dfrac{1}{4}\right)\\
+				\end{aligned}
+		\end{equation*}
 	
-	\path 	(A)		edge []  	node {0.5} 		(B)
-	edge [loop above] node {0.5} (A)
-	(B)
-	edge []  	node {1} 		(C)
-	(C) edge [] node {1} (A);
-	\end{tikzpicture}
-\end{figure}
+		\item Calcolare la distribuzione invariante $ \mu $ e $ \E{\mu} $ 
+		\begin{equation*}
+			\begin{aligned}
+			(Q^T-I)\mu^T = \begin{pmatrix}
+			-0.5 & 0 & 1 \\
+			0.5 & -1 & 0 \\
+			0 & 1 & -1
+			\end{pmatrix} \begin{pmatrix}
+			\mu_1 \\ \mu_2 \\ \mu_3
+			\end{pmatrix} \\
+			\implies \begin{cases}
+			- \mu_1 + 2\mu_3 = 0 \\ 
+			\mu_1 - 2\mu_2 = 0 \\
+			2\mu_2 - 2\mu_3 = 0
+			\end{cases} \implies \begin{cases}
+			\mu_1 = 2\mu_3 \\
+			\mu_1 = 2\mu_2 \\
+			\mu_1 + \mu_2 + \mu_3 = 1
+			\end{cases} 
+			\implies \mu = \left(\dfrac{1}{2}, \dfrac{1}{4}, \dfrac{1}{4}\right) \\ 
+			\iff \begin{cases}
+			\p{X_0 = 1} = \frac{1}{2} \\
+			\p{X_0 = 2} = \frac{1}{4} \\
+			\p{X_0 = 3} = \frac{1}{4} \\	
+			\end{cases} \\
+			\E{\mu} = 1 \cdot \dfrac{1}{2} + 2 \cdot \dfrac{1}{4} + 3 \cdot \dfrac{1}{4} = \dfrac{7}{4}
+			\end{aligned} 
+		\end{equation*}
+		
+		\item Se la catena è stazionaria calcolare $ \p{X_1 = 1 \mid X_3 = 1} $. Utilizziamo la formula di Bayes. 
+		
+		\begin{equation*}
+			\begin{aligned}
+			\p{X_1 = 1 \mid X_3 = 1} = \p{X_3 = 1 \mid X_1 = 1} \cdot \dfrac{\p{X_1 = 1}}{\p{X_3 = 1}} \\
+			\text{La catena è stazionaria: } \p{X_3 = 1} = \p{X_1 = 1} \\
+			\implies \p{X_1 = 1 \mid X_3 = 1} = \p{X_3 = 1 \mid X_1 = 1} \\ 
+			= \p{X_2 = 1 \mid X_0 = 1} = (1, 0, 0) Q^2 = \dfrac{1}{2}
+			\end{aligned}
+		\end{equation*}
+	\end{enumerate}
+\end{exrc}
 
 
-\begin{enumerate}
-	\item Trovare Q matrice di transizione 
-	\[ Q = \begin{pmatrix}
-	0.5 & 0.5 & 0 \\
-	0 & 0 & 1 \\ 
-	1 & 0 & 0
-	\end{pmatrix} \]
-	\item Scrivere le marginali $ X_1, X_2, X_3 $ sapendo che $ X_0 = 1 $
-	\[ \begin{aligned}
-	v = (1, 0, 0) \\ 
-	\p{X_1 \mid X_0 = 1} = v \cdot Q = \left(\dfrac{1}{2}, \dfrac{1}{2}, 0\right) \\
-	\p{X_2 \mid X_0 = 1} = v \cdot Q^2 = \left(\dfrac{1}{2}, \dfrac{1}{2}, 0\right) Q = \left( \dfrac{1}{4}, \dfrac{1}{4}, \dfrac{1}{2} \right) \\
-	\p{X_3 \mid X_0 = 1} = v \cdot Q^3 = \left(\dfrac{1}{2}, \dfrac{1}{2}, 0\right) Q^2 = \left(\dfrac{5}{8}, \dfrac{1}{8}, \dfrac{1}{4}\right)\\
-	\end{aligned} \]
-	\item Calcolare la distribuzione invariante $ \mu $ e $ E(\mu) $ 
-	\[ \begin{aligned}
-	(Q^T-I)\mu^T = \begin{pmatrix}
-	-0.5 & 0 & 1 \\
-	0.5 & -1 & 0 \\
-	0 & 1 & -1
-	\end{pmatrix} \begin{pmatrix}
-	\mu_1 \\ \mu_2 \\ \mu_3
-	\end{pmatrix} \\
-	\implies \begin{cases}
-	- \mu_1 + 2\mu_3 = 0 \\ 
-	\mu_1 - 2\mu_2 = 0 \\
-	2\mu_2 - 2\mu_3 = 0
-	\end{cases} \implies \begin{cases}
-	\mu_1 = 2\mu_3 \\
-	\mu_1 = 2\mu_2 \\
-	\mu_1 + \mu_2 + \mu_3 = 1
-	\end{cases} \\ 
-	\implies \mu = \left(\dfrac{1}{2}, \dfrac{1}{4}, \dfrac{1}{4}\right) \\ 
-	\iff \begin{cases}
-	\p{X_0 = 1} = \frac{1}{2} \\
-	\p{X_0 = 2} = \frac{1}{4} \\
-	\p{X_0 = 3} = \frac{1}{4} \\	
-	\end{cases} 
-	\\ \\ \text{Troviamo adesso } E(\mu) \\
-	E(\mu) = 1 \cdot \dfrac{1}{2} + 2 \cdot \dfrac{1}{4} + 3 \cdot \dfrac{1}{4} = \dfrac{7}{4}
-	\end{aligned} \]
-	\item Se la catena è stazionaria calcolare $ \p{X_1 = 1 \mid X_3 = 1} $. Utilizziamo la formula di Bayes. 
-	
-	\[ \begin{aligned}
-	\p{X_1 = 1 \mid X_3 = 1} = \p{X_3 = 1 \mid X_1 = 1} \cdot \dfrac{\p{X_1 = 1}}{\p{X_3 = 1}} \\
-	\text{La catena è stazionaria: } \p{X_3 = 1} = \p{X_1 = 1} \\
-	\implies \p{X_1 = 1 \mid X_3 = 1} = \p{X_3 = 1 \mid X_1 = 1} \\ 
-	= \p{X_2 = 1 \mid X_0 = 1} = (1, 0, 0) Q^2 = \dfrac{1}{2}
-	\end{aligned} \]
-\end{enumerate}
+
+
+
 

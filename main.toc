@@ -20,25 +20,9 @@
 \contentsline {section}{\numberline {3.3}Valore Atteso}{16}{section.3.3}
 \contentsline {section}{\numberline {3.4}Esercizi}{19}{section.3.4}
 \contentsline {chapter}{\numberline {4}Catene di Markov}{23}{chapter.4}
-\contentsline {section}{\numberline {4.1}Processi Stocastici}{23}{section.4.1}
-\contentsline {paragraph}{Definizione}{23}{section*.4}
-\contentsline {paragraph}{Esempio, estrazione di palline}{23}{section*.5}
-\contentsline {paragraph}{Esempio, estrazione di palline con reimmissione}{23}{section*.6}
-\contentsline {subsection}{\numberline {4.1.1}Propriet\IeC {\`a} di Markov}{24}{subsection.4.1.1}
-\contentsline {paragraph}{Definizione}{24}{section*.7}
-\contentsline {section}{\numberline {4.2}Catene di Markov}{24}{section.4.2}
-\contentsline {paragraph}{Calcolo del Marginale di una Catena di Markov}{24}{section*.8}
-\contentsline {paragraph}{Esercizio}{24}{section*.9}
-\contentsline {paragraph}{Calcolo dei valori attesi}{24}{section*.10}
-\contentsline {paragraph}{Esercizio}{25}{section*.11}
-\contentsline {paragraph}{Distribuzione invariante}{25}{section*.12}
-\contentsline {paragraph}{Catena Stazionaria}{25}{section*.13}
-\contentsline {paragraph}{Matrice di Transizione regolare}{25}{section*.14}
-\contentsline {section}{\numberline {4.3}Esercizi}{26}{section.4.3}
-\contentsline {paragraph}{Esercizio}{26}{section*.15}
-\contentsline {paragraph}{Esercizio}{26}{section*.16}
-\contentsline {paragraph}{Domanda}{26}{section*.17}
-\contentsline {paragraph}{Esercizio CPU}{26}{section*.18}
-\contentsline {paragraph}{Esercizio, Automa Cellulare}{27}{section*.19}
-\contentsline {paragraph}{Esercizio, CPU con 3 stati}{28}{section*.20}
-\contentsline {paragraph}{Esercizio Generico}{29}{section*.21}
+\contentsline {subsection}{\numberline {4.0.1}Propriet\IeC {\`a} di Markov}{24}{subsection.4.0.1}
+\contentsline {paragraph}{Definizione}{24}{section*.4}
+\contentsline {section}{\numberline {4.1}Catene di Markov}{24}{section.4.1}
+\contentsline {paragraph}{Calcolo del Marginale di una Catena di Markov}{24}{section*.5}
+\contentsline {paragraph}{Calcolo dei valori attesi}{24}{section*.6}
+\contentsline {section}{\numberline {4.2}Esercizi}{25}{section.4.2}
