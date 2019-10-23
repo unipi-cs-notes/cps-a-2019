@@ -1,6 +1,41 @@
 \chapter{Catene di Markov}
 
-% TODO lezione 17 ottobre
+\section{Processi Stocastici}
+Spesso abbiamo bisogno di rappresentare quantità incerte che cambiano nel tempo. Possiamo rappresentarle con famiglie di variabili aleatore indicizzate mediante un parametro, spesso corrispondente al "tempo"
+
+\paragraph{Definizione}
+Una famiglia di variabili aleatorie $ \left\{X_t\right\}_{t\in \mathcal{T}} $ dove $ \mathcal{T} \subseteq \R $ e che assumono tutte valori nello stesso insieme $ E $ è detta \textbf{processo stocastico}. L'insieme $ E $ è detto spazio degli stati del processo, mentre l'insieme $ \mathcal{T} $ è detto insieme dei tempi. Considereremo sempre gli insiemi degli stati e dei tempi \textit{discreti} (numerabili) e molto spesso finiti. L'insieme dei tempi può essere un intervallo $ \mathcal{T} = [0,T] $. Ad esempio, insiemi $ \mathcal{T} $ validi possono essere: $ \N, \Z, \{0, 1, 2, \hdots, n\}, \{t_1, t_2, \hdots, t_n\} $. Dato un processo stocastico $ \{X_t\}_{t \in \mathcal{T}} $ le variabili aleatorie $ X_t \in E $ sono dette marginali del processo. Le leggi delle marginali di due processi potrebbero coincidere, pur essendo i due processi molto diversi.
+
+\paragraph{Esempio, estrazione di palline}
+Consideriamo le estrazioni da un urna contenente palline rosse e palline blu. Prendiamo in considerazione il colore della pallina alla prima, seconda, terza, ecc. estrazione. Il fenomeno è rappresentabile con una famiglia di variabili aleatorie.
+
+\[ X_1, X_2, X_3, \hdots, X_n \in \{\text{rossa}, \text{blu}\} \]
+
+I due processi cambiano radicalmente se le estrazioni sono con reimmissione della pallina o senza, ma sappiamo che le marginali hanno tutte le stesse leggi rispetto a $ \p{\cdot \mid \Omega} $
+
+\[ \p{X_k = \text{rossa} \mid \Omega} = \dfrac{\text{\# palline rosse}}{\text{\# palline totali}} \]
+
+\paragraph{Esempio, estrazione di palline con reimmissione}
+
+Assumiamo che le variabili $ X_1, \hdots, X_n \in \{\text{rossa}, \text{blu}\} $ siano tutte indipendenti (rispetto a $ \Omega $). Supponiamo di conoscere il numero di palline totali ed il numero di palline rosse inizialmente. Supponiamo di aver fatto $ k < n $ estrazioni e di conoscere il loro esito esatto. Poniamo ad esempio che siano state tutte rosse. Qual'è la probabilità che all'estrazione $ k+1 $ otteniamo una pallina rossa?
+
+\[ \begin{aligned}
+\p{X_{k+1} = rossa \mid \Omega \cap \{X_1 = \text{rossa}, \hdots, X_k = \text{rossa} \} } \\
+= P(X_{k+1} = \text{rossa} \mid \Omega)	\text{  (Per indipendenza)} \\
+= \dfrac{\text{\# palline rosse}}{\text{\# palline totali}}
+\end{aligned} \]
+
+L'ipotesi di indipendenza probabilistica significa che non siamo capaci di "imparare" dal passato.
+
+\subsection{Proprietà di Markov}
+Nei processi di Markov le informazioni ottenibili dal "passato" (la storia del processo fino al presente) sono utili a fare inferenza sullo stato futuro.
+
+\paragraph{Definizione}
+
+
+% TODO finisci lezione Definizione 10
+
+\section{Catene di Markov}
 
 \paragraph{Calcolo del Marginale di una Catena di Markov}
 $ \p{X_0 = j} \forall j $ è un vettore che chiamiamo $ v = (\p{X_0 = j}) $, è lo stato iniziale. Definiamo $ Q(q_{ji}) $ matrice di transizione. $ q_{ji} = \p{X_1 = i \mid X_0 = j} $. Definiamo anche $ q_{j \to i} = \p{X_1 = i \mid X_0 = j} $

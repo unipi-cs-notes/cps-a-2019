@@ -1,17 +1,18 @@
 \documentclass[a4paper,12pt]{book}
 \usepackage[margin=0.7in,nomarginpar]{geometry}
+\usepackage[italian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{hyperref}
 \usepackage{tabularx}
+\usepackage{amsthm}
 \usepackage{array}
 \usepackage{xcolor}
 \usepackage{polynom}
 \usepackage{wrapfig}
 \usepackage{stackengine}
-\usepackage[italian]{babel}
 \usepackage{float}
 \usepackage{placeins}
 \usepackage{tikz}
@@ -21,6 +22,7 @@
 
 \addtolength{\topmargin}{.2in}
 \addtolength{\textheight}{-.3in}
+
 
 % commands
 \newcommand{\red}[1]{{\color{red}#1}}
@@ -39,11 +41,9 @@
 
 \newcommand\xrowht[2][0]{\addstackgap[.5\dimexpr#2\relax]{\vphantom{#1}}}
 
-
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
-
 
 \newcommand{\hlinee}{\begin{tabular}{p{\textwidth}}\hline\ \\\end{tabular}}
 
@@ -53,11 +53,15 @@
 \def\R{\mathbb{R}}
 \def\Z{\mathbb{Z}}
 
-\def\p{\prob}
 \def\geom{\text{Geom}}
 
+\def\p{\prob}
 \newcommand{\prob}[1]{
 	\text{P}\left(#1\right)
+}
+
+\newcommand{\E}[1]{
+	\mathcal{E}\left[#1\right]
 }
 
 \newcommand{\var}[1]{
@@ -96,6 +100,20 @@
 	\end{flushright}
 }
 
+\theoremstyle{plain}% default
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposizione}
+\newtheorem*{cor}{Corollario}
+\theoremstyle{definition}
+\newtheorem{defn}{Definizione}[section]
+\newtheorem{conj}{Congettura}[section]
+\newtheorem{exmp}{Esempio}[section]
+\newtheorem{exrc}[exmp]{Esercizio}
+\theoremstyle{remark}
+\newtheorem*{comm}{Commento}
+\newtheorem*{note}{Nota}
+\newtheorem{caso}{Caso}
 
 \begin{document}
 

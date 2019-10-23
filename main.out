@@ -1,33 +1,32 @@
 \BOOKMARK [0][-]{chapter.1}{Probabilit\340 Discreta e Condizionata}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Definizione di Probabilit\340}{chapter.1}% 2
-\BOOKMARK [1][-]{section.1.2}{Formule Combinatorie}{chapter.1}% 3
-\BOOKMARK [2][-]{subsection.1.2.1}{Permutazioni di n elementi}{section.1.2}% 4
-\BOOKMARK [2][-]{subsection.1.2.2}{Coefficiente Binomiale}{section.1.2}% 5
-\BOOKMARK [2][-]{subsection.1.2.3}{Disposizioni}{section.1.2}% 6
-\BOOKMARK [1][-]{section.1.3}{Esercizi}{chapter.1}% 7
-\BOOKMARK [2][-]{subsection.1.3.1}{Terno al lotto}{section.1.3}% 8
-\BOOKMARK [2][-]{subsection.1.3.2}{Probabilit\340 del gioco di Monty Hall}{section.1.3}% 9
-\BOOKMARK [2][-]{subsection.1.3.3}{Probabilit\340 Condizionata}{section.1.3}% 10
-\BOOKMARK [2][-]{subsection.1.3.4}{Dado rosso e dado nero}{section.1.3}% 11
-\BOOKMARK [0][-]{chapter.2}{Spazio Probabilizzato}{}% 12
-\BOOKMARK [1][-]{section.2.1}{Lo Spazio Probabilizzato}{chapter.2}% 13
-\BOOKMARK [2][-]{subsection.2.1.1}{Formula di fattorizzazione}{section.2.1}% 14
-\BOOKMARK [2][-]{subsection.2.1.2}{Formula di Bayes}{section.2.1}% 15
-\BOOKMARK [1][-]{section.2.2}{Esercizi}{chapter.2}% 16
-\BOOKMARK [0][-]{chapter.3}{Variabili Aleatorie}{}% 17
-\BOOKMARK [1][-]{section.3.1}{Variabili Aleatorie Discrete}{chapter.3}% 18
-\BOOKMARK [2][-]{subsection.3.1.1}{Legge di Bernoulli}{section.3.1}% 19
-\BOOKMARK [2][-]{subsection.3.1.2}{Legge Binomiale}{section.3.1}% 20
-\BOOKMARK [2][-]{subsection.3.1.3}{Somma di Variabili Aleatorie}{section.3.1}% 21
-\BOOKMARK [2][-]{subsection.3.1.4}{Indipendenza di Variabili Aleatorie}{section.3.1}% 22
-\BOOKMARK [1][-]{section.3.2}{Variabile Geometrica}{chapter.3}% 23
-\BOOKMARK [2][-]{subsection.3.2.1}{Variabili Ipergeometriche}{section.3.2}% 24
-\BOOKMARK [2][-]{subsection.3.2.2}{Esercizi}{section.3.2}% 25
-\BOOKMARK [2][-]{subsection.3.2.3}{Binomiale Negativa \(o di Pascal\)}{section.3.2}% 26
-\BOOKMARK [1][-]{section.3.3}{Media Pesata, Speranza o Valore Atteso}{chapter.3}% 27
-\BOOKMARK [2][-]{subsection.3.3.1}{Distribuzione di Poisson}{section.3.3}% 28
-\BOOKMARK [1][-]{section.3.4}{Varianza}{chapter.3}% 29
-\BOOKMARK [2][-]{subsection.3.4.1}{Disuguaglianze utili}{section.3.4}% 30
-\BOOKMARK [2][-]{subsection.3.4.2}{Esercizi}{section.3.4}% 31
-\BOOKMARK [0][-]{chapter.4}{Catene di Markov}{}% 32
-\BOOKMARK [1][-]{section.4.1}{Esercizi}{chapter.4}% 33
+\BOOKMARK [1][-]{section.1.1}{Probabilit\340 Discreta e Formule Combinatorie}{chapter.1}% 2
+\BOOKMARK [2][-]{subsection.1.1.1}{Permutazioni di n elementi}{section.1.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.2}{Coefficiente Binomiale}{section.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.1.3}{Disposizioni}{section.1.1}% 5
+\BOOKMARK [1][-]{section.1.2}{Esercizi}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.3}{Probabilit\340 Condizionata}{chapter.1}% 7
+\BOOKMARK [0][-]{chapter.2}{Spazio Probabilizzato}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Lo Spazio Probabilizzato}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.1.1}{Formula di fattorizzazione}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.2}{Formula di Bayes}{section.2.1}% 11
+\BOOKMARK [1][-]{section.2.2}{Esercizi}{chapter.2}% 12
+\BOOKMARK [0][-]{chapter.3}{Variabili Aleatorie}{}% 13
+\BOOKMARK [1][-]{section.3.1}{Variabili Aleatorie Discrete}{chapter.3}% 14
+\BOOKMARK [2][-]{subsection.3.1.1}{Legge di Bernoulli}{section.3.1}% 15
+\BOOKMARK [2][-]{subsection.3.1.2}{Legge Binomiale}{section.3.1}% 16
+\BOOKMARK [2][-]{subsection.3.1.3}{Somma di Variabili Aleatorie}{section.3.1}% 17
+\BOOKMARK [2][-]{subsection.3.1.4}{Indipendenza di Variabili Aleatorie}{section.3.1}% 18
+\BOOKMARK [1][-]{section.3.2}{Variabile Geometrica}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.2.1}{Variabili Ipergeometriche}{section.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.2.2}{Esercizi}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.3}{Binomiale Negativa \(o di Pascal\)}{section.3.2}% 22
+\BOOKMARK [1][-]{section.3.3}{Media Pesata, Speranza o Valore Atteso}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.3.1}{Distribuzione di Poisson}{section.3.3}% 24
+\BOOKMARK [1][-]{section.3.4}{Varianza}{chapter.3}% 25
+\BOOKMARK [2][-]{subsection.3.4.1}{Disuguaglianze utili}{section.3.4}% 26
+\BOOKMARK [2][-]{subsection.3.4.2}{Esercizi}{section.3.4}% 27
+\BOOKMARK [0][-]{chapter.4}{Catene di Markov}{}% 28
+\BOOKMARK [1][-]{section.4.1}{Processi Stocastici}{chapter.4}% 29
+\BOOKMARK [2][-]{subsection.4.1.1}{Propriet\340 di Markov}{section.4.1}% 30
+\BOOKMARK [1][-]{section.4.2}{Catene di Markov}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.3}{Esercizi}{chapter.4}% 32
