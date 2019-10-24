@@ -1,238 +1,318 @@
 \chapter{Spazio Probabilizzato}
 
 \section{Lo Spazio Probabilizzato}
-Uno spazio probabilizzato è un costrutto matematico che modella un processo del mondo reale o "esperimento", consistente in degli stati che occorrono casualmente. Viene costruito su una situazione o esperimento particolare, Uno spazio probabilizzato è definito come una terna:
 
-\[ (\Omega, F, P) \]
+\begin{defn}
+	Uno \textbf{spazio probabilizzato} è un costrutto matematico che modella un processo del mondo reale o "esperimento", consistente in degli stati che occorrono casualmente. Viene costruito su una situazione o esperimento particolare, Uno spazio probabilizzato è definito come una terna:
+	
+	\begin{equation}
+		(\Omega, F, P)
+	\end{equation}
+	
+	$ \Omega $ è l'insieme degli eventi elementari, ovvero tutti i risultati possibili, ad esempio in un lancio di un dado $ \Omega = \{1,2,3,4,5,6\} $
+	
+	$ \parts{A}$, ovvero le parti di A, sono tutti gli insiemi che posso costruire a partire dagli elementi di A. Ad esempio:
+	
+	\begin{equation*}
+		\begin{aligned}
+			A = \{0, 1\} \\
+			\parts{A} = \{0, \{0, 1\}, \{0\}, \{1\}\}
+		\end{aligned}
+	\end{equation*}
+	
+	$ F \subseteq \parts{\Omega} $ è un sottoinsieme delle parti di omega, chiuso rispetto a intersezione, unione e complementare.
+	
+	\begin{equation*}
+	\begin{aligned}
+		A,B \in F \implies \begin{cases}
+			A \cup B \\
+			A \cap B \\
+			A^C, B^C
+		\end{cases} \in F
+	\end{aligned}
+	\end{equation*}
+	
+	Se $ A_1, \dots, A_n \subset F $ allora $ \bigcup\limits_{n \in \N} A_n \in F $
+	
+	Se $ F $ comprende queste proprietà si dice che è una $ \sigma $ Algebra (tribù)
+	
+	La probabilità $ P $ è una funzione definita come
+	
+	\begin{equation}
+		\begin{aligned}
+			P : F \to [0,1] \\
+			P(\Omega) = 1 \\
+			\forall i \neq j . A_i \cap A_j \neq \emptyset \implies P \left( \bigcup\limits_{n} A_n \right) = \sum_{n} P(A_n)
+		\end{aligned}
+	\end{equation}
 
-$ \Omega $ è l'insieme degli eventi elementari, ovvero tutti i risultati possibili, ad esempio in un lancio di un dado $ \Omega = \{1,2,3,4,5,6\} $
+	Dato $ \Omega $ insieme finito, allora $ F = \parts{\Omega} $ allora la probabilità sarà
+	
+	\begin{equation*}
+		P (A \subset F) = \dfrac{\#A}{\#\Omega}
+	\end{equation*}
+	
+	\begin{proof}
+		La terna $ (\Omega, F, P) $ si può dimostrare.
+		
+		\begin{equation}
+			\begin{aligned}
+				P(A^C) = 1 - P(A) \impliedby \begin{cases}
+					A \cap A^C \neq \emptyset \\
+					A \cup A^C = \Omega \\
+					P(\Omega) = 1
+				\end{cases} \\
+				P(A \cup B) = P(A) + P(B) - P(A \cap B) \\
+				A \subseteq B \implies P(A) \leq P(B)
+			\end{aligned}
+		\end{equation}
+	\end{proof}
+\end{defn}
 
-$ \parts{A}$, ovvero le parti di A, sono tutti gli insiemi che posso costruire a partire dagli elementi di A. Ad esempio:
-\begin{align*}
-& A = \{0, 1\} \\
-& \parts{A} = \{0, \{0, 1\}, \{0\}, \{1\}\}
-\end{align*}
+\begin{exmp}
+	\textbf{Lotteria di De' Finetti:}
+	Si assiste all'estrazione di un numero $ n \in \N $ casuale. Supponiamo che ogni numero abbia la stessa probabilità di essere estratto.
+	
+	Dato un altro naturale $ m \in \N $
+	
+	\begin{equation*}
+	p_n = P(n) = \text{ La probabilità di estrarre il numero n}
+	\end{equation*}
+	
+	Vogliamo che  $ 0 \leq p_n \leq 1 $ e anche $ p_m = p_n \forall n = m $. Quindi $ 1 = P(\Omega) = P \left( \bigcup\limits_{n \in \N} n \right) = \sum_{n \in \N} p_n $. Assumendo $ p_n = 0, \forall n $ allora $ \sum_{n} p_n = 0 $. Se $ p_n = c > 0, \forall n $ allora $ \sum_{n} p_n = \sum_{n} c = + \infty $
+	
+	Ciò significa che nella lotteria di De' Filetti è impossibile che ogni numero sia equiprobabile perché $ P $ non è definibile. Abbiamo dimostrache che non è possibile che $ \p{\Omega} = \sum_{n \in \N} p_n = 1$, essendo $ \N $ insieme infinito.
+\end{exmp}
 
-$ F \subseteq \parts{\Omega} $ è un sottoinsieme delle parti di omega, chiuso rispetto a intersezione, unione e complementare.
-\[ A,B \in F \implies \begin{cases}
-A \cup B \\
-A \cap B \\
-A^C, B^C
-\end{cases} \in F\]
 
-Se $ A_1, \dots, A_n \subset F \implies \bigcup\limits_{n \in \N} A_n \in F $
+\begin{defn}
+	\textbf{Densità di Probabilità:}
+	Definiamo $ \{p_n\}_{n \in \N} $ con $ p_n \in \R $ come funzione, detta densità di probabilità come $ p_n \geq 0 $ e $ \sum_{n \in \N} p_n = 1 $ 
+	
+	Se $ \{p_n\} $ è una densità di probabilità discreta $ \implies \left( \N, \parts{\N}, P\right) $ è uno spazio probabilizzato. Vale anche per eventi non equiprobabili.
+\end{defn}
 
-Se $ F $ comprende queste proprietà si dice che è una $ \sigma $ Algebra (tribù)
+\begin{defn}
+	\textbf{Indipendenza degli eventi:} 
+	Sia dato $ P(A \mid B) \equiv \dfrac{P(A \cap B)}{P(B)} $. Di conseguenza, se $ P(A \mid B) = P(A) $ due eventi $ A,B $ sono indipendenti. Un esempio è il lancio di due dadi, il primo dado non influenzerà in alcun modo il risultato del secondo, per questo gli eventi del lancio di due dadi $ A,B $ sono indipendenti.
+	
+	È vero quindi che $ P(A \mid B) = P(A) \implies P(B \mid A) = P(B) $? Sì se $ A,B $ sono indipendenti.
+	
+	\begin{equation}
+	\begin{aligned}
+		P(A \mid B) = \dfrac{P(A \cap B)}{P(B)} = P(A), \text{ se } P(B) \neq 0 \\
+		P(B \mid A) = \dfrac{P(B \cap A)}{P(A)} = P(B), \text{ se } P(A) \neq 0 \\
+		P(A \cap B)  = P(A) \cdot P(B) = P(B \cap A) \\	
+	\end{aligned}
+	\end{equation}
+	
+	Se $ A_1, \dots, A_n $ sono indipendenti:
+	\begin{equation*}
+	\forall i_1, \dots, i_k . k \leq n  \implies P(A)\cap \left(A_{i_1},\dots,A_{i_k}\right) = P(A_{i_1}) \cdot \dots \cdot P(A_{i_k})
+	\end{equation*}
+\end{defn}
 
-La probabilità $ P $ è una funzione definita come
 
-\begin{align*}
-&P : F \to [0,1] \\
-& P(\Omega) = 1 \\
-& \forall i \neq j . A_i \cap A_j \neq \emptyset \implies P \left( \bigcup\limits_{n} A_n \right) = \sum_{n} P(A_n)
-\end{align*}
+\begin{exmp}
+	$ A, B $ indipendenti $ \implies \left\{(A, B^C), (A^C, B^C), (A^C, B) \right\}$ indipendenti
+	
+	\begin{proof}
+		\begin{equation*}
+			\begin{aligned}
+				A = (A \cap B) \cup (A \cap B^C)  \\
+				P(A) = P(A \cap B) + P(A \cap B^C) = P(A) \cdot P(B) + P(A \cap B^C) \\
+				P(A \cap B^C) = P(A) - P(A) \cdot P(B) = 
+				P(A)\left[1 - P(B)\right] = P(A) \cdot P(B^C) 
+			\end{aligned}
+		\end{equation*}
+		$ A $ e $ B^C $ sono indipendenti
+	\end{proof}
+\end{exmp}
 
-Dato $ \Omega $ insieme finito, allora $ F = \parts{\Omega} $ allora la probabilità sarà
-\[  P (A \subset F) = \dfrac{\#A}{\#\Omega} \]
 
-\paragraph{Esempio: Lotteria di De' Finetti}
-Si assiste all'estrazione di un numero $ n \in \N $ casuale. Supponiamo che ogni numero abbia la stessa probabilità di essere estratto.
+\begin{exrc}
+	Lancio due dadi, uno rosso ed uno nero.
+	$ \Omega = (r, n) $ dove $ r = 1,2,3,4,5,6 $ e $ n = 1,2,3,4,5,6 $ 
+	Definiamo lo spazio probabilizzato con $ F = \parts{\Omega}, \omega \in \Omega $. Ad esempio $ \prob{n} = \dfrac{1}{36} $
+	
+	Probabilità che il rosso sia 3 sapendo che rosso + nero fa 6
+	\begin{equation*}
+	\prob{r=3  \mid  r+n = 6} = \dfrac{\prob{r=3 \cap r + n = 6}}{\prob{r+n=6}} = \dfrac{\dfrac{1}{36}}{\dfrac{5}{36}} = \dfrac{1}{5}
+	\end{equation*}
+	
+	Probabilità che il rosso sia pari sapendo che rosso + nero fa 6
+	
+	\begin{equation*}
+	\prob{r = \text{ pari}  \mid  r+n = 6} = \dfrac{\prob{r \text{ pari} \cap r+n = 6}}{\prob{r+n = 6}} = \dfrac{\dfrac{2}{36}}{\dfrac{5}{36}}
+	\end{equation*}
+\end{exrc}
 
-Dato un altro naturale $ m \in \N $
 
-\begin{align*}
-p_n = P(n) = \text{ La probabilità di estrarre il numero n}
-\end{align*}
+\begin{exrc}
+	\textbf{Gioco di Monty Hall:}
+	Riprendendo il gioco delle tre porte definiamo lo spazio probabilizzato: Formalizzo di aver scelto la porta 3. $ \Omega = (x,y) $ dove $ x = 1,2,3 $ è la porta vincente e $ y = 1,2 $ è la porta perdente che è stata aperta dal presentatore. Gli eventi impossibili saranno $ \prob{1,1} = 0, \prob{2,2} = 0 $
+	
+	\begin{equation*}
+	\begin{aligned}
+	\prob{x=1} = \prob{x=2} = \prob{x=3} = \dfrac{1}{3} \\
+	\prob{x=1,y=2} = \dfrac{1}{3} \\
+	\prob{x=2,y=1} = \dfrac{1}{3} \\
+	\prob{x=3,y=1} = \prob{x=3,y=2} = \dfrac{1}{6} 
+	\end{aligned}
+	\end{equation*}
+\end{exrc}
 
-Vogliamo che  $ 0 \leq p_n \leq 1 $ e anche $ p_m = p_n \forall n = m $. Quindi $ 1 = P(\Omega) = P \left( \bigcup\limits_{n \in \N} n \right) = \sum_{n \in \N} p_n $. Assumendo $ p_n = 0, \forall n $ allora $ \sum_{n} p_n = 0 $. Se $ p_n = c > 0, \forall n $ allora $ \sum_{n} p_n = \sum_{n} c = + \infty $
 
-Ciò significa che nella lotteria di De' Filetti è impossibile che ogni numero sia equiprobabile perché $ P $ non è definibile. Abbiamo dimostrache che non è possibile che $ \p{\Omega} = \sum_{n \in \N} p_n = 1$, essendo $ \N $ insieme infinito.
 
-\paragraph{Dimostrazione}
 
-La terna $ (\Omega, F, P) $ si può dimostrare.
-
-\[ P(A^C) = 1 - P(A) \impliedby \begin{cases}
-A \cap A^C \neq \emptyset \\
-A \cup A^C = \Omega \\
-P(\Omega) = 1
-\end{cases} \]
-
-\[ P(A \cup B) = P(A) + P(B) - P(A \cap B)\]
-
-\[ A \subseteq B \implies P(A) \leq P(B) \]
-
-\paragraph{Densità di Probabilità }
-
-Definiamo $ \{p_n\}_{n \in \N} $ con $ p_n \in \R $ come funzione, detta densità di probabilità come $ p_n \geq 0 $ e $ \sum_{n \in \N} p_n = 1 $ 
-
-Se $ \{p_n\} $ è una densità di probabilità discreta $ \implies \left( \N, \parts{\N}, P\right) $ è uno spazio probabilizzato. Vale anche per eventi non equiprobabili.
-
-\paragraph{Definizione, indipendenza degli eventi} 
-
-Sia dato $ P(A \mid B) \equiv \dfrac{P(A \cap B)}{P(B)} $. Di conseguenza, se $ P(A \mid B) = P(A) $ due eventi $ A,B $ sono indipendenti. Un esempio è il lancio di due dadi, il primo dado non influenzerà in alcun modo il risultato del secondo, per questo gli eventi del lancio di due dadi $ A,B $ sono indipendenti.
-
-È vero quindi che $ P(A \mid B) = P(A) \implies P(B \mid A) = P(B) $? Sì se $ A,B $ sono indipendenti.
-
-\[ P(A \mid B) = \dfrac{P(A \cap B)}{P(B)} = P(A), \text{ se } P(B) \neq 0 \]
-\[ P(B \mid A) = \dfrac{P(B \cap A)}{P(A)} = P(B), \text{ se } P(A) \neq 0 \]
-\[ P(A \cap B)  = P(A) \cdot P(B) = P(B \cap A) \]
-
-Se $ A_1, \dots, A_n $ sono indipendenti:
-\[ \forall i_1, \dots, i_k . k \leq n  \implies P(A)\cap \left(A_{i_1},\dots,A_{i_k}\right) = P(A_{i_1}) \cdot \dots \cdot P(A_{i_k}) \] 
-
-\paragraph{Esercizio teorico}
-
-$ A, B $ indipendenti $ \implies \begin{cases}
-A, B^C \\
-A^C, B^C \\
-A^C, B
-\end{cases} $ indipendenti
-
-\textbf{Dimostrazione:}
-\[ A = (A \cap B) \cup (A \cap B^C)  \]
-\[ P(A) = P(A \cap B) + P(A \cap B^C) = P(A) \cdot P(B) + P(A \cap B^C) \]
-\[ P(A \cap B^C) = P(A) - P(A) \cdot P(B) = P(A)\left[1 - P(B)\right] = P(A) \cdot P(B^C) \]
-
-$ A $ e $ B^C $ sono indipendenti \enddim
-
-\paragraph{Esercizio: Lancio di due dadi}
-Lancio due dadi, uno rosso ed uno nero.
-$ \Omega = (r, n) $ dove $ r = 1,2,3,4,5,6 $ e $ n = 1,2,3,4,5,6 $ 
-Definiamo lo spazio probabilizzato con $ F = \parts{\Omega}, \omega \in \Omega $. Ad esempio $ \prob{n} = \dfrac{1}{36} $
-
-Probabilità che il rosso sia 3 sapendo che rosso + nero fa 6
-\[ \prob{r=3  \mid  r+n = 6} = \dfrac{\prob{r=3 \cap r + n = 6}}{\prob{r+n=6}} = \dfrac{\dfrac{1}{36}}{\dfrac{5}{36}} = \dfrac{1}{5}\] 
-
-Probabilità che il rosso sia pari sapendo che rosso + nero fa 6
-
-\[ \prob{r = \text{ pari}  \mid  r+n = 6} = \dfrac{\prob{r \text{ pari} \cap r+n = 6}}{\prob{r+n = 6}} = \dfrac{\dfrac{2}{36}}{\dfrac{5}{36}} \]
-
-\paragraph{Esercizio: Gioco di Monty Hall}
-Riprendendo il gioco delle tre porte definiamo lo spazio probabilizzato: Formalizzo di aver scelto la porta 3. $ \Omega = (x,y) $ dove $ x = 1,2,3 $ è la porta vincente e $ y = 1,2 $ è la porta perdente che è stata aperta dal presentatore.
-
-Gli eventi impossibili saranno $ \prob{1,1} = 0, \prob{2,2} = 0 $
-
-% TODO tabella
-
-Dalla tabella otteniamo che
-\[ \prob{x=1} = \prob{x=2} = \prob{x=3} = \dfrac{1}{3} \]
-\[ \prob{x=1,y=2} = \dfrac{1}{3} \]
-\[ \prob{x=2,y=1} = \dfrac{1}{3} \]
-\[ \prob{x=3,y=1} = \prob{x=3,y=2} = \dfrac{1}{6} \]
 
 Quindi $ \prob{y=1} = \prob{y=2} = \dfrac{1}{2} $
 
 Se scelgo la porta 3, suppongo venga aperta la 2. Se non cambio e vinco $ (x = 3) $ allora
 
-\[ \prob{x=3  \mid  y=2} = \dfrac{\prob{(3,2)}}{\prob{y=2}} = \dfrac{\dfrac{1}{6}}{\dfrac{1}{2}} = \dfrac{1}{3} \]
+\begin{equation*}
+	\prob{x=3  \mid  y=2} = \dfrac{\prob{(3,2)}}{\prob{y=2}} = \dfrac{\dfrac{1}{6}}{\dfrac{1}{2}} = \dfrac{1}{3}
+\end{equation*}
+
 
 Se scelgo la porta 3, suppongo venga aperta la 1 e cambio allora:
 
-\[ \prob{x=1  \mid  y=2} = \dfrac{\prob{(1,2)}}{\prob{y=2}} = \dfrac{\dfrac{1}{3}}{\dfrac{1}{2}} = \dfrac{2}{3} \]
+\begin{equation}
+	\prob{x=1  \mid  y=2} = \dfrac{\prob{(1,2)}}{\prob{y=2}} = \dfrac{\dfrac{1}{3}}{\dfrac{1}{2}} = \dfrac{2}{3}
+\end{equation}
 
-\subsection{Formula di fattorizzazione}
+\section{Formula di fattorizzazione}
+
+
 Supponiamo di avere una famiglia di insiemi $ B_1, \dots, B_n $ con $ n \in \N $ che è detta una partizione finita di $ \Omega $ (insieme fondamentale). Voglio che $ \forall i . B_i \in F $ e che $ \forall i \forall j\neq i . B_i \cap B_j = \emptyset $ e anche che $ \bigcup_{i=1}^{n} B_i = \Omega $
 
-\paragraph{Teorema}
 
-Sia $ \{B_i\}_{i=1, \dots, n} $ parte finita di $ \Omega $ e sia $ \forall 1 \leq i \leq n \prob{B_i} > 0 $
+\begin{lem}
+	Sia $ \{B_i\}_{i=1, \dots, n} $ parte finita di $ \Omega $ e sia $ \forall 1 \leq i \leq n \prob{B_i} > 0 $. Allora si avrà
+	
+	\begin{equation}
+		\prob{A} = \sum_{i=1}^{n} \prob{A \mid B_i} \cdot \prob{B_i}
+	\end{equation}
+	
+	\begin{proof}
+		\begin{equation*}
+			\prob{A} =  \sum_{i=1}^{n} \prob{A \cap B_i} = \sum_{i=1}^{n} \prob{A \mid B_i} \cdot \prob{B_i}
+		\end{equation*}
+	\end{proof}
+\end{lem}
 
-\[ \implies  \prob{A} = \sum_{i=1}^{n} \prob{A \mid B_i} \cdot \prob{B_i} \]
+\begin{defn}
+	\textbf{Condizionamento Ripetuto:}
+	Dati $ A_1, \dots, A_n $ eventi, allora 
+	\begin{equation*}
+		\prob{A_1 \cap \dots \cap A_n} = \prob{A_1} \cdot \prob{A_2 \mid A_1} \cdot \prob{A_3 \mid  A_1 \cap A_2} \cdot \prob{A_n  \mid  A_1 \cap \dots \cap A_{n-1}}
+	\end{equation*}
+\end{defn}
 
-\paragraph{Dimostrazione} 
+\section{Formula di Bayes}
 
-\[ \prob{A} =  \sum_{i=1}^{n} \prob{A \cap B_i} = \sum_{i=1}^{n} \prob{A \mid B_i} \cdot \prob{B_i} \]
-
-\paragraph{Condizionamento ripetuto}
-Dati $ A_1, \dots, A_n $ eventi, allora 
-\[ \prob{A_1 \cap \dots \cap A_n} = \prob{A_1} \cdot \prob{A_2 \mid A_1} \cdot \prob{A_3 \mid  A_1 \cap A_2} \cdot \prob{A_n  \mid  A_1 \cap \dots \cap A_{n-1}}\]
-
-\subsection{Formula di Bayes}
-
-
-Dati due eventi $ A,B $ con probabilità non nulla $ \prob{A} > 0 $ e $ \prob{B} > 0 $ allora 
-
-\[ \prob{A \mid B} = \dfrac{\p{B \mid A} \cdot \p{A} }{\p{B}}\]
-
-\paragraph{Dimostrazione}
-
-\[\begin{aligned}
-	\p{A \mid B} = \frac{\p{A\cap B}}{\p{B}}, \text{ se } \p{B} \neq 0, \\
-	\p{B \mid A} = \frac{\p{B\cap A}}{\p{A}}, \text{ se } \p{A} \neq 0, \\
-	\Rightarrow \p{A\cap B} =  \p{A\mid B}\cdot \p{B}=\p{B\mid A}\cdot \p{A}, \\
-	\Rightarrow \p{A \mid B} =  \frac{\p{B \mid A}  \cdot \p{A}} {\p{B}}, \text{ se } \p{B} \neq 0.
-\end{aligned}\]
+\begin{lem}
+	Dati due eventi $ A,B $ con probabilità non nulla $ \prob{A} > 0 $ e $ \prob{B} > 0 $ allora 
+	
+	\begin{equation}
+	\prob{A \mid B} = \dfrac{\p{B \mid A} \cdot \p{A} }{\p{B}}
+	\end{equation}
+	
+	\begin{proof}
+		\begin{equation*}
+			\begin{aligned}
+				\p{A \mid B} = \frac{\p{A\cap B}}{\p{B}}, \text{ se } \p{B} \neq 0, \\
+				\p{B \mid A} = \frac{\p{B\cap A}}{\p{A}}, \text{ se } \p{A} \neq 0, \\
+				\Rightarrow \p{A\cap B} =  \p{A\mid B}\cdot \p{B}=\p{B\mid A}\cdot \p{A}, \\
+				\Rightarrow \p{A \mid B} =  \frac{\p{B \mid A}  \cdot \p{A}} {\p{B}}, \text{ se } \p{B} \neq 0.
+			\end{aligned}
+		\end{equation*}
+	\end{proof}
+\end{lem}
 
 \section{Esercizi}
 
-\paragraph{Esercizio: Vino}
 
-Un produttore di vino produce due vini (bianco $ B $ e rosso $ R $) e vende in Francia ($ F $) e Germania ($ G $). 
-Le vendite sono $ 1/3 $ per la Francia e $ 1/3 $ per la Germania. $ 3/4 $ delle richieste dalla Francia sono vino bianco. $ 1/4 $ delle richieste dalla Francia sono vino rosso. $ 1/2 $ delle richieste dalla Germania sono vino bianco. $ 1/2 $ delle richieste dalla Germania sono vino rosso.
-
-Utilizzando la formula di partizione troviamo la probabilità che una richiesta sia vino bianco.
-
-\[ \p{B} = \p{B \mid G} \cdot \p{G} + \p{B \mid F} \cdot \p{F} = \dfrac{1}{3} + \dfrac{1}{4} = \dfrac{7}{12} \]
-
-\paragraph{Esercizio, esami e studenti}
-
-Abbiamo 3 livelli di preparazione: Ottimo, Buono e Scarso.
-Un esito dell'esame è Promosso o Respinto.
-
-\[ \p{\text{Promosso}  \mid  \text{Ottimo}} = 0.995\]
-\[ \p{\text{Promosso}  \mid  \text{Scarso}} = 0.3\]
-\[ \p{\text{Promosso}  \mid  \text{Buono}} = 0.8\]
-
-Uno studente prova l'esame e viene respinto. Qual'è la probabilità che aveva di avere una preparazione scarsa? $ \p{\text{Scarso} \mid \text{Respinto}} $
-
-Prima calcoliamo la probabilità di essere respinti.
-
-\[ \p{R} = \p{R \mid O} \cdot \p{O} + \p{R  \mid  B} \cdot \p{B} + \p{R \mid S} \cdot \p{S} = 0.302 \]
-
-Senza informazioni aggiuntive $ \p{O} = \p{B} = \p{S} = \dfrac{1}{3} $
-
-La probabilità di essere respinto è $ \p{R} = 0.302 $ quindi 
-
-\[ \p{S  \mid  R} = \dfrac{\p{R \mid S}\cdot \p{S}}{\p{R}} = \dfrac{0.7 \cdot 1/3}{0.302} = 0.773 \]
-
-\paragraph{Esercizio alternativo}
-
-Qual'è la probabilità che lo studente aveva di avere una preparazione scarsa, sapendo che è stato respinto e sapendo che le probabilità dei voti sono: $ \p{O} = \dfrac{1}{6}, \p{B} = \dfrac{2}{3}, \p{S} = \dfrac{1}{6} $
-
-Calcoliamo, come prima $ \p{R} = 0.005 \cdot \dfrac{1}{6} + 0.2 \cdot \dfrac{2}{3} + 0.7 \cdot \dfrac{1}{6} \approx 0.25 $
-
-Abbiamo quindi che 
-
-\[ \p{S \mid R} = \dfrac{0.7 \cdot 1/6}{0.25} \approx 0.466 \]
-
-\paragraph{Esercizio: Malattia con fattore di rischio}
-La probabilità di ammalarsi di un soggetto a rischio $ (R) $ è $ 0.2 $, mentre la probabilità di ammalarsi di un soggetto non a rischio $ (N) $ è $ 0.006 $. Il $ 15\% $ della popolazione sono soggetti a rischio. Un malato si denota con $ M $ mentre uno sano con $ S $.
-
-Vogliamo sapere 
-
-\begin{enumerate}
-	\item $ \p{\text{Soggetto casuale sia malato}} = $
+\begin{exrc}
+	Un produttore di vino produce due vini (bianco $ B $ e rosso $ R $) e vende in Francia ($ F $) e Germania ($ G $). 
+	Le vendite sono $ 1/3 $ per la Francia e $ 1/3 $ per la Germania. $ 3/4 $ delle richieste dalla Francia sono vino bianco. $ 1/4 $ delle richieste dalla Francia sono vino rosso. $ 1/2 $ delle richieste dalla Germania sono vino bianco. $ 1/2 $ delle richieste dalla Germania sono vino rosso.
 	
-	$ \p{M} = \p{M \mid R} \cdot \p{R} + \p{R \mid N} \cdot \p{N} = 0.35 $ 
+	Utilizzando la formula di partizione troviamo la probabilità che una richiesta sia vino bianco.
 	
-	$ \p{M} = 0.2 \cdot 0.15 + 0.006 \cdot 0.85 = 0.35 $
-	
-	\item $ \p{\text{Soggetto malato fosse a rischio}} = $
-	
-	$ \p{R \mid M} = \dfrac{\p{M \mid R} \cdot \p{R}}{\p{M}} = \dfrac{0.2 \cdot 0.15}{0.35} = 0.855 $
-	
-	\item $ \p{\text{Soggetto soggetto sano sia a rischio}} = $
-	
-	$ \p{R \mid S} = \dfrac{\p{S \mid R} \cdot \p{R}}{\p{S}} = \dfrac{(1-0.2) \cdot 0.15}{(1-0.35)} = 0.124$
-\end{enumerate}
+	\begin{equation*}
+	\p{B} = \p{B \mid G} \cdot \p{G} + \p{B \mid F} \cdot \p{F} = \dfrac{1}{3} + \dfrac{1}{4} = \dfrac{7}{12}
+	\end{equation*}	
+\end{exrc}
 
-\paragraph{Osservazione}
+\begin{exrc}
+	Abbiamo 3 livelli di preparazione di degli studenti iscritti ad un esame: Ottimo, Buono e Scarso.
+	Un esito dell'esame è Promosso o Respinto.
+	
+	\begin{equation*}
+		\begin{aligned}
+		\p{\text{Promosso}  \mid  \text{Ottimo}} = 0.995\\
+		\p{\text{Promosso}  \mid  \text{Scarso}} = 0.3\\
+		\p{\text{Promosso}  \mid  \text{Buono}} = 0.8\\
+		\end{aligned}
+	\end{equation*}
+	
+	Uno studente prova l'esame e viene respinto. Qual'è la probabilità che aveva di avere una preparazione scarsa? $ \p{\text{Scarso} \mid \text{Respinto}} $. Prima calcoliamo la probabilità di essere respinti.
+	
+	\begin{equation*}
+	\p{R} = \p{R \mid O} \cdot \p{O} + \p{R  \mid  B} \cdot \p{B} + \p{R \mid S} \cdot \p{S} = 0.302
+	\end{equation*}
+	
+	Senza informazioni aggiuntive $ \p{O} = \p{B} = \p{S} = \dfrac{1}{3} $. 
+	La probabilità di essere respinto è $ \p{R} = 0.302 $ quindi 
+	
+	\begin{equation*}
+	\p{S  \mid  R} = \dfrac{\p{R \mid S}\cdot \p{S}}{\p{R}} = \dfrac{0.7 \cdot 1/3}{0.302} = 0.773
+	\end{equation*}
+\end{exrc}
 
-La probabilità che l'evento $ A^c $ ($ A $ complementare) si verifichi sapendo B è $ \p{A^c \mid B} = 1 - \p{A \mid B} $ 
-\textbf{mentre invece} la probabilità di $ A $ sapendo $ B^c $ è $ \p{A \mid B^c} \neq 1 - \p{A \mid B} $
+\begin{exrc}
+	Qual'è la probabilità che lo studente aveva di avere una preparazione scarsa, sapendo che è stato respinto e sapendo che le probabilità dei voti sono: 
+	
+	\begin{equation*}
+		 \p{O} = \dfrac{1}{6}, \p{B} = \dfrac{2}{3}, \p{S} = \dfrac{1}{6}
+	\end{equation*}
+	
+	Calcoliamo, come prima $ \p{R} = 0.005 \cdot \dfrac{1}{6} + 0.2 \cdot \dfrac{2}{3} + 0.7 \cdot \dfrac{1}{6} \approx 0.25 $. Abbiamo quindi che 
+	
+	\begin{equation*}
+		\p{S \mid R} = \dfrac{0.7 \cdot 1/6}{0.25} \approx 0.466
+	\end{equation*}
+\end{exrc}
 
-\paragraph{Esercizio: Test}
-Prendendo $ S = $ soggetti sani, $ M = $ soggetti malati, $ T^- = $ test positivo, $ T^+ = $ test positivo.
+\begin{exrc}
+	La probabilità di ammalarsi di un soggetto a rischio $ (R) $ è $ 0.2 $, mentre la probabilità di ammalarsi di un soggetto non a rischio $ (N) $ è $ 0.006 $. Il $ 15\% $ della popolazione sono soggetti a rischio. Un malato si denota con $ M $ mentre uno sano con $ S $. Vogliamo sapere 
+	
+	\begin{enumerate}
+		\item $ \p{\text{Soggetto casuale sia malato}} = $
+		
+		$ \p{M} = \p{M \mid R} \cdot \p{R} + \p{R \mid N} \cdot \p{N} = 0.35 $ 
+		
+		$ \p{M} = 0.2 \cdot 0.15 + 0.006 \cdot 0.85 = 0.35 $
+		
+		\item $ \p{\text{Soggetto malato fosse a rischio}} = $
+		
+		$ \p{R \mid M} = \dfrac{\p{M \mid R} \cdot \p{R}}{\p{M}} = \dfrac{0.2 \cdot 0.15}{0.35} = 0.855 $
+		
+		\item $ \p{\text{Soggetto soggetto sano sia a rischio}} = $
+		
+		$ \p{R \mid S} = \dfrac{\p{S \mid R} \cdot \p{R}}{\p{S}} = \dfrac{(1-0.2) \cdot 0.15}{(1-0.35)} = 0.124$
+	\end{enumerate}
+	
+	\begin{note}
+		La probabilità che l'evento $ A^c $ ($ A $ complementare) si verifichi sapendo B è $ \p{A^c \mid B} = 1 - \p{A \mid B} $ 
+		mentre la probabilità di $ A $ sapendo $ B^c $ è $ \p{A \mid B^c} \neq 1 - \p{A \mid B} $.
+	\end{note}
 
-La specificità di un test è $ \p{T^- \mid S} $. Una specificità alta implica pochi falsi positivi. La sensibilità è $ \p{T^+ \mid M} $. Una sensibilità alta implica pochi falsi negativi.
+	\begin{defn}
+		Prendendo $ S = $ soggetti sani, $ M = $ soggetti malati, $ T^- = $ test negativo, $ T^+ = $ test positivo. 
+		La \textbf{specificità} di un test è $ \p{T^- \mid S} $. Una specificità alta implica pochi falsi positivi. 
+		La \textbf{sensibilità} è $ \p{T^+ \mid M} $. Una sensibilità alta implica pochi falsi negativi.
+	\end{defn}
+\end{exrc}
+
+

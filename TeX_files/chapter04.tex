@@ -1,5 +1,7 @@
 \chapter{Catene di Markov}
 
+\section{Catene di Markov e Processi Stocastici}
+
 \begin{defn}
 	\textbf{Processi Stocastici}
 	Spesso abbiamo bisogno di rappresentare quantità incerte che cambiano nel tempo. Possiamo rappresentarle con famiglie di variabili aleatore indicizzate mediante un parametro, spesso corrispondente al "tempo"
@@ -40,16 +42,144 @@
 	
 \end{exmp}
 
+\begin{defn}
+	\textbf{Proprietà di Markov:}
+	Nei processi di Markov le informazioni ottenibili dal "passato" (la storia del processo fino al presente) possono essere utili a fare inferenza sullo stato futuro. In realtà costituiscono la classe più semplice in cui tutta la storia passata può essere trascurata ai fini di fare inferenza sul futuro.
+	
+	\begin{quote}
+		\textbf{Un processo è di Markov se conoscendo il presente, passato e futuro sono indipendenti.}
+	\end{quote}
 
-\subsection{Proprietà di Markov}
-Nei processi di Markov le informazioni ottenibili dal "passato" (la storia del processo fino al presente) sono utili a fare inferenza sullo stato futuro.
+	Dato un processo a tempi $ \mathcal{T} $ e stati $ E $ discreti. Un processo  $ \{X_{t_i}\}_{i=0, \hdots, n} $ con $ t_0 < t_1 < \hdots < t_n$ è detto \textbf{di Markov} (rispetto a $ \p{\cdot \mid I} $) se, presi qualunque $ k \in \{1, \hdots, n-1\} $ e $ A_0, A_i, A_{k+1} \subseteq E$ vale la seguente proprietà
+	
+	\begin{equation*}
+		\begin{aligned}
+		\p{X_{t_k+1} \in A_{k+1} \mid I \cap \{X_{t_k} \in A_k\} \cap \{X_{t_{k-1}} \in A_{k-1}\} \cap \{X_0 \in A_0\}} = \\
+		= \p{X_{t_{k+1}} \in A_{k+1} \mid I \cap \{X_{t_k} \in A_k\}}
+		\end{aligned}
+	\end{equation*} 
+	
+	La proprietà di Markov permette di semplificare molto (ma non troppo) un modello probabilistico. L'indipendenza probabilistica va sempre considerata come un'ipotesi che introduciamo nel modello.
+	
+	Più in generale, una variabile aleatoria del processo $ X_{t_{k+1}} $ deve dipendere soltanto da $ X_{t_{k}} $. 
+\end{defn}
 
-\paragraph{Definizione}
+\begin{note}
+	Dato che $ E $ è un insieme discreto, si potrebbe dimostrare che è sufficiente verificare la prorietà di Markov su insiemi $ A_k $ costituiti da singoli punti $ A_k = \{i_k\} $, in modo tale che la condizione $ \{X_{t_k} \in A_k\} $ diventi $ \{X_{t_k} = i_k\} $
+\end{note}
 
+\begin{exmp}
+	Tornando all'esempio dell'estrazione dall'urna (di cui conosciamo il contenuto), un'estrazione con reimmissione è sicuramente un processo di Markov, se l'estrazione è senza reimmissione il processo \textbf{non} è di Markov. Il motivo è che tutta la sequenza di palline estratte è necessaria per conoscere il contenuto esatto dell'urna (l'informazione passata non può essere trascurata).
+\end{exmp}
 
-% TODO finisci lezione Definizione 10
+\begin{exmp}
+	Vediamo un esempio di processo di Markov basato dalle estrazioni dall'urna contenente $ R $ palline rosse e $ B $ palline blu ($ N = R+B $). Quando estraiamo la prima pallina, la teniamo all'esterno dell'urna. Successivamente estraiamo la seconda pallina, reinseriamo la prima pallina estratta e mescoliamo l'urna. Si procede poi tenendo fuori sempre l'ultima pallina estratta. Poniamo $ X_k = $ il colore della pallina estratta all'estrazione $ k $. La proprietà di Markov vale (l'informazione di tutta la sequenza di estrazioni non è rilevante eccetto l'ultima). Dati $ i,j \subseteq E $, le probabilità di transizione
+	\begin{equation*}
+		\p{X_{t_{k+1}} = j \mid I \cap X_{t_k} = i}
+	\end{equation*}
+	
+	potrebbero in generale dipendere da $ k $. Studieremo il caso in cui queste non dipendono da $ k $ per semplificare, e per semplificare ulteriormente assumiamo che $ t_k = k $.
+\end{exmp}
 
-\section{Catene di Markov}
+\begin{defn}
+	Un process di Markov $ {X_i}_{i=0,\hdots,n} $ è \textbf{omogeneo} se le probabilità di transizione non dipendono da $ k \in \{0, 1, \hdots, n-1\} $, ovvero:
+	\begin{equation*}
+	\begin{aligned}
+		\forall i,j \in E \> . \> \p{X_{k+1} = j \mid I \cap \{X_k = i\}} = \p{X_1 = j \mid I \cap \{X_0 = i\}}
+	\end{aligned}
+	\end{equation*}
+\end{defn}
+
+\begin{defn}
+	\textbf{Matrice di Transizione:}
+		Questa definizione ci permette di collezionare le probabilità di transizione in una singola matrice di transizione
+		
+		\begin{equation*}
+		\forall i,j \in E \> . \> Q_{ij} = Q_{i \to j} := \p{X_1 = j \mid I \cap \{X_0 = i\}}
+		\end{equation*}
+\end{defn}
+
+\begin{note}
+	Per scrivere una matrice di trasizione $ Q $ bisogna fissare un ordinamento degli stati $ E $. Una volta fissato questo ordinamento va seguito in tutto il problema.
+	
+	\begin{equation*}
+	\sum_{j \in E} Q_{i \to j} = \sum_{j \in E} \p{X_1 = j \mid I \cap \{X_0 = i\}} = \p{X_1 \in E \mid I \cap \{X_0 = i\}} = 1
+	\end{equation*}
+\end{note}
+
+\begin{defn}
+	\textbf{Catena di Markov}:
+	Un processo di Markov omogeneo $ \{X_i\}_{i=0,\hdots,n} $ a stati finiti (o discreti) è detto \textbf{Catena di Markov}.
+	Si possono visualizzare le Catene di Markov, data una matrice di transizione, con un grafo orientato analogo agli automi a stati finiti.
+	Ad ogni stato $ i \in E $ facciamo corrispondere un nodo, e ad ogni probabilità di transizione $ Q_{i \to j} $ strettamente positiva facciamo corrispondere un arco $ (i, j) $. Non si disegnano gli archi delle probabilità di transizione nulle. La rappresentazione con i grafi non indica nulla sulle leggi marginali della catena.
+\end{defn}
+
+\begin{exmp}
+	All'interno di una CPU abbiamo due stati, \textbf{busy} (nodo 1) e \textbf{free} (nodo 2).
+	
+	\begin{equation*}
+	Q = \begin{pmatrix}
+	0,3 & 0,7 \\
+	0,2 & 0,8
+	\end{pmatrix}
+	\end{equation*}
+	
+	\begin{figure}[H]
+		\centering
+		\caption{Catena di Markov}
+		\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
+		
+		\node[state] (A)                    {Busy};
+		\node[state] (B) [right of=A] 	   	{Free};
+		
+		\path 	(A)		edge [bend left]  	node {0.7} 		(B)
+						edge [loop left] 	node {0.3} 		(A)
+				(B)		edge [bend left]  	node {0.2} 		(A)
+						edge [loop right] 	node {0.8} 		(B);
+				
+		\end{tikzpicture}
+	\end{figure}
+\end{exmp}
+
+\begin{exmp}
+	Consideriamo un urna contenente $ R $ palline rosse e $ B $ palline blu, in tutto $ N = R + B $ palline. Effettuiamo estrazioni con reimmissione. Abbiamo già visto che la proprietà di Markov vale. Le probabilità di transizione sono molto semplici da calcolare grazie all'indipendenza delle variabili $ \{X_k\} $.
+	
+	\begin{equation*}
+		\begin{aligned}
+			\p{X_{k+1} = \text{rossa} \mid \Omega \cap \{X_k = \text{rossa}\}} = \p{X_{k+1} = \text{rossa} \mid \Omega} = \dfrac{R}{N} \\
+			\p{X_{k+1} = \text{blu} \mid \Omega \cap \{X_k = \text{rossa}\}} = \p{X_{k+1} = \text{blu} \mid \Omega} = \dfrac{B}{N} \\
+			\p{X_{k+1} = \text{rossa} \mid \Omega \cap \{X_k = \text{blu}\}} = \p{X_{k+1} = \text{rossa} \mid \Omega} = \dfrac{R}{N} \\
+			\p{X_{k+1} = \text{blu} \mid \Omega \cap \{X_k = \text{blu}\}} = \p{X_{k+1} = \text{blu} \mid \Omega} = \dfrac{B}{N} \\
+		\end{aligned}
+	\end{equation*}
+	
+	La catena di Markov sugli stati $ E = \{\text{rossa}, \text{blu}\} $ è omogenea con matrice di transizione.
+	
+	\begin{equation*}
+	Q = \begin{pmatrix}
+	R/N & B/N \\
+	R/N & B/N
+	\end{pmatrix}
+	\end{equation*}
+	
+	\begin{figure}[H]
+		\centering
+		\caption{Catena di Markov}
+		\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
+		
+		\node[state] (A)                    {Rossa};
+		\node[state] (B) [right of=A] 	   	{Blu};
+		
+		\path 	(A)		edge [bend left]  	node {B/N} 		(B)
+						edge [loop left] 	node {R/N} 		(A)
+		(B)				edge [bend left]  	node {R/N} 		(A)
+						edge [loop right] 	node {B/N} 		(B);
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{exmp}
+
+\section{Calcolo Algebrico su catene di Markov}
 
 \paragraph{Calcolo del Marginale di una Catena di Markov}
 $ \p{X_0 = j} \forall j $ è un vettore che chiamiamo $ v = (\p{X_0 = j}) $, è lo stato iniziale. Definiamo $ Q(q_{ji}) $ matrice di transizione. $ q_{ji} = \p{X_1 = i \mid X_0 = j} $. Definiamo anche $ q_{j \to i} = \p{X_1 = i \mid X_0 = j} $. Ne otteniamo che $ \p{X_k = i} = (v \cdot Q^k)_i = (v_i = Q \cdot Q \cdot \hdots \cdot Q)_i $. Per correttezza, $ v \cdot Q $ è la legge di $ X_1 $. Calcoliamo $ X_1 $.
@@ -111,31 +241,32 @@ Se non conosco lo stato iniziale devo conoscere la distribuzione $ (P(X_0) =i)_i
 \E{f(X_k \mid X_0} = \vec{f} Q^k v
 \end{equation*}
 
-\begin{exrc}
-%	TODO riprendi esempio
-\end{exrc}
+% TODO riprendi esercizio
+%\begin{exrc} 
+%	Riprendendo l'esempio precedente, conviene giocare?
+%	
+%	
+%	\begin{equation*}
+%	\begin{aligned}
+%	f(X_1 = R) = -1 \text{ Euro} \\
+%	f(X_1 = B) = 1 \text{ Euro} \\
+%	Q\vec{f} = \begin{pmatrix}
+%	\dfrac{9}{12} & \dfrac{3}{12} \\
+%	\dfrac{10}{12} & \dfrac{2}{12}
+%	\end{pmatrix} \begin{pmatrix}
+%	-1 \\ 5
+%	\end{pmatrix} = \begin{pmatrix}
+%	1/2 & 0
+%	\end{pmatrix} \\
+%	\E{f(X_1} \mid X_0 = R) = \dfrac{1}{2} \\
+%	\E{f(X_1} \mid X_0 = B) = 0
+%	\end{aligned}
+%	\end{equation*}
+%	
+%	Se non si conosce il risultato della prima estrazione la speranza di vincita è $ \E{f(X_1} \mid X_0)  = \dfrac{1}{2} \cdot \p{X_0 = R} + 0 \cdot \p{X_0 = B} = \dfrac{1}{2} \cdot \dfrac{10}{13} = \dfrac{10}{26} $
+%\end{exrc}
 
-Riprendendo l'esempio precedente, conviene giocare?
 
-
-\begin{equation*}
-	\begin{aligned}
-	f(X_1 = R) = -1 \text{ Euro} \\
-	f(X_1 = B) = 1 \text{ Euro} \\
-	Q\vec{f} = \begin{pmatrix}
-	\dfrac{9}{12} & \dfrac{3}{12} \\
-	\dfrac{10}{12} & \dfrac{2}{12}
-	\end{pmatrix} \begin{pmatrix}
-	-1 \\ 5
-	\end{pmatrix} = \begin{pmatrix}
-	1/2 & 0
-	\end{pmatrix} \\
-	\E{f(X_1} \mid X_0 = R) = \dfrac{1}{2} \\
-	\E{f(X_1} \mid X_0 = B) = 0
-	\end{aligned}
-\end{equation*}
-
-Se non si conosce il risultato della prima estrazione la speranza di vincita è $ \E{f(X_1} \mid X_0)  = \dfrac{1}{2} \cdot \p{X_0 = R} + 0 \cdot \p{X_0 = B} = \dfrac{1}{2} \cdot \dfrac{10}{13} = \dfrac{10}{26} $
 
 \begin{defn}
 	\textbf{Distribuzione invariante}
@@ -178,7 +309,7 @@ Se non si conosce il risultato della prima estrazione la speranza di vincita è 
 \section{Esercizi}
 
 \begin{exrc}
-	Ho un urna con $ N = B + R$ biglie ($(2) B $ = Blu, $ (1) R $ = Rosse)
+	Ho un'urna con $ N = B + R$ biglie ($(2) B $ = Blu, $ (1) R $ = Rosse)
 	
 	\begin{equation*}
 	\begin{aligned}
@@ -207,6 +338,7 @@ Se non si conosce il risultato della prima estrazione la speranza di vincita è 
 \end{exrc}
 
 \begin{exrc}
+	\textbf{Passeggiata Aleatoria}
 	Mi muovo nell'asse X casualmente partendo da 0. Al minuto $ k $ lancio una moneta. Se esce testa mi muovo a destra, se esce croce mi muovo a sinistra. Voglio ottenere la posizione al minuto k.
 	
 	\begin{equation*}
@@ -220,9 +352,36 @@ Se non si conosce il risultato della prima estrazione la speranza di vincita è 
 	\end{cases}
 	\end{aligned}
 	\end{equation*}
+	
+	\begin{figure}[H]
+		\centering
+		\caption{Catena di Markov della passeggiata aleatoria}
+		\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2cm]
+		
+		\node[state] (A)                    {0};
+		\node[state] (B) [right of=A] 	   	{1};
+		\node[state] (C) [right of=B] 	   	{2};
+		\node[state] (D) [right of=C] 	   	{$ \hdots $};
+		\node[state] (E) [left of=A] 	   	{-1};
+		\node[state] (F) [left of=E] 	   	{-2};
+		\node[state] (G) [left of=F] 	   	{$ \hdots $};		
+		;
+		
+		\path 	
+		(A)		edge [bend left]  	node {1/2} 		(B)
+				edge [bend left]  	node {1/2} 		(E)
+		(B)		edge [bend left]  	node {1/2} 		(C)
+				edge [bend left]  	node {1/2} 		(A)
+		(C)     edge [bend left]  	node {1/2} 		(D)
+				edge [bend left]  	node {1/2} 		(B)
+		(E)		edge [bend left]	node {1/2}		(F)
+				edge [bend left]  	node {1/2} 		(A)
+		(F)		edge [bend left]  	node {1/2} 		(G)
+				edge [bend left]  	node {1/2} 		(E);
+		\end{tikzpicture}
+	\end{figure}
 \end{exrc}
 
-%TODO rappresentazione a grafo infinita con infiniti stati orizzontalmente e archi 1/2 bidirezionali fra nodi adiacenti
 
 \begin{exrc}
 	Un ubriaco è restio a cambiare direzione.
@@ -343,7 +502,7 @@ Abbiamo una CPU con 3 stati: (1) \textbf{Off}, (2) \textbf{Stand By}, (3) \textb
 	\caption{Catena di Markov della CPU a 3 stati}
 	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
 	
-	\node[state,initial] 			(A)                    {O};
+	\node[state] 			(A)                    {O};
 	\node[state]         	(B) [right of=A] 	   {S};
 	\node[state]         	(C) [right of=B] 	   {B};
 	
@@ -451,7 +610,7 @@ Abbiamo una CPU con 3 stati: (1) \textbf{Off}, (2) \textbf{Stand By}, (3) \textb
 		\caption{Catena di Markov}
 		\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
 		
-		\node[state,initial] 			(A)                    {1};
+		\node[state] 			(A)                    {1};
 		\node[state]         	(B) [below left of=A] 	   {2};
 		\node[state]         	(C) [below right of=A] 	   {3};
 		

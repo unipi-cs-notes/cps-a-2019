@@ -20,9 +20,8 @@
 \contentsline {section}{\numberline {3.3}Valore Atteso}{16}{section.3.3}
 \contentsline {section}{\numberline {3.4}Esercizi}{19}{section.3.4}
 \contentsline {chapter}{\numberline {4}Catene di Markov}{23}{chapter.4}
-\contentsline {subsection}{\numberline {4.0.1}Propriet\IeC {\`a} di Markov}{24}{subsection.4.0.1}
-\contentsline {paragraph}{Definizione}{24}{section*.4}
-\contentsline {section}{\numberline {4.1}Catene di Markov}{24}{section.4.1}
-\contentsline {paragraph}{Calcolo del Marginale di una Catena di Markov}{24}{section*.5}
-\contentsline {paragraph}{Calcolo dei valori attesi}{24}{section*.6}
-\contentsline {section}{\numberline {4.2}Esercizi}{25}{section.4.2}
+\contentsline {section}{\numberline {4.1}Catene di Markov e Processi Stocastici}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}Calcolo Algebrico su catene di Markov}{26}{section.4.2}
+\contentsline {paragraph}{Calcolo del Marginale di una Catena di Markov}{26}{section*.4}
+\contentsline {paragraph}{Calcolo dei valori attesi}{26}{section*.5}
+\contentsline {section}{\numberline {4.3}Esercizi}{27}{section.4.3}
