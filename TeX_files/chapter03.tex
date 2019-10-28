@@ -422,6 +422,29 @@ p_1 = p \\ p_0 = 1 - p
 		\end{aligned}
 		\end{equation*}
 	\end{proof}
+
+	\begin{note}
+		\begin{equation*}
+		\begin{aligned}
+			\var{X} = \E{X^2} - \left(\E{X}\right)^2 \\
+			\text{(porto } \E{X^2} \text{ a destra dell'uguaglianza)} \\
+			\implies \E{X^2} = \var{X} + (\E{X})^2 
+		\end{aligned}
+		\end{equation*}
+	\end{note}
+
+	\begin{note}
+		Se dobbiamo calcolare la varianza di una variabile aleatoria moltiplicata per uno scalare si ha che
+		\begin{equation*}
+			\begin{aligned}
+			\var{\alpha X} = \E{(\alpha X)^2} - (\E{\alpha X})^2 \\
+			= \E{\alpha^2 X^2} - (\alpha \E{X})^2 \\
+			= \alpha^2 \E{X^2} - \alpha^2(\E{X})^2 \\
+			= \alpha^2 (\E{X^2} - (\E{X})^2) \\
+			= \alpha^2 \var{X}
+			\end{aligned}
+		\end{equation*}
+	\end{note}
 \end{defn}
 
 
@@ -496,7 +519,7 @@ p_1 = p \\ p_0 = 1 - p
 	\begin{proof}
 		\begin{equation*}
 		\begin{aligned}
-		\var(X+Y) = \E{(X+Y)^2} - (\E{X+Y})^2 \\
+		\var{X+Y} = \E{(X+Y)^2} - (\E{X+Y})^2 \\
 		= \E{X^2} - 2\E{X \cdot Y} + \E{Y^2} \\ 
 		= (\E{X})^2 - 2\E{X}\E{Y} - (\E{Y})^2 \\
 		= \var{X} + \var{Y} + 2(\E{XY} - \E{X}\E{Y})\\
@@ -508,7 +531,7 @@ p_1 = p \\ p_0 = 1 - p
 \end{defn}
 
 
-\begin{exmp}
+\begin{defn}
 	Varianza di una Bernoulliana: $ X = B(1,p) $
 	\begin{equation*}
 	\begin{aligned}
@@ -517,15 +540,25 @@ p_1 = p \\ p_0 = 1 - p
 		\var{X} = p-p^2 = p(1-p)
 	\end{aligned}
 	\end{equation*}
-\end{exmp}
+\end{defn}
 
-\begin{exmp}
-	$ X = B(n,p) \implies \var{X} = nB(1,p) = np(1-p) $
-\end{exmp}
+\begin{defn}
+	\textbf{Varianza di una Binomiale:}
+	Definiamo $ X = B(n,p)$. Avremo che 
+	\begin{equation*}
+		\var{X} = np(1-p) 
+	\end{equation*}
+	
+	\begin{note}
+		\begin{equation*}
+			\E{X^2} = \var{X} + (\E{X})^2 = np(1-p) + (np)^2
+		\end{equation*}
+	\end{note}
+\end{defn}
 
-\begin{exmp}
+\begin{defn}
 	$ X = \text{Poisson}(\lambda)  \implies  \var{\text{Poisson}(\lambda)} = \lambda $
-\end{exmp}
+\end{defn}
 
 
 

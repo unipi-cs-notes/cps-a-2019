@@ -18,7 +18,7 @@
 \contentsline {section}{\numberline {3.1}Variabili Aleatorie Discrete}{11}{section.3.1}
 \contentsline {section}{\numberline {3.2}Leggi su Variabili Aleatorie}{12}{section.3.2}
 \contentsline {section}{\numberline {3.3}Valore Atteso}{16}{section.3.3}
-\contentsline {section}{\numberline {3.4}Esercizi}{19}{section.3.4}
+\contentsline {section}{\numberline {3.4}Esercizi}{20}{section.3.4}
 \contentsline {chapter}{\numberline {4}Catene di Markov}{23}{chapter.4}
 \contentsline {section}{\numberline {4.1}Catene di Markov e Processi Stocastici}{23}{section.4.1}
 \contentsline {section}{\numberline {4.2}Calcolo Algebrico su catene di Markov}{26}{section.4.2}
