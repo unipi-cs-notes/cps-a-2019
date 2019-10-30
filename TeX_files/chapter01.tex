@@ -1,230 +1,273 @@
-\chapter{Probabilità Discreta e Condizionata}
+\part{Probabilità Discreta e Catene di Markov\\Lezioni di Marco Ghimenti}
 
-\section{Probabilità Discreta e Formule Combinatorie}
+
+\chapter{Probabilit\`a Discreta e Condizionata}
+
+\section{Probabilit\`a Discreta e Formule Combinatorie}
 
 \begin{defn}
-	Probabilità significa \textbf{Attendibilità confortata da motivi ragionevoli}
-	
-	
-	La probabilità (discreta) di un evento è definita come 
-	
-	\begin{equation}
-		\prob{\text{evento}} = \dfrac{\text{\# casi favorevoli}}{\text{\# casi possibili}}
-	\end{equation}
-	
+    Probabilit\`a: \textbf{Attendibilit\`a confortata da motivi ragionevoli}
+\end{defn}
+    La probabilit\`a (discreta) di un evento si pu\`o definire, in maniera intuitiva,
+\begin{defn}
+        \begin{equation}
+            \prob{\text{evento}} = \dfrac{\text{\# casi favorevoli}}{\text{\# casi possibili}}
+        \end{equation}
+
 \end{defn}
 
 \begin{exmp}
-	Prendiamo ad esempio il lancio di un dado, voglio ottenere un numero $ \geq 5 $, la probabilità dell'evento è
-	
-	\begin{equation*}
-		P = 2/6 = 1/3
-	\end{equation*}
-	
-	Un altro esempio può essere la probabilità di ottenere un numero $ \geq 4 $ lanciando 2 dadi.
-	
-	\begin{equation*}
-		P = \dfrac{27}{6^2} = \dfrac{3}{4}
-	\end{equation*}
-	
-	I casi favorevoli sono 27 perché lanciando se lanciando il primo dado ottenendo un numero $ \leq 3 $ significa che ho 3 possibili casi per ognuno dei lanci del primo dado per ottenere un numero $ \geq 4 $ dal lancio del secondo dado ($ 3 \cdot 3 $), a cui si aggiungono $ (3 \cdot 6) $ casi se ottengo un numero $ \geq 4 $ dal primo lancio (tutti i casi del secondo lancio sono validi.)
+    Prendiamo ad esempio il lancio di un dado, voglio ottenere un numero $ \geq 5 $, la probabilit\`a dell'evento \`e
+
+    \begin{equation*}
+        P = 2/6 = 1/3
+    \end{equation*}
+    
+    Un altro esempio pu\`o essere la probabilit\`a, lanciando 2 dadi, che almeno uno dei due renda un numero  $ \geq 4 $.
+    
+    \begin{equation*}
+        P = \dfrac{27}{6^2} = \dfrac{3}{4}
+    \end{equation*}
+    
+    I casi favorevoli sono 27 perch\'e lanciando se lanciando il primo dado ottenendo un numero $ \leq 3 $ significa che ho 3 possibili casi per ognuno dei lanci del primo dado per ottenere un numero $ \geq 4 $ dal lancio del secondo dado ($ 3 \cdot 3 $), a cui si aggiungono $ (3 \cdot 6) $ casi se ottengo un numero $ \geq 4 $ dal primo lancio (tutti i casi del secondo lancio sono validi.)
 \end{exmp}
 
 \begin{exmp}
-	Qual'è la probabilità di ottenere almeno un asso pescando 2 carte da un mazzo di 54?
-	
-	\begin{equation*}
-	P = \dfrac{(50 \cdot 4) + (53 \cdot 4)}{54 \cdot 53} = \dfrac{206}{1431}
-	\end{equation*}
-	
-	Per i casi possibili, ho 54 casi per la prima pescata e 53 per la seconda, per i casi favorevoli ho
-	
-	\begin{equation*}
-	\begin{cases}
-	\text{Se pesco un Asso} \implies 4 \cdot 53 \\
-	\text{Se non pesco un Asso} \implies 4 \cdot 50
-	\end{cases}
-	\end{equation*}
-	
+    Qual \`e la probabilit\`a di ottenere almeno un asso pescando 2 carte da un mazzo di 54?
+
+    \begin{equation*}
+    P = \dfrac{(50 \cdot 4) + (53 \cdot 4)}{54 \cdot 53} = \dfrac{206}{1431}
+    \end{equation*}
+    
+    Per i casi possibili, ho 54 casi per la prima pescata e 53 per la seconda, per i casi favorevoli ho
+    
+    \begin{equation*}
+    \begin{cases}
+        \text{Se pesco un Asso alla prima e una carta qualsiasi alla seconda} \implies 4 \cdot 53 \\
+        \text{Se non pesco un Asso alla prima e un Asso alla seconda} \implies 50 \cdot 4
+    \end{cases}
+    \end{equation*}
+    
 \end{exmp}
+\begin{exrc}
+    Calcolare la probabilit\`a di pescare esattamente 2 assi pescando 5 carte
+    \end{exrc}
+    \begin{exrc}
+    Calcolare la probabilit\`a di pescare esattamente 2 due donne pescando 5 carte
+    sapendo che la prima carta uscita \`e una figura
+    \end{exrc}
+    
+    Svolgere questi due esercizi contando i casi \`e molto macchinoso. Serve introdurre un po' di calcolo 
+    combinatorio e, per il secondo esercizio, il concetto di probabilit\`a condizionata.
+    
+    \subsection{Principio di induzione}
+    
+    Vogliamo dimostrare una proposizione che dipende da un indice $n\in\mathbb{N}$. Una possibile strategia dimostrativa \`e il {\em principio di induzione}
+    Se riusciamo a dimostrare che
+    \begin{enumerate}
+    \item La proposizione \`e verificata per un certo indice $n_0$
+    \item Se assumiamo per verificata la proposizione per un generico indice $n$, allora riusciamo a dimostrare
+    la proposizione per l'indice $n+1$
+    \end{enumerate}
+    allora la proposizione  \`e verificata per ogni $n\ge n_0$.
 
 \subsection{Permutazioni di n elementi}
 
 \begin{defn}
-	Una permutazione è uno scambio dell'ordine di una sequenza di elementi che possono essere di qualunque tipo. L'obiettivo è trovare il numero di tutte le permutazioni (cioè tutte le sequenze con ordine) possibili dato un certo numero n di elementi.
-	
-	Le permutazioni di un insieme di $ n $ elementi sono definite come
-	\begin{equation}
-	\text{Perm}(n) = n!
-	\end{equation}
+    Una permutazione \`e uno scambio dell'ordine di una sequenza di elementi che possono essere di qualunque tipo. L'obiettivo \`e trovare il numero di tutte le permutazioni (cio\`e tutte le sequenze con ordine) possibili dato un certo numero n di elementi.
 \end{defn}
 
+\begin{prop}
+        Le permutazioni di un insieme di $ n $ elementi sono definite come
+        \begin{equation}
+        \text{Perm}(n) = n!
+        \end{equation}
+\end{prop}
+
 \begin{proof}
-	Dimostrando per induzione, i casi base sono $ \text{Perm}(0) = 1 $ e $ \text{Perm}(1) = 1 $
-	
-	Il passo induttivo sarà 
-	\begin{equation*}
-		\begin{aligned}
-			\text{Perm}(n) = n! \implies \text{Perm}(n+1) = (n+1)! \\
-			\text{Perm}(n+1) = (n+1) \cdot \text{Perm}(n) \\
-			= (n+1) \cdot n! = (n+1)!
-		\end{aligned}
-	\end{equation*}
+    Dimostriamo per induzione. Come passo base possiamo verificare immediatamente che 
+    $ \text{Perm}(1) = 1 $.
+
+    Il passo induttivo sar\`a 
+    \begin{equation*}
+        \begin{aligned}
+            \text{Perm}(n) = n! \implies \text{Perm}(n+1) = (n+1)! \\
+            \text{Perm}(n+1) = (n+1) \cdot \text{Perm}(n) \\
+            = (n+1) \cdot n! = (n+1)!
+        \end{aligned}
+    \end{equation*}
 \end{proof}
 
 \subsection{Coefficiente Binomiale}
 
 \begin{defn}
-	Il coefficiente binomiale è un numero intero non negativo definito dalla seguente formula, è analogo alla proposizione "Come scegliere k oggetti da un insieme di n elementi"
-	
-	\begin{equation}
-		S_{n,k} = \binom{n}{k} = \dfrac{n!}{(n-k)!k!}
-	\end{equation}
+    Il coefficiente binomiale \`e un numero intero non negativo definito dalla formula
+    \begin{equation}
+        \binom{n}{k} = \dfrac{n!}{(n-k)!k!}
+    \end{equation}
 \end{defn}
 
-\begin{proof}
-	Fissato $ k \geq 2 $ dimostriamo per induzione su $ n \geq k $
-	
-	Il primo passo iniziale è, per $ n = k $
+\begin{prop}
+    Indicato con $S_{n,k} $ il numero di modi possibili di scegliere $k$ oggetti da un insieme di $n$ elementi
+    vale $S_{n,k}=\binom{n}{k}$
+\end{prop}
 
-	\begin{equation*}
-		S_{n,k} = 1 = \dfrac{k!}{k!(k-k)!} = 1
-	\end{equation*}	
-	
-	Il secondo passo iniziale è
-	\begin{equation*}
-		S_{k,k-1} = \dfrac{k!}{(k-1)!(k-k+1)!} = k
-	\end{equation*}
-	
-	Procedendo per passo induttivo:
-	
-	\begin{equation*}
-		\begin{aligned}
-			S_{n+1,k} = S_{n,k} + S_{n,k-1} \\
-			= \dfrac{n!}{k!(n-k)!} + \dfrac{n!}{(k-1)!(n-k+1)!} = \binom{n}{k} + \binom{n}{k-1} \\
-			= \dfrac{n!((n-n+1) + k)}{k!(n-k+1)} = \dfrac{n!(n+1)}{k!(n+1-k)} = \dfrac{(n+1)!}{k!(n+1-k)!} = \dfrac{n+1}{k}	
-		\end{aligned}
-	\end{equation*}
+\begin{proof}
+    Fissato $ k \geq 2 $ dimostriamo per induzione su $ n \geq k $
+    
+    Il primo passo iniziale \`e, per $ n = k $
+
+    \begin{equation*}
+        S_{k,k} = 1=\binom{k}{k}= \dfrac{k!}{k!(k-k)!}
+    \end{equation*}
+    (c'\`e un solo modo di prendere $k$ elementi da un insieme di $k$ oggetti: prenderli tutti)
+
+    Per questa dimostrazione serve anche un ulteriore passo iniziale: dobbiamo vedere in quanti
+    modi si possono scegliere $k-1$ elementi da un insieme di $k$ oggetti. Abbiamo
+    \begin{equation*}
+        S_{k,k-1}= k =\binom{k}{k-1}= \dfrac{k!}{(k-1)!(k-k+1)!}
+    \end{equation*}
+    (infatti dobbiamo semplicemente scegliere quale elemento non prendere, e quindi abbiamo
+    $k$ scelte possibili)
+
+    Passo induttivo: consideriamo che $S_{n+1,k} = S_{n,k} + S_{n,k-1}$ infatti posso scegliere i $k$
+    elementi dai primi $n$, e scartare l'ultimo, oppure sceglierne $k-1$ dai primi $n$ e prendere l'ultimo.
+    Questa formula spiega perch\'e abbiamo bisogno di due passi iniziali.
+
+    \begin{eqnarray*}
+        S_{n+1,k} &=& S_{n,k} + S_{n,k-1}= \binom{n}{k}+\binom{n}{k-1}\\
+                &= &\dfrac{n!}{k!(n-k)!} + \dfrac{n!}{(k-1)!(n-k+1)!} \\
+                &= &\dfrac{n!((n-k+1) + k)}{k!(n-k+1)!} = \dfrac{n!(n+1)}{k!(n+1-k)!} = \dfrac{(n+1)!}{k!(n+1-k)!} \\
+                &= &\binom{n+1}{k}
+    \end{eqnarray*}
 \end{proof}
 
 \subsection{Disposizioni}
 
 \begin{defn}
-	Una disposizione $ D_{n,k} $ significa il numero di modi per "prendere" $ k $ oggetti ordinati da un insieme di $ n $ elementi.
-	
-	\begin{equation}
-	D_{n,k} = S_{n,k} \cdot \text{Perm}(k) = \dfrac{n!}{(n-k)!k!} \cdot k! = \dfrac{n!}{(n-k)!}
-	\end{equation}
+    Una disposizione $ D_{n,k} $ significa il numero di modi per "prendere" $ k $ oggetti ordinati da un insieme di $ n $ elementi.
 \end{defn}
+Ovviamente avremo
+    \begin{equation}
+    D_{n,k} = S_{n,k} \cdot \text{Perm}(k) = \dfrac{n!}{(n-k)!k!} \cdot k! = \dfrac{n!}{(n-k)!}
+    \end{equation}
 
-\section{Probabilità Condizionata}
+\section{Probabilit\`a Condizionata}
 
 \begin{exmp}
-	Lancio due dadi sommando il risultato, qual'è $ \prob{\geq 10} $ sapendo che il primo ha fatto almeno 3?
-	
-	Sappiamo che $ \prob{\text{Somma} \geq 10} = 6/36 = 1/6 $
-	
-	Poniamo il vincolo che il lancio del primo dado risulti almeno $ \geq 3 $
-	
-	\begin{equation*}
-	\prob{\text{Somma} \geq 10 | \text{Primo dado} \geq 3} = 6/24 = 1/4
-	\end{equation*}
+    Lancio due dadi sommando il risultato, qual'\`e $ \prob{\geq 10} $ sapendo che il primo ha fatto almeno 3?
+
+    Sappiamo che $ \prob{\text{Somma} \geq 10} = 6/36 = 1/6 $
+    
+	Poniamo il vincolo che il lancio del primo dado risulti almeno $ \geq 3 $. Allora se vediamo i possibili
+    risultati vediamo che i casi favorevoli sono $6$ e quelli possibili sono $24$, quindi
+
+    \begin{equation*}
+    \prob{\text{Somma} \geq 10 \mid \text{Primo dado} \geq 3} = 6/24 = 1/4
+    \end{equation*}
 \end{exmp}
 
 
 
 \begin{defn}
-	
-	Ponendo $ \Omega = $ gli eventi possibili;
-	La \textbf{probabilità condizionata} che succeda $ A $ sapendo $ B $ si indica con:
-	
-	\begin{equation}
-	\begin{aligned}
-	\prob{A|B} = \dfrac{\text{casi favorevoli}}{\text{casi possibili}} = \dfrac{\abs{A \cap B}}{\abs{B}} = \dfrac{\abs{A \cup B}}{\abs{\Omega}} \cdot \dfrac{\abs{\Omega}}{\abs{B}} \\
-	\prob{A|B} = \dfrac{\prob{A \cap B}}{\prob{B}}	
-	\end{aligned}
-	\end{equation}
-	
+    
+    Ponendo $ \Omega = $ gli eventi possibili;
+    La \textbf{probabilit\`a condizionata} che succeda $ A $ sapendo $ B $ si indica con:
+    
+    \begin{equation}
+    \begin{aligned}
+    \prob{A|B} = \dfrac{\text{casi favorevoli}}{\text{casi possibili}} = \dfrac{\abs{A \cap B}}{\abs{B}} = \dfrac{\abs{A \cap B}}{\abs{\Omega}} \cdot \dfrac{\abs{\Omega}}{\abs{B}} \\
+    \prob{A|B} = \dfrac{\prob{A \cap B}}{\prob{B}}	
+    \end{aligned}
+    \end{equation}
+    
 \end{defn}
 
 \begin{exmp}
-	Nel lancio di un dado, la probabilità di ottenere $ \leq 4 $ sapendo che è uscito un numero pari è
-	
-	\begin{equation*}
-	\begin{aligned}
-	\prob{\leq 4|\text{pari}} = \dfrac{\prob{\leq 4 | \text{pari}}}{\prob{\text{pari}}} \\
-	\prob{\text{pari}} = 3/6 = 1/2 \\
-	\prob{\leq 4 \cap \text{pari}} = 2/6 \\
-	\implies \prob{\leq 4|\text{pari}} = \dfrac{2/6}{1/2} = 2/3
-	\end{aligned}
-	\end{equation*}
+    Nel lancio di un dado, la probabilit\`a di ottenere $ \leq 4 $ sapendo che \`e uscito un numero pari \`e
+    
+    \begin{equation*}
+    \begin{aligned}
+    \prob{\leq 4|\text{pari}} = \dfrac{\prob{\leq 4 | \text{pari}}}{\prob{\text{pari}}} \\
+    \prob{\text{pari}} = 3/6 = 1/2 \\
+    \prob{\leq 4 \cap \text{pari}} = 2/6 \\
+    \implies \prob{\leq 4|\text{pari}} = \dfrac{2/6}{1/2} = 2/3
+    \end{aligned}
+    \end{equation*}
 \end{exmp}
 
 \begin{defn}
-	Definiamo il \textbf{complementare} di un evento, ovvero $ A^C=\Omega \backslash A $. La probabilità di un complementare è $ \prob{A^C} = 1 - \prob{A} = \prob{\Omega} - \prob{A} $
-	
-	La probabilità di un intersezione di eventi è $ \prob{A \cap B} = \prob{A} \cdot \prob{B} $
+    Definiamo il \textbf{complementare} di un evento, ovvero $ A^C=\Omega \backslash A $. La probabilit\`a di un complementare \`e $ \prob{A^C} = 1 - \prob{A} = \prob{\Omega} - \prob{A} $
 \end{defn}
+In generale, dati due eventi $ A, B $ con $ A \cap B \neq 0 $ si ha che la probabilit\`a dell'unione \`e $ \prob{A \cup B} = \prob{A} + \prob{B} $.
+
+
+\begin{defn}
+Due eventi $A$ e $B$ si dicono  \textbf{indipendenti} se $\prob{A \mid B}=\prob{A}$.
+\end{defn}
+
+Dalla definizione di probabilit\`a condizionata si ottiene che se $A$ e $B$ sono indipendenti vale
+ $ \prob{A \cap B} = \prob{A} \cdot \prob{B} $
+
 
 \section{Esercizi}
 
 \begin{exrc}
-	\textbf{Terno al lotto}: Giocando 5 numeri al lotto (estrazione da 1 a 90) calcolare la probabilità di ottenere un terno esatto e più di un terno.
-	
-	Se vogliamo ottenere un terno esatto i casi possibili sono $ \binom{90}{5} $ (I modi di estrarre 5 palline dall'urna). I casi favorevoli saranno $ S_{5,3} \cdot S_{85,2} = \binom{5}{3} \cdot \binom{85}{2}$
-	
-	La probabilità di ottenere un terno esatto sarà quindi
-	\begin{equation*}
-		\prob{\text{terno esatto}} = \dfrac{\binom{5}{3} \cdot \binom{85}{2}}{\binom{90}{5}} = \dfrac{85 * 84 * 5}{\binom{90}{5}}
-	\end{equation*}
-	
-	Per ottenere almeno un terno i casi favorevoli sono
-	\begin{itemize}
-		\item terno: $ \binom{5}{3} \binom{85}{2} $
-		\item quaterna: $ \binom{5}{4} \binom{85}{1} $
-		\item cinquina: 1
-	\end{itemize}
-	
-	La probabilità di ottenere almeno un terno sarà data dalla somma delle probabilità corrispondenti a terno, quaterna e cinquina:
-	
-	\begin{equation*}
-		\prob{\text{almeno un terno}} = \dfrac{\binom{85}{2} \binom{5}{3}}{\binom{90}{5}} + \dfrac{\binom{85}{1} \binom{5}{4}}{\binom{90}{5}} + 1
-	\end{equation*}
+    \textbf{Terno al lotto}: Giocando 5 numeri al lotto (estrazione da 1 a 90) calcolare la probabilit\`a di ottenere un terno esatto e pi\`u di un terno.
+    
+    Se vogliamo ottenere un terno esatto i casi possibili sono $ \binom{90}{5} $ (I modi di estrarre 5 palline dall'urna). I casi favorevoli saranno $ S_{5,3} \cdot S_{85,2} = \binom{5}{3} \cdot \binom{85}{2}$
+    (ovvero i modi in cui si possono scegliere $3$ numeri tra i $5$ estratti e $2$ numeri dagli altri).
+
+    La probabilit\`a di ottenere un terno esatto sar\`a quindi
+    \begin{equation*}
+        \prob{\text{terno esatto}} = \dfrac{\binom{5}{3} \cdot \binom{85}{2}}{\binom{90}{5}} \simeq \frac 1{1230}
+    \end{equation*}
+
+
+    Per ottenere almeno un terno i casi favorevoli sono
+    \begin{itemize}
+        \item terno: $ \binom{5}{3} \binom{85}{2} $
+        \item quaterna: $ \binom{5}{4} \binom{85}{1} $
+        \item cinquina: 1
+    \end{itemize}
+    
+    La probabilit\`a di ottenere almeno un terno sar\`a data dalla somma delle probabilit\`a corrispondenti a terno, quaterna e cinquina:
+    
+    \begin{equation*}
+        \prob{\text{almeno un terno}} = \dfrac{\binom{85}{2} \binom{5}{3}}{\binom{90}{5}} + \dfrac{\binom{85}{1} \binom{5}{4}}{\binom{90}{5}} + 1
+    \end{equation*}
 \end{exrc}
 
 \begin{exrc}
-	\textbf{Probabilità del gioco di Monty Hall}/
-	Nel gioco televisivo di Monty Hall il partecipante deve scegliere una fra tre porte, una di esse contiene un premio mentre le altre due contengono rispettivamente due capre. Dopo la scelta del giocatore iniziale il presentatore apre una delle due porte contenenti una capra. Al giocatore conviene cambiare porta o mantenere quella scelta in origine?
-	
-	\paragraph{Ipotesi} Se scelgo una porta e la mantengo vinco solo se il premio era nella porta che ho scelto $ \implies P = 1/3 $
-	
-	\paragraph{Ipotesi} Se scelgo una porta e la cambio avrò $ P = 2/3 $
-	\begin{table}[H]
-		\centering
-		\caption{Gioco di Monty Hall}
-		\begin{tabular}{lll}
-			1  & 2  & 3  \\
-			x  & x  & \$ \\
-			x  & \$ & x  \\
-			\$ & x  & x 
-		\end{tabular}
-	\end{table}
+    \textbf{Probabilit\`a del gioco di Monty Hall}
+    Nel gioco televisivo di Monty Hall il partecipante deve scegliere una fra tre porte, una di esse contiene un premio mentre le altre due contengono rispettivamente due capre. Dopo la scelta del giocatore iniziale il presentatore apre una delle due porte contenenti una capra. Al giocatore conviene cambiare porta o mantenere quella scelta in origine?
+    
+    \paragraph{Ipotesi} Se scelgo una porta e la mantengo vinco solo se il premio era nella porta che ho scelto $ \implies P = 1/3 $
+    
+    \paragraph{Ipotesi} Se scelgo una porta e la cambio avr\`o $ P = 2/3 $
+    \begin{table}[H]
+        \centering
+        \caption{Gioco di Monty Hall}
+        \begin{tabular}{lll}
+            1  & 2  & 3  \\
+            x  & x  & \$ \\
+            x  & \$ & x  \\
+            \$ & x  & x 
+        \end{tabular}
+    \end{table}
 \end{exrc}
  
 \begin{exrc}
-	\textbf{Dado rosso e dado nero}
-	
-	Tiriamo due dadi, uno rosso ed uno nero. Calcolare la probabilità che il dado rosso risulti 3 ed il dado nero risulti 2:
-	
-	\begin{equation*}
-		\begin{aligned}
-			\prob{R=3 \mid N=2} = \dfrac{\prob{R=3 \cap N=2}}{\prob{N=2}} = 	\dfrac{1/36}{6/36} = \dfrac{1}{6} \\
-			\prob{R=3} = 1/6
-		\end{aligned}
-	\end{equation*}
-	
-	Ne otteniamo che $ \prob{A|B} = \prob{A} \implies A, B $ sono indipendenti.
-	
-	In generale, dati due eventi $ A, B $ con $ A \cap B \neq 0 $ la probabilità dell'unione è $ \prob{A \cup B} = \prob{A} + \prob{B} $, allora $ \prob{\Omega} = 1 $ dove $ \Omega = $ tutti gli eventi.
+    \textbf{Dado rosso e dado nero}
+    
+	Tiriamo due dadi, uno rosso ed uno nero. Calcolare la probabilit\`a che il dado rosso risulti 3 sapendo che sul dado nero \`e uscito 2:
+
+    \begin{equation*}
+        \begin{aligned}
+            \prob{R=3 \mid N=2} = \dfrac{\prob{R=3 \cap N=2}}{\prob{N=2}} = 	\dfrac{1/36}{6/36} = \dfrac{1}{6} \\
+            \prob{R=3} = 1/6
+        \end{aligned}
+    \end{equation*}
+    Ne otteniamo che $ \prob{A|B} = \prob{A} \implies A, B $ sono indipendenti.
 \end{exrc}
 
