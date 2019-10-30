@@ -4,119 +4,143 @@
 
 \begin{defn}
 	\textbf{Processi Stocastici}
-	Spesso abbiamo bisogno di rappresentare quantit\`a incerte che cambiano nel tempo. Possiamo rappresentarle con famiglie di variabili aleatore indicizzate mediante un parametro, spesso corrispondente al "tempo"
-	
-	Una famiglia di variabili aleatorie $ \left\{X_t\right\}_{t\in \mathcal{T}} $ dove $ \mathcal{T} \subseteq \R $ e che assumono tutte valori nello stesso insieme $ E $ \`e detta \textbf{processo stocastico}. L'insieme $ E $ \`e detto spazio degli stati del processo, mentre l'insieme $ \mathcal{T} $ \`e detto insieme dei tempi. Considereremo sempre gli insiemi degli stati e dei tempi \textit{discreti} (numerabili) e molto spesso finiti. L'insieme dei tempi pu\`o essere un intervallo $ \mathcal{T} = [0,T] $. Ad esempio, insiemi $ \mathcal{T} $ validi possono essere: $ \N, \Z, \{0, 1, 2, \hdots, n\}, \{t_1, t_2, \hdots, t_n\} $. Dato un processo stocastico $ \{X_t\}_{t \in \mathcal{T}} $ le variabili aleatorie $ X_t \in E $ sono dette marginali del processo. Le leggi delle marginali di due processi potrebbero coincidere, pur essendo i due processi molto diversi.
-	
+	Spesso abbiamo bisogno di rappresentare quantit\`a incerte che cambiano nel tempo. Possiamo rappresentarle con famiglie di variabili aleatore indicizzate mediante un parametro, spesso corrispondente al ``tempo"
+
+	Una famiglia di variabili aleatorie $ \left\{X_t\right\}_{t\in \mathcal{T}} $ dove $ \mathcal{T} \subseteq \R $ e che assumono tutte valori nello stesso insieme $ E $ \`e  detta \textbf{processo stocastico}. L'insieme $ E $ \`e  detto spazio degli stati del processo, mentre l'insieme $ \mathcal{T} $ \`e  detto insieme dei tempi. Considereremo sempre gli insiemi degli stati e dei tempi \textit{discreti} (numerabili) e molto spesso finiti. L'insieme dei tempi pu\`o  essere un intervallo $ \mathcal{T} = [0,T] $. Ad esempio, insiemi $ \mathcal{T} $ validi possono essere: $ \N, \Z, \{0, 1, 2, \hdots, n\}, \{t_1, t_2, \hdots, t_n\} $. Dato un processo stocastico $ \{X_t\}_{t \in \mathcal{T}} $ le variabili aleatorie $ X_t \in E $ sono dette marginali del processo. Le leggi delle marginali di due processi potrebbero coincidere, pur essendo i due processi molto diversi.
+
 \end{defn}
 
 
-\begin{exmp}
-	
-	Consideriamo le estrazioni da un urna contenente palline rosse e palline blu. Prendiamo in considerazione il colore della pallina alla prima, seconda, terza, ecc. estrazione. Il fenomeno \`e rappresentabile con una famiglia di variabili aleatorie.
-	
+\begin{exmp}\label{ex-fond}
+Consideriamo le estrazioni da un urna contenente 10 palline rosse (R) e 3 palline blu (B). Prendiamo in considerazione il colore della pallina alla prima, seconda, terza, ecc. estrazione. Il fenomeno \`e  rappresentabile con una famiglia di variabili aleatorie.
 	\begin{equation*}
 	X_1, X_2, X_3, \hdots, X_n \in \{\text{rossa}, \text{blu}\}
 	\end{equation*}
-	
-	I due processi cambiano radicalmente se le estrazioni sono con reimmissione della pallina o senza, ma sappiamo che le marginali hanno tutte le stesse leggi rispetto a $ \p{\cdot \mid \Omega} $
-	
-	\begin{equation*}
-	\p{X_k = \text{rossa} \mid \Omega} = \dfrac{\text{\# palline rosse}}{\text{\# palline totali}}
-	\end{equation*}
-	
+Considero tre tipi diversi di estrazione
+\begin{enumerate}
+\item estraggo senza reimbussolare
+\item estraggo e reimbussolo la pallina estratta
+\item estraggo la prima, estraggo la seconda e reimbussolo la prima, estraggo la terza e reimbussolo la
+seconda, ecc. In pratica ad ogni estrazione nell'urna ci sono tutte le palline escluso l'ultima estratta
+\end{enumerate}
+Calcolare, nei tre casi, $\p{\text{3a estratta =R} | \text{1a estratta =B, 2a estratta=R} }$ nei tre casi.
+
+Nel caso a) abbiamo  $\p{\text{3a =R} | \text{1a=B, 2a=R} }=\p{\text{3a =R}}=10/3$;
+
+nel caso b)
+ $\p{\text{3a =R} | \text{1a=B, 2a=R} }=9/11$;
+
+ nel caso c)
+ $\p{\text{3a =R} | \text{1a=B, 2a=R} }=\p{\text{3a =R} | \text{2a=R} }= 9/12 $
 \end{exmp}
 
-\begin{exmp}
-	Assumiamo che le variabili $ X_1, \hdots, X_n \in \{\text{rossa}, \text{blu}\} $ siano tutte indipendenti (rispetto a $ \Omega $). Supponiamo di conoscere il numero di palline totali ed il numero di palline rosse inizialmente. Supponiamo di aver fatto $ k < n $ estrazioni e di conoscere il loro esito esatto. Poniamo ad esempio che siano state tutte rosse. Qual'\`e la probabilit\`a che all'estrazione $ k+1 $ otteniamo una pallina rossa?
-	
-	\begin{equation*}
-	\begin{aligned}
-	\p{X_{k+1} = rossa \mid \Omega \cap \{X_1 = \text{rossa}, \hdots, X_k = \text{rossa} \} } \\
-	= P(X_{k+1} = \text{rossa} \mid \Omega)	\text{  (Per indipendenza)} \\
-	= \dfrac{\text{\# palline rosse}}{\text{\# palline totali}}
-	\end{aligned}
-	\end{equation*}
-	
-	L'ipotesi di indipendenza probabilistica significa che non siamo capaci di "imparare" dal passato.
-	
-\end{exmp}
+In tutti i tre casi ogni marginale $X_t$ si trova nello stesso modo:
+ $$\p{X_t=R}=\frac{\text{palline rosse presenti nell'urna}}{\text{palline totali presenti nell'urna}}$$  ma la legge specifica ottenuta dipende dall'istante $t$ in cui si fa l'estrazione e - a seconda del tipo di processo - dalla storia delle estrazioni precedenti.
 
 \begin{defn}
-	\textbf{Propriet\`a di Markov:}
-	Nei processi di Markov le informazioni ottenibili dal "passato" (la storia del processo fino al presente) possono essere utili a fare inferenza sullo stato futuro. In realt\`a costituiscono la classe pi\`u semplice in cui tutta la storia passata pu\`o essere trascurata ai fini di fare inferenza sul futuro.
-	
+	\textbf{Processo di Markov:}
+	Un processo aleatorio \`e detto di Markov  se l'evento all'istante $k+1$ dipende solo dall'esito dell'evento
+	$k$ ma non da quelli precedenti. In formule, se $e_k$ rappresenta il valore assunto dalla variabile $X_k$, il processo $\{X_t\}_{t\in \N}$ \`e di Markov se
+	$$\p{X_{k+1}=e_{k+1} | X_k=e_k\cap X_{k-1}=e_{k-1}\cap\dots\cap X_0=e_0}=\p{X_{k+1}=e_{k+1} | X_k=e_k}.
+	$$
+In altri termini si pu\`o anche dire
 	\begin{quote}
-		\textbf{Un processo \`e di Markov se conoscendo il presente, passato e futuro sono indipendenti.}
+		{Un processo \`e  di Markov se conoscendo il presente, passato e futuro sono indipendenti.}
 	\end{quote}
-
-	Dato un processo a tempi $ \mathcal{T} $ e stati $ E $ discreti. Un processo  $ \{X_{t_i}\}_{i=0, \hdots, n} $ con $ t_0 < t_1 < \hdots < t_n$ \`e detto \textbf{di Markov} (rispetto a $ \p{\cdot \mid I} $) se, presi qualunque $ k \in \{1, \hdots, n-1\} $ e $ A_0, A_i, A_{k+1} \subseteq E$ vale la seguente propriet\`a
-	
-	\begin{equation*}
-		\begin{aligned}
-		\p{X_{t_k+1} \in A_{k+1} \mid I \cap \{X_{t_k} \in A_k\} \cap \{X_{t_{k-1}} \in A_{k-1}\} \cap \{X_0 \in A_0\}} = \\
-		= \p{X_{t_{k+1}} \in A_{k+1} \mid I \cap \{X_{t_k} \in A_k\}}
-		\end{aligned}
-	\end{equation*} 
-	
-	La propriet\`a di Markov permette di semplificare molto (ma non troppo) un modello probabilistico. L'indipendenza probabilistica va sempre considerata come un'ipotesi che introduciamo nel modello.
-	
-	Pi\`u in generale, una variabile aleatoria del processo $ X_{t_{k+1}} $ deve dipendere soltanto da $ X_{t_{k}} $. 
 \end{defn}
+	\begin{exmp}
+	Tornando all'esempio \ref{ex-fond} dell'estrazione dall'urna  un'estrazione con reimmissione \`e  sicuramente un processo di Markov, se l'estrazione \`e  senza reimmissione il processo \textbf{non} \`e  di Markov. Il motivo \`e  che tutta la sequenza di palline estratte \`e  necessaria per conoscere il contenuto esatto dell'urna (l'informazione passata non pu\`o  essere trascurata). Anche nel terzo caso si ha un processo di Markox, perch\'e le estrazioni non sono indipendenti tra di loro, ma ogni estrazione dipende solo dalla precedente.
+\end{exmp}
 
-\begin{note}
-	Dato che $ E $ \`e un insieme discreto, si potrebbe dimostrare che \`e sufficiente verificare la proriet\`a di Markov su insiemi $ A_k $ costituiti da singoli punti $ A_k = \{i_k\} $, in modo tale che la condizione $ \{X_{t_k} \in A_k\} $ diventi $ \{X_{t_k} = i_k\} $
+\begin{note} Se un processo \`e di Markov per conoscerlo interamente bastano le probabilit\`a di
+transizione $\p{X_{k+1}=j\ |\ X_{k}=i}$ (oltre alla marginale $X_0$).
 \end{note}
 
-\begin{exmp}
-	Tornando all'esempio dell'estrazione dall'urna (di cui conosciamo il contenuto), un'estrazione con reimmissione \`e sicuramente un processo di Markov, se l'estrazione \`e senza reimmissione il processo \textbf{non} \`e di Markov. Il motivo \`e che tutta la sequenza di palline estratte \`e necessaria per conoscere il contenuto esatto dell'urna (l'informazione passata non pu\`o essere trascurata).
-\end{exmp}
 
-\begin{exmp}
-	Vediamo un esempio di processo di Markov basato dalle estrazioni dall'urna contenente $ R $ palline rosse e $ B $ palline blu ($ N = R+B $). Quando estraiamo la prima pallina, la teniamo all'esterno dell'urna. Successivamente estraiamo la seconda pallina, reinseriamo la prima pallina estratta e mescoliamo l'urna. Si procede poi tenendo fuori sempre l'ultima pallina estratta. Poniamo $ X_k = $ il colore della pallina estratta all'estrazione $ k $. La propriet\`a di Markov vale (l'informazione di tutta la sequenza di estrazioni non \`e rilevante eccetto l'ultima). Dati $ i,j \subseteq E $, le probabilit\`a di transizione
-	\begin{equation*}
-		\p{X_{t_{k+1}} = j \mid I \cap X_{t_k} = i}
-	\end{equation*}
-	
-	potrebbero in generale dipendere da $ k $. Studieremo il caso in cui queste non dipendono da $ k $ per semplificare, e per semplificare ulteriormente assumiamo che $ t_k = k $.
-\end{exmp}
 
 \begin{defn}
-	Un process di Markov $ {X_i}_{i=0,\hdots,n} $ \`e \textbf{omogeneo} se le probabilit\`a di transizione non dipendono da $ k \in \{0, 1, \hdots, n-1\} $, ovvero:
+	Un process di Markov $ {X_i}_{i\in \N} $ \`e  \textbf{omogeneo} se le probabilit\`a di transizione non dipendono dall'istante $k$, ovvero:
 	\begin{equation*}
 	\begin{aligned}
-		\forall i,j \in E \> . \> \p{X_{k+1} = j \mid I \cap \{X_k = i\}} = \p{X_1 = j \mid I \cap \{X_0 = i\}}
+		\forall i,j \in \N\ ,\  \p{X_{k+1} = j \mid \{X_k = i\}} = \p{X_1 = j \mid  \{X_0 = i\}}
 	\end{aligned}
 	\end{equation*}
 \end{defn}
+
+\begin{exmp}
+	Nell'esempio \ref{ex-fond}, a) e c) sono processi di Markov omogenei.
+\end{exmp}
+
+\begin{exmp}
+	Modifichiamo l'esempoi  \ref{ex-fond} nel modo seguente: oltre a quanto detto, ad ogni estrazione 
+	aggiungiamo una pallina nera nell'urna. Allora a) e c) restano processi di Markov, ma non sono 
+	pi\`u omogenei
+\end{exmp}
+
+\begin{note} Se un processo \`e di Markov omogeneo per conoscerlo interamente bastano le probabilit\`a della prima transizione $\p{X_{1}=j\ |\ X_{0}=i}$ (oltre alla marginale $X_0$).
+\end{note}
 
 \begin{defn}
 	\textbf{Matrice di Transizione:}
-		Questa definizione ci permette di collezionare le probabilit\`a di transizione in una singola matrice di transizione
-		
+		Fissato un ordinamento degli stati di un processo di Markov omogeneo a stati finito, si definisce
+		Matrice di transizione la matrice $Q=(q_ij)_{ij}$ dove
 		\begin{equation*}
-		\forall i,j \in E \> . \> Q_{ij} = Q_{i \to j} := \p{X_1 = j \mid I \cap \{X_0 = i\}}
+		 Q_{ij} = Q_{i \to j} := \p{X_1 = j \mid I \cap \{X_0 = i\}}
 		\end{equation*}
+Questa definizione ci permette di collezionare le probabilit\`a di transizione in una singola matrice.
 \end{defn}
-
-\begin{note}
-	Per scrivere una matrice di trasizione $ Q $ bisogna fissare un ordinamento degli stati $ E $. Una volta fissato questo ordinamento va seguito in tutto il problema.
-	
-	\begin{equation*}
-	\sum_{j \in E} Q_{i \to j} = \sum_{j \in E} \p{X_1 = j \mid I \cap \{X_0 = i\}} = \p{X_1 \in E \mid I \cap \{X_0 = i\}} = 1
-	\end{equation*}
-\end{note}
 
 \begin{defn}
 	\textbf{Catena di Markov}:
-	Un processo di Markov omogeneo $ \{X_i\}_{i=0,\hdots,n} $ a stati finiti (o discreti) \`e detto \textbf{Catena di Markov}.
-	Si possono visualizzare le Catene di Markov, data una matrice di transizione, con un grafo orientato analogo agli automi a stati finiti.
-	Ad ogni stato $ i \in E $ facciamo corrispondere un nodo, e ad ogni probabilit\`a di transizione $ Q_{i \to j} $ strettamente positiva facciamo corrispondere un arco $ (i, j) $. Non si disegnano gli archi delle probabilit\`a di transizione nulle. La rappresentazione con i grafi non indica nulla sulle leggi marginali della catena.
+	Un processo di Markov omogeneo $ \{X_i\}_{i=0,\hdots,n} $ a stati finiti (o discreti) \`e  detto \textbf{Catena di Markov}.
 \end{defn}
+	Si possono visualizzare le Catene di Markov, data una matrice di transizione, con un grafo orientato analogo agli automi a stati finiti.
+	Ad ogni stato $ i \in E $ facciamo corrispondere un nodo, e ad ogni probabilit\`a di transizione 
+	$ Q_{i \to j} $ strettamente positiva facciamo corrispondere un arco $ (i, j) $. Non si disegnano gli archi delle probabilit\`a di transizione nulle. La rappresentazione con i grafi non indica nulla sulle leggi marginali della catena.
+
+\begin{exmp}
+Scriviamo la matrice di transizione per l'esempio \ref{ex-fond} nei casi a) e c).
+Se associamo al rosso lo stato 1 e al blu lo stato 2
+abbiamo
+\begin{eqnarray*}
+	\text{a): }Q = \begin{pmatrix}
+	10/13 & 3/13 \\
+	10/13 & 3/13
+	\end{pmatrix}
+		&&
+	\text{c): }Q = \begin{pmatrix}
+	9/12 & 3/12 \\
+	10/12 & 2/12
+	\end{pmatrix}
+\end{eqnarray*}
+Si noti che la somma delle righe della matrice deve dare 1 (rappresenta una densit\`a di probabilit\`a).
+\end{exmp}
+
+\begin{exmp}
+Scriviamo per l'esempio \ref{ex-fond} nel caso c), il grafo associato alla catena di Markov
+	\begin{figure}[H]
+		\centering
+		\caption{Catena di Markov}
+		\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
+		
+		\node[state] (A)                    {Rossa};
+		\node[state] (B) [right of=A] 	   	{Blu};
+		
+		\path 	(A)		edge [bend left]  	node {3/12} 		(B)
+						edge [loop left] 	node {9/12} 		(A)
+		(B)				edge [bend left]  	node {10/12} 		(A)
+						edge [loop right] 	node {2/12} 		(B);
+
+		\end{tikzpicture}
+	\end{figure}
+Si noti che in questo caso la somma dei valori {\em uscenti} da un nodo deve dare 1.
+\end{exmp}
+
+
 
 \begin{exmp}
 	All'interno di una CPU abbiamo due stati, \textbf{busy} (nodo 1) e \textbf{free} (nodo 2).
-	
+
 	\begin{equation*}
 	Q = \begin{pmatrix}
 	0,3 & 0,7 \\
@@ -141,70 +165,55 @@
 	\end{figure}
 \end{exmp}
 
-\begin{exmp}
-	Consideriamo un urna contenente $ R $ palline rosse e $ B $ palline blu, in tutto $ N = R + B $ palline. Effettuiamo estrazioni con reimmissione. Abbiamo gi\`a visto che la propriet\`a di Markov vale. Le probabilit\`a di transizione sono molto semplici da calcolare grazie all'indipendenza delle variabili $ \{X_k\} $.
-	
-	\begin{equation*}
-		\begin{aligned}
-			\p{X_{k+1} = \text{rossa} \mid \Omega \cap \{X_k = \text{rossa}\}} = \p{X_{k+1} = \text{rossa} \mid \Omega} = \dfrac{R}{N} \\
-			\p{X_{k+1} = \text{blu} \mid \Omega \cap \{X_k = \text{rossa}\}} = \p{X_{k+1} = \text{blu} \mid \Omega} = \dfrac{B}{N} \\
-			\p{X_{k+1} = \text{rossa} \mid \Omega \cap \{X_k = \text{blu}\}} = \p{X_{k+1} = \text{rossa} \mid \Omega} = \dfrac{R}{N} \\
-			\p{X_{k+1} = \text{blu} \mid \Omega \cap \{X_k = \text{blu}\}} = \p{X_{k+1} = \text{blu} \mid \Omega} = \dfrac{B}{N} \\
-		\end{aligned}
-	\end{equation*}
-	
-	La catena di Markov sugli stati $ E = \{\text{rossa}, \text{blu}\} $ \`e omogenea con matrice di transizione.
-	
-	\begin{equation*}
-	Q = \begin{pmatrix}
-	R/N & B/N \\
-	R/N & B/N
-	\end{pmatrix}
-	\end{equation*}
-	
-	\begin{figure}[H]
-		\centering
-		\caption{Catena di Markov}
-		\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
-		
-		\node[state] (A)                    {Rossa};
-		\node[state] (B) [right of=A] 	   	{Blu};
-		
-		\path 	(A)		edge [bend left]  	node {B/N} 		(B)
-						edge [loop left] 	node {R/N} 		(A)
-		(B)				edge [bend left]  	node {R/N} 		(A)
-						edge [loop right] 	node {B/N} 		(B);
-		
-		\end{tikzpicture}
-	\end{figure}
-\end{exmp}
 
 \section{Calcolo Algebrico su catene di Markov}
 
-\paragraph{Calcolo del Marginale di una Catena di Markov}
-$ \p{X_0 = j} \forall j $ \`e un vettore che chiamiamo $ v = (\p{X_0 = j}) $, \`e lo stato iniziale. Definiamo $ Q(q_{ji}) $ matrice di transizione. $ q_{ji} = \p{X_1 = i \mid X_0 = j} $. Definiamo anche $ q_{j \to i} = \p{X_1 = i \mid X_0 = j} $. Ne otteniamo che $ \p{X_k = i} = (v \cdot Q^k)_i = (v_i = Q \cdot Q \cdot \hdots \cdot Q)_i $. Per correttezza, $ v \cdot Q $ \`e la legge di $ X_1 $. Calcoliamo $ X_1 $.
+\begin{prop}\textbf{Calcolo del Marginale di una Catena di Markov}
+Sia data la distribuzione di probabilit\`a di trovarsi in uno stato iniziale $ \p{X_0 = j}$ $\forall j $. 
+Definiamo il vettore riga $ v = (\p{X_0 = j})_j $. Sia $ Q=(q_{ji})_{ji} $ la matrice di transizione associata 
+ad una catena di Markov, ovvero $ q_{ji} =q_{j \to i}= \p{X_1 = i \mid X_0 = j} $. 
 
+Allora possiamo calcolare la legge marginale  $ \p{X_k = i} $ come:
+ $$ \p{X_k = i} = (v \cdot Q^k)_i = (v \cdot  Q \cdot Q \cdot \hdots \cdot Q)_i.$$
+ \end{prop}
+ \begin{proof}
+Dimostriamo  per induzione. Per $k=1$ abbiamo
 \begin{equation*}
 	\begin{aligned}
-	\p{X_1 = i} \cdot \sum_j (\p{X_1 = i \mid X_0 = j}) \\
-	\p{X_1 = j} = \sum_j q_{j \to i} v_j = \sum_j v_j q_{j \to i} = (v \cdot Q_i)
+	\p{X_1 = i} =  \sum_j (\p{X_1 = i \mid X_0 = j}) \p{ X_0 = j}= \\
+	 = \sum_j q_{j \to i} v_j = \sum_j v_j q_{j \to i} = (v \cdot Q)_i.
+	\end{aligned}
+\end{equation*}
+Nel passo induttivo, supponiamo di conoscere la $k$-esima marginale $(\p{X_1 = j} )_j$, che indico 
+per comodit\`a con il vettore $v^k=(\p{X_1 = j} )_j$, e che, per ipotesi induttiva valga $v_k=v\cdot Q^k$.
+Allora per la $(k+1)$-esima marginale abbiamo
+\begin{equation*}
+	\begin{aligned}
+	\p{X_{k+1} = i} =  \sum_j (\p{X_{k+1} = i \mid X_{k}= j}) \p{ X_{k} = j}= \\
+	 = \sum_j q_{j \to i} v^k_j = \sum_j v^k_j q_{j \to i} = (v^k \cdot Q)_i=(v\cdot Q^k \cdot Q)_i=
+	  (v\cdot Q^{k+1} )_i
 	\end{aligned}
 \end{equation*}
 
+\end{proof} 
 
-A volte, si pu\`o assegnare lo stato iniziale, ad esempio $ X_0 = j \iff v = \{0, 0, 0, \hdots, 0, 1, \hdots, 0, 0,\} = e_j $ (significa che vi \`e un 1 in posizione $ j $). Si ha che:
+A volte, conosciamo con certezza lo stato iniziale di un sistema, ad esempio sappiamo con sicurezza 
+che $ X_0 = j$. In quel caso il vettore iniziale \`e dato da $v =  e_j =\{0, 0, 0, \hdots, 0, 1, \hdots, 0, 0,\} $  
+dove l'unico valore 1 \`e  in posizione $j$-esima). In quel caso per il calcolo della $k$-esima marginale si ha
+$
+\p{X_k = j \mid X_0 = i}=(e_i Q^k)_j = (Q^k)_{ij}. 
+$
 
-\begin{equation*}
-(e_i Q^k) \cdot (\p{X_k = l \mid X_0 = i} ) = (e_i Q^k)_l = (Q^k)_{il}
-\end{equation*}
-
-\begin{exmp}
-	Riprendendo l'esempio delle palline rosse e blu:
+Allora anche l'insieme delle $ (Q^k)_{ij}$ al variare di $j$ \`e una densit\`a di probabilit\`a e quindi deve valere
+$\sum_i (Q^k)_{ij}=1$ per ogni $j$.
+\begin{exmp}\label{ex-inv}
+	Riprendendo l'esempio \ref{ex-fond}, caso c):
 	
 	\begin{equation*}
 	\begin{aligned}
 	Q=\begin{pmatrix}
 	\frac{9}{12} & \frac{3}{12} \\
+	&\\
 	\frac{10}{12} & \frac{2}{12}
 	\end{pmatrix}
 	\end{aligned}
@@ -214,103 +223,122 @@ A volte, si pu\`o assegnare lo stato iniziale, ad esempio $ X_0 = j \iff v = \{0
 	
 	Marginale $ X_1 $: $ v \cdot Q = (\frac{10}{13}, \frac{3}{13})\begin{pmatrix}
 	\frac{9}{12} & \frac{3}{12} \\
+	&\\
 	\frac{10}{12} & \frac{2}{12}
-	\end{pmatrix} $ = $\hdots (\frac{120}{13 \cdot 12}, \frac{36}{13 \cdot 12}) = \left( \frac{10}{13}, \frac{3}{13} \right)$
+	\end{pmatrix} $ = $ (\frac{120}{13 \cdot 12}, \frac{36}{13 \cdot 12}) = \left( \frac{10}{13}, \frac{3}{13} \right)$
 	
-	Si ha che $ \p{X_{10} = B} = (v \cdot Q^{10})_B = ((v \cdot Q) Q^9)_B = (v)_B = {\dfrac{3}{13}} $
+	Si ha che $ \p{X_{10} = B} = (v \cdot Q^{10})_2= ((v \cdot Q) Q^9)_2 = (v \cdot Q^9)_2 =
+	\dots=(v)_2 ={\dfrac{3}{13}} $
 	
 \end{exmp}
 
 \paragraph{Calcolo dei valori attesi}
 
-Data $ (X)_k $una Catena di Markov. $ Q $ matrice di transizione, $ f : \R \to \R$ funzione reale, si ha che $ \E{f(X_k) \mid X_0 = i} $. Prendiamo il caso $ k = 1 $
+Data $ (X)_k $una Catena di Markov. $ Q $ matrice di transizione, $ f : \R \to \R$ funzione reale, voglio calcolare $ \E{f(X_k) \mid X_0 = i} $ (ovvero so che all'istante $X_0$ il sistema si trova nello stato $i$).
+
+Prendiamo ad esempio il caso $ k = 1 $
 
 \begin{equation*}
 	\begin{aligned}
-	\E{f(X_1} \mid X_0 = i) = \sum_j f(j) \cdot \p{x_1 = j \mid X_0 = i} \\
-	= \sum_j f(j) \cdot q_{ij} = (Q \cdot f)_i \\
-	\vec{f} = (f(j))_j
+	\E{f(X_1)} \mid X_0 = i) = \sum_j f(j) \cdot \p{X_1 = j \mid X_0 = i} \\
+	= \sum_j f(j) \cdot q_{ij} = \sum_j \cdot q_{ij}  f(j)= (Q \cdot f)_i \\
+	\text{dove }\vec{f} = (f(j))_j
 	\end{aligned}
 \end{equation*}
 
-Con $ k $ generico si ha $\E{f(X_k) \mid X_0 = i} = (Q^k \vec{f})_i $
+\begin{prop}
+In generale si ha che 
+$$\E{f(X_k) \mid X_0 = i} = (Q^k\cdot \vec{f})_i $$
 
-Se non conosco lo stato iniziale devo conoscere la distribuzione $ (P(X_0) =i)_i = v) $
-
+Se non conosco con certezza lo stato iniziale allora indichiamo, come prima, $ (P(X_0) =i)_i = v) $
+e vale
 \begin{equation*}
-\E{f(X_k \mid X_0} = \vec{f} Q^k v
+\E{f(X_k \mid X_0)} =v\cdot Q^k \cdot \vec{f}
 \end{equation*}
+(con $(X_k \mid X_0) $ si intende la $k$-esima marginale conoscendo la distribuzione di probabilit\`a iniziale, 
+mentre con $(X_k \mid X_0=i) $ si intende la $k$-esima marginale sapendo che lo stato 
+iniziale vale con certezza $i$
+\end{prop}
+La dimostrazione \`e simile alla dimostrazione precedente, e quindi la omettiamo.
 
-% TODO riprendi esercizio
-%\begin{exrc} 
-%	Riprendendo l'esempio precedente, conviene giocare?
-%	
-%	
-%	\begin{equation*}
-%	\begin{aligned}
-%	f(X_1 = R) = -1 \text{ Euro} \\
-%	f(X_1 = B) = 1 \text{ Euro} \\
-%	Q\vec{f} = \begin{pmatrix}
-%	\dfrac{9}{12} & \dfrac{3}{12} \\
-%	\dfrac{10}{12} & \dfrac{2}{12}
-%	\end{pmatrix} \begin{pmatrix}
-%	-1 \\ 5
-%	\end{pmatrix} = \begin{pmatrix}
-%	1/2 & 0
-%	\end{pmatrix} \\
-%	\E{f(X_1} \mid X_0 = R) = \dfrac{1}{2} \\
-%	\E{f(X_1} \mid X_0 = B) = 0
-%	\end{aligned}
-%	\end{equation*}
-%	
-%	Se non si conosce il risultato della prima estrazione la speranza di vincita \`e $ \E{f(X_1} \mid X_0)  = \dfrac{1}{2} \cdot \p{X_0 = R} + 0 \cdot \p{X_0 = B} = \dfrac{1}{2} \cdot \dfrac{10}{13} = \dfrac{10}{26} $
-%\end{exrc}
+D'ora in poi indicheremo semplicemente con $f$ il vettore $\vec{f}$, per alleggerire la notazione.
 
 
+\begin{exrc} 
+Prendiamo ancora l'esempio \ref{ex-fond}, caso c), e scommettiamo nel seguente modo:
+se esce una pallina rossa perdo 1 euro. Se esce la blu guadagno 5 euro. Diciamo che scommettiamo sulla 
+seconda estrazione. Vediamo se conviene giocare nel caso in cui sappiamo che alla prima estrazione \`e 
+uscita una pallina rossa, e nel caso in cui non conosciamo la prima estrazione. 
+Dobbiamo quindi calcolare, rispettivamente  $\E{f(X_1) \mid X_0 = R}$ e  $\E{f(X_1) \mid X_0 }$
+Il vettore $f$ sar\`a $f=(-1,5)$, calcoliamo intanto 
+	\begin{equation*}
+		Q\cdot {f} = \begin{pmatrix}
+	\dfrac{9}{12} & \dfrac{3}{12} \\
+	&\\
+	\dfrac{10}{12} & \dfrac{2}{12}
+	\end{pmatrix} \begin{pmatrix}
+	-1 \\ 5
+	\end{pmatrix} = \begin{pmatrix}
+	1/2 \\ 0
+	\end{pmatrix} 	
+	\end{equation*}
+Quindi nel caso in cui $X_0=R$ il vettore iniziale \`e $v=(1,0)$, quindi 
+  $\E{f(X_1) \mid X_0 = R}=(1,0)\cdot Q\cdot {f} =1/2$, mentre se non si conosce il risultato della prima estrazione il vettore iniziale \`e $v=(10/13,3/13)$, quindi abbiamo 
+   $\E{f(X_1) \mid X_0 = R}=(10/13,3/13)\cdot Q\cdot {f} =10/26$.
+  \end{exrc}
+
+
+\paragraph{Catene stazionarie e stati di equilbrio}
+
+\`E importante lo studio degli equilibri di un sistema, ovvero degli stati per cui il sistema non varia nel tempo 
+(e, in certe condizioni, a cui il sistema tende nel tempo anche se si parte da uno stato che non \`e di equilibrio)
+Per le catene di Markov la ricerca di questi stati non \`e difficile. 
 
 \begin{defn}
 	\textbf{Distribuzione invariante}
-	
-	Cerchiamo di capire se uno stato di una catena di Markov \`e uno stato limite. La \textbf{distribuzione invariante} \`e un vettore $ \vec{\mu} = (\mu_i)_i $ per $ Q $ matrice di transizione se 
-	
+	Sia data una catena di Markov omogenea, con  matrice di transizione $ Q $. 
+	La \textbf{distribuzione invariante} 
+	per tale catena \`e  un vettore $ {\mu} = (\mu_i)_i $ tale che 	
 	\begin{equation*}
 	\begin{cases}
 	\mu_i \geq 0 \\
 	\sum_i \mu_i = 1 \\
-	\vec{mu} \cdot Q = \vec{\mu} \\
-	\vec{mu}^T \cdot Q^T = \vec{\mu}^T \\
+	\vec{\mu} \cdot Q = \vec{\mu} \\
 	\end{cases}
 	\end{equation*}
-	
-	Ovvero $ \vec{mu}^T $ \`e l'autovettore dell'autovalore 1 per $ Q^T $
-	
-	Per trovare $ \mu^T $ si risolve $(Q^T-Id)\mu^T = 0$
-\end{defn}
+	\end{defn}
+\begin{note}
+Si osservi che $ {\mu}^\tau $ \`e  l'autovettore di $ Q^\tau$riferito all'autovalore 1,  quindi se una
+distribuzione invariante per $Q$ esiste, basta risolvere $(Q^\tau-Id)\mu^\tau = 0$
+\end{note}
 
 \begin{defn}
 	\textbf{Catena Stazionaria}
 	
-	Una Catena di Markov $ (x_k)_k $ \`e una \textbf{catena stazionaria} se \textbf{tutte} le marginali sono uguali:
+	Una Catena di Markov $(X_k)_k$ \`e  una \textbf{catena stazionaria} se \textbf{tutte} le sue marginali sono uguali, ovvero se $\p{X_k=i}=p{X_0=i}$ per ogni $i,k$.
+	\end{defn}
 	
-	\[ \begin{cases}
-	\exists \mu \text{ distribuzione invariante} \\
-	\mu Q^k = \mu \forall k 
-	\end{cases} \]
-	
-	Ovvero se $ \p{X_0} = \p{X_1} = \hdots = \p{X_k} $
-\end{defn}
+ Se la catena  $(X_k)_k$ \`e  stazionaria, se prendiamo il vettore della prima marginale 
+	 $\mu=(p{X_0=i})_i$ abbiamo che $\mu\cdot Q^k=\mu$ per ogni $k$. Ma allora 
+	 $\mu=(p{X_0=i})_i$  \`e una distribuzione invariante per $Q$. Viceversa, se abbiamo una distribuzione
+	 invariante $\mu$ per una certa catena di Markov con matrice di transizione $Q$, allora tale 
+	 catena \`e stazionaria, infatti
+	 $$
+	 \mu\cdot Q^k=(\mu\cdot Q)\cdot Q^{k-1}=\mu\cdot Q^{k-1}=\dots=\mu\cdot Q=\mu.
+ $$
+Quindi 
+$$ (X_k)_k \text {\`e una catena di Markov stazionaria} \Leftrightarrow (p{X_0=i})_i
+ \text{ \`e una sua distribuzione invariante)}
+$$	 
 
-\begin{defn}
-	\textbf{Matrice di Transizione regolare}
-	Una matrice di transizione $ Q $ si dice regolare se $ \forall k \>.\> (Q^k)_{ij} > 0 $. Se $ Q $ \`e regolare e $ v $ \`e uno stato iniziale qualsiasi allora $ vQ^k $ tende ad una qualche distribuzione limite e invariante.
-\end{defn}
+\begin{exmp} 
+Abbiamo visto nell'esempio \ref{ex-inv} che il vettore $ \left( \frac{10}{13}, \frac{3}{13} \right)$ \`e una
+distribuzione invariante per la catena di Markov dell'esempio \ref{ex-fond}, caso c). Siamo stati fortunati 
+o questo processo \`e una catena invariante indipendentemente dal numero di biglie blu e rosse?
 
-
-\section{Esercizi}
-
-\begin{exrc}
-	Ho un'urna con $ N = B + R$ biglie ($(2) B $ = Blu, $ (1) R $ = Rosse)
-	
+Supponiamo di avere quindi $ N = B + R$ biglie totali, di cui $R $ Rosse e $ B $ Blu. Il primo nodo sono le biglie rosse ed 
+il secondo quelle blu, al solito.
+Le probabilit\`a di transizione, e la matrice $Q$ saranno quindi 	
 	\begin{equation*}
 	\begin{aligned}
 	q_{1,1} = \p{X_1 = R \mid X_0 = R} = \dfrac{R-1}{N-1} \\
@@ -319,27 +347,92 @@ Se non conosco lo stato iniziale devo conoscere la distribuzione $ (P(X_0) =i)_i
 	q_{2,2} = \p{X_1 = B \mid X_0 = B} = \dfrac{B-1}{N-1} \\
 	Q = \begin{pmatrix}
 	\dfrac{R-1}{N-1} & \dfrac{B}{N-1} \\
+	&\\
 	\dfrac{R}{N-1} & \dfrac{B-1}{N-1}
 	\end{pmatrix}
 	\end{aligned}
 	\end{equation*}
 	
-	Lo stato iniziale $ \mu = \left(\dfrac{R}{N}, \dfrac{B}{N}\right) $. Vogliamo sapere se $ \mu $ \`e invariante.
+	Verifichiamo che lo stato iniziale $ \mu = \left(\dfrac{R}{N}, \dfrac{B}{N}\right) $ \`e  una distribuzione invariante.
 	
 	\begin{equation*}
 	\begin{aligned}
 	\mu Q = \left(\dfrac{R}{N}, \dfrac{B}{N}\right)\begin{pmatrix}
 	\dfrac{R-1}{N-1} & \dfrac{B}{N-1} \\
+	&\\
 	\dfrac{R}{N-1} & \dfrac{B-1}{N-1}
 	\end{pmatrix} \\
-	= \left(\dfrac{R(R-1)}{N(N-1)} + \dfrac{RB}{N(N-1)}, \dfrac{B(R+B-1)}{N(N-1)}\right) = \left(\dfrac{R}{N}, \dfrac{B}{N}\right)
+	= \left(\dfrac{R(R+B-1)}{N(N-1)} , \dfrac{B(R+B-1)}{N(N-1)}\right) = \left(\dfrac{R}{N}, \dfrac{B}{N}\right)
 	\end{aligned}
 	\end{equation*}
-\end{exrc}
+\end{exmp}
+
+
+
+\begin{defn}
+	\textbf{Matrice di Transizione regolare}
+	Una matrice di transizione $ Q $ si dice regolare se per qualche $k$  si ha che $(Q^k)_{ij} > 0 $.
+	 \end{defn}
+Se $ Q $ \`e  regolare e $ v $ \`e  uno stato iniziale qualsiasi allora $ v\cdot Q^k $ tende alla distribuzione invariante per la catena di 
+Markov. Quindi, in questo caso, da qualsiasi stato iniziale si converge verso una distribuzione che possiamo calcolare a priori. 
+Quindi il comportamento di questo sistema diventa prevedibile su tempi lunghi. 
+
+\begin{exmp}
+	All'interno di una CPU abbiamo due stati, \textbf{busy} (nodo 1) e \textbf{free} (nodo 2).
+	
+	\begin{equation*}
+	Q = \begin{pmatrix}
+	0,3 & 0,7 \\
+	0,2 & 0,8
+	\end{pmatrix}
+	\end{equation*}
+	
+	Cerco $ \mu $ distribuzione invariante. Sappiamo che $ \mu $ \`e  autovettore di autovalore 1:
+	
+	\begin{equation*}
+	\begin{aligned}
+	\mu Q = \mu \iff Q^\tau \mu^\tau  = \mu^\tau \iff (Q^\tau -I)\mu^\tau = 0 \\
+	Q^\tau - I = \begin{pmatrix}
+	0.3 & 0.2 \\
+	0.7 & 0.8
+	\end{pmatrix} - \begin{pmatrix}
+	1 & 0 \\ 0 & 1
+	\end{pmatrix} = \begin{pmatrix}
+	-0.7 & 0.2 \\
+	0.7 & -0.2
+	\end{pmatrix} \\
+	\begin{pmatrix}
+	-0.7 & 0.2 \\
+	0.7 & -0.2
+	\end{pmatrix} \begin{pmatrix}
+	\mu_1 \\ \mu_2
+	\end{pmatrix} = 0 
+	\implies \begin{cases}
+	-0.7\mu_1 + 0.2 \mu_2 = 0 \\
+	0.7\mu_1 - 0.2 \mu_2 = 0 \\
+	\mu_1 + \mu_2 = 1\\
+	\mu_1 \geq 0; \mu_2 \geq 0	
+
+	\end{cases}
+	\end{aligned}
+	\end{equation*}
+	
+Risolvendo il sistema si ottiene
+$$
+	\mu=\left( \dfrac{2}{9},\dfrac{7}{9}\right)
+$$	
+\end{exmp}
+
+Si noti che la matrice di transizione dell'esercizio precedente \`e regolare. 
+Quindi se partiamo da un qualsiasi stato, per tempi molto lunghi lo stato del sistema si avviciner\`a alla distribuzione invariante.
+In altre parole, dopo abbastanza tempo la probabilit\`a di trovare la CPU occupata sar\`a circa di $2/9$, mentre 
+la probabilit\`a di trovarla  occupata sar\`a circa di $7/9$.
+
+\section{Esercizi}
 
 \begin{exrc}
 	\textbf{Passeggiata Aleatoria}
-	Mi muovo nell'asse X casualmente partendo da 0. Al minuto $ k $ lancio una moneta. Se esce testa mi muovo a destra, se esce croce mi muovo a sinistra. Voglio ottenere la posizione al minuto k.
+	Mi muovo nell'asse X casualmente partendo da 0. Al minuto $ k $ lancio una moneta. Se esce testa mi muovo a destra, se esce croce mi muovo a sinistra. Voglio ottenere la posizione al minuto k. Disegnare la catena di Markov come grafo.
 	
 	\begin{equation*}
 	\begin{aligned}
@@ -347,8 +440,8 @@ Se non conosco lo stato iniziale devo conoscere la distribuzione $ (P(X_0) =i)_i
 	Y_k \in \{-1, +1\} \\
 	X_k = \text{posizione} \\
 	\begin{cases}
-	x_0 = 0 \\
-	x_{k+1} = x_k + y_k
+	X_0 = 0 \\
+	X_{k+1} = X_k + Y_k
 	\end{cases}
 	\end{aligned}
 	\end{equation*}
@@ -384,56 +477,27 @@ Se non conosco lo stato iniziale devo conoscere la distribuzione $ (P(X_0) =i)_i
 
 
 \begin{exrc}
-	Un ubriaco \`e restio a cambiare direzione.
-	Se al momento $ k $ \`e andato a sinistra, per $ k+1 $ la sinistra \`e pi\`u probabile della destra. La sua posizione \`e una catena di Markov? No, perch\'e dipende dalla posizione all'istante precedente e dalla direzione.
+	Invece di prendere una passeggiata aleatoria, immaginiamo di voler 
+	schematizzare una passeggiata di un ubriaco che si muove senza meta, quindi in modo aleatorio, ma 
+	che \`e  restio a cambiare direzione.
+	Quindi se all'istante $ k $ \`e  andato a sinistra, all'istante $ k+1 $ la direzione sinistra sar\`a  pi\`u  probabile della destra. La sua posizione \`e  una catena di Markov? 
+	
+	No, perch\'e  dipende dalla posizione all'istante precedente e dalla direzione. La scelta di andare a destra o sinistra, invece, pu\`o essere rappresentata da una Catena di Markov, perch\'e  dipende soltanto dall'ultima scelta fatta.
 \end{exrc}
 
-\begin{exrc}
-	All'interno di una CPU abbiamo due stati, \textbf{busy} (nodo 1) e \textbf{free} (nodo 2).
-	
-	\begin{equation*}
-	Q = \begin{pmatrix}
-	0,3 & 0,7 \\
-	0,2 & 0,8
-	\end{pmatrix}
-	\end{equation*}
-	
-	Cerco $ \mu $ distribuzione invariante. Sappiamo che $ \mu $ \`e autovettore di autovalore 1:
-	
-	\begin{equation*}
-	\begin{aligned}
-	\mu Q = \mu \iff \mu^T Q^T = \mu^T \iff (Q^T -I)\mu^T = 0 \\
-	Q^T - I = \begin{pmatrix}
-	0.3 & 0.2 \\
-	0.7 & 0.8
-	\end{pmatrix} - \begin{pmatrix}
-	1 & 0 \\ 0 & 1
-	\end{pmatrix} = \begin{pmatrix}
-	-0.7 & 0.2 \\
-	0.7 & -0.2
-	\end{pmatrix} \\
-	\begin{pmatrix}
-	-0.7 & 0.2 \\
-	0.7 & -0.2
-	\end{pmatrix} \begin{pmatrix}
-	\mu_1 \\ \mu_2
-	\end{pmatrix} = 0 
-	\implies \begin{cases}
-	\mu_1 + \mu_2 = 1
-	-0.7\mu_1 + 0.2 \mu_2 = 0 \\
-	0.7\mu_1 - 0.2 \mu_2 = 0 \\
-	\mu_1 \geq 0; \mu_2 \geq 0
-	\end{cases} \\
-	\text{(Risolvendo il sistema si ottiene)} \\
-	\mu_1 = \dfrac{0.2}{0.9} = \dfrac{2}{9} \\
-	\mu_2 = \dfrac{7}{9}
-	\end{aligned}
-	\end{equation*}
-\end{exrc}
+
 
 \begin{exrc}
 	
-	Vogliamo simulare un essere vivente elementare in un automa cellulare. I suoi stati sono (1) \textbf{relax}, (2) \textbf{vigile}, (3) \textbf{fuga}, (4) \textbf{attacca}
+	Vogliamo simulare un essere vivente elementare con un automa. I suoi stati sono (1) \textbf{relax}, (2) \textbf{vigile}, (3) \textbf{fuga}, (4) \textbf{attacca}. Sappiamo che in presenza di qualche segnale esterno dallo stato di relax l'animale passa
+	allo stato vigile, da qui pu\`o tornare allo stato di relax (con probabilit\`a $1/2$), oppure decidere di attaccare 
+	(con probabilit\`a $1/5$) o fuggire (con probabilit\`a $3/10$). Scrivere il grafo e la matrice di transizione legata a questo processo.
+	
+Questo modello non \`e del tutto soddisfacente, perch\`e, ad esempio, il nostro automa uscir\`a dallo stato di relax a intervalli prestabiliti. 
+In natura invece il cambiamento di stato di un animale dipende dagli stimoli esterni, che non sono ad intervalli regolari. 
+Una maniera di introdurre quindi un tempo in una catena di Markov che non coincida necessariamente con gli intervalli a cui 
+si studia il processo, si pu\`o introdurre per ogni stato $i$ una probabilit\`a $p_i$ che lo stato vada in se stesso. Provare a scrivere 
+la matrice di transizione per l'automa cos\`\i\ modificato.
 	
 	\begin{figure}[H]
 		\centering
@@ -472,28 +536,28 @@ Se non conosco lo stato iniziale devo conoscere la distribuzione $ (P(X_0) =i)_i
 		\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm]
 		
 		\node[state] 	(A)                    {R};
-		\node[state]         	(B) [right of=A] 	   {V};
-		\node[state]         	(C) [below right of=B] 	   {F};
-		\node[state]         	(D) [above of=B] 	   {A};
+		\node[state]      (B) [right of=A] 	   {V};
+		\node[state]      (C) [below right of=B] 	   {F};
+		\node[state]      (D) [above of=B] 	   {A};
 		
-		\path 	(A)		edge [bend left]  	node {1-P} 		(B)
-		edge [loop left] node {$P_1$} (A)
-		(B)
-		edge [loop right] node {$P_2$} (B)
-		edge [bend left] 	node {$ \dfrac{1}{2} (1-P_2) $} 		(A)
-		edge [bend left]  	node {$\dfrac{1}{5}(1-P_2)$} 		(D)
-		edge [bend left]  	node {$\dfrac{3}{10}(1-P_2)$} 		(C)
-		(C)		edge [bend left]  	node {$1-P_3$} 		(B)
-		edge [loop right] node {$P_3$} (C)
-		(D)		edge [bend left]  	node {$1-P_4$} 		(B);
+		\path 	(A) edge [bend left]  	node {$1-p_1$} (B) 
+		edge [loop left] node {$p_1$} (A)
+		(B) edge [loop left] node {$p_2$} 
+		(C) edge [bend left] node {$ \dfrac{1}{2} (1-p_2) $} 		
+		(A) edge [bend left]  	node {$\dfrac{1}{5}(1-p_2)$} 		
+		(D)
+		edge [bend left]  	node {$\dfrac{3}{10}(1-p_2)$} 		(C)
+		(C)		edge [bend left]  	node {$1-p_3$} 		(B)
+		edge [loop right] node {$p_3$} (C)
+		(D)		edge [bend left]  	node {$1-p_4$} 		(B)
+		 edge [loop right] node {$p_4$} (D);
 		\end{tikzpicture}
 	\end{figure}
 \end{exrc}
 
 
 \begin{exrc}
-	content
-\end{exrc}
+
 
 Abbiamo una CPU con 3 stati: (1) \textbf{Off}, (2) \textbf{Stand By}, (3) \textbf{Busy}
 
@@ -506,12 +570,12 @@ Abbiamo una CPU con 3 stati: (1) \textbf{Off}, (2) \textbf{Stand By}, (3) \textb
 	\node[state]         	(B) [right of=A] 	   {S};
 	\node[state]         	(C) [right of=B] 	   {B};
 	
-	\path 	(A)		edge [bend left]  	node {0.2} 		(B)
-	edge [loop below] node {0.8} (A)
+	\path 	(A)		edge [bend left]  	node {?} 		(B)
+	edge [loop below] node {?} (A)
 	(B)
 	edge [loop below] node {0.4} (B)
-	edge [bend left] 	node {0.2} 		(A)
-	edge [bend left]  	node {0.4} 		(C)
+	edge [bend left] 	node {?} 		(A)
+	edge [bend left]  	node {0.2} 		(C)
 	(C)		edge [bend left]  	node {0.6} 		(B)
 	edge [loop below] node {0.4} (C);
 	\end{tikzpicture}
@@ -520,25 +584,21 @@ Abbiamo una CPU con 3 stati: (1) \textbf{Off}, (2) \textbf{Stand By}, (3) \textb
 
 \begin{enumerate}
 	\item Completare gli archi del grafo. Si possono completare sapendo che la somma degli archi uscenti da un nodo dev'essere 1.
-	\item Calcolare $ \p{X_1 = O \mid X_0 = O} $ e $ \p{X_2 = O \mid X_0 = O} $. Abbiamo
-	
-	\begin{equation*}
-		\begin{aligned}
-		Q = \begin{pmatrix}
+	La matrice $Q$ sar\`a 
+	$$Q = \begin{pmatrix}
 		0.8 & 0.2 & 0 \\
 		0.2 & 0.4 & 0.4 \\
 		0 & 0.6 & 0.4
-		\end{pmatrix} \\
-		q_{00} \to \p{X_1 = O \mid X_0 = O} = 0.8 \\
-		\text{Calcoliamo ora } \p{X_2 = 0 \mid X_0 = 0} \\
-		v = (1, 0, 0) \\
-		v \cdot Q \cdot Q = (0.68, \hdots, \hdots) \text{ (Marginale della legge } X_2)
-		\end{aligned} 
-	\end{equation*}
-	
-	\item Trovare i costi $ c \to 0 $ per $ O $, $ c \to 5 $ per $ S $, $ c \to 10 $ per B. Calcolare $ \E{c(X_k) \mid X_0 = O} $ per $ k = 1,2 $.
-	Per $ k = 1 $ si ha che 
-	
+		\end{pmatrix} $$
+	\item Calcolare $ \p{X_1 = O \mid X_0 = O} $ e $ \p{X_2 = O \mid X_0 = O} $. Abbiamo
+	$\p{X_1 = O \mid X_0 = O}= q_{00} = 0.8 $. Calcoliamo ora $\p{X_2 = O \mid X_0 = O}$. Il vettore corrispondente 
+	allo stato iniziale $X_0 = O$ \`e $v=(1,0,0)$, quindi 
+	\begin{equation*}
+				\p{X_2 = O \mid X_0=O} = (v \cdot Q \cdot Q)_1 = (0.68, \cdots, \cdots)_1=0.68
+					\end{equation*}
+
+	\item Supponiamo di avere una funzione costo tale che $c(O)=0$,  $c(S)=5$ e $c(B)=10$. Calcolare $ \E{c(X_k) \mid X_0 = O} $ per $ k = 1,2 $.
+	Per $ k = 1 $ possiamo procedere in modo elementare  
 	\begin{equation*}
 		\begin{aligned}
 		\E{c(X_1) \mid X_0 = O} = 0 \cdot \p{X_1 = O \mid X_0 = O } \\
@@ -546,39 +606,34 @@ Abbiamo una CPU con 3 stati: (1) \textbf{Off}, (2) \textbf{Stand By}, (3) \textb
 		= 5 \cdot \p{X_1 = S \mid X_0 = O} = 5 \cdot 0.2 = 1 
 		\end{aligned}
 	\end{equation*}
-
-	Per $ k = 2 $ si ha che
-	
+	Per $ k = 2 $ invece conviene usare la formula vista precedentemente. Il vettore associato al costo \`e $f = (0, 5, 10)$ quindi
 	\begin{equation*}
-		\begin{aligned} 
-		f = (0, 5, 10) \\
-		\E{c(X_2) \mid X_0 = O} = (Q^2 \cdot f)_1 = vQ^2f = \hdots = 2
-		\end{aligned}
+			\E{c(X_2) \mid X_0 = O} = (Q^2 \cdot f)_1 = v\cdot Q^2\cdot f =  2
 	\end{equation*}
-	
-	\item Calcolare la varianza 
+	\item Calcolare la varianza $\var{c(X_1) \mid X_0 = 0}$. 
+	Abbiamo
 	\begin{equation*}
 		\begin{aligned}
-		\var{c(X_1) \mid X_0 = 0} = \\
-		\E{c^2(X_1 \mid X_0 = 0)} - (E{c(X_1) \mid X_0 = 0}) \\
-		c^2=(0, 25, 100) \\
+				c^2=(0, 25, 100) \\
 		\E{c^2(X_1 \mid X_0 = 0}) = 0 \cdot \p{X_1 = O \mid X_0 = O } \\
 		+ 25 \cdot \p{X_1 = S \mid X_0 = O } + 100 \cdot \p{X_1 = B \mid X_0 = O } \\ 
 		= 25 \cdot 0.2 = 5
 		\end{aligned}
 	\end{equation*}
-	
+	quindi $$\var{c(X_1) \mid X_0 = 0} = 
+		\E{c^2(X_1 \mid X_0 = 0)} - (\E{c(X_1) \mid X_0 = 0})^2 =5-1=4$$
+
 	\item Calcolare $\mu$ distribuzione invariante e $\E{c(X_1) \mid \mu}$
 \begin{equation*}
 	\begin{aligned}
 	(\text{Calcoliamo } \mu )\\ \\
-	(Q^T - I) \mu^T = 0 \\
+	(Q^\tau - I) \mu^\tau = 0 \\
 	\mu = (\mu_1, \mu_2, \mu_3) \\
-	(Q^T - I)\mu^T = \begin{pmatrix}
+	(Q^\tau - I)\mu^\tau = \begin{pmatrix}
 	-0.2 & 0.2 & 0 \\ 
 	0.2 & -0.6 & 0.6 \\
 	0 & 0.4 & -0.6
-	\end{pmatrix} \mu^T = 0 \\
+	\end{pmatrix} \mu^\tau = 0 \\
 	\implies \begin{cases}
 	-0.2 \mu_1 + 0.2 \mu_2 = 0 \\
 	0.2 \mu_1 - 0.6 \mu_2 + 0.6 \mu_3 = 0 \\
@@ -592,14 +647,11 @@ Abbiamo una CPU con 3 stati: (1) \textbf{Off}, (2) \textbf{Stand By}, (3) \textb
 	\end{cases} \\
 	\implies \mu = \left(\dfrac{3}{8}, \dfrac{3}{8}, \dfrac{1}{4}\right) \\ \\
 	(\text{Calcoliamo } \E{c(X_1) \mid \mu}) \\ \\
-	\E{c(X_1) \mid \mu} = \mu \cdot Q \cdot f \\
-	\text{(si pu\`o calcolare anche con) }
-	\E{c(X_1) \mid \mu} =0 \cdot \p{X_1 = O \mid \mu} \\
-	+ 5 \cdot \p{X_1 = S \mid \mu} + 10 \cdot \p{X_1 = B \mid \mu} \\
-	\text{(Si prosegue per fattorizzazione)}
-	\end{aligned} 
+	\E{c(X_1) \mid \mu} = \mu \cdot Q \cdot f =4.375
+		\end{aligned} 
 \end{equation*}
 \end{enumerate}
+\end{exrc}
 
 \begin{exrc}
 	Dato il grafo di una Catena di Markov
@@ -646,7 +698,7 @@ Abbiamo una CPU con 3 stati: (1) \textbf{Off}, (2) \textbf{Stand By}, (3) \textb
 		\item Calcolare la distribuzione invariante $ \mu $ e $ \E{\mu} $ 
 		\begin{equation*}
 			\begin{aligned}
-			(Q^T-I)\mu^T = \begin{pmatrix}
+			(Q^T-I)\mu^\tau = \begin{pmatrix}
 			-0.5 & 0 & 1 \\
 			0.5 & -1 & 0 \\
 			0 & 1 & -1
@@ -668,16 +720,16 @@ Abbiamo una CPU con 3 stati: (1) \textbf{Off}, (2) \textbf{Stand By}, (3) \textb
 			\p{X_0 = 2} = \frac{1}{4} \\
 			\p{X_0 = 3} = \frac{1}{4} \\	
 			\end{cases} \\
-			\E{\mu} = 1 \cdot \dfrac{1}{2} + 2 \cdot \dfrac{1}{4} + 3 \cdot \dfrac{1}{4} = \dfrac{7}{4}
+			\E{\mu} = 1 \cdot \p{X_0 = 1}  + 2 \cdot \p{X_0 = 2}  + 3 \cdot \p{X_0 =3 } =  1 \cdot \dfrac{1}{2} + 2 \cdot \dfrac{1}{4} + 3 \cdot \dfrac{1}{4} = \dfrac{7}{4}
 			\end{aligned} 
 		\end{equation*}
 		
-		\item Se la catena \`e stazionaria calcolare $ \p{X_1 = 1 \mid X_3 = 1} $. Utilizziamo la formula di Bayes. 
+		\item Se la catena \`e  stazionaria calcolare $ \p{X_1 = 1 \mid X_3 = 1} $. Utilizziamo la formula di Bayes. 
 		
 		\begin{equation*}
 			\begin{aligned}
 			\p{X_1 = 1 \mid X_3 = 1} = \p{X_3 = 1 \mid X_1 = 1} \cdot \dfrac{\p{X_1 = 1}}{\p{X_3 = 1}} \\
-			\text{La catena \`e stazionaria: } \p{X_3 = 1} = \p{X_1 = 1} \\
+			\text{La catena \`e  stazionaria: } \p{X_3 = 1} = \p{X_1 = 1} \\
 			\implies \p{X_1 = 1 \mid X_3 = 1} = \p{X_3 = 1 \mid X_1 = 1} \\ 
 			= \p{X_2 = 1 \mid X_0 = 1} = (1, 0, 0) Q^2 = \dfrac{1}{2}
 			\end{aligned}
