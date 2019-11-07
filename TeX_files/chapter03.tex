@@ -324,7 +324,7 @@ Quindi  $\sum_{k} \p{X > k}\sum_{k} k p_k=\E{X} $.
 \end{proof}
 
 \begin{prop}
-La speranza di una Binomiale $ B(n,p) $ vale $\E{B(n,p)}=np$ . 
+La speranza di una Binomiale $ B(n,p) $ vale $\E{B(n,p)}=np$ .
 \end{prop}
 \begin{proof}
 La densit\`a di $ B(n,p) $  \`e $ p_k = \binom{n}{k}p^k(1-p)^{n-k}$  $\forall k \in [0,n] $.
@@ -597,10 +597,12 @@ Dimostriamo solo la prima formula, la seconda segue immediatamente.
 \end{exmp}
 
 \begin{exmp}
+    \textbf{Varianza di una Binomiale} \\
 	$ X = B(n,p) \implies \var{X} = nB(1,p) = np(1-p) $
 \end{exmp}
 
-\begin{exmp})
+\begin{exmp}
+    \textbf{Varianza di una distribuzione di Poisson} \\
 	$ X = \text{Poisson}(\lambda)  \implies  \var{\text{Poisson}(\lambda)} = \lambda $
 	(senza dim)
 \end{exmp}
@@ -770,7 +772,7 @@ Lezione tenuta da Maurizio Pratelli.
 \begin{exrc}
     Ci sono 3 monete indistinguibili, delle quali due sono truccate.
     La probabilit\`a che esca testa \`e nell'ordine 1/4, 1/2 e 3/4.
-    Si sceglie una moneta casuale, si lancia 5 volte e si ottiene testa 4 volte: qual'\`e la probabilit\`a di aver scelto la terza moneta?
+    Si sceglie una moneta casuale, si lancia 5 volte e si ottiene testa 4 volte: qual \`e la probabilit\`a di aver scelto la terza moneta?
 
     Utilizziamo la formula di Bayes. Definiamo le 3 monete $A_1, A_2, A_3$. Sappiamo anche che $ \p{A_1} = \p{A_2} = \p{A_3} = \frac{1}{3} $. Definiamo l'evento $ B $ come "\textit{esce 4 volte su 5 testa}".
 
@@ -785,7 +787,7 @@ Lezione tenuta da Maurizio Pratelli.
 \end{exrc}
 
 \begin{exrc}
-    Si prende un giorno a caso in un anno non bisestile ed \`e un mercoledì: in quel mese ci sono esattamente 4 mercoledì. Qual'\`e la probabilit\`a che quel giorno sia di febbraio?
+    Si prende un giorno a caso in un anno non bisestile ed \`e un mercoledì: in quel mese ci sono esattamente 4 mercoledì. Qual \`e la probabilit\`a che quel giorno sia di febbraio?
 
     Definiamo
     \begin{itemize}
@@ -809,7 +811,7 @@ Lezione tenuta da Maurizio Pratelli.
 
 \begin{exrc}
     Si lancia un dado equilibrato finch\'e il numero 6 esce per 2 volte
-    (non necessariamente consecutive). Qual'\`e la probabilit\`a che anche il
+    (non necessariamente consecutive). Qual \`e la probabilit\`a che anche il
     penultimo lancio fosse un 6?
 
     Sappiamo la definizione di variabile geometrica (conta il numero)
@@ -860,7 +862,7 @@ Lezione tenuta da Maurizio Pratelli.
 \end{exrc}
 
 \begin{exrc}
-    Si lancia per 15 volte un dado equilibrato e indichiamo con $ X $ la somma dei numeri ottenuti. Quanto vale \(\E{X}\)? Qual'\`e la varianza di \(X\)?
+    Si lancia per 15 volte un dado equilibrato e indichiamo con $ X $ la somma dei numeri ottenuti. Quanto vale \(\E{X}\)? Qual \`e la varianza di \(X\)?
 
     \begin{equation*}
     \begin{aligned}
@@ -899,7 +901,7 @@ Lezione tenuta da Maurizio Pratelli.
 
 
 \begin{exrc}
-    Un candidato affronta una test a risposte multiple, con 5 domande. Ogni domanda ha 4 risposte delle quali una sola \`e esatta: ogni risposta esatta \`e valutata un punto e ogni risposta errata \`e penalizzata con \(-1/4\). Consideriamo un candidato del tutto impreparato che risponde a caso. Quale punteggio ottiene in media? Qual'\`e la probabilit\`a di ottenere un punteggio di 2.5
+    Un candidato affronta una test a risposte multiple, con 5 domande. Ogni domanda ha 4 risposte delle quali una sola \`e esatta: ogni risposta esatta \`e valutata un punto e ogni risposta errata \`e penalizzata con \(-1/4\). Consideriamo un candidato del tutto impreparato che risponde a caso. Quale punteggio ottiene in media? Qual \`e la probabilit\`a di ottenere un punteggio di 2.5
 
     \begin{equation*}
         \begin{aligned}
