@@ -9,17 +9,24 @@
 \section{Variabili Aleatorie Discrete}
 
 
-Una variabile aleatoria \`e una funzione che pu\`o  assumere diversi valori in dipendenza da qualche fenomeno casuale.
-Il risultato del lancio di un dado, o la vincita legata a tale risultato, ad esempio, sono variabili aleatorie.
+Una variabile aleatoria \`e una funzione che pu\`o  assumere diversi valori in
+dipendenza da qualche fenomeno casuale. Il risultato del lancio di un dado, o la
+vincita legata a tale risultato, ad esempio, sono variabili aleatorie.
 \begin{defn}
-    Prendiamo uno spazio probabilizzabile $ (\Omega, F) $. Una variabile aleatoria discreta \`e una funzione $ X : \Omega \to \R $, che assume valori in un sottoinsieme finito o numerabile
-    $ \{a_1, \dots, a_k, \dots \} \subset \R$ e tale che 
-    $ \forall j $ la controimmagine di $a_j$ sia un elemento della $\sigma$-algebra, ovvero che
+    Prendiamo uno spazio probabilizzabile $ (\Omega, F) $. Una variabile
+    aleatoria discreta \`e una funzione $ X : \Omega \to \R $, che assume valori
+    in un sottoinsieme finito o numerabile $ \{a_1, \dots, a_k, \dots \} \subset
+    \R$ e tale che $ \forall j $ la controimmagine di $a_j$ sia un elemento
+    della $\sigma$-algebra, ovvero che
     $$ X^{-1}(a_j) = \{ \omega \in \Omega, X(\omega) = a_j\} \in F. $$
 \end{defn}
 
 \begin{defn}
-    Data la probabilit\`a  di tutti gli eventi posso definire la densit\`a  di probabilit\`a associata ad $X$: nello spazio probabilizzato $ (\Omega, F, P) $ la probabilit\`a  che la variabile aleatoria assuma il valore $ a_j $ sar\`a  $ p_j = \p{X = a_j} = \p{X^{-1}(a_j)} $. La successione $\{p_j\}$ viene detta {\em densit\`a  di probabilit\`a di $X$}.
+    Data la probabilit\`a  di tutti gli eventi posso definire la densit\`a  di
+    probabilit\`a associata ad $X$: nello spazio probabilizzato $ (\Omega, F, P)
+    $ la probabilit\`a  che la variabile aleatoria assuma il valore $ a_j $
+    sar\`a  $ p_j = \p{X = a_j} = \p{X^{-1}(a_j)} $. La successione $\{p_j\}$
+    viene detta {\em densit\`a  di probabilit\`a di $X$}.
 \end{defn}
 Dato che $X$ \`e una funzione valgono le seguenti propriet\`a
 
@@ -28,18 +35,25 @@ Dato che $X$ \`e una funzione valgono le seguenti propriet\`a
     \item La loro unione copre $ \Omega $
 \end{enumerate}
 \begin{prop}
-    La successione $\{p_j\}$ sopra definita  \`e  effettivamente una densit\`a  di probabilit\`a
+    La successione $\{p_j\}$ sopra definita  \`e  effettivamente una densit\`a
+    di probabilit\`a
 \end{prop}
-\begin{proof} Ovviamente abbiamo $p_j\ge0$ per ogni $j$. Inoltre vale $ \sum_{j=1}^{k} p_j = 1 $, infatti
+\begin{proof} Ovviamente abbiamo $p_j\ge0$ per ogni $j$. Inoltre vale $
+\sum_{j=1}^{k} p_j = 1 $, infatti
     \begin{equation*}
         1 = \p{\Omega} = \p{\bigcup_{j} X^{-1}(a_j)} = \sum_{j} \p{X^{-1}(a_j)}
     \end{equation*}
 \end{proof}
-Sia $ X : \Omega \to \{ a_1, \dots, a_k ,\dots \} $ una variabile aleatoria definita su uno spazio probabilizzabile $ (\Omega, F) $, sia $\{p_j\}_j$ la densit\`a  di probabilit\`a di $X$. Allora si pu\`o dotare
-$ (\Omega, F) $ della probabilit\`a indotta da $X$ definita come $ \p{X = a_j} = p_j $.
+Sia $ X : \Omega \to \{ a_1, \dots, a_k ,\dots \} $ una variabile aleatoria
+definita su uno spazio probabilizzabile $ (\Omega, F) $, sia $\{p_j\}_j$ la
+densit\`a  di probabilit\`a di $X$. Allora si pu\`o dotare $ (\Omega, F) $ della
+probabilit\`a indotta da $X$ definita come $ \p{X = a_j} = p_j $.
 
 \begin{exmp}
-    Preso uno spazio probabilizzabile $ (\Omega, F) $ e una variabile aleatoria $ X : \Omega \to \{ a_1, \dots, a_k \} $, supponendo che i numeri $ a_j $ siano ordinati, sia $ p_j $ la densit\`a  di probabilit\`a , come posso ricostruire, ad esempio $ \p{x \leq a_3} $?
+    Preso uno spazio probabilizzabile $ (\Omega, F) $ e una variabile aleatoria
+    $ X : \Omega \to \{ a_1, \dots, a_k \} $, supponendo che i numeri $ a_j $
+    siano ordinati, sia $ p_j $ la densit\`a  di probabilit\`a , come posso
+    ricostruire, ad esempio $ \p{x \leq a_3} $?
 
     \begin{equation*}
         \p{X \leq a_3} = \p{X = a_1} + \p{X = a_2} + \p{X = a_3}=
@@ -51,11 +65,16 @@ $ (\Omega, F) $ della probabilit\`a indotta da $X$ definita come $ \p{X = a_j} =
 \begin{exmp}
     Voglio contare quanti 6 escono in 10 lanci di dadi.
     
-    Sia $ \Omega = \{ (1, 2, 3, 4, 5, 6)\}^{10} $, ovvero tutte le possibili parole di 10 elementi composte dai numeri da 1 a 6. Ad ogni lancio, ho $ \frac{1}{6} $ di probabilit\`a  di ottenere 6 e $ \frac{5}{6} $ di ottenere gli altri numeri. Definiamo la variabile aleatoria $ X : \Omega \to \{ 0, 1, 2, \dots, 9, 10 \} $ come il conteggio dei risultati dei lanci dove ottengo 6. Qual \`e la probabilit\`a  di ottenere 3 lanci dove ho fatto 6?
-    Deve uscire 3 volte il numero 6, con probabilit\`a $1/6$, e 7 volte un numero diverso da 6,
-    con probabilit\`a $5/6$. Inoltre non conta l'ordine, quindi devo moltiplicare per i modi in cui
-    si prendono 3 oggetti (i tre dadi che hanno fatto 6) da un insieme di 10 elementi (tutti i lanci). 
-    Abbiamo quindi
+    Sia $ \Omega = \{ (1, 2, 3, 4, 5, 6)\}^{10} $, ovvero tutte le possibili
+    parole di 10 elementi composte dai numeri da 1 a 6. Ad ogni lancio, ho $
+    \frac{1}{6} $ di probabilit\`a  di ottenere 6 e $ \frac{5}{6} $ di ottenere
+    gli altri numeri. Definiamo la variabile aleatoria $ X : \Omega \to \{ 0, 1,
+    2, \dots, 9, 10 \} $ come il conteggio dei risultati dei lanci dove ottengo
+    6. Qual \`e la probabilit\`a  di ottenere 3 lanci dove ho fatto 6? Deve
+    uscire 3 volte il numero 6, con probabilit\`a $1/6$, e 7 volte un numero
+    diverso da 6, con probabilit\`a $5/6$. Inoltre non conta l'ordine, quindi
+    devo moltiplicare per i modi in cui si prendono 3 oggetti (i tre dadi che
+    hanno fatto 6) da un insieme di 10 elementi (tutti i lanci). Abbiamo quindi
     \begin{equation*}
         \p{X = 3} = \binom{10}{3} \left(\dfrac{1}{6}\right)^3 \left(\dfrac{5}{6}\right)^7 
     \end{equation*}
@@ -65,8 +84,10 @@ $ (\Omega, F) $ della probabilit\`a indotta da $X$ definita come $ \p{X = a_j} =
 
 \begin{defn}
     \textbf{Legge di Bernoulli:}
-    Faccio un esperimento, il risultato positivo ha probabilit\`a  $ p $, mentre il risultato negativo ha probabilit\`a  $ 1 - p $. Definisco $ \Omega = \{\text{successo},\text{insuccesso}\}$
-    Una variabile aleatoria Bernoulliana \`e definita come
+    Faccio un esperimento, il risultato positivo ha probabilit\`a  $ p $, mentre
+    il risultato negativo ha probabilit\`a  $ 1 - p $. Definisco $ \Omega =
+    \{\text{successo},\text{insuccesso}\}$ Una variabile aleatoria Bernoulliana
+    \`e definita come
     \begin{eqnarray*}
     & X : \Omega \to \{0,1\}\\
     &X(\text{successo})=1 \\
@@ -77,10 +98,16 @@ $ (\Omega, F) $ della probabilit\`a indotta da $X$ definita come $ \p{X = a_j} =
 
 \begin{defn}
     \textbf{Legge Binomiale}
-    Sia $ k $ il conteggio dei successi di $ n $ esperimenti ripetuti, tutti indipendenti. Abbiamo quindi che $ B(n,p) : \Omega=\{\text{successo},\text{insuccesso}\}^n \to \{0, \dots, n\} $. Abbiamo che la densit\`a  di probabilit\`a  Binomiale $ p_k = \p{X=k} = \binom{n}{k} p^k(1-p)^{n-k} $ (abbiamo $k$ successi con prob. $p$,
- $n-k$ insuccessi di prob. $1-p$ e non conta l'ordine).
+    Sia $ k $ il conteggio dei successi di $ n $ esperimenti ripetuti, tutti
+ indipendenti. Abbiamo quindi che $ B(n,p) :
+ \Omega=\{\text{successo},\text{insuccesso}\}^n \to \{0, \dots, n\} $. Abbiamo
+ che la densit\`a  di probabilit\`a  Binomiale $ p_k = \p{X=k} = \binom{n}{k}
+ p^k(1-p)^{n-k} $ (abbiamo $k$ successi con prob. $p$, $n-k$ insuccessi di prob.
+ $1-p$ e non conta l'ordine).
 \end{defn}
-Siamo sicuri che $ p_k $ sia una densit\`a ? Sappiamo che $ p_k \geq 0 $. Vediamo che $ 1 = \sum_{k} p_k $, infatti, ricordando che  $ (a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^k b^{n-k} $ (binomio di Newton), abbiamo che
+Siamo sicuri che $ p_k $ sia una densit\`a ? Sappiamo che $ p_k \geq 0 $.
+Vediamo che $ 1 = \sum_{k} p_k $, infatti, ricordando che  $ (a+b)^n =
+\sum_{k=0}^{n} \binom{n}{k} a^k b^{n-k} $ (binomio di Newton), abbiamo che
 
 \begin{equation*}
     \sum_{k} p_k = \sum_{k=0}^{n} \binom{n}{k} p^k (1-p)^{n-k} = (p+(1-p))^n = 1^n = 1
@@ -88,16 +115,19 @@ Siamo sicuri che $ p_k $ sia una densit\`a ? Sappiamo che $ p_k \geq 0 $. Vediam
 
 \begin{exmp}
     \textbf{Somma di Variabili Aleatorie}
-    Lancio due dadi, uno rosso e uno nero, avremo quindi $ \Omega = \{(R, N)\ : \ R,N=1,\dots,6\}
-    = \{(1,\dots,6)\}^2 $. Definisco due variabili aleatorie, $ X $ per il dado rosso dove $ X : (R, N) \to R $ e la variabile $ Y : (R, N) \to N $. La densit\`a  per $ X $ sar\`a  $ p_j = \frac{1}{6}$ $\forall j $ mentre la densit\`a  per $ Y $ sar\`a  $ q_j = \frac{1}{6}$ $\forall j $
+    Lancio due dadi, uno rosso e uno nero, avremo quindi $ \Omega = \{(R, N)\ :
+    \ R,N=1,\dots,6\} = \{(1,\dots,6)\}^2 $. Definisco due variabili aleatorie,
+    $ X $ per il dado rosso dove $ X : (R, N) \to R $ e la variabile $ Y : (R,
+    N) \to N $. La densit\`a  per $ X $ sar\`a  $ p_j = \frac{1}{6}$ $\forall j
+    $ mentre la densit\`a  per $ Y $ sar\`a  $ q_j = \frac{1}{6}$ $\forall j $
     Definiamo $ Z = X + Y $ conta la somma dei dadi.
 
 
 
     Calcolare la densit\`a  di $ Z $
 
-    In questo caso $ X, Y $ sono indipendenti, quindi avremo la densit\`a  di $ Z $ detta $ t_n $ con
-    $n=2,\dots, 12$ data da
+    In questo caso $ X, Y $ sono indipendenti, quindi avremo la densit\`a  di $
+    Z $ detta $ t_n $ con $n=2,\dots, 12$ data da
     
     \begin{equation*}
         t_n= \p{Z = n} = \sum_{i=1}^{n-1} \p{X = i} \cdot \p{Y = n - i}
@@ -109,8 +139,12 @@ Siamo sicuri che $ p_k $ sia una densit\`a ? Sappiamo che $ p_k \geq 0 $. Vediam
         \label{tab:distribdice1}
         \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
             \hline
-            $ X + Y $     & 2        & 3        & 4        & 5        & 6        & 7        & 8        & 9        & 10       & 11       & 12       \\ \hline
-            $ p_j + q_j $ & $ 1/36 $ & $ 2/36 $ & $ 3/36 $ & $ 4/36 $ & $ 5/36 $ & $ 6/36 $ & $ 5/36 $ & $ 4/36 $ & $ 3/36 $ & $ 2/36 $ & $ 1/36 $ \\ \hline
+            $ X + Y $     & 2        & 3        & 4        & 5        & 6
+            & 7        & 8        & 9        & 10       & 11       & 12       \\
+            \hline
+            $ p_j + q_j $ & $ 1/36 $ & $ 2/36 $ & $ 3/36 $ & $ 4/36 $ & $ 5/36 $
+            & $ 6/36 $ & $ 5/36 $ & $ 4/36 $ & $ 3/36 $ & $ 2/36 $ & $ 1/36 $ \\
+            \hline
         \end{tabular}
     \end{table}
     
@@ -132,14 +166,19 @@ Siamo sicuri che $ p_k $ sia una densit\`a ? Sappiamo che $ p_k \geq 0 $. Vediam
 
 \begin{defn}
     \textbf{Indipendenza di variabili aleatorie}
-    Due variabili aleatorie $ X_1, X_2 $ sono indipendenti se $ \forall I_1, I_2, \subseteq \R $ intervalli o semirette si ha che 
+    Due variabili aleatorie $ X_1, X_2 $ sono indipendenti se $ \forall I_1,
+    I_2, \subseteq \R $ intervalli o semirette si ha che 
     
     \begin{equation*}
         \left( \p{X_1 \in I_1} \cap \p{X_2 \in I_2} \right) = \p{X_1 \in I_1} \cdot \p{X_2 \in I_2}
     \end{equation*}
 \end{defn}
     
-    Nell'esempio di prima $ X, Z $  sono dipendenti perch\'e, dati $ I_1 = [3,4], I_2 = [1,2] $, allora si ha che $ \p{X\in I_1} = \p{X=3,4} = \dfrac{1}{3} $ e si ha anche $ \p{Z \in I_2} = \p{Z=1,2} = \p{Z=2} = \dfrac{1}{36} $. D'altra parte se ottengo 3 o 4 con il primo dado la somma sar\`a sempre superiore a 5, quindi
+    Nell'esempio di prima $ X, Z $  sono dipendenti perch\'e, dati $ I_1 =
+    [3,4], I_2 = [1,2] $, allora si ha che $ \p{X\in I_1} = \p{X=3,4} =
+    \dfrac{1}{3} $ e si ha anche $ \p{Z \in I_2} = \p{Z=1,2} = \p{Z=2} =
+    \dfrac{1}{36} $. D'altra parte se ottengo 3 o 4 con il primo dado la somma
+    sar\`a sempre superiore a 5, quindi
 
     \begin{equation*}
     \p{(X \in I_1) \cap (Z\in I_2)} =0\neq  \p{X \in I_1} \cdot \p{Z \in I_2}
@@ -149,10 +188,14 @@ Siamo sicuri che $ p_k $ sia una densit\`a ? Sappiamo che $ p_k \geq 0 $. Vediam
 
 \begin{defn}
     \textbf{Variabili Aleatorie Congiunte}
-    Due variabili aleatorie $ X,Y : \Omega \to \R $ discrete sono congiunte quando si pu\`o  calcolare $ \p{X = m \cap Y = n} = p_{n,m} $, ovvero una densit\`a  di probabilit\`a  $ \{ p_{n,m} \}_{n,m} $ con $ (p_{n,m} \geq 0 ) \land (\sum_{n,m} p_{n,m} = 1) $.
+    Due variabili aleatorie $ X,Y : \Omega \to \R $ discrete sono congiunte
+    quando si pu\`o  calcolare $ \p{X = m \cap Y = n} = p_{n,m} $, ovvero una
+    densit\`a  di probabilit\`a  $ \{ p_{n,m} \}_{n,m} $ con $ (p_{n,m} \geq 0 )
+    \land (\sum_{n,m} p_{n,m} = 1) $.
 \end{defn}
 
-Sapendo $ p_{n,m} $ ricavo tutti i $ \p{X=m} = p^X_m $ e $ \p{Y = n} = q^Y_n $ nel modo seguente
+Sapendo $ p_{n,m} $ ricavo tutti i $ \p{X=m} = p^X_m $ e $ \p{Y = n} = q^Y_n $
+nel modo seguente
 
 \begin{equation*}
     \begin{aligned}
@@ -162,10 +205,14 @@ Sapendo $ p_{n,m} $ ricavo tutti i $ \p{X=m} = p^X_m $ e $ \p{Y = n} = q^Y_n $ n
     \end{aligned}
 \end{equation*}
     
-In generale non si pu\`o  ricostruire dalle due densit\`a di probabilit\`a  la densit\`a della variabile aleatoria congiunta. Ad esempio, conoscendo $ p^X_n,q^Y_n $ cerco $ p_{n,m}  = \p{X = m \cap Y = n} = \p{X = m | Y = n} \cdot \p{Y=n} $, ma non conosco necessariamente $\p{X = m | Y = n}$
-Se $ X,Y $ sono indipendenti allora $ P(X=m \mid Y=n) = \p{X=m} $ e vale il prodotto $ p_{m,n} = p^X_n \cdot q^Y_m $.
-Si noti che in questo caso si verifica subito che  $ p_{m,n} $  \`e  una densit\`a  di probabilit\`a, infatti
-$ p_{m,n}\ge0 $ perch\'e sia $p^X_n$  che $q^Y_m $ lo sono; inoltre
+In generale non si pu\`o  ricostruire dalle due densit\`a di probabilit\`a  la
+densit\`a della variabile aleatoria congiunta. Ad esempio, conoscendo $
+p^X_n,q^Y_n $ cerco $ p_{n,m}  = \p{X = m \cap Y = n} = \p{X = m | Y = n} \cdot
+\p{Y=n} $, ma non conosco necessariamente $\p{X = m | Y = n}$ Se $ X,Y $ sono
+indipendenti allora $ P(X=m \mid Y=n) = \p{X=m} $ e vale il prodotto $ p_{m,n} =
+p^X_n \cdot q^Y_m $. Si noti che in questo caso si verifica subito che  $
+p_{m,n} $  \`e  una densit\`a  di probabilit\`a, infatti $ p_{m,n}\ge0 $
+perch\'e sia $p^X_n$  che $q^Y_m $ lo sono; inoltre
 
 \begin{equation*}
     \sum_{m}\sum_{n} p_{n,m} = \sum_{m}\sum_{n} p^X_n \cdot q^Y_m
@@ -177,32 +224,37 @@ $ p_{m,n}\ge0 $ perch\'e sia $p^X_n$  che $q^Y_m $ lo sono; inoltre
 \begin{defn}
     \textbf{Formula di Convoluzione}
 
-    Tornando alla somma di due variabili aleatorie discrete, dati $ X,Y $ indipendenti e $ Z = X + Y $, con $ X,Y : \Omega \to \N $, se vogliamo calcolare $ \p{Z = n} $ e la densit\`a  di probabilit\`a  discreta $ \left\{Z = n\right\} $ possiamo usare le seguenti formule (dette di convoluzione)
+    Tornando alla somma di due variabili aleatorie discrete, dati $ X,Y $
+    indipendenti e $ Z = X + Y $, con $ X,Y : \Omega \to \N $, se vogliamo
+    calcolare $ \p{Z = n} $ e la densit\`a  di probabilit\`a  discreta $
+    \left\{Z = n\right\} $ possiamo usare le seguenti formule (dette di
+    convoluzione)
 
     \begin{equation*}
     \begin{aligned}
     \left\{Z = n\right\} = \bigcup_{i=0}^{n} \left\{X = i \cap Y = n - i \right\} \\
-    \p{z=n} = \sum_{i} \p{X = i \cap Y = n-i} = \sum_{i = n}^{n} \p{X=i} \cdot \p{Y=n-i}
-    \end{aligned} 
+    \p{Z=n} = \sum_{i} \p{X = i \cap Y = n-i} = \sum_{i = 0}^{n} \p{X=i} \cdot \p{Y=n-i}
+    \end{aligned}
     \end{equation*}
 \end{defn}
 
 
-Ho definito $ B(n,p)$ come i successi di $ n $ esperimenti che hanno successo con prob. $ p $.
-In effetti vale la seguente formula
+Ho definito $ B(n,p)$ come i successi di $ n $ esperimenti che hanno successo
+con prob. $ p $. In effetti vale la seguente formula
 \begin{prop}
-	Si ha che
-	$B(n,p)= \sum_{i=1}^{n} \text{Bern}_i(p) $
+	Si ha che $B(n,p)= \sum_{i=1}^{n} \text{Bern}_i(p) $
 \end{prop}
     \begin{proof}
-        Caso base, per $ n = 1$ ovviamente $B(1,p) = \text{Bern}(p)$. Vediamo il passo induttivo:
+        Caso base, per $ n = 1$ ovviamente $B(1,p) = \text{Bern}(p)$. Vediamo il
+        passo induttivo:
         \begin{equation*}
         B(n,p) = \sum_{i=1}^{n} \text{Bern}_i(p) \implies B(n+1,p) = \sum_{i=1}^{n+1} \text{Bern}_i(p)
         \end{equation*}
         Quindi
-        $$\sum_{i=1}^{n+1} \text{Bern}_i(p) = \left( \sum_{i=1}^{n} \text{Bern}_i(p) \right) + \text{Bern}_{n+1}(p) =
-        B(n,p) + \text{Bern}(p)$$
-        Introduciamo le densit\`a  per continuare la dimostrazione
+        $$\sum_{i=1}^{n+1} \text{Bern}_i(p) = \left( \sum_{i=1}^{n}
+        \text{Bern}_i(p) \right) + \text{Bern}_{n+1}(p) = B(n,p) +
+        \text{Bern}(p)$$ Introduciamo le densit\`a  per continuare la
+        dimostrazione
         
         \begin{equation*}
         \begin{aligned}
@@ -217,22 +269,32 @@ In effetti vale la seguente formula
 
 \begin{defn}
     \textbf{Variabile Geometrica}
-	Ripetiamo una successione esperimenti identici ed indipendenti con probabilit\`a  di successo $ 0 \leq p \leq 1 $  fino ad ottenere il primo successo. $ \geom(p) $ conta il numero di prove che abbiamo fatto. Ovvero $ \p{\geom(p) = k} = $ la probabilit\`a  di fare k esperimenti di cui i primi $k-1$ sono stati insuccessi e l'ultimo un successo. La densit\`a  di probabilit\`a  sar\`a quindi
+	Ripetiamo una successione esperimenti identici ed indipendenti con
+	probabilit\`a  di successo $ 0 \leq p \leq 1 $  fino ad ottenere il primo
+	successo. $ \geom(p) $ conta il numero di prove che abbiamo fatto. Ovvero $
+	\p{\geom(p) = k} = $ la probabilit\`a  di fare k esperimenti di cui i primi
+	$k-1$ sono stati insuccessi e l'ultimo un successo. La densit\`a  di
+	probabilit\`a  sar\`a quindi
 	$$ p_k = \p{\geom(p) = k} = (1-p)^{k-1} \cdot p $$
 \end{defn}
 Ovviamente $ p_k \geq 0 $ e anche
-$$ \sum_{k=1}^{\infty} (1-p)^{k-1} p = p \sum_{k=1}^{\infty}(1-p)^{k-1}= \dfrac{p}{1-(1-p)} = 1 $$ dalla somma della una serie geometrica. Quindi $p_k$ \`e una  densit\`a  di probabilit\`a
+$$ \sum_{k=1}^{\infty} (1-p)^{k-1} p = p \sum_{k=1}^{\infty}(1-p)^{k-1}=
+\dfrac{p}{1-(1-p)} = 1 $$ dalla somma della una serie geometrica. Quindi $p_k$
+\`e una  densit\`a  di probabilit\`a
 
-Una variabile geometrica \textbf{non ha memoria}, ovvero la probabilit\`a di avere un successo 
-	 all'esperimento numero $ n $ dopo $n-1$ fallimenti ha la stessa probabilit\`a  avere un successo 
-	 al primo esperimento. Infatti vale la seguente proposizione.
+Una variabile geometrica \textbf{non ha memoria}, ovvero la probabilit\`a di
+	 avere un successo all'esperimento numero $ n $ dopo $n-1$ fallimenti ha la
+	 stessa probabilit\`a  avere un successo al primo esperimento. Infatti vale
+	 la seguente proposizione.
 \begin{prop}	 
 Si ha  
 $$	\p{\geom(p) = n+m | \geom(p) > n} = \p{\geom(p) = m} $$
 \end{prop}
 \begin{proof}
-    Notiamo che dire che abbiamo avuto successo alla prova $m+n$ gi\`a contiene l'informazione che abbiamo avuto almeno $n$ insuccessi. Inoltre $\geom(p) > n$ significa avere avuto sicuramente $n$ insuccessi, quindi
-    $\p{\geom(p) > n}=(1-p)^n$, quindi si ha
+    Notiamo che dire che abbiamo avuto successo alla prova $m+n$ gi\`a contiene
+    l'informazione che abbiamo avuto almeno $n$ insuccessi. Inoltre $\geom(p) >
+    n$ significa avere avuto sicuramente $n$ insuccessi, quindi $\p{\geom(p) >
+    n}=(1-p)^n$, quindi si ha
     \begin{equation*}
         \begin{aligned}
             \p{\geom(p) = n+m \mid \geom(p) > n} =  \\
@@ -242,74 +304,100 @@ $$	\p{\geom(p) = n+m | \geom(p) > n} = \p{\geom(p) = m} $$
     \end{equation*}
 \end{proof}
 
-    Si può dimostrare sapendo che $ \forall m . \p{\geom(p) = n+m \cap \p{\geom} > n} = \p{\geom(p) = m+n} $
+    Si può dimostrare sapendo che $ \forall m . \p{\geom(p) = n+m \cap \p{\geom}
+    > n} = \p{\geom(p) = m+n} $
     
 
 \begin{defn}
     \textbf{Variabili Ipergeometriche}
     
-	Siano dati $ r $ sfere rosse, $ b $ sfere bianche, $ n $ estrazioni senza reimbussolamento, $ k = $ numero di sfere rosse estratte, $ H(b+r, r, n) $ conta il numero di sfere rosse estratte dopo n tentativi. Questa variabile si chiama variabile ipergeometrica. Le condizioni di esistenza per i parametri sono $ (0 < n \leq b + r) \land (k \leq n)  \land (k \leq r) \land (n-k \leq b) $ ovvero $\max(0,n-b)\le k \le \min(n,r)$.
+	Siano dati $ r $ sfere rosse, $ b $ sfere bianche, $ n $ estrazioni senza
+	reimbussolamento, $ k = $ numero di sfere rosse estratte, $ H(b+r, r, n) $
+	conta il numero di sfere rosse estratte dopo n tentativi. Questa variabile
+	si chiama variabile ipergeometrica. Le condizioni di esistenza per i
+	parametri sono $ (0 < n \leq b + r) \land (k \leq n)  \land (k \leq r) \land
+	(n-k \leq b) $ ovvero $\max(0,n-b)\le k \le \min(n,r)$.
 
-    Estrarre $k$ sfere rosse in $n$ estrazioni significa estrarne $k$ rosse e $n-k$ bianche, senza tener
-	 conto dell'ordine, e i casi possibili sono $\binom{b+r}{n}$ (estrarre $n$ sfere da un totale di $b+r$)
-	 Quindi la densit\`a  di probabilit\`a \`e
+    Estrarre $k$ sfere rosse in $n$ estrazioni significa estrarne $k$ rosse e
+	 $n-k$ bianche, senza tener conto dell'ordine, e i casi possibili sono
+	 $\binom{b+r}{n}$ (estrarre $n$ sfere da un totale di $b+r$) Quindi la
+	 densit\`a  di probabilit\`a \`e
     \begin{equation*}
     \p{H(b+r, r, n) = k} = \dfrac{\binom{r}{k} \binom{b}{n-k}}{\binom{b+r}{n}}
     \end{equation*}
 \end{defn}
 
 \begin{exmp}
-    Abbiamo 10 sfere rosse, 15 bianche e facciamo 7 estrazioni. Voglio contare il numero di sfere rosse estratte.
+    Abbiamo 10 sfere rosse, 15 bianche e facciamo 7 estrazioni. Voglio contare
+    il numero di sfere rosse estratte.
 
     Senza reimbussolamento: $H(25,10,7)$
     
-    Con reimbussolamento: $B(7,2/5)$ (infatti sono 7 esperimenti identici con prob. di successo pari a
-    $10/25=2/5$
+    Con reimbussolamento: $B(7,2/5)$ (infatti sono 7 esperimenti identici con
+    prob. di successo pari a $10/25=2/5$
 \end{exmp}
 
 \begin{defn}
     \textbf{Binomiale Negativa (o di Pascal)}
-    Sia data una Bernoulliana di parametro $ p $. Ripetiamo l'esperimento fino a che non ho $ n $ successi. Quanti sono i fallimenti ottenuti?
-	Se la binomiale negativa, indicata con $NB(n,p)$  ha valore $k$ significa che ho fatto $n+k$ prove,
-	e ho avuto $ n $ successi e $ k $ fallimenti (in qualsiasi ordine)  la densit\`a di probabilit\`a  di una Binomiale Negativa quindi si definisce come
+    Sia data una Bernoulliana di parametro $ p $. Ripetiamo l'esperimento fino a
+	che non ho $ n $ successi. Quanti sono i fallimenti ottenuti? Se la
+	binomiale negativa, indicata con $NB(n,p)$  ha valore $k$ significa che ho
+	fatto $n+k$ prove, e ho avuto $ n $ successi e $ k $ fallimenti (in
+	qualsiasi ordine)  la densit\`a di probabilit\`a  di una Binomiale Negativa
+	quindi si definisce come
 
     \begin{equation*}
     \p{\nb{n, p} = k} = p^n(1-p)^k
     \end{equation*}
 \end{defn}
 
-Riassumendo: una variabile Binomiale conta i successi, una variabile Geometrica conta i fallimenti prima del primo successo e la Binomiale Negativa (NB) conta i fallimenti prima del successo $ n $-esimo. In una Binomiale Negativa non conta l'ordine degli esperimenti (tranne l'ultimo risultato). Le prove totali prima di avere $ n $ successi sono $ n+\text{NB} $.
+Riassumendo: una variabile Binomiale conta i successi, una variabile Geometrica
+conta i fallimenti prima del primo successo e la Binomiale Negativa (NB) conta i
+fallimenti prima del successo $ n $-esimo. In una Binomiale Negativa non conta
+l'ordine degli esperimenti (tranne l'ultimo risultato). Le prove totali prima di
+avere $ n $ successi sono $ n+\text{NB} $.
 
 \begin{exmp}
-	Lancio una moneta fino ad ottenere 3 croci (non consecutive). Qual \`e la probabilit\`a  di aver fatto esattamente 2 risultati testa? E di avere ottenuto almeno una testa?
+	Lancio una moneta fino ad ottenere 3 croci (non consecutive). Qual \`e la
+	probabilit\`a  di aver fatto esattamente 2 risultati testa? E di avere
+	ottenuto almeno una testa?
 
-    $ \p{\nb{3, \frac{1}{2}} = 2} = \binom{3+2-1}{2} \left(\frac{1}{2}\right)^3 \left(\frac{1}{2}\right)^2 = \frac{3}{16} $.
+    $ \p{\nb{3, \frac{1}{2}} = 2} = \binom{3+2-1}{2} \left(\frac{1}{2}\right)^3
+    \left(\frac{1}{2}\right)^2 = \frac{3}{16} $.
 
-	La probabilit\`a  di ottenere almeno un risultato testa \`e complementare ad avere ottenuto solo croci, quindi \`e pari a $1- \p{\nb{3, \frac{1}{2}} = 0} = 1 - \frac{1}{8} = \frac{7}{8} $
+	La probabilit\`a  di ottenere almeno un risultato testa \`e complementare ad
+	avere ottenuto solo croci, quindi \`e pari a $1- \p{\nb{3, \frac{1}{2}} = 0}
+	= 1 - \frac{1}{8} = \frac{7}{8} $
 \end{exmp}
 
 \section{Valore Atteso}
 
-Consideriamo di voler calcolare la media pesata dei voti degli esami universitari. La media sar\`a  per ogni esame $ i $:
+Consideriamo di voler calcolare la media pesata dei voti degli esami
+universitari. La media sar\`a  per ogni esame $ i $:
 \begin{equation*}
     \sum_{i} \dfrac{(\text{voto})_i \cdot (\text{crediti})_i }{\sum_{i} \text{crediti}} = \sum_{i} (\text{voto})_i \cdot (\text{peso})_i
 \end{equation*}
-Se vogliamo definire la media, o il valore atteso di una variabile aleatoria discreta ragioniamo in
-maniera analoga, con il $(\text{peso})_i$ sar\`a dato dalla probabilit\`a che $X$ assuma il valore $i$.
+Se vogliamo definire la media, o il valore atteso di una variabile aleatoria
+discreta ragioniamo in maniera analoga, con il $(\text{peso})_i$ sar\`a dato
+dalla probabilit\`a che $X$ assuma il valore $i$.
 \begin{defn}
     \textbf{Media Pesata, Speranza o Valore Atteso}
-	Sia $ X $ una variabile aleatoria discreta. La media di $ X $, detta anche \textbf{speranza} o \textbf{valore atteso} si definisce come
+	Sia $ X $ una variabile aleatoria discreta. La media di $ X $, detta anche
+	\textbf{speranza} o \textbf{valore atteso} si definisce come
     \begin{equation*}
     \E{X} = \sum_{k} k \cdot \p{X = k} = \sum_{k} k \cdot p_k
     \end{equation*}
 
-    Pi\`u in generale, data  $ f : \R \to \R $ per calcolare il valore atteso della variabile $f(X)$ si definisce
+    Pi\`u in generale, data  $ f : \R \to \R $ per calcolare il valore atteso
+    della variabile $f(X)$ si definisce
 
     \begin{equation*}
     \E{f(X)} = \sum_{k} f(k) \cdot p_k
     \end{equation*}
 \end{defn}
-\textbf{Osservazione} $\sum_{k} p_k = 1 $ \textbf{non implica che} $ \sum_{k} k p_k $ sia convergente. Se  $ \sum_{k} k p_k $ non converge ad un numero allora si dice che la variabile non ha media.
+\textbf{Osservazione} $\sum_{k} p_k = 1 $ \textbf{non implica che} $ \sum_{k} k
+p_k $ sia convergente. Se  $ \sum_{k} k p_k $ non converge ad un numero allora
+si dice che la variabile non ha media.
 \begin{prop}
 Se la variabile assume solo valori interi positivi allora
 
@@ -318,17 +406,19 @@ Se la variabile assume solo valori interi positivi allora
 \end{equation}
 \end{prop}
 \begin{proof}
-    Se si scrive $ \p{X > k} =  \p{X = k+1} + \p{X = k+2} + \dots $ per ogni $k$, e poi si inizia a sommare ci si accorge che $p_0$ non compare mai,
-$p_1$ compare una sola volta, $p_2$ 2 volte e in generale $p_k$ compare esattamente $k$ volte.
-Quindi  $\sum_{k} \p{X > k}\sum_{k} k p_k=\E{X} $.
+    Se si scrive $ \p{X > k} =  \p{X = k+1} + \p{X = k+2} + \dots $ per ogni
+$k$, e poi si inizia a sommare ci si accorge che $p_0$ non compare mai, $p_1$
+compare una sola volta, $p_2$ 2 volte e in generale $p_k$ compare esattamente
+$k$ volte. Quindi  $\sum_{k} \p{X > k}\sum_{k} k p_k=\E{X} $.
 \end{proof}
 
 \begin{prop}
 La speranza di una Binomiale $ B(n,p) $ vale $\E{B(n,p)}=np$ .
 \end{prop}
 \begin{proof}
-La densit\`a di $ B(n,p) $  \`e $ p_k = \binom{n}{k}p^k(1-p)^{n-k}$  $\forall k \in [0,n] $.
- Abbiamo che $ kp_k = k \binom{n}{k}p^k (1-p)^{n-k} = n \binom{n-1}{k-1} p^k(1-p)^{n-k} $. Definiamo $ h = k-1 $.
+La densit\`a di $ B(n,p) $  \`e $ p_k = \binom{n}{k}p^k(1-p)^{n-k}$  $\forall k
+ \in [0,n] $. Abbiamo che $ kp_k = k \binom{n}{k}p^k (1-p)^{n-k} = n
+ \binom{n-1}{k-1} p^k(1-p)^{n-k} $. Definiamo $ h = k-1 $.
 
 \begin{equation*}
     \begin{aligned}
@@ -342,11 +432,12 @@ dove nell'ultimo passaggio abbiamo usato la formula del binomio di Newton.
 \end{proof}
 
 \begin{prop}
-	La speranza di  di una variabile geometrica $ \geom(p) $ vale $\E{\geom(p)} =1/p$.
+	La speranza di  di una variabile geometrica $ \geom(p) $ vale $\E{\geom(p)}
+	=1/p$.
 \end{prop}
 \begin{proof}	
-Usiamo la formula (\ref{Ex}), perch\'e altrimenti non \`e banale nemmeno dimostrare la convergenza della 
-serie.
+Usiamo la formula (\ref{Ex}), perch\'e altrimenti non \`e banale nemmeno
+dimostrare la convergenza della serie.
 		\begin{equation*}
 	\E{\geom(p)} = \sum_{k=0}^\infty\p{\geom(p) > k}
 	\end{equation*}
@@ -358,19 +449,25 @@ serie.
 
 \begin{exmp}
     Scommetto. Pago 1 euro. Lancio 3 dadi e guadagno 1 euro ogni 6 che esce.
-	Rappresento il guadagno con una variabile binomiale $ X = B(3,1/6) - 1$. Abbiamo che $ \E{X} = \E{B(3,1/6)} - 1 = 3 \cdot 1/6 - 1 = -1/2$ (quindi non mi conviene scommettere!)
+	Rappresento il guadagno con una variabile binomiale $ X = B(3,1/6) - 1$.
+	Abbiamo che $ \E{X} = \E{B(3,1/6)} - 1 = 3 \cdot 1/6 - 1 = -1/2$ (quindi non
+	mi conviene scommettere!)
 \end{exmp}
         
 
 \begin{defn}
     \textbf{Distribuzione di Poisson}
-    Nel caso di una variabile binomiale conosco $ p $ e $ n $ (numero esperimenti).
-    In una distribuzione di Poisson si conosce una media $ \mu $ di successi in un intervallo di osservazione $ \tau $, e si suppone che nell'intervallo di tempo si verifichino molte prove indipendenti
-	tra di loro. In qualche senso (euristico) la variabile di Poisson di parametro $\mu$ rappresenta
-	il limite di una binomiale $B(n,p)$ con $n\rightarrow \infty$. 
-	In effetti supponiamo che nell'intervallo $ \tau $ avvengano $ n $ prove di parametro $p$ tutte indipendenti tra di loro. Se abbiamo in media $ \mu $ successi per intervallo $\tau$,
-	se $n$ \`e molto grande si pu\`o supporre che $ \mu = \E{B(n,p)} = np$. Per definire la Poisson
-    allora proviamo a fare il limite di una densit\`a binomiale.
+    Nel caso di una variabile binomiale conosco $ p $ e $ n $ (numero
+    esperimenti). In una distribuzione di Poisson si conosce una media $ \mu $
+    di successi in un intervallo di osservazione $ \tau $, e si suppone che
+    nell'intervallo di tempo si verifichino molte prove indipendenti tra di
+    loro. In qualche senso (euristico) la variabile di Poisson di parametro
+    $\mu$ rappresenta il limite di una binomiale $B(n,p)$ con $n\rightarrow
+    \infty$. In effetti supponiamo che nell'intervallo $ \tau $ avvengano $ n $
+    prove di parametro $p$ tutte indipendenti tra di loro. Se abbiamo in media $
+    \mu $ successi per intervallo $\tau$, se $n$ \`e molto grande si pu\`o
+    supporre che $ \mu = \E{B(n,p)} = np$. Per definire la Poisson allora
+    proviamo a fare il limite di una densit\`a binomiale.
     \begin{equation*}
     \begin{aligned}
         \lim_{n\rightarrow\infty}\p{B(n,p) = k} =\lim_{n\rightarrow\infty} \binom{n}{k}p^k(1-p)^{n-k}
@@ -391,11 +488,14 @@ serie.
 
 \end{defn}
 
-La variabile di Poisson in qualche senso ci dice quanto \`e la probabilit\`a che in un certo intervallo di
-tempo ci si discosti dal valore medio che ci si aspetta in uno stesso intervallo di tempo.
+La variabile di Poisson in qualche senso ci dice quanto \`e la probabilit\`a che
+in un certo intervallo di tempo ci si discosti dal valore medio che ci si
+aspetta in uno stesso intervallo di tempo.
 
 \begin{exmp}
-	Siamo nel secolo 1800, prendiamo l'esercito di Napoleone nel reparto della cavalleria. Ogni anno 12 cavalieri muoiono per incidente a cavallo. Voglio sapere la probabilit\`a  che nel 1861 siano morti 7 cavalieri.
+	Siamo nel secolo 1800, prendiamo l'esercito di Napoleone nel reparto della
+	cavalleria. Ogni anno 12 cavalieri muoiono per incidente a cavallo. Voglio
+	sapere la probabilit\`a  che nel 1861 siano morti 7 cavalieri.
     \begin{equation*}
     \p{\text{anno } 1861 | \text{sono morti 7 cavalieri}}
     \end{equation*}
@@ -410,7 +510,8 @@ tempo ci si discosti dal valore medio che ci si aspetta in uno stesso intervallo
 \begin{prop}
 	\textbf{Linearit\`a  della media}
     
-    Siano date $ X,Y $ variabili aleatorie, $ \alpha ,\beta \in \R $. Abbiamo che
+    Siano date $ X,Y $ variabili aleatorie, $ \alpha ,\beta \in \R $. Abbiamo
+    che
     
     \begin{equation*}
     \E{\alpha X + \beta Y} = \alpha \E{X} + \beta \E{Y}
@@ -418,10 +519,11 @@ tempo ci si discosti dal valore medio che ci si aspetta in uno stesso intervallo
 \end{prop}
 
 
-\begin{proof} Dimostriamo la propriet\`a nel caso $\alpha=\beta=1$. La dimostrazione
-    nel caso generale \`e assolutamente analoga. 
-    Supponiamo anche, per semplificare le notazioni, che $X,Y$ assumano valori naturali.
-    Come al solito, chiamiamo $p_{i,j}=\p{X=i\cap Y=j}$, $p_i^X=\p{X=i}$ e $q_j^Y=\p{Y=j}$
+\begin{proof} Dimostriamo la propriet\`a nel caso $\alpha=\beta=1$. La
+    dimostrazione nel caso generale \`e assolutamente analoga. Supponiamo anche,
+    per semplificare le notazioni, che $X,Y$ assumano valori naturali. Come al
+    solito, chiamiamo $p_{i,j}=\p{X=i\cap Y=j}$, $p_i^X=\p{X=i}$ e
+    $q_j^Y=\p{Y=j}$
             \begin{equation*}
             \begin{aligned}
             \E{X+Y} = \sum_{i,j} (i+j)p_{i,j} = \sum_{i,j} ip_{i,j} + \sum_{i,j} jp_{i,j} \\

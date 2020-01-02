@@ -8,6 +8,7 @@
 \usepackage{hyperref}
 \usepackage{tabularx}
 \usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{array}
 \usepackage{xcolor}
 \usepackage{polynom}
@@ -70,6 +71,10 @@
 	\text{Var}\left(#1\right)
 }
 
+\newcommand{\covar}[1]{
+	\text{Covar}\left(#1\right)
+}
+
 \newcommand{\nb}[1]{
 	\text{NB}\left(#1\right)
 }
@@ -117,10 +122,20 @@
 \newtheorem*{note}{Nota}
 \newtheorem{caso}{Caso}
 
+% pgf plot style
+\pgfplotsset{
+	every axis/.style={
+		samples=50,
+		enlargelimits=upper
+	},
+	axis lines = middle,
+	scale=1.5
+}
+
 \begin{document}
 
-\author{Lezioni della prima parte di Marco Ghimenti\\Lezioni della seconda parte di Maurizio Pratelli\\ A cura di Alessandro Cheli}
-\title{Appunti di Calcolo Probabilit\`a e Statistica}
+\author{Lezioni della prima parte di Marco Ghimenti\\Lezioni della seconda parte di Maaurizio Pratelli\\ A cura di Alessandro Cheli}
+\title{Appunti di Calcolo delle Probabilit\`a e Statistica}
 \date{A.A 2019-2020}
 
 \frontmatter
@@ -128,10 +143,10 @@
 \tableofcontents
 
 \mainmatter
-\include{./TeX_files/chapter01}
-\include{./TeX_files/chapter02}
-\include{./TeX_files/chapter03}
-\include{./TeX_files/chapter04}
+%\include{./TeX_files/chapter01}
+%\include{./TeX_files/chapter02}
+%\include{./TeX_files/chapter03}
+%\include{./TeX_files/chapter04}
 \include{./TeX_files/chapter05}
 \backmatter
 % bibliography, glossary and index would go here.

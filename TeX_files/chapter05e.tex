@@ -1,0 +1,73 @@
+\section{Esercizi}
+
+\begin{exrc}
+    Consideriamo una variabile $(X,Y)$ avente densità
+    \begin{equation*}
+        \begin{aligned}
+            f(x,y) = \begin{cases}
+                e^{-x} & \text{sull'insieme } 0 < y < x \\
+                0 & \text{altrove}
+            \end{cases}
+        \end{aligned}
+    \end{equation*}
+    \begin{enumerate}
+        \item Provare che la funzione sopra scritta è effettivamente una densità
+        e calcolare le densità marginali delle variabili $X,Y$. Proseguiamo
+        controllando che valgano le condizioni della definizione
+        \ref{defn:densita}, controllando che $\int_{\R^2} f(x,y) dxdy = 1$.
+        \begin{equation*}
+            \begin{aligned}
+                \int_0^{+\infty} \int_{0}^{x} e^{-x} dx dy = \int_{0}^{+\infty} dx \int_{0}^{x} e^{-x} dy \\
+                = \int_{0}^{+\infty} e^{-x} \cdot y \mid_{0}^{x} dx = \int_{0}^{+\infty} xe^{-x} dx = 1
+            \end{aligned}
+        \end{equation*}
+        \item Le variabili $X$ e $Y$ sono indipendenti? Controlliamo verificando
+        che valgano le condizioni nella definizione \ref{defn:indipendenzac}. Si
+        verifica facilmente osservando che $ f(x,y) \neq f(x)f(y) $.
+        \item Calcolare la densità di $Z = (X + Y)$. Calcoliamo $G(z) = \p{Z
+        \leq z}$
+        \begin{equation*}
+            \begin{aligned}
+                G(z) = \int_{0}^{z/2} \left( \int_{y}^{z-y} e^{-x} dx \right) dy = \int_{0}^{z/2} - \left( e^{-z+y} - e^{-y} \right) dy
+            \end{aligned}
+        \end{equation*}
+        E deriviamo
+        \begin{equation*}
+            \begin{aligned}
+                g(z) = \begin{cases}
+                    0 & z \leq 0 \equiv (x + y \leq 0) \\
+                    \frac{dG(z)}{dz} = e^{-z/2} - e^{-z} & z > \equiv (x+y > 0)
+                \end{cases}
+            \end{aligned}
+        \end{equation*}
+    \end{enumerate}
+\end{exrc}
+
+\begin{exrc}
+    Siano $X,Y$ due numeri scelti a caso e in modo indipendente fra 0 e 1, e sia
+    $Z = XY$ il loro prodotto, calcolare la densità di $Z$. Abbiamo che $Z \in
+    [0, 1]$ e $G(z) = \p{Z \leq z} = \p{XY \leq z}$.
+    \begin{equation*}
+        \begin{aligned}
+            \p{XY \leq z} = \int_{z}^{1} \left( \int_{0}^{z/x} dy \right) dx + z = \\
+            z + \int_{z}^{1} \frac{z}{x} dx = z(1-\log(x))
+        \end{aligned}
+    \end{equation*}
+
+    Ne otteniamo che
+
+    \begin{equation*}
+        \begin{aligned}
+            G(x) = \begin{cases}
+                0 & z \leq 0 \\
+                1 & z \geq 1 \\
+                z(1 - \log{z}) & 0 < z < 1 \\
+            \end{cases} \implies
+            g(z) = \begin{cases}
+                0 & z \leq 0 \lor z \geq 1 \\
+                - \log{z} & 0 < z < 1
+            \end{cases}
+        \end{aligned}
+    \end{equation*}
+\end{exrc}
+
