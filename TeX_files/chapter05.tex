@@ -40,7 +40,7 @@
     \begin{figure}[htbp]
         \centering
         \begin{tikzpicture}
-            \begin{axis}[title={$y = x$},  ylabel=$y$,]
+            \begin{axis}[axis lines=box, title={$y = x$},  ylabel=$y$,]
                 \addplot3[surf,
                 %domain=-2:2, domain y=-1.3:1.3,
             ] {x};
@@ -69,7 +69,7 @@
     \begin{figure}[htbp]
         \centering
         \begin{tikzpicture}
-            \begin{axis}[title={$2x-3y^2$},  ylabel=$y$,]
+            \begin{axis}[axis lines=box, title={$2x-3y^2$},  ylabel=$y$,]
                 \addplot3[surf,
                 %domain=-2:2, domain y=-1.3:1.3,
             ] {2*x-3*y^2};
@@ -140,6 +140,9 @@
     Perché $f$ sia densità una condizione necessaria è che $\int_{\Omega} f(x)
     dx = 1$, dove in generale, $\Omega = \R$ se la funzione di densità è ad una
     variabile.
+
+    Il simbolo tilde ($\sim$) si usa per indicare che una variabile aleatoria ha una data
+    distribuzione di probabilità, ad esempio $X \sim \Gamma(k, \theta)$
 \end{defn}
 
 \begin{defn}

@@ -1,4 +1,4 @@
-\section{Tipologie principali di densità}
+\section{Principali tipologie di densità}
 
 \begin{defn}
     \textbf{Densità uniforme su [a, b]} \\
@@ -68,26 +68,30 @@
     Il valore atteso è $ \dfrac{1}{\lambda} $. La speranza è
     $\dfrac{1}{\lambda^2}$
 
-    \begin{figure}[htbp]
+    \begin{figure}[htbp!]
         \centering
 
         \begin{tikzpicture}[declare function={func(\x,\lambda) =
             (\lambda*e^(-\lambda*\x));}]
-            \begin{axis}[smooth] \addplot[very thick, blue][domain=0:5]
+            \begin{axis}[smooth,
+                legend entries={$\lambda=0.5$,$\lambda=1$}
+                ] \addplot[very thick, blue][domain=0:5]
                 {func(x,0.5)}; \addplot[very thick, red][domain=0:5]
                 {func(x,1)};
             \end{axis}
         \end{tikzpicture}
-        \caption{Densità di probabilità esponenziale di parametro $\lambda = 0.5$ (blu) e $\lambda = 1$ (rosso)}
+        \caption{Densità di probabilità esponenziale}
         \label{exparam}
     \end{figure}
 
-    \begin{figure}[htbp]
+    \begin{figure}[htbp!]
         \centering
 
         \begin{tikzpicture}[declare function={func(\x,\lambda) = (1 -
             e^(-\lambda*\x));}]
-            \begin{axis}[smooth] \addplot[very thick, blue][domain=0:5]
+            \begin{axis}[smooth,
+                legend entries={$\lambda=0.5$,$\lambda=1$}
+                ] \addplot[very thick, blue][domain=0:5]
                 {func(x,0.5)}; \addplot[very thick, red][domain=0:5]
                 {func(x,1)};
             \end{axis}
@@ -131,7 +135,7 @@
     \end{equation*}
 
 
-    \begin{figure}[htbp]
+    \begin{figure}[htbp!]
         \centering
 
         \begin{tikzpicture}[declare function={func(\x) = (1/(pi * (1 +
@@ -174,6 +178,145 @@
 \end{defn}
 
 \begin{defn}
+    \textbf{Funzione Gamma $\Gamma$} \\
+    La funzione $\Gamma$ è un'estensione della funzione fattoriale ai numeri
+    complessi. È definita su tutti i numeri complessi con parte reale $> 0$.
+    Per definire la \textbf{densità di probabilità $\Gamma$}, utilizzeremo la
+    funzione $@G$ definita solo per i numeri reali positivi.
+
+    \begin{equation*}
+        \begin{aligned}
+            r > 0 \implies \Gamma(r) = \int_{0}^{+\infty} x^{r - 1}e^{-x} dx
+        \end{aligned}
+    \end{equation*}
+
+    \begin{prop}
+        Sui reali positivi, la funzione $\Gamma(r+1) = r\Gamma(r)$. Sui numeri
+        naturali, allora $\Gamma(n+1) = n!$.
+    \end{prop}
+
+    \begin{proof}
+        \begin{equation*}
+            \begin{aligned}
+                \Gamma(r+1) = \int_{0}^{+\infty} x^r e^{-x} dx = \left[ -x^r e^{-x} \right]_{0}^{+\infty} + \int_{0}^{+\infty} rx^{r-1} e^{-x} dx \\
+                = \lim_{x \to +\infty} (-x^r e^{-x}) - (0e^0) + r \int_{0}^{+\infty} x^{r-1} e^{-x} dx \\
+                \text{osservando che $\lim_{x \to +\infty} (-x^r e^{-x})$ tende a 0} \\
+                \Gamma(r+1) = r \int_{0}^{+\infty} x^{r-1} e^{-x} dx = r \Gamma(r)
+            \end{aligned}
+        \end{equation*}
+    \end{proof}
+    
+    Completiamo la definizione della funzione $\Gamma$:
+
+    \begin{equation*}
+        \begin{aligned}
+            n \in \N \implies \Gamma(n) = \begin{cases}
+                \Gamma(n) = \Gamma(1) = 1 & n = 1 \\
+                \Gamma(n) = (n-1)! & n > 1
+            \end{cases}
+        \end{aligned}
+    \end{equation*}
+\end{defn}
+
+\begin{defn}
+    \textbf{Distribuzione $\Gamma$} \\
+    Dopo aver definito la funzione $\Gamma$, possiamo definire la densità di
+    probabilità per la distribuzione $\Gamma$. I due parametri della densità
+    vengono detti forma ($r$) e scala ($\lambda$) della distribuzione.
+
+    \begin{equation*}
+        \begin{aligned}
+            \Gamma(r, \lambda) = f(x) = \begin{cases}
+                \left( \dfrac{1}{\Gamma(r)} \right) \lambda^r  x^{r-1} e^{-\lambda x} & x \geq 0 \\
+                0 & x < 0
+            \end{cases}
+        \end{aligned}
+    \end{equation*}
+
+    Il \textbf{valore atteso} è $\dfrac{r}{\lambda}$, la \textbf{varianza} è $\dfrac{r}{\lambda^2}$.
+
+    Si nota come una densità esponenziale di parametro $\lambda$ sia uguale ad
+    una densità $\Gamma$ di parametri $r = 1, \lambda = \lambda$. Infatti, le
+    densità esponenziali e le densità $\chi^2$ sono casi speciali della
+    distribuzione $\Gamma$
+
+    \begin{figure}[htbp!]
+        \centering
+
+        \begin{tikzpicture}[
+            declare function={gamma(\z)=
+            (2.506628274631*sqrt(1/\z) + 0.20888568*(1/\z)^(1.5) + 0.00870357*(1/\z)^(2.5) - (174.2106599*(1/\z)^(3.5))/25920 - (715.6423511*(1/\z)^(4.5))/1244160)*exp((-ln(1/\z)-1)*\z);},
+            declare function={gammapdf(\x,\k,\theta) = \x^(\k-1)*exp(-\x/\theta) / (\theta^\k*gamma(\k));}
+        ]
+            \begin{axis}[scale=2, smooth,
+                legend entries={$r=1\quad \lambda=0.5$,$r=2\quad \lambda=0.5$, $r=9\quad \lambda=2$}
+                ]
+                \addplot[very thick, blue][domain=0:18]{gammapdf(x, 1, 2)};
+                \addplot[very thick, red][domain=0:18]{gammapdf(x, 2, 2)};
+                \addplot[very thick, green][domain=0:18]{gammapdf(x, 9, 0.5)};
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Densità di probabilità $\Gamma$}
+        \label{gammapdf}
+    \end{figure}
+
+    \begin{prop}
+        La densità $\Gamma(r, \lambda)$ è una densità di probabilità
+    \end{prop}
+
+    \begin{proof}
+        Il prodotto di numeri positivi è positivo, quindi la funzione di densità
+        $f \geq 0$. Rimane da dimostrare che $\int_{-\infty}^{+\infty} f(x) dx =
+        1$ per dimostrare che la funzione data da $\Gamma(r, \lambda)$ è una
+        di probabilità. Conosciamo intanto $\int_{-\infty}^{0} f(x) dx = 0$.
+
+        \begin{equation*}
+            \begin{aligned}
+                \int_{0}^{+\infty} \lambda^r x^{r-1} e^{-\lambda x} dx = \int_{0}^{+\infty} (\lambda x)^{r-1} e^{-\lambda -1} dx = \\
+                \text{Risolvendo per sostituzione: } t = \lambda x \implies dt = \lambda dx \\
+                = \int_{0}^{+\infty} t^{r-1} e^{-t} dt = \Gamma(r) \\
+                \implies \int_{-\infty}^{+\infty} f(x) dx = \dfrac{1}{\Gamma(r)} \Gamma(r) = 1
+            \end{aligned}
+        \end{equation*}
+    \end{proof}
+\end{defn}
+
+\begin{defn}
+    \textbf{Formula dei momenti della distribuzione $\Gamma$} \\
+    Definiamo una formula per calcolare il momento $n$-esimo di una variabile
+    aleatoria con densità data dalla distribuzione $\Gamma$.
+
+    \begin{equation*}
+        \begin{aligned}
+        X \sim \Gamma(r, \lambda) \implies \\
+        n \in \N \implies \E{X^n} = \frac{\Gamma(r + n)}{\Gamma(r) \lambda^n} \\
+        \text{Alcuni esempi: } \\
+        \E{X} = \frac{\Gamma(r + 1)}{\Gamma(r) \lambda} = \frac{\Gamma(r) (r)}{\Gamma(r) \lambda} = \frac{r}{\lambda} \\
+        \E{X^2} = \frac{\Gamma(r + 2)}{\Gamma(r) \lambda^2} = \frac{r(r+1)}{\lambda^2}
+        \end{aligned}
+    \end{equation*}
+
+    % //TODO
+    %\begin{proof}
+
+    %\end{proof}
+    
+\end{defn}
+
+\begin{defn}
+    \textbf{Somma di variabili aleatorie indipendenti con distribuzione $\Gamma$} \\
+
+    \begin{equation*}
+        \begin{aligned}
+            X \sim \Gamma(r_X, \lambda) \land Y \sim \Gamma(r_Y, \lambda) \land X,Y \text{  indipendenti} \\
+            \implies (X + Y) \sim \Gamma(r_X + r_Y, \lambda)
+        \end{aligned}
+    \end{equation*}
+
+\end{defn}
+
+
+\begin{defn}
     \textbf{Distribuzione normale (Gaussiana)} \\
     La distribuzione Gaussiana ha una funzione di densità a forma di campana. È
     utilizzata per rappresentare variabili aleatorie a valori reali che sono
@@ -184,15 +327,13 @@
 
     Sia data la densità $f(x;\mu, \sigma^2)$ dove $\mu$ è il parametro che
     rappresenta il valore atteso e $\sigma^2$ rappresenta la varianza. Si indica
-    comunemente con $N(\mu, \sigma^2)$. La densità Gaussiana $N(0,1)$ di
-    parametri $\mu = 0$ e $\sigma^2 = 1$ viene detta \textbf{densità Gaussiana
-    standard}. Dal grafico si nota che la campana si sposta orizzontalmente al
+    comunemente con $N(\mu, \sigma^2)$. Dal grafico si nota che la campana si sposta orizzontalmente al
     variare di $\mu$, mentre al variare della varianza $\sigma^2$ la campana
     "cambia forma".
 
     \begin{equation*}
         \begin{aligned}
-            f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\dfrac{(x - \mu)^2}{2 \sigma^2}}
+            N(\mu, \sigma^2) = f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\dfrac{(x - \mu)^2}{2 \sigma^2}}
         \end{aligned}
     \end{equation*}
 
@@ -204,16 +345,27 @@
         \centering
 
         \begin{tikzpicture}[]
-            \begin{axis}[scale=2, smooth]
+            \begin{axis}[scale=2, smooth,
+                legend entries={$\mu=0\quad \sigma^2=1.44$, $\mu=0.66\quad \sigma^2=0.22$, $k=1.44\quad \sigma^2=3.68$}
+                ]
                 \addplot[very thick, blue][domain=-5:6]{gauss(0, 1.2)};
                 \addplot[very thick, red][domain=-5:6]{gauss(0.66, 0.47)};
                 \addplot[very thick, green][domain=-5:6]{gauss(1.44, 1.92)};
             \end{axis}
         \end{tikzpicture}
-        \caption{Distribuzione di probabilità Gaussiana con parametri $\mu = 0, \sigma^2 = 1.44$ (blu); $\mu = 0.66, \sigma^2 = 0.22$ (rosso); $\mu =1.44, \sigma^2 = 3.68$ (verde)}
+        \caption{Densità di probabilità Gaussiana}
         \label{gaussian}
     \end{figure}
 \end{defn}
+
+\begin{defn}
+    \textbf{Densità Gaussiana Standard} \\
+    La densità Gaussiana $N(0,1)$ di
+    parametri $\mu = 0$ e $\sigma^2 = 1$ viene detta \textbf{densità Gaussiana
+    standard}.
+\end{defn}
+
+\includepdf[]{images/n01.pdf}
 
 \clearpage
 
