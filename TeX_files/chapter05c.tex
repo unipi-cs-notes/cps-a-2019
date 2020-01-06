@@ -1,0 +1,147 @@
+\section{Teoremi e leggi}
+
+\begin{note}
+    Si usa l'acronimo inglese \textbf{i.i.d.} (indipendent and identically
+    distributed) per indicare una collezione di variabili aleatorie con la
+    stessa distribuzione di probabilità, ma tutte mutualmente indipendenti fra
+    di loro.
+\end{note}
+
+\begin{defn}
+    \textbf{Convergenza in probabilità} \\
+    Data una successione di variabili aleatorie $(X_n)_{n \in \N}$ si dice che
+    essa \textbf{converge in probabilità} alla variabile aleatoria $X$, in
+    simboli $X_n \xrightarrow{p} X$, se $\forall \epsilon > 0$ vale
+
+    \begin{equation*}
+        \begin{aligned}
+            \lim_{n \to \infty} \p{\abs{X_n - X} > \epsilon} = 0
+            \text{o equivalentemente} \\
+            \lim_{n \to \infty} \p{\abs{X_n - X} < \epsilon} = 1 \\
+        \end{aligned}
+    \end{equation*}
+
+    Vediamo un criterio comodo:
+    \begin{equation*}
+        \begin{aligned}
+            \lim_{n \to \infty} \E{X_n} = c \quad \land \quad \lim_{n \to \infty} \var{X_n} = 0 \\
+            \implies X_n \text{ converge a } c
+        \end{aligned}
+    \end{equation*}
+
+    \begin{proof}
+        Ricordiamo la disuguaglianza di Chebishev
+        \begin{equation*}
+            \begin{aligned}
+                \p{\abs{X - \E{X}} > t} \leq \frac{\var{X}}{t^2}
+            \end{aligned}
+        \end{equation*}
+        e ricordiamo che
+        \begin{equation*}
+            \begin{aligned}
+                \var{X} = \E{(X - \E{X})^2} = \E{X^2} - \E{X}^2
+            \end{aligned}
+        \end{equation*}
+        Se sostituiamo $c$ a $\E{X}$ nella disuguaglianza di Chebishev si
+        ottiene:
+        \begin{equation*}
+            \begin{aligned}
+                \p{\abs{X - c} > t} \leq \frac{\E{(X - c)^2}}{t^2} \\
+                \implies 0 \leq \p{\abs{X_n - c} > \epsilon} \leq \frac{\E{(X_n - c)^2}}{\epsilon^2} \\
+            \end{aligned}
+        \end{equation*}
+
+        Ne segue che
+
+        \begin{eqnarray*}
+            \frac{\E{(X_n - c)^2}}{\epsilon^2} &=& \frac{\E{(X_n - \E{X_n} + \E{X_n} c)^2}}{\epsilon^2} \\
+                &=& \dfrac{\E{(X_n - \E{X_n})^2} + \E{(\E{X_n} -c)^2} + 2 \E{(X_n - \E{X_n})(\E{X_n} - c)}}{\epsilon^2} \\
+                &=& \frac{\var{X_n} + \E{(\E{X_n} -c)^2} + 2 \E{(X_n - \E{X_n})(\E{X_n} - c)}}{\epsilon^2}
+        \end{eqnarray*}
+
+        Sappiamo che, per ipotesi $\var{X_n} = 0$ e che la speranza di una
+        costante $ c = c $.
+
+
+        \begin{eqnarray*}
+            \frac{\E{(X_n - c)^2}}{\epsilon^2} &=& \dfrac{0 + 0 + 2(0)}{\epsilon^2} \\
+            &\implies& 0 \leq \p{\abs{X_n - c} > \epsilon} \leq 0
+        \end{eqnarray*}
+
+    \end{proof}
+
+\end{defn}
+
+
+\begin{defn}
+    \textbf{Legge (debole) dei Grandi Numeri} \\
+    Sia data $(X_n)_{n \in \N}$ successione di variabili aleatorie i.i.d con
+    media $\mu = \E{X_i}$ e varianza $\sigma^2 = \var{X_i}$ (valido $\forall i \in \N
+    \land 1 \leq i \leq n$) si ha che
+
+    \begin{equation*}
+        \begin{aligned}
+            \overline{X}_n = \dfrac{X_1, \hdots, X_n}{n} \\
+            \text{ converge a } \mu \text{ in probabilità, per } n \to \infty
+        \end{aligned}
+    \end{equation*}
+\end{defn}
+
+\begin{exmp}
+    Consideriamo ad esempio il lancio di una moneta:
+    \begin{eqnarray*}
+            X_i &=& \begin{cases}
+                0 & \text{se il risultato è croce} \\
+                1 & \text{se il risultato è testa}
+            \end{cases} \\
+            \E{X_i} &=& \text{probabilità che esca testa} \\
+            \implies \frac{X_1 + \hdots + X_n}{n} &=& \left(\frac{\text{numero di risultati testa}}{\text{numero di risultati croce}}\right)
+            \xrightarrow{p} \E{X_i} \\
+            \frac{\E{X_1 + \hdots + X_n}}{n} &=& \frac{n\mu}{n} = \mu
+    \end{eqnarray*}
+\end{exmp}
+
+
+Il \textbf{Teorema del Limite Centrale} (CLT o TLC) afferma che, in alcune
+situazioni, dato un numero di variabili aleatorie, la loro somma
+propriamente normalizzata tende approssimativamente ad una distribuzione
+normale, anche se le variabili aleatorie sommate non sono originariamente
+Gaussiane. Definiamo il teorema formalmente, senza però fornirne una dimostrazione.
+
+
+\begin{defn}
+    \textbf{Teorema del Limite Centrale} \\
+
+    Siano date $X_1, \hdots, X_n$ variabili aleatorie \textbf{i.i.d.} (collezione
+    detta anche campionamento casuale di dimensione $n$), il quale valore atteso
+    è $\E{X_i} = \mu$ e la varianza è $\var{X_i} = \sigma^2 > 0$ (valido
+    $\forall i \in \N \land 1 \leq i \leq n $), si ha allora che
+
+    \begin{equation}
+        \begin{aligned}
+            \lim_{n \to +\infty} \p{a \leq \dfrac{X_1, \hdots, X_2 - n\mu }{\sigma \sqrt{n}} \leq b} = \Phi(b) - \Phi(a)
+        \end{aligned}
+    \end{equation}
+
+    Dove $\Phi(x)$ è la CDF (funzione di ripartizione) della distribuzione Gaussiana.
+\end{defn}
+
+\begin{defn}
+    \textbf{Conclusioni pratiche del Teorema del Limite Centrale} \\
+    Con un numero elevato di variabili aleatorie nel campionamento casuale,
+    ovvero almeno $n > 50$, (con $n > 80 $ l'approssimazione è ottima), allora
+    la loro somma è approssimativamente normale.
+
+    \begin{equation*}
+        \begin{aligned}
+            \dfrac{X_1, \hdots, X_2 - n\mu }{\sigma \sqrt{n}}  \approx Z \sim N(0, 1)
+        \end{aligned}
+    \end{equation*}
+\end{defn}
+
+% //TODO finiscy esempy
+%\begin{exmp}
+%    \textbf{Somma di variabili aleatorie Bernoulliane} \\
+%    Sia dato $X = X_1 $ somma di $n \geq 50 $ variabili i.i.d. Si ha che $X \sim
+%    \text{Bin}(n,p)$
+%\end{exmp}

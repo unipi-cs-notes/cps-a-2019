@@ -289,18 +289,27 @@
     \begin{equation*}
         \begin{aligned}
         X \sim \Gamma(r, \lambda) \implies \\
-        n \in \N \implies \E{X^n} = \frac{\Gamma(r + n)}{\Gamma(r) \lambda^n} \\
-        \text{Alcuni esempi: } \\
         \E{X} = \frac{\Gamma(r + 1)}{\Gamma(r) \lambda} = \frac{\Gamma(r) (r)}{\Gamma(r) \lambda} = \frac{r}{\lambda} \\
         \E{X^2} = \frac{\Gamma(r + 2)}{\Gamma(r) \lambda^2} = \frac{r(r+1)}{\lambda^2}
         \end{aligned}
     \end{equation*}
 
-    % //TODO
-    %\begin{proof}
+    Ed in generale:
 
-    %\end{proof}
-    
+    \begin{equation*}
+        \begin{aligned}
+           X \sim \Gamma(r) \land n \in \N \implies \E{X^n} = \frac{\Gamma(r + n)}{\Gamma(r) \lambda^n}
+        \end{aligned}
+    \end{equation*}
+
+    \begin{proof}
+        \begin{eqnarray*}
+            \E{X^n} &=& \frac{1}{\Gamma(r)} \int_{0}^{+\infty} x^n \lambda^r x^{r-1} e^{-\lambda x} dx  \\
+            &=& \frac{1}{\Gamma(r)} \cdot \frac{1}{\lambda^n} \int_{0}^{+\infty} \lambda^{r+n} x^{n + r -1} e^{-\lambda x} dx \\
+            &=& \frac{\Gamma(r + n)}{\Gamma(r) \lambda^n}
+        \end{eqnarray*}
+    \end{proof}
+
 \end{defn}
 
 \begin{defn}
@@ -345,7 +354,7 @@
         \centering
 
         \begin{tikzpicture}[]
-            \begin{axis}[scale=2, smooth,
+            \begin{axis}[scale=2.3, smooth,
                 legend entries={$\mu=0\quad \sigma^2=1.44$, $\mu=0.66\quad \sigma^2=0.22$, $k=1.44\quad \sigma^2=3.68$}
                 ]
                 \addplot[very thick, blue][domain=-5:6]{gauss(0, 1.2)};
@@ -358,14 +367,100 @@
     \end{figure}
 \end{defn}
 
+\FloatBarrier
+
 \begin{defn}
     \textbf{Densità Gaussiana Standard} \\
     La densità Gaussiana $N(0,1)$ di
     parametri $\mu = 0$ e $\sigma^2 = 1$ viene detta \textbf{densità Gaussiana
-    standard}.
+    standard}. Si usa comunemente la lettera greca $\phi$ (phi) per indicare la
+    funzione di densità e la controparte maiuscola $\Phi$ per indicare la funzione di ripartizione (CDF).
+
+    \begin{equation*}
+        \begin{aligned}
+            \phi(x) = \frac{1}{\sqrt{2 \pi}} e^{-\dfrac{x^2}{2}}
+        \end{aligned}
+    \end{equation*}
+
+    La funzione di ripartizione è:
+
+    \begin{equation*}
+        \begin{aligned}
+            \Phi(x) = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{x} e^{-(t^2/2)} dt
+        \end{aligned}
+    \end{equation*}
+
+    \begin{prop}
+        Una variabile $X \sim N(0,1)$ con densità Gaussiana standard ha tutti i
+        momenti.
+    \end{prop}
+
+    \begin{proof}
+        \begin{equation*}
+            \begin{aligned}
+                \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{+\infty} \abs{x}^n e^{-(x^2/2)} dx < +\infty
+            \end{aligned}
+        \end{equation*}
+        Sapendo che $e^{-(x^2/2)}$ tende a 0 per $x = +\infty$ e per $x = -\infty$
+    \end{proof}
+\end{defn}
+
+\begin{defn}
+    \label{engauss}
+    \textbf{Momenti $n$-esimi di una Gaussiana standard} \\
+    Per calcolare il \textbf{momento $n$-esimo} di una gaussiana standard
+    definiamo una funzione Mo($n$) come
+
+    \begin{itemize}
+        \item Se $n$ è dispari:
+        \begin{equation*}
+            \begin{aligned}
+                n = 2h + 1 \implies \text{Mo}(n) = \E{X^{2h+1}} = \frac{1}{\sqrt{2 \pi}}
+                \int_{-\infty}^{+\infty} x^{2h+1} e^{-(x^2/2)} dx = 0
+            \end{aligned}
+        \end{equation*}
+        \item Se $n$ è pari:
+        \begin{equation*}
+            \begin{aligned}
+                n = 2h \implies \text{Mo}(n) = \E{X^{2h}} = (2h-1) \E{X^{2h-2}} = (n-1) \text{Mo}(n-2)
+            \end{aligned}
+        \end{equation*}
+    \end{itemize}
+
+    Ad esempio, $\E{X^2} = 1$ e $\E{X^4} = 3 \cdot \E{X^2} = 3$ .
+\end{defn}
+
+\begin{defn}
+    \textbf{Varianza di una Gaussiana standard} \\
+    Dalla definizione \ref{engauss} si ottiene che la varianza di una variabile
+    aleatoria $X \sim N(0,1)$ è
+    \begin{equation*}
+        \begin{aligned}
+            \var{X} = \E{X^2} - \E{X}^2 = 1 - 0^2 = 1
+        \end{aligned}
+    \end{equation*}
+\end{defn}
+
+\begin{defn}
+    \textbf{Conversione di una variabile aleatoria da Gaussiana qualsiasi a Gaussiana standard} \\
+    \begin{prop}
+        Si può sempre pensare una variabile aleatoria $X \sim N(\mu, \sigma^2)$
+        nella forma $\sigma X + m$ con $X \sim N(0, 1)$.
+    \end{prop}
+
+    \begin{proof}
+        Siano dati:
+        \begin{equation*}
+            \begin{aligned}
+                \mu \in \R, \quad \sigma > 0, \quad X \sim (N(0,1) = f(x)), \quad Y = \sigma X + \mu, \quad Y \sim g(y)\\
+                y = \sigma x + \mu \implies x = \dfrac{y-\mu}{\sigma}\\
+                \implies g(y) = \frac{1}{\sigma \sqrt{2 \pi}} e^{- \dfrac{1}{2} \left( \dfrac{y - m}{\sigma}\right)^2 }\\
+                \implies Y \sim N(\mu, \sigma^2) \implies \E{Y} = \mu \land \var{Y} = \sigma^2
+            \end{aligned}
+        \end{equation*}
+    \end{proof}
+
 \end{defn}
 
 \includepdf[]{images/n01.pdf}
-
-\clearpage
 
