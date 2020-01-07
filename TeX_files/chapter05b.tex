@@ -313,7 +313,7 @@
 \end{defn}
 
 \begin{defn}
-    \textbf{Somma di variabili aleatorie indipendenti con distribuzione $\Gamma$} \\
+    \textbf{Somma (convoluzione) di variabili aleatorie indipendenti con distribuzione $\Gamma$} \\
 
     \begin{equation*}
         \begin{aligned}
@@ -366,6 +366,14 @@
         \label{gaussian}
     \end{figure}
 \end{defn}
+
+\begin{defn}
+    \textbf{Somma (convoluzione) di due variabili aleatorie con densità gaussiana} \\
+    Siano date due variabili aleatorie indipendenti: $X \sim N(\mu_1, \sigma_1^2),\quad Y
+    \sim N(\mu_2, \sigma_2^2) $, la loro somma è data quindi da $Z = X + Y \sim
+    N(\mu_1 + \mu_2, \sigma_1^2 + \sigma_2^2 )$
+\end{defn}
+
 
 \FloatBarrier
 
@@ -461,6 +469,26 @@
     \end{proof}
 
 \end{defn}
+
+\begin{defn}
+    \textbf{Somma (convoluzione) di due variabili aleatorie con densità gaussiana standard} \\
+    Siano date due variabili aleatorie indipendenti: $X \sim N(0, 1),\quad Y
+    \sim N(0, 1) $. Sappiamo che $X + Y = Z \sim N(0, 2)$, cioè ha densità $g(z)
+    = \frac{1}{2\sqrt{\pi}} e^{-(z^2/4)}$
+
+    \begin{proof}
+        \begin{eqnarray*}
+                g(z) &=& \int_{-\infty}^{+\infty} f_1(z - x) f_2(x) dx \\
+                &=& \frac{1}{2\pi} \int_{-\infty}^{+\infty} e^{-(z -x)^2/2}
+                e^{-(x^2/2)} dx \\
+                &=& \frac{e^{-(z^2/4)}}{2\pi} \int_{-\infty}^{+\infty}
+                e^{((z/\sqrt{2}) - \sqrt{2}x)^2/2} dx
+        \end{eqnarray*}
+    \end{proof}
+    % //TODO finisci proof 
+\end{defn}
+
+
 
 \includepdf[]{images/n01.pdf}
 

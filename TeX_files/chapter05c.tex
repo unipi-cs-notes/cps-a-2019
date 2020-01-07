@@ -72,6 +72,24 @@
 
 \end{defn}
 
+\begin{defn}
+    \textbf{Media empirica} \\
+    Data una collezione di variabili aleatorie i.i.d, si dice \textbf{media
+    empirica} (o campionaria)
+
+    \begin{equation*}
+        \begin{aligned}
+            \overline{X} = \frac{X_1 + \hdots + X_n}{n}
+        \end{aligned}
+    \end{equation*}
+
+
+    \begin{note}
+    $\E{X_i} = \mu \implies \E{\overline{X}} = \mu$
+    \end{note}
+
+\end{defn}
+
 
 \begin{defn}
     \textbf{Legge (debole) dei Grandi Numeri} \\
@@ -81,7 +99,7 @@
 
     \begin{equation*}
         \begin{aligned}
-            \overline{X}_n = \dfrac{X_1, \hdots, X_n}{n} \\
+            \overline{X}_n = \dfrac{X_1 + \hdots + X_n}{n} \\
             \text{ converge a } \mu \text{ in probabilità, per } n \to \infty
         \end{aligned}
     \end{equation*}
@@ -145,3 +163,67 @@ Gaussiane. Definiamo il teorema formalmente, senza però fornirne una dimostrazi
 %    Sia dato $X = X_1 $ somma di $n \geq 50 $ variabili i.i.d. Si ha che $X \sim
 %    \text{Bin}(n,p)$
 %\end{exmp}
+
+\begin{defn}
+    \textbf{Convergenza in Distribuzione} \\
+    Siano date $X_1, X_2, \hdots$ variabili aleatorie, non necessariamente i.i.d., con relative funzioni
+    di ripartizione (CDF) $F_1, F_2, \hdots$ e sia $X$ variabile aleatoria
+    con CDF $F$ continua, si dice che $\{X_n\}_{n \in \N}$ converge in
+    distribuzione ad $X$ se, punto a punto per ogni $x$ vale
+    \begin{equation*}
+        \begin{aligned}
+            lim_{n \to +\infty} F_n(x) = F(x) \quad \forall x
+        \end{aligned}
+    \end{equation*}
+
+    \begin{note}
+        Se ho $X_1, X_2, \hdots$ variabili aleatorie i.i.d. ed ho $E[X_i] = \mu$
+        ed anche $\var{X_i} = \sigma^2$, allora posso applicare il teorema del
+        limite centrale per trovare a cosa converge in distribuzione la
+        successione di variabili aleatorie. Vale quindi
+
+        \begin{equation*}
+            \begin{aligned}
+                Z_n = \frac{X_1 + \hdots + X_n - n\mu}{\sigma \sqrt{n}} \quad \text{ e sia } \quad Z \sim N (0, 1) \\
+                \implies \{Z_n\}_{n \in \N} \text{ converge in distribuzione a } Z \\ \text{(equivale in simboli a)} \\
+                \p{Z_n \leq x} \xrightarrow{d} \Phi(x)
+            \end{aligned}
+        \end{equation*}
+    \end{note}
+
+\end{defn}
+
+\begin{exmp}
+    Siano dati $Z \sim N(0,1), \quad \alpha \in \R, \quad \alpha \in (0, 1)$,
+    trovare $z$.
+    \begin{equation*}
+        \begin{aligned}
+            \p{Z \leq z} = \alpha \implies \Phi(z) = \alpha \implies z = \Phi^{-1}(\alpha) \\
+            \text{va applicata la tavola } N(0,1) \text{ al contrario}
+        \end{aligned}
+    \end{equation*}
+\end{exmp}
+
+\section{Accenni di Inferenza Statistica}
+
+\begin{defn}
+    \textbf{Inferenza statistica} \\
+    Partendo da un campione si ottengono informazioni su una popolazione (ad
+    esempio sondaggi elettorali). Un \textbf{Campione Statistico} è una
+    collezione di variabili aleatorie $X_1, \hdots, X_n$ indipendenti ed
+    identicamente distribuite (i.i.d.) con distribuzione di probabilità solo
+    parzialmente conosciuta.
+\end{defn}
+
+\begin{defn}
+    \textbf{Varianza campionaria} \\
+    \begin{equation*}
+        \begin{aligned}
+            S^2 = \sum_{i=1}^{n} \frac{(X_i - \overline{X})^2}{n-1}
+        \end{aligned}
+    \end{equation*}
+
+    \begin{note}
+        $\E{S^2} = \sigma^2$
+    \end{note}
+\end{defn}
